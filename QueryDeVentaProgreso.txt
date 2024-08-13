@@ -1,0 +1,184 @@
+-- Crear la base de datos
+CREATE DATABASE TP_1;
+USE TP_1;
+
+CREATE TABLE CLIENTE (
+    ID_cliente INT PRIMARY KEY,
+    Documentacion VARCHAR(15) NOT NULL UNIQUE,
+    Nombre VARCHAR(30),
+    Apellido VARCHAR(30),
+    Direccion VARCHAR(100),
+    Telefono VARCHAR(15), 
+    Correo VARCHAR(100),
+    Entidad VARCHAR(60),
+);
+
+CREATE TABLE PROVEEDORES (
+    ID_Proveedor INT IDENTITY PRIMARY KEY,
+    Nombre VARCHAR(30),
+    Apellido VARCHAR(30),
+    Telefono VARCHAR(15),
+    Correo VARCHAR(100),
+);
+
+CREATE TABLE VENDEDORES (
+    ID_vendedor INT IDENTITY PRIMARY KEY,
+    Documentacion VARCHAR(15),
+    Nombre VARCHAR(30),
+    Apellido VARCHAR(30),
+    Telefono VARCHAR(15),
+    Saldo DECIMAL(10, 2) 
+);
+
+CREATE TABLE CATEGORIA (
+    Cod_categoria INT PRIMARY KEY,
+    Nombre VARCHAR(50)
+);
+
+CREATE TABLE H_Remito (
+    id_remito INT IDENTITY PRIMARY KEY,
+    fecha_hora DATETIME NOT NULL,
+    nombre VARCHAR(50),
+    tel VARCHAR(50),
+    email VARCHAR(50), 
+    entidad VARCHAR(50),
+    dni VARCHAR(50),
+    subtotal DECIMAL(10, 2),
+    descuento DECIMAL(10, 2),
+    total DECIMAL(10, 2), 
+    total_costos DECIMAL(10, 2), 
+    mes VARCHAR(30), 
+    año CHAR(4),
+    direccion VARCHAR(50) 
+);
+
+CREATE TABLE REMITO (
+    Remito_num INT IDENTITY PRIMARY KEY 
+);
+
+CREATE TABLE H_Presupuesto (
+    id_presupuesto INT IDENTITY PRIMARY KEY,
+    fecha_hora DATETIME NOT NULL,
+    nombre VARCHAR(50), 
+    tel VARCHAR(50),
+    email VARCHAR(50),
+    entidad VARCHAR(50), 
+    dni VARCHAR(50), 
+    subtotal DECIMAL(10, 2),
+    descuento DECIMAL(10, 2),
+    total DECIMAL(10, 2),
+    direccion VARCHAR(50) 
+);
+
+-- TABLAS DEPENDIENTES:
+
+
+CREATE TABLE SUBCATEGORIA (
+    Cod_subcategoria INT IDENTITY PRIMARY KEY,
+    Cod_categoria INT,
+    Nombre VARCHAR(50),
+    FOREIGN KEY (Cod_categoria) REFERENCES CATEGORIA (Cod_categoria)
+);
+
+CREATE TABLE ARTICULOS (
+    ID_articulo INT IDENTITY PRIMARY KEY,
+    Cod_articulo VARCHAR(20) NOT NULL UNIQUE,
+    Descripcion VARCHAR(500),
+    ID_Proveedor INT,
+    Cod_subcategoria INT,
+    Cod_categoria INT,
+    FOREIGN KEY (ID_Proveedor) REFERENCES PROVEEDORES(ID_Proveedor), 
+    FOREIGN KEY (Cod_subcategoria) REFERENCES SUBCATEGORIA(Cod_subcategoria), 
+    FOREIGN KEY (Cod_categoria) REFERENCES CATEGORIA(Cod_categoria),
+);
+
+
+CREATE TABLE CTA_CTE_PROVEEDORES (
+    ID_CtaCteProv INT PRIMARY KEY,
+	ID_Proveedor INT,
+	Compras DECIMAL (10, 2),
+	Pagos DECIMAL (10, 2),
+	Fecha DATE,
+	FOREIGN KEY (ID_Proveedor) REFERENCES PROVEEDORES (ID_Proveedor)
+);
+
+CREATE TABLE VENDEDORES_PAGOS (
+    ID_pago INT IDENTITY PRIMARY KEY,
+    ID_vendedor INT,
+    Fecha_pago DATE,
+    Monto DECIMAL(10, 2),
+    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDORES(ID_vendedor)
+);
+
+CREATE TABLE STOCK (
+	ID_stock int identity PRIMARY KEY, 
+	Cod_articulo VARCHAR(20), 
+	Cantidad int, 
+	Costo DECIMAL (10, 2), 
+	Ganancia DECIMAL (10, 2),
+	FOREIGN KEY (Cod_articulo) REFERENCES ARTICULOS (Cod_articulo)
+);
+
+CREATE TABLE CLIENTE_PAGOS (
+    ID_pagos INT PRIMARY KEY,
+	ID_cliente INT,
+    Fecha DATE,
+    Monto DECIMAL(10, 2),
+	foreign key (ID_cliente) references CLIENTE (ID_cliente)
+);
+
+CREATE TABLE VENDEDORES_VENTAS (
+    ID_vendedor_venta INT IDENTITY PRIMARY KEY,
+    ID_vendedor INT NOT NULL,
+    Fecha DATE NOT NULL,
+    Remito_num INT,
+    Remito_total DECIMAL(10, 2),
+    Remito_costo DECIMAL(10, 2),
+    Comision DECIMAL(10, 2),
+    Comision_total DECIMAL(10, 2),
+    Mes VARCHAR(2), 
+    Año CHAR(4),
+    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDORES(id_vendedor),
+    FOREIGN KEY (Remito_num) REFERENCES REMITO (Remito_num)
+);
+
+
+CREATE TABLE H_Remito_detalle (
+    id_remito_detalle INT IDENTITY PRIMARY KEY,
+    id_remito INT NOT NULL, 
+    cod_articulo VARCHAR(50), 
+    descripcion VARCHAR(250),
+    precio_unitario DECIMAL(10, 2), 
+    cantidad INT, 
+    precio_x_cantidad DECIMAL(10, 2), 
+    FOREIGN KEY (id_remito) REFERENCES H_Remito(id_remito),
+	FOREIGN KEY (cod_articulo) REFERENCES ARTICULOS(Cod_articulo)
+);
+
+CREATE TABLE Ingreso_egreso (
+    ID_movimiento INT IDENTITY PRIMARY KEY,
+    ID_vendedor INT,
+    tipo CHAR(1) NOT NULL,
+    detalle VARCHAR(250), 
+    monto DECIMAL(10, 2), 
+    fecha DATE NOT NULL,
+    mes VARCHAR(20),
+    año CHAR(4),
+    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDORES (ID_vendedor)
+);
+
+CREATE TABLE H_Presupuesto_Detalle (
+    id_presupuesto_detalle INT IDENTITY PRIMARY KEY, 
+    id_presupuesto INT NOT NULL,
+    codigo_articulo VARCHAR(50), 
+    descripcion VARCHAR(250), 
+    precio_unitario DECIMAL(10, 2), 
+    cantidad INT,
+    precio_x_cantidad DECIMAL(10, 2),
+    FOREIGN KEY (id_presupuesto) REFERENCES H_Presupuesto(id_presupuesto) 
+);
+
+--select PROVEEDOR.Nombre, PROVEEDOR.Apellido, ARTICULO.Nombre, CATEGORIA.Nombre,SUBCATEGORIA.Nombre, ARTICULO.Costo, ARTICULO.Ganancia from PROVEEDOR
+--inner join ARTICULO on PROVEEDOR.ID_Proveedor = ARTICULO.ID_Proveedor
+--inner join SUBCATEGORIA on ARTICULO.ID_subcategoria = SUBCATEGORIA.ID_subcategoria
+--inner join CATEGORIA on SUBCATEGORIA.ID_categoria = CATEGORIA.ID_categoria
