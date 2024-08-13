@@ -192,6 +192,12 @@ INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'TECLADOS')
 INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MICROFONOS')
 INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MOUSES')
 
+INSERT INTO ARTICULOS (Cod_categoria,Cod_subcategoria,ID_Proveedor,Cod_articulo,Descripcion)
+VALUES (1,9,1,'F1001','RTX NVIDIA 3060 12 GB'),
+ (1,9,1,'F1002','RTX NVIDIA 4090 24 GB'),
+ (2,5,2,'J1001','SHURE PDX'),
+ (2,6,2,'J1002','LOGITECH G406 HERO')
+
 INSERT INTO STOCK (Cod_articulo, Cantidad,Costo,Ganancia)
 VALUES ('F1001', 10, 120000.00, 35.00), 
 ('F1002', 6, 620000.00, 38.00),
