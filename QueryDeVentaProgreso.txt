@@ -192,12 +192,6 @@ INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'TECLADOS')
 INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MICROFONOS')
 INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MOUSES')
 
-INSERT INTO ARTICULOS (Cod_categoria,Cod_subcategoria,ID_Proveedor,Cod_articulo,Descripcion)
-VALUES (1,9,1,'F1001','RTX NVIDIA 3060 12 GB'),
- (1,9,1,'F1002','RTX NVIDIA 4090 24 GB'),
- (2,5,2,'J1001','SHURE PDX'),
- (2,6,2,'J1002','LOGITECH G406 HERO')
-
 INSERT INTO STOCK (Cod_articulo, Cantidad,Costo,Ganancia)
 VALUES ('F1001', 10, 120000.00, 35.00), 
 ('F1002', 6, 620000.00, 38.00),
@@ -211,6 +205,63 @@ VALUES ('Leo', 'Yamil', '35499330', '1132434543', 10),
 ('leandro', 'Pini', '32499330', '113243432', 9),
 ('Jorge', 'Aran', '22499330', '1|77645234', 10)
 
+
+INSERT INTO CLIENTE (ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad)
+VALUES
+(1, '12345678A', 'Juan', 'Pérez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Entidad A'),
+(2, '87654321B', 'Ana', 'Gómez', 'Avenida Siempre Viva 742', '555-5678', 'ana.gomez@example.com', 'Entidad B'),
+(3, '11223344C', 'Carlos', 'López', 'Plaza Mayor 9', '555-9012', 'carlos.lopez@example.com', 'Entidad C');
+
+INSERT INTO H_Presupuesto (fecha_hora, nombre, tel, email, entidad, dni, subtotal, descuento, total, direccion)
+VALUES
+('2024-08-04 09:00:00', 'Laura Díaz', '555-2345', 'laura.diaz@example.com', 'Entidad D', '55667788D', 600.00, 60.00, 540.00, 'Calle Luna 10'),
+('2024-08-05 10:45:00', 'Javier Fernández', '555-6789', 'javier.fernandez@example.com', 'Entidad E', '66778899E', 800.00, 80.00, 720.00, 'Avenida Sol 20'),
+('2024-08-06 12:00:00', 'Isabel Martínez', '555-8901', 'isabel.martinez@example.com', 'Entidad F', '77889900F', 400.00, 40.00, 360.00, 'Plaza del Sol 5');
+
+INSERT INTO CTA_CTE_PROVEEDORES (ID_CtaCteProv, ID_Proveedor, Compras, Pagos, Fecha)
+VALUES
+(1, 1, 5000.00, 3000.00, '2024-08-01'),
+(2, 2, 6000.00, 2500.00, '2024-08-02'),
+(3, 3, 7000.00, 4000.00, '2024-08-03');
+
+INSERT INTO VENDEDORES_PAGOS (ID_vendedor, Fecha_pago, Monto)
+VALUES
+(1, '2024-08-01', 500.00),
+(2, '2024-08-02', 750.00),
+(3, '2024-08-03', 600.00);
+
+INSERT INTO CLIENTE_PAGOS (ID_pagos, ID_cliente, Fecha, Monto)
+VALUES
+(1, 1, '2024-08-01', 450.00),
+(2, 2, '2024-08-02', 630.00),
+(3, 3, '2024-08-03', 270.00);
+
+INSERT INTO VENDEDORES_VENTAS (ID_vendedor, Fecha, Remito_total, Remito_costo, Comision, Comision_total, Mes, Año)
+VALUES
+(1, '2024-08-01', 450.00, 200.00, 50.00, 50.00, '08', '2024'),
+(2, '2024-08-02', 630.00, 300.00, 70.00, 70.00, '08', '2024'),
+(3, '2024-08-03', 270.00, 100.00, 30.00, 30.00, '08', '2024');
+
+-- Detalles para el remito con id 1
+INSERT INTO H_Remito_detalle (id_remito, cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad)
+VALUES
+(1, 'F1001', 'RTX NVIDIA 3060 12 GB', 120000.00, 2, 240000.00),
+(1, 'J1001', 'SHURE PDX', 90000.00, 1, 90000.00);
+
+-- Detalles para el remito con id 2
+INSERT INTO H_Remito_detalle (id_remito, cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad)
+VALUES
+(2, 'F1002', 'RTX NVIDIA 4090 24 GB', 620000.00, 1, 620000.00),
+(2, 'J1002', 'LOGITECH G406 HERO', 70000.00, 2, 140000.00);
+
+-- Detalles para el remito con id 3
+INSERT INTO H_Remito_detalle (id_remito, cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad)
+VALUES
+(3, 'F1001', 'RTX NVIDIA 3060 12 GB', 120000.00, 3, 360000.00),
+(3, 'J1002', 'LOGITECH G406 HERO', 70000.00, 4, 280000.00);
+
+
+
 -- Inserción de los registros en la tabla H_Remito
 
 INSERT INTO H_Remito (fecha_hora, nombre, tel, email, entidad, dni, subtotal, descuento, total, total_costos, mes, año, direccion)
@@ -218,6 +269,13 @@ VALUES
     ('2024-08-08 14:30:00', 'Juan Pérez', '1234567890', 'juan.perez@example.com', 'Empresa A', '12345678', 1000.00, 50.00, 950.00, 100.00, 'Agosto', '2024', 'Calle Falsa 123'),
     ('2024-08-08 15:00:00', 'Ana Gómez', '0987654321', 'ana.gomez@example.com', 'Empresa B', '87654321', 1500.00, 75.00, 1425.00, 150.00, 'Agosto', '2024', 'Avenida Siempre Viva 742'),
     ('2024-08-08 15:30:00', 'Luis Martínez', '1122334455', 'luis.martinez@example.com', 'Empresa C', '55667788', 2000.00, 100.00, 1900.00, 200.00, 'Agosto', '2024', 'Boulevard de los Sueños 456');
+
+
+	INSERT INTO Ingreso_egreso (ID_vendedor, tipo, detalle, monto, fecha, mes, año)
+VALUES
+(1, 'I', 'Venta de productos', 500.00, '2024-08-01', 'Agosto', '2024'),
+(2, 'E', 'Pago a proveedor', 250.00, '2024-08-02', 'Agosto', '2024'),
+(3, 'I', 'Venta de productos', 600.00, '2024-08-03', 'Agosto', '2024');
 
 
 
