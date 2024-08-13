@@ -146,7 +146,7 @@ CREATE TABLE VENDEDORES_VENTAS (
 CREATE TABLE H_Remito_detalle (
     id_remito_detalle INT IDENTITY PRIMARY KEY,
     id_remito INT NOT NULL, 
-    cod_articulo VARCHAR(50), 
+    cod_articulo VARCHAR(20), 
     descripcion VARCHAR(250),
     precio_unitario DECIMAL(10, 2), 
     cantidad INT, 
@@ -178,7 +178,58 @@ CREATE TABLE H_Presupuesto_Detalle (
     FOREIGN KEY (id_presupuesto) REFERENCES H_Presupuesto(id_presupuesto) 
 );
 
---select PROVEEDOR.Nombre, PROVEEDOR.Apellido, ARTICULO.Nombre, CATEGORIA.Nombre,SUBCATEGORIA.Nombre, ARTICULO.Costo, ARTICULO.Ganancia from PROVEEDOR
---inner join ARTICULO on PROVEEDOR.ID_Proveedor = ARTICULO.ID_Proveedor
---inner join SUBCATEGORIA on ARTICULO.ID_subcategoria = SUBCATEGORIA.ID_subcategoria
---inner join CATEGORIA on SUBCATEGORIA.ID_categoria = CATEGORIA.ID_categoria
+--INSERTS
+INSERT INTO PROVEEDORES (Nombre,Apellido,Telefono,Correo) VALUES ('FABIO', 'GOMEZ', '1159444354', 'DATOS@EJEMPLO1.COM')
+INSERT INTO PROVEEDORES (Nombre,Apellido,Telefono,Correo) VALUES ('JORGE', 'DIAZ', '222446788476', 'DATOS@EJEMPLO2.COM')
+
+INSERT INTO CATEGORIA (Cod_categoria, Nombre) VALUES (1, 'HARDWARE')
+INSERT INTO CATEGORIA (Cod_categoria, Nombre) VALUES (2, 'PERIFERICOS')
+
+INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (1, 'PLACAS DE VIDEO')
+INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (1, 'PROCESADORES')
+INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (1, 'MOTHERBOARDS')
+INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'TECLADOS')
+INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MICROFONOS')
+INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MOUSES')
+
+INSERT INTO ARTICULOS (Cod_categoria,Cod_subcategoria,ID_Proveedor,Cod_articulo,Descripcion)
+VALUES (1,9,1,'F1001','RTX NVIDIA 3060 12 GB'),
+ (1,9,1,'F1002','RTX NVIDIA 4090 24 GB'),
+ (2,5,2,'J1001','SHURE PDX'),
+ (2,6,2,'J1002','LOGITECH G406 HERO')
+
+INSERT INTO STOCK (Cod_articulo, Cantidad,Costo,Ganancia)
+VALUES ('F1001', 10, 120000.00, 35.00), 
+('F1002', 6, 620000.00, 38.00),
+('J1001', 20, 90000.00, 33.00),
+('J1002', 50, 70000.00, 30.00)
+
+INSERT INTO VENDEDORES (Nombre, Apellido, Documentacion, Telefono, Saldo)
+VALUES ('Leo', 'Yamil', '35499330', '1132434543', 10),
+('Pepe', 'Ruiz', '3389873378', '1132334543', 14),
+('Federico', 'Palmieri', '35499330', '1132434259', 20),
+('leandro', 'Pini', '32499330', '113243432', 9),
+('Jorge', 'Aran', '22499330', '1|77645234', 10)
+
+-- Inserción de los registros en la tabla H_Remito
+
+INSERT INTO H_Remito (fecha_hora, nombre, tel, email, entidad, dni, subtotal, descuento, total, total_costos, mes, año, direccion)
+VALUES 
+    ('2024-08-08 14:30:00', 'Juan Pérez', '1234567890', 'juan.perez@example.com', 'Empresa A', '12345678', 1000.00, 50.00, 950.00, 100.00, 'Agosto', '2024', 'Calle Falsa 123'),
+    ('2024-08-08 15:00:00', 'Ana Gómez', '0987654321', 'ana.gomez@example.com', 'Empresa B', '87654321', 1500.00, 75.00, 1425.00, 150.00, 'Agosto', '2024', 'Avenida Siempre Viva 742'),
+    ('2024-08-08 15:30:00', 'Luis Martínez', '1122334455', 'luis.martinez@example.com', 'Empresa C', '55667788', 2000.00, 100.00, 1900.00, 200.00, 'Agosto', '2024', 'Boulevard de los Sueños 456');
+
+
+
+--CONSULTAS
+
+SELECT Cod_categoria FROM CATEGORIA;
+
+
+select * from H_Remito
+
+select PROVEEDORES.Nombre as 'Proveedor', ARTICULOS.Descripcion as 'Articulo', STOCK.Cantidad, STOCK.Costo, STOCK.Ganancia, CATEGORIA.Nombre as 'Categoría' ,SUBCATEGORIA.Nombre as 'Subcategoría' from PROVEEDORES
+inner join ARTICULOS on PROVEEDORES.ID_Proveedor = ARTICULOS.ID_Proveedor
+inner join SUBCATEGORIA on ARTICULOS.Cod_subcategoria = SUBCATEGORIA.Cod_subcategoria
+inner join CATEGORIA on SUBCATEGORIA.Cod_categoria = CATEGORIA.Cod_categoria
+inner join STOCK on ARTICULOS.Cod_articulo = STOCK.Cod_articulo
