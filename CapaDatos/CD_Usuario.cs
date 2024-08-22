@@ -36,7 +36,6 @@ namespace CapaDatos
                                 DNI = dr["DNI"].ToString(),
                                 Nombre = dr["Nombre"].ToString(),
                                 Apellido = dr["Apellido"].ToString()
-
                             });
                         }
                     }
