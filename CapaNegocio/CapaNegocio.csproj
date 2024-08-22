@@ -152,6 +152,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Articulo.cs" />
+    <Compile Include="CN_Categoria.cs" />
+    <Compile Include="CN_Consultas.cs" />
+    <Compile Include="CN_Permiso.cs" />
+    <Compile Include="CN_Proveedores.cs" />
+    <Compile Include="CN_Subcategoria.cs" />
     <Compile Include="CN_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
