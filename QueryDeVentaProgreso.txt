@@ -287,6 +287,12 @@ INNER JOIN H_Remito ON VENDEDOR_VENTA.id_remito = H_Remito.id_remito
 INNER JOIN H_Remito_detalle ON H_Remito.id_remito = H_Remito_detalle.id_remito
 
 
+select a.Cod_articulo, a.Descripcion, c.Nombre, s.Nombre, p.Nombre, st.Cantidad, st.Costo, st.Ganancia from ARTICULO a
+inner join CATEGORIA c on a.Cod_categoria = c.Cod_categoria
+inner join SUBCATEGORIA s on a.Cod_subcategoria = s.Cod_subcategoria
+inner join PROVEEDOR p on a.ID_Proveedor = p.ID_Proveedor
+inner join STOCK st on a.Cod_articulo = st.Cod_articulo
+
 
 SELECT * FROM USUARIO;
 
