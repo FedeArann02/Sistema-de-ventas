@@ -71,8 +71,8 @@ CREATE TABLE H_Remito (
 
 CREATE TABLE H_Presupuesto (
     id_presupuesto INT IDENTITY PRIMARY KEY,
-    fecha_hora DATETIME NOT NULL,
     nombre VARCHAR(50) NOT NULL,
+    Apellido varchar (30) NOT NULL,
     tel VARCHAR(50),
     email VARCHAR(50),
     entidad VARCHAR(50),
@@ -80,7 +80,8 @@ CREATE TABLE H_Presupuesto (
     subtotal DECIMAL(10, 2),
     descuento DECIMAL(10, 2),
     total DECIMAL(10, 2),
-    direccion VARCHAR(50)
+    direccion VARCHAR(50),
+    fecha_hora DATETIME NOT NULL
 );
 
 -- Tablas dependientes
@@ -185,15 +186,16 @@ CREATE TABLE INGRESO_EGRESO (
     FOREIGN KEY (ID_vendedor) REFERENCES VENDEDOR(ID_vendedor)
 );
 
-CREATE TABLE H_Presupuesto_Detalle (
-    id_presupuesto_detalle INT IDENTITY PRIMARY KEY,
-    id_presupuesto INT NOT NULL,
-    codigo_articulo VARCHAR(50),
-    descripcion VARCHAR(250),
-    precio_unitario DECIMAL(10, 2),
-    cantidad INT,
-    precio_x_cantidad DECIMAL(10, 2),
-    FOREIGN KEY (id_presupuesto) REFERENCES H_Presupuesto(id_presupuesto)
+create table H_Presupuesto_Detalle(
+    id_presupuesto_detalle int identity (1,1) not null,
+    id_presupuesto int not null,
+    Cod_articulo varchar (20) not null,
+    descripcion varchar (250) not null,
+    precio_unitario DECIMAL (10 ,2) not null,
+    cantidad int not null,
+    precio_x_cantidad DECIMAL (10,2) not null,
+    primary key (id_presupuesto_detalle),
+    foreign key (id_presupuesto) references H_Presupuesto(id_presupuesto)
 );
 
 --INSERTS
