@@ -230,10 +230,11 @@ create table H_Presupuesto_Detalle(
 --       ('leandro', 'Pini', '32499330', 9),
 --       ('Jorge', 'Aran', '22499330', 10);
 
---INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad)
---VALUES ('12345678A', 'Juan', 'Pérez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Entidad A'),
---       ('87654321B', 'Ana', 'Gómez', 'Avenida Siempre Viva 742', '555-5678', 'ana.gomez@example.com', 'Entidad B'),
---       ('11223344C', 'Carlos', 'López', 'Plaza Mayor 9', '555-9012', 'carlos.lopez@example.com', 'Entidad C');
+--INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES 
+--('12345678A', 'Juan', 'Pérez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Entidad A'),
+--('44395339', 'Federico', 'Aran', 'Calle Falsa 123', '1159444354', 'aranfederico3@gmail.com', 'Entidad A'),
+--('87654321B', 'Ana', 'Gómez', 'Avenida Siempre Viva 742', '555-5678', 'ana.gomez@example.com', 'Entidad B'),
+--('11223344C', 'Carlos', 'López', 'Plaza Mayor 9', '555-9012', 'carlos.lopez@example.com', 'Entidad C');
 
 --INSERT INTO H_Presupuesto (fecha_hora, nombre, tel, email, entidad, dni, subtotal, descuento, total, direccion)
 --VALUES ('2024-08-04 09:00:00', 'Laura Díaz', '555-2345', 'laura.diaz@example.com', 'Entidad D', '55667788D', 600.00, 60.00, 540.00, 'Calle Luna 10'),
@@ -253,6 +254,7 @@ create table H_Presupuesto_Detalle(
 --INSERT INTO CLIENTE_PAGO (ID_cliente, Fecha, Monto)
 --VALUES (1, '2024-08-01', 450.00),
 --       (2, '2024-08-02', 630.00),
+--	 (2, '2024-08-02', 1200.00),
 --       (3, '2024-08-03', 270.00);
 
 	   
