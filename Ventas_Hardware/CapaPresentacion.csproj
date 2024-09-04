@@ -197,10 +197,10 @@
     <Compile Include="Formularios\Administracion\frmCatSubcat_alta.Designer.cs">
       <DependentUpon>frmCatSubcat_alta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmCliente.cs">
+    <Compile Include="Formularios\BarraMenu\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmCliente.Designer.cs">
+    <Compile Include="Formularios\BarraMenu\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Administracion\Clientes\frmClientes_alta.cs">
@@ -221,10 +221,10 @@
     <Compile Include="Formularios\Principales\frmInicio.Designer.cs">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmListaCompras.cs">
+    <Compile Include="Formularios\BarraMenu\frmListaCompras.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmListaCompras.Designer.cs">
+    <Compile Include="Formularios\BarraMenu\frmListaCompras.Designer.cs">
       <DependentUpon>frmListaCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Presupuestos\frmPresupuestos.cs">
@@ -233,10 +233,10 @@
     <Compile Include="Formularios\Presupuestos\frmPresupuestos.Designer.cs">
       <DependentUpon>frmPresupuestos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmProveedores.cs">
+    <Compile Include="Formularios\BarraMenu\frmProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmProveedores.Designer.cs">
+    <Compile Include="Formularios\BarraMenu\frmProveedores.Designer.cs">
       <DependentUpon>frmProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Administracion\Proveedores\frmProveedores_alta.cs">
@@ -251,10 +251,10 @@
     <Compile Include="Formularios\Administracion\Proveedores\frmProveedores_modificacion.Designer.cs">
       <DependentUpon>frmProveedores_modificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmRemitos.cs">
+    <Compile Include="Formularios\BarraMenu\frmRemitos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\frmRemitos.Designer.cs">
+    <Compile Include="Formularios\BarraMenu\frmRemitos.Designer.cs">
       <DependentUpon>frmRemitos.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Reportes\frmReportes.cs">
@@ -306,6 +306,7 @@
     <Compile Include="Formularios\Principales\PantallaPrincipal.Designer.cs">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="MisMetodos\Validations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Articulos\frmArtAltas.resx">
@@ -329,7 +330,7 @@
     <EmbeddedResource Include="Formularios\Administracion\frmCatSubcat_alta.resx">
       <DependentUpon>frmCatSubcat_alta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmCliente.resx">
+    <EmbeddedResource Include="Formularios\BarraMenu\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Administracion\Clientes\frmClientes_alta.resx">
@@ -341,13 +342,13 @@
     <EmbeddedResource Include="Formularios\Principales\frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmListaCompras.resx">
+    <EmbeddedResource Include="Formularios\BarraMenu\frmListaCompras.resx">
       <DependentUpon>frmListaCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Presupuestos\frmPresupuestos.resx">
       <DependentUpon>frmPresupuestos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmProveedores.resx">
+    <EmbeddedResource Include="Formularios\BarraMenu\frmProveedores.resx">
       <DependentUpon>frmProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Administracion\Proveedores\frmProveedores_alta.resx">
@@ -356,7 +357,7 @@
     <EmbeddedResource Include="Formularios\Administracion\Proveedores\frmProveedores_modificacion.resx">
       <DependentUpon>frmProveedores_modificacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmRemitos.resx">
+    <EmbeddedResource Include="Formularios\BarraMenu\frmRemitos.resx">
       <DependentUpon>frmRemitos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reportes\frmReportes.resx">

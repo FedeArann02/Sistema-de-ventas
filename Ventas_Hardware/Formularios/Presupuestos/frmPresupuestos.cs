@@ -18,12 +18,12 @@ namespace Ventas_Hardware
             Funciones.AbrirForm(new frmAltaPresupuesto(), panel_contenedor);
         }
 
-        private void altaPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnAltaPresupuesto_Click(object sender, EventArgs e)
         {
             Funciones.AbrirForm(new frmAltaPresupuesto(), panel_contenedor);
         }
 
-        private void buscarPresupuestoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnBuscarPresupuesto_Click(object sender, EventArgs e)
         {
             Funciones.AbrirForm(new frmBuscarPresupuesto(), panel_contenedor);
         }

@@ -46,11 +46,11 @@
             this.categoriasSubcategoríasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Categorias_alta_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.panBarraLateral = new System.Windows.Forms.Panel();
-            this.btnReportes = new System.Windows.Forms.Button();
-            this.btnListaCompras = new System.Windows.Forms.Button();
-            this.btnRemitos = new System.Windows.Forms.Button();
-            this.btnPresupuestos = new System.Windows.Forms.Button();
             this.btnProveedores = new System.Windows.Forms.Button();
+            this.btnPresupuestos = new System.Windows.Forms.Button();
+            this.btnReportes = new System.Windows.Forms.Button();
+            this.btnRemitos = new System.Windows.Forms.Button();
+            this.btnListaCompras = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnArticulos = new System.Windows.Forms.Button();
             this.lblInicio = new System.Windows.Forms.Label();
@@ -81,7 +81,7 @@
             // 
             // mstripBarra
             // 
-            this.mstripBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
+            this.mstripBarra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.mstripBarra.Font = new System.Drawing.Font("Segoe UI Variable Display", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mstripBarra.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opciones,
@@ -106,7 +106,7 @@
             this.cerrarSesión.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
             this.cerrarSesión.ForeColor = System.Drawing.Color.White;
             this.cerrarSesión.Name = "cerrarSesión";
-            this.cerrarSesión.Size = new System.Drawing.Size(180, 24);
+            this.cerrarSesión.Size = new System.Drawing.Size(155, 24);
             this.cerrarSesión.Text = "cerrar sesión";
             this.cerrarSesión.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
@@ -210,7 +210,7 @@
             // 
             // panBarraLateral
             // 
-            this.panBarraLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(79)))), ((int)(((byte)(120)))));
+            this.panBarraLateral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
             this.panBarraLateral.Controls.Add(this.btnProveedores);
             this.panBarraLateral.Controls.Add(this.btnPresupuestos);
             this.panBarraLateral.Controls.Add(this.btnReportes);
@@ -227,69 +227,9 @@
             this.panBarraLateral.Size = new System.Drawing.Size(151, 523);
             this.panBarraLateral.TabIndex = 19;
             // 
-            // btnReportes
-            // 
-            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
-            this.btnReportes.FlatAppearance.BorderSize = 0;
-            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportes.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReportes.ForeColor = System.Drawing.Color.White;
-            this.btnReportes.Location = new System.Drawing.Point(-1, 309);
-            this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Size = new System.Drawing.Size(150, 30);
-            this.btnReportes.TabIndex = 7;
-            this.btnReportes.Text = "REPORTES";
-            this.btnReportes.UseVisualStyleBackColor = false;
-            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
-            // 
-            // btnListaCompras
-            // 
-            this.btnListaCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
-            this.btnListaCompras.FlatAppearance.BorderSize = 0;
-            this.btnListaCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListaCompras.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListaCompras.ForeColor = System.Drawing.Color.White;
-            this.btnListaCompras.Location = new System.Drawing.Point(-2, 381);
-            this.btnListaCompras.Name = "btnListaCompras";
-            this.btnListaCompras.Size = new System.Drawing.Size(150, 51);
-            this.btnListaCompras.TabIndex = 8;
-            this.btnListaCompras.Text = "LISTA DE\r\nCOMPRAS\r\n";
-            this.btnListaCompras.UseVisualStyleBackColor = false;
-            this.btnListaCompras.Click += new System.EventHandler(this.btnListaCompras_Click);
-            // 
-            // btnRemitos
-            // 
-            this.btnRemitos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
-            this.btnRemitos.FlatAppearance.BorderSize = 0;
-            this.btnRemitos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemitos.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemitos.ForeColor = System.Drawing.Color.White;
-            this.btnRemitos.Location = new System.Drawing.Point(-1, 273);
-            this.btnRemitos.Name = "btnRemitos";
-            this.btnRemitos.Size = new System.Drawing.Size(150, 30);
-            this.btnRemitos.TabIndex = 6;
-            this.btnRemitos.Text = "REMITOS";
-            this.btnRemitos.UseVisualStyleBackColor = false;
-            this.btnRemitos.Click += new System.EventHandler(this.btnRemitos_Click);
-            // 
-            // btnPresupuestos
-            // 
-            this.btnPresupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
-            this.btnPresupuestos.FlatAppearance.BorderSize = 0;
-            this.btnPresupuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPresupuestos.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPresupuestos.ForeColor = System.Drawing.Color.White;
-            this.btnPresupuestos.Location = new System.Drawing.Point(1, 237);
-            this.btnPresupuestos.Name = "btnPresupuestos";
-            this.btnPresupuestos.Size = new System.Drawing.Size(150, 30);
-            this.btnPresupuestos.TabIndex = 5;
-            this.btnPresupuestos.Text = "PRESUPUESTOS";
-            this.btnPresupuestos.UseVisualStyleBackColor = false;
-            this.btnPresupuestos.Click += new System.EventHandler(this.btnPresupuestos_Click);
-            // 
             // btnProveedores
             // 
-            this.btnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
+            this.btnProveedores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
             this.btnProveedores.FlatAppearance.BorderSize = 0;
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -302,9 +242,69 @@
             this.btnProveedores.UseVisualStyleBackColor = false;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
+            // btnPresupuestos
+            // 
+            this.btnPresupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
+            this.btnPresupuestos.FlatAppearance.BorderSize = 0;
+            this.btnPresupuestos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPresupuestos.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPresupuestos.ForeColor = System.Drawing.Color.White;
+            this.btnPresupuestos.Location = new System.Drawing.Point(1, 237);
+            this.btnPresupuestos.Name = "btnPresupuestos";
+            this.btnPresupuestos.Size = new System.Drawing.Size(150, 30);
+            this.btnPresupuestos.TabIndex = 5;
+            this.btnPresupuestos.Text = "PRESUPUESTOS";
+            this.btnPresupuestos.UseVisualStyleBackColor = false;
+            this.btnPresupuestos.Click += new System.EventHandler(this.btnPresupuestos_Click);
+            // 
+            // btnReportes
+            // 
+            this.btnReportes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.White;
+            this.btnReportes.Location = new System.Drawing.Point(-1, 309);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Size = new System.Drawing.Size(150, 30);
+            this.btnReportes.TabIndex = 7;
+            this.btnReportes.Text = "REPORTES";
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
+            // btnRemitos
+            // 
+            this.btnRemitos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
+            this.btnRemitos.FlatAppearance.BorderSize = 0;
+            this.btnRemitos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemitos.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemitos.ForeColor = System.Drawing.Color.White;
+            this.btnRemitos.Location = new System.Drawing.Point(-1, 273);
+            this.btnRemitos.Name = "btnRemitos";
+            this.btnRemitos.Size = new System.Drawing.Size(150, 30);
+            this.btnRemitos.TabIndex = 6;
+            this.btnRemitos.Text = "REMITOS";
+            this.btnRemitos.UseVisualStyleBackColor = false;
+            this.btnRemitos.Click += new System.EventHandler(this.btnRemitos_Click);
+            // 
+            // btnListaCompras
+            // 
+            this.btnListaCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
+            this.btnListaCompras.FlatAppearance.BorderSize = 0;
+            this.btnListaCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListaCompras.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListaCompras.ForeColor = System.Drawing.Color.White;
+            this.btnListaCompras.Location = new System.Drawing.Point(-2, 381);
+            this.btnListaCompras.Name = "btnListaCompras";
+            this.btnListaCompras.Size = new System.Drawing.Size(150, 51);
+            this.btnListaCompras.TabIndex = 8;
+            this.btnListaCompras.Text = "LISTA DE\r\nCOMPRAS\r\n";
+            this.btnListaCompras.UseVisualStyleBackColor = false;
+            this.btnListaCompras.Click += new System.EventHandler(this.btnListaCompras_Click);
+            // 
             // btnClientes
             // 
-            this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
+            this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
             this.btnClientes.FlatAppearance.BorderSize = 0;
             this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClientes.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -319,7 +319,7 @@
             // 
             // btnArticulos
             // 
-            this.btnArticulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(79)))), ((int)(((byte)(130)))));
+            this.btnArticulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(89)))), ((int)(((byte)(170)))));
             this.btnArticulos.FlatAppearance.BorderSize = 0;
             this.btnArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArticulos.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -335,6 +335,7 @@
             // lblInicio
             // 
             this.lblInicio.AutoSize = true;
+            this.lblInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblInicio.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInicio.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblInicio.Location = new System.Drawing.Point(50, 110);
@@ -342,6 +343,7 @@
             this.lblInicio.Size = new System.Drawing.Size(53, 21);
             this.lblInicio.TabIndex = 1;
             this.lblInicio.Text = "Inicio";
+            this.lblInicio.Click += new System.EventHandler(this.lblInicio_Click);
             // 
             // pictureBox1
             // 
@@ -374,26 +376,28 @@
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
+            this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.lblUser.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(705, 5);
+            this.lblUser.Location = new System.Drawing.Point(687, 5);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(51, 16);
             this.lblUser.TabIndex = 21;
             this.lblUser.Text = "Usuario:";
+            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Variable Small", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(752, 5);
+            this.lblUsuario.Location = new System.Drawing.Point(734, 5);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(66, 16);
             this.lblUsuario.TabIndex = 22;
             this.lblUsuario.Text = "lblUsuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PantallaPrincipal
             // 
