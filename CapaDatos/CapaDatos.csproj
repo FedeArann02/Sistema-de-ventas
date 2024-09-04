@@ -152,6 +152,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Altas.cs" />
     <Compile Include="CD_Articulo.cs" />
     <Compile Include="CD_Categoria.cs" />
     <Compile Include="CD_Permiso.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="CD_Usuario.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="Consultas.cs" />
+    <Compile Include="Modificaciones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

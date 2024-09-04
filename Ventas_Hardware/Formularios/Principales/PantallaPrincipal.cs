@@ -48,6 +48,7 @@ namespace Ventas_Hardware
             }
 
             lblUsuario.Text = Usuario_actual.Nombre;
+            AbrirForm(new frmInicio());
         }
 
         private void AbrirForm (Form frmHija)
@@ -128,6 +129,11 @@ namespace Ventas_Hardware
         private void Categorias_alta_menu_Click(object sender, EventArgs e)
         {
             AbrirForm(new frmCatSubcat_alta());
+        }
+
+        private void lblInicio_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new frmInicio());
         }
     }
 }

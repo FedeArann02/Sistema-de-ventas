@@ -49,21 +49,28 @@ namespace Ventas_Hardware
         }
         private void verGrillaFiltrada(DataGridView DGV, string codigo = "", string descripcion = "", string categoria = "", string subcat = "", string proveedor = "") //funcion que filtra con la grilla
         {
-            DataTable pepe = new CN_Consultas().DataTable();
-            DataView dv = new DataView(pepe);
-            dv.RowFilter = "Codigo LIKE '%"+codigo+"%' AND Descripcion LIKE '%"+descripcion+"%' AND Categoria LIKE '%"+categoria+"%' AND Subcategoria LIKE '%"+subcat+"%' AND Proveedor LIKE '%"+proveedor+"%'";
-            DGV.DataSource = dv;
-            dgvArticulos.Columns["Codigo"].Visible = true;
-            dgvArticulos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvArticulos.Columns["Descripcion"].Visible = true;
-            dgvArticulos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            foreach (DataGridViewColumn columna in dgvArticulos.Columns)
+            try
             {
-                if (columna.Name != "Codigo" && columna.Name != "Descripcion")
+                DataTable pepe = new CN_Consultas().DataTable();
+                DataView dv = new DataView(pepe);
+                dv.RowFilter = "Codigo LIKE '%" + codigo + "%' AND Descripcion LIKE '%" + descripcion + "%' AND Categoria LIKE '%" + categoria + "%' AND Subcategoria LIKE '%" + subcat + "%' AND Proveedor LIKE '%" + proveedor + "%'";
+                DGV.DataSource = dv;
+                dgvArticulos.Columns["Codigo"].Visible = true;
+                dgvArticulos.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgvArticulos.Columns["Descripcion"].Visible = true;
+                dgvArticulos.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                foreach (DataGridViewColumn columna in dgvArticulos.Columns)
                 {
-                    columna.Visible = false;
+                    if (columna.Name != "Codigo" && columna.Name != "Descripcion")
+                    {
+                        columna.Visible = false;
+                    }
                 }
+                dgvArticulos.Visible = true;
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -71,7 +78,7 @@ namespace Ventas_Hardware
         {
             if (!filtrosVacios())
             {
-                verGrillaFiltrada(dgvArticulos, txtCodigo.Text, cmbDescripcion.Text, cmbCategoria.Text, cmbSubcategoria.Text, cmbProveedor.Text);
+                verGrillaFiltrada(dgvArticulos, txtCodigo.Text, cmbDescripcion.Text.Trim(), cmbCategoria.Text, cmbSubcategoria.Text, cmbProveedor.Text);
             }
             else
             {
@@ -103,6 +110,7 @@ namespace Ventas_Hardware
             dgvArticulos.Columns.Clear();
             panelDetalle.Visible = false;
             cargaCombos();
+            dgvArticulos.Visible = false;
         }
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
@@ -110,9 +118,9 @@ namespace Ventas_Hardware
             {
                 DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
                 txtCodigoDetalle.Text = filaSelec.Cells[0].Value.ToString();
-                txtCatDetalle.Text = filaSelec.Cells[1].Value.ToString();
-                txtSubCatDetalle.Text = filaSelec.Cells[2].Value.ToString();
-                txtDescDetalle.Text = filaSelec.Cells[3].Value.ToString();
+                txtDescDetalle.Text = filaSelec.Cells[1].Value.ToString();
+                txtCatDetalle.Text = filaSelec.Cells[2].Value.ToString();
+                txtSubCatDetalle.Text = filaSelec.Cells[3].Value.ToString();
                 txtProvDetalle.Text = filaSelec.Cells[4].Value.ToString();
                 txtStockDetalle.Text = filaSelec.Cells[5].Value.ToString();
                 txtCostoDetalle.Text = filaSelec.Cells[6].Value.ToString();

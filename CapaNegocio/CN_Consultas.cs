@@ -17,5 +17,15 @@ namespace CapaNegocio
         {
             return Querys.ConsultaArt();
         }
+
+        public DataTable ConsultaArtMod(string Codigo)
+        {
+            return Querys.ConsultaArtMod(Codigo);
+        }
+
+        public DataTable ConsultaCliente(string Documentacion)
+        {
+            return Querys.ConsultaCliente(Documentacion);
+        }
     }
 }

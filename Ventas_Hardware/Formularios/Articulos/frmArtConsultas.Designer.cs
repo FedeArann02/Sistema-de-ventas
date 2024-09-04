@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbDescripcion = new System.Windows.Forms.ComboBox();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.cmbSubcategoria = new System.Windows.Forms.ComboBox();
@@ -72,7 +72,7 @@
             this.cmbDescripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbDescripcion.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDescripcion.FormattingEnabled = true;
-            this.cmbDescripcion.Location = new System.Drawing.Point(21, 24);
+            this.cmbDescripcion.Location = new System.Drawing.Point(28, 56);
             this.cmbDescripcion.Margin = new System.Windows.Forms.Padding(1);
             this.cmbDescripcion.Name = "cmbDescripcion";
             this.cmbDescripcion.Size = new System.Drawing.Size(315, 24);
@@ -84,12 +84,11 @@
             this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCategoria.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Location = new System.Drawing.Point(351, 24);
+            this.cmbCategoria.Location = new System.Drawing.Point(358, 56);
             this.cmbCategoria.Margin = new System.Windows.Forms.Padding(1);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(174, 24);
             this.cmbCategoria.TabIndex = 1;
-            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             this.cmbCategoria.TextChanged += new System.EventHandler(this.cmbCategoria_TextChanged);
             // 
             // cmbSubcategoria
@@ -98,7 +97,7 @@
             this.cmbSubcategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbSubcategoria.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSubcategoria.FormattingEnabled = true;
-            this.cmbSubcategoria.Location = new System.Drawing.Point(541, 24);
+            this.cmbSubcategoria.Location = new System.Drawing.Point(548, 56);
             this.cmbSubcategoria.Margin = new System.Windows.Forms.Padding(1);
             this.cmbSubcategoria.Name = "cmbSubcategoria";
             this.cmbSubcategoria.Size = new System.Drawing.Size(174, 24);
@@ -111,7 +110,7 @@
             this.cmbProveedor.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProveedor.FormattingEnabled = true;
             this.cmbProveedor.ItemHeight = 16;
-            this.cmbProveedor.Location = new System.Drawing.Point(21, 74);
+            this.cmbProveedor.Location = new System.Drawing.Point(28, 106);
             this.cmbProveedor.Margin = new System.Windows.Forms.Padding(1);
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(186, 24);
@@ -123,48 +122,52 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.Black;
-            this.txtCodigo.Location = new System.Drawing.Point(223, 75);
+            this.txtCodigo.Location = new System.Drawing.Point(230, 107);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(133, 23);
             this.txtCodigo.TabIndex = 4;
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dgvArticulos
             // 
             this.dgvArticulos.AllowUserToAddRows = false;
-            this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
+            this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.NullValue = null;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(42)))), ((int)(((byte)(70)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(32)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(42)))), ((int)(((byte)(70)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(43)))), ((int)(((byte)(75)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(43)))), ((int)(((byte)(75)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.EnableHeadersVisualStyles = false;
             this.dgvArticulos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
-            this.dgvArticulos.Location = new System.Drawing.Point(21, 127);
+            this.dgvArticulos.Location = new System.Drawing.Point(28, 159);
             this.dgvArticulos.Name = "dgvArticulos";
+            this.dgvArticulos.ReadOnly = true;
             this.dgvArticulos.RowHeadersVisible = false;
             this.dgvArticulos.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(694, 152);
             this.dgvArticulos.TabIndex = 5;
+            this.dgvArticulos.Visible = false;
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // txtCodigoDetalle
             // 
-            this.txtCodigoDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtCodigoDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtCodigoDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigoDetalle.Enabled = false;
             this.txtCodigoDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -173,10 +176,11 @@
             this.txtCodigoDetalle.Name = "txtCodigoDetalle";
             this.txtCodigoDetalle.Size = new System.Drawing.Size(174, 22);
             this.txtCodigoDetalle.TabIndex = 6;
+            this.txtCodigoDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCatDetalle
             // 
-            this.txtCatDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtCatDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtCatDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCatDetalle.Enabled = false;
             this.txtCatDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -188,7 +192,7 @@
             // 
             // txtSubCatDetalle
             // 
-            this.txtSubCatDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtSubCatDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtSubCatDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSubCatDetalle.Enabled = false;
             this.txtSubCatDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,7 +204,7 @@
             // 
             // txtDescDetalle
             // 
-            this.txtDescDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtDescDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtDescDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescDetalle.Enabled = false;
             this.txtDescDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -212,7 +216,7 @@
             // 
             // txtProvDetalle
             // 
-            this.txtProvDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtProvDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtProvDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtProvDetalle.Enabled = false;
             this.txtProvDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -224,7 +228,7 @@
             // 
             // txtStockDetalle
             // 
-            this.txtStockDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtStockDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtStockDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtStockDetalle.Enabled = false;
             this.txtStockDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,10 +237,11 @@
             this.txtStockDetalle.Name = "txtStockDetalle";
             this.txtStockDetalle.Size = new System.Drawing.Size(102, 22);
             this.txtStockDetalle.TabIndex = 11;
+            this.txtStockDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCostoDetalle
             // 
-            this.txtCostoDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtCostoDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtCostoDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCostoDetalle.Enabled = false;
             this.txtCostoDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -245,10 +250,11 @@
             this.txtCostoDetalle.Name = "txtCostoDetalle";
             this.txtCostoDetalle.Size = new System.Drawing.Size(102, 22);
             this.txtCostoDetalle.TabIndex = 12;
+            this.txtCostoDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtGananciaDetalle
             // 
-            this.txtGananciaDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtGananciaDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtGananciaDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtGananciaDetalle.Enabled = false;
             this.txtGananciaDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -257,10 +263,11 @@
             this.txtGananciaDetalle.Name = "txtGananciaDetalle";
             this.txtGananciaDetalle.Size = new System.Drawing.Size(105, 22);
             this.txtGananciaDetalle.TabIndex = 13;
+            this.txtGananciaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPrecioVentaDetalle
             // 
-            this.txtPrecioVentaDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(33)))), ((int)(((byte)(65)))));
+            this.txtPrecioVentaDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtPrecioVentaDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecioVentaDetalle.Enabled = false;
             this.txtPrecioVentaDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -269,15 +276,16 @@
             this.txtPrecioVentaDetalle.Name = "txtPrecioVentaDetalle";
             this.txtPrecioVentaDetalle.Size = new System.Drawing.Size(122, 22);
             this.txtPrecioVentaDetalle.TabIndex = 14;
+            this.txtPrecioVentaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(48)))), ((int)(((byte)(75)))));
+            this.btnBuscar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(541, 71);
+            this.btnBuscar.Location = new System.Drawing.Point(548, 103);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(78, 28);
             this.btnBuscar.TabIndex = 15;
@@ -287,12 +295,12 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(48)))), ((int)(((byte)(75)))));
+            this.btnLimpiar.BackColor = System.Drawing.Color.IndianRed;
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiar.Location = new System.Drawing.Point(637, 71);
+            this.btnLimpiar.Location = new System.Drawing.Point(644, 103);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(78, 28);
             this.btnLimpiar.TabIndex = 16;
@@ -305,7 +313,7 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.White;
-            this.lblCodigo.Location = new System.Drawing.Point(220, 56);
+            this.lblCodigo.Location = new System.Drawing.Point(227, 88);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(50, 16);
             this.lblCodigo.TabIndex = 17;
@@ -316,7 +324,7 @@
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoria.ForeColor = System.Drawing.Color.White;
-            this.lblCategoria.Location = new System.Drawing.Point(348, 5);
+            this.lblCategoria.Location = new System.Drawing.Point(355, 37);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(64, 16);
             this.lblCategoria.TabIndex = 18;
@@ -327,7 +335,7 @@
             this.lblSubCat.AutoSize = true;
             this.lblSubCat.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubCat.ForeColor = System.Drawing.Color.White;
-            this.lblSubCat.Location = new System.Drawing.Point(538, 5);
+            this.lblSubCat.Location = new System.Drawing.Point(545, 37);
             this.lblSubCat.Name = "lblSubCat";
             this.lblSubCat.Size = new System.Drawing.Size(85, 16);
             this.lblSubCat.TabIndex = 19;
@@ -338,7 +346,7 @@
             this.lblDescrip.AutoSize = true;
             this.lblDescrip.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescrip.ForeColor = System.Drawing.Color.White;
-            this.lblDescrip.Location = new System.Drawing.Point(18, 5);
+            this.lblDescrip.Location = new System.Drawing.Point(25, 37);
             this.lblDescrip.Name = "lblDescrip";
             this.lblDescrip.Size = new System.Drawing.Size(73, 16);
             this.lblDescrip.TabIndex = 20;
@@ -349,7 +357,7 @@
             this.lblProovedor.AutoSize = true;
             this.lblProovedor.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProovedor.ForeColor = System.Drawing.Color.White;
-            this.lblProovedor.Location = new System.Drawing.Point(18, 56);
+            this.lblProovedor.Location = new System.Drawing.Point(25, 88);
             this.lblProovedor.Name = "lblProovedor";
             this.lblProovedor.Size = new System.Drawing.Size(66, 16);
             this.lblProovedor.TabIndex = 21;
@@ -474,7 +482,7 @@
             this.panelDetalle.Controls.Add(this.txtGananciaDetalle);
             this.panelDetalle.Controls.Add(this.lblCodigoDetalle);
             this.panelDetalle.Controls.Add(this.txtPrecioVentaDetalle);
-            this.panelDetalle.Location = new System.Drawing.Point(12, 285);
+            this.panelDetalle.Location = new System.Drawing.Point(19, 317);
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(711, 169);
             this.panelDetalle.TabIndex = 31;
@@ -484,8 +492,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(28)))), ((int)(((byte)(55)))));
-            this.ClientSize = new System.Drawing.Size(733, 460);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
+            this.ClientSize = new System.Drawing.Size(749, 499);
             this.Controls.Add(this.lblProovedor);
             this.Controls.Add(this.lblDescrip);
             this.Controls.Add(this.lblSubCat);
