@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ventas_Hardware
+namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
 {
-    public partial class frmCatSubcat_alta : Form
+    public partial class frmCategorias : Form
     {
-        public frmCatSubcat_alta()
+        public frmCategorias()
         {
             InitializeComponent();
         }
@@ -20,6 +20,11 @@ namespace Ventas_Hardware
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

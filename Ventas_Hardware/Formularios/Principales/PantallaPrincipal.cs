@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using CapaEntidad;
 using CapaNegocio;
+using Ventas_Hardware.Formularios.Administracion.Categoria_Subcat;
 
 namespace Ventas_Hardware
 {
@@ -53,64 +54,84 @@ namespace Ventas_Hardware
 
         private void AbrirForm (Form frmHija)
         {
-            if (frmActicvo != null)
+            try
             {
-                frmActicvo.Close();
-            }
+                if (frmActicvo != null)
+                {
+                    frmActicvo.Close();
+                }
 
-            frmActicvo = frmHija;
-            frmHija.TopLevel = false;
-            frmHija.FormBorderStyle = FormBorderStyle.None;
-            frmHija.Dock = DockStyle.Fill;
-            panContenedor.Controls.Add(frmHija);
-            frmHija.Show();
+                frmActicvo = frmHija;
+                frmHija.TopLevel = false;
+                frmHija.FormBorderStyle = FormBorderStyle.None;
+                frmHija.Dock = DockStyle.Fill;
+                panContenedor.Controls.Add(frmHija);
+                frmHija.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario \n\n" + ex.Message + "", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void AbrirFormDialog(Form frmHija)
         {
-            frmActicvo = frmHija;
-            frmHija.FormBorderStyle = FormBorderStyle.None;
-            frmHija.StartPosition = FormStartPosition.CenterScreen;
-            frmHija.ShowDialog();
+            try
+            {
+                frmHija.FormBorderStyle = FormBorderStyle.None;
+                frmHija.StartPosition = FormStartPosition.CenterScreen;
+                frmHija.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario \n\n" + ex.Message + "", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnArticulos);
             AbrirForm(new frmArticulos());
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnClientes);
             AbrirForm(new frmCliente());
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnProveedores);
             AbrirForm(new frmProveedores());
         }
 
         private void btnPresupuestos_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnPresupuestos);
             AbrirForm(new frmPresupuestos());
         }
 
         private void btnRemitos_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnRemitos);
             AbrirForm(new frmRemitos());
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnReportes);
             AbrirForm(new frmReportes());
         }
 
         private void btnListaCompras_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnListaCompras);
             AbrirForm(new frmListaCompras());
         }
 
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirFormDialog(new frmVendedores());
+            AbrirFormDialog(new frmUsuarios());
         }
 
         private void Cliente_alta_menu_Click(object sender, EventArgs e)
@@ -135,12 +156,43 @@ namespace Ventas_Hardware
 
         private void Categorias_alta_menu_Click(object sender, EventArgs e)
         {
-            AbrirFormDialog(new frmCatSubcat_alta());
+            AbrirFormDialog(new frmCategorias());
         }
 
+        private void subcategoríasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormDialog(new frmSubCat());
+        }
         private void lblInicio_Click(object sender, EventArgs e)
         {
             AbrirForm(new frmInicio());
+            btnArticulos.BackColor = btnClientes.BackColor = btnPresupuestos.BackColor = btnRemitos.BackColor =
+                btnReportes.BackColor = btnProveedores.BackColor = btnListaCompras.BackColor = Color.FromArgb(126, 89, 170);
+        }
+        private void SelectedMenuColor(Button boton)
+        {
+            btnArticulos.BackColor = btnClientes.BackColor = btnPresupuestos.BackColor = btnRemitos.BackColor =
+                btnReportes.BackColor = btnProveedores.BackColor = btnListaCompras.BackColor = Color.FromArgb(126, 89, 170);
+            boton.BackColor = Color.FromArgb(106, 79, 150);
+        }
+
+        private void pbxCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pbxMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        private void pbxMaximizar_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void pbxPestaña_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

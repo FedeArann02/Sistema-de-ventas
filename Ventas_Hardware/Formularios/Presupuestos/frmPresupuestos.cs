@@ -15,17 +15,25 @@ namespace Ventas_Hardware
         public frmPresupuestos()
         {
             InitializeComponent();
+            SelectedMenuColor(btnAltaPresupuesto);
             Funciones.AbrirForm(new frmAltaPresupuesto(), panel_contenedor);
         }
 
         private void btnAltaPresupuesto_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnAltaPresupuesto);
             Funciones.AbrirForm(new frmAltaPresupuesto(), panel_contenedor);
         }
 
         private void btnBuscarPresupuesto_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnBuscarPresupuesto);
             Funciones.AbrirForm(new frmBuscarPresupuesto(), panel_contenedor);
+        }
+        private void SelectedMenuColor(Button boton)
+        {
+            btnAltaPresupuesto.BackColor = btnBuscarPresupuesto.BackColor = Color.FromArgb(116, 89, 160);
+            boton.BackColor = Color.FromArgb(106, 79, 150);
         }
     }
 }

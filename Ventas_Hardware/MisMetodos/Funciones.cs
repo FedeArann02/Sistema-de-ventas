@@ -12,17 +12,23 @@ namespace Ventas_Hardware
         private static Form frmActivo;
         public static void AbrirForm(Form frmHija, Panel contenedor)
         {
-            if (frmActivo != null)
+            try
             {
-                frmActivo.Close();
-            }
+                if (frmActivo != null)
+                {
+                    frmActivo.Close();
+                }
 
-            frmActivo = frmHija;
-            frmHija.TopLevel = false;
-            frmHija.FormBorderStyle = FormBorderStyle.None;
-            frmHija.Dock = DockStyle.Fill;
-            contenedor.Controls.Add(frmHija);
-            frmHija.Show();
+                frmActivo = frmHija;
+                frmHija.TopLevel = false;
+                frmHija.FormBorderStyle = FormBorderStyle.None;
+                frmHija.Dock = DockStyle.Fill;
+                contenedor.Controls.Add(frmHija);
+                frmHija.Show();
+            }
+            catch (Exception ex){
+                MessageBox.Show("Error al cargar el formulario \n\n"+ ex.Message +"", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

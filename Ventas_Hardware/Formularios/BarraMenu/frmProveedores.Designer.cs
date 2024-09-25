@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblProveedores = new System.Windows.Forms.Label();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
@@ -68,19 +68,19 @@
             this.panelArt = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelCtaCte = new System.Windows.Forms.Panel();
-            this.lblCtaCte = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lbltotalCompra = new System.Windows.Forms.Label();
-            this.lbltotalPago = new System.Windows.Forms.Label();
-            this.btnRegistrarCompra = new System.Windows.Forms.Button();
-            this.btnRegistrarpago = new System.Windows.Forms.Button();
-            this.lblttlcompras = new System.Windows.Forms.Label();
-            this.lblDuda = new System.Windows.Forms.Label();
-            this.lblttlpagos = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.lblEstadoActual = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblttlpagos = new System.Windows.Forms.Label();
+            this.lblDuda = new System.Windows.Forms.Label();
+            this.lblttlcompras = new System.Windows.Forms.Label();
+            this.btnRegistrarpago = new System.Windows.Forms.Button();
+            this.btnRegistrarCompra = new System.Windows.Forms.Button();
+            this.lbltotalPago = new System.Windows.Forms.Label();
+            this.lbltotalCompra = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblCtaCte = new System.Windows.Forms.Label();
             this.panelDatosContacto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDetalle.SuspendLayout();
@@ -258,24 +258,24 @@
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvArticulos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.EnableHeadersVisualStyles = false;
             this.dgvArticulos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvArticulos.Location = new System.Drawing.Point(5, 24);
@@ -596,67 +596,85 @@
             this.panelCtaCte.Size = new System.Drawing.Size(335, 194);
             this.panelCtaCte.TabIndex = 64;
             // 
-            // lblCtaCte
+            // lblEstadoActual
             // 
-            this.lblCtaCte.AutoSize = true;
-            this.lblCtaCte.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCtaCte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
-            this.lblCtaCte.Location = new System.Drawing.Point(3, 0);
-            this.lblCtaCte.Name = "lblCtaCte";
-            this.lblCtaCte.Size = new System.Drawing.Size(131, 19);
-            this.lblCtaCte.TabIndex = 62;
-            this.lblCtaCte.Text = "Cta. Cte. Proveedor:";
+            this.lblEstadoActual.AutoSize = true;
+            this.lblEstadoActual.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstadoActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
+            this.lblEstadoActual.Location = new System.Drawing.Point(3, 107);
+            this.lblEstadoActual.Name = "lblEstadoActual";
+            this.lblEstadoActual.Size = new System.Drawing.Size(96, 19);
+            this.lblEstadoActual.TabIndex = 73;
+            this.lblEstadoActual.Text = "Estado Actual:";
             // 
-            // textBox2
+            // textBox5
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(184, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(127, 22);
-            this.textBox2.TabIndex = 64;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox5.BackColor = System.Drawing.Color.White;
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Enabled = false;
+            this.textBox5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.White;
+            this.textBox5.Location = new System.Drawing.Point(195, 169);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(115, 16);
+            this.textBox5.TabIndex = 72;
             // 
-            // lbltotalCompra
+            // textBox4
             // 
-            this.lbltotalCompra.AutoSize = true;
-            this.lbltotalCompra.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalCompra.ForeColor = System.Drawing.Color.White;
-            this.lbltotalCompra.Location = new System.Drawing.Point(14, 22);
-            this.lbltotalCompra.Name = "lbltotalCompra";
-            this.lbltotalCompra.Size = new System.Drawing.Size(93, 19);
-            this.lbltotalCompra.TabIndex = 65;
-            this.lbltotalCompra.Text = "Total compra:";
+            this.textBox4.BackColor = System.Drawing.Color.White;
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Enabled = false;
+            this.textBox4.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.ForeColor = System.Drawing.Color.White;
+            this.textBox4.Location = new System.Drawing.Point(195, 149);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(115, 16);
+            this.textBox4.TabIndex = 71;
             // 
-            // lbltotalPago
+            // textBox3
             // 
-            this.lbltotalPago.AutoSize = true;
-            this.lbltotalPago.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltotalPago.ForeColor = System.Drawing.Color.White;
-            this.lbltotalPago.Location = new System.Drawing.Point(180, 22);
-            this.lbltotalPago.Name = "lbltotalPago";
-            this.lbltotalPago.Size = new System.Drawing.Size(77, 19);
-            this.lbltotalPago.TabIndex = 66;
-            this.lbltotalPago.Text = "Total pago:";
+            this.textBox3.BackColor = System.Drawing.Color.White;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Enabled = false;
+            this.textBox3.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.ForeColor = System.Drawing.Color.White;
+            this.textBox3.Location = new System.Drawing.Point(195, 129);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(115, 16);
+            this.textBox3.TabIndex = 62;
             // 
-            // btnRegistrarCompra
+            // lblttlpagos
             // 
-            this.btnRegistrarCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            this.btnRegistrarCompra.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegistrarCompra.FlatAppearance.BorderSize = 0;
-            this.btnRegistrarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrarCompra.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrarCompra.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarCompra.Location = new System.Drawing.Point(18, 72);
-            this.btnRegistrarCompra.Name = "btnRegistrarCompra";
-            this.btnRegistrarCompra.Size = new System.Drawing.Size(139, 28);
-            this.btnRegistrarCompra.TabIndex = 65;
-            this.btnRegistrarCompra.Text = "Registrar compra";
-            this.btnRegistrarCompra.UseVisualStyleBackColor = false;
-            this.btnRegistrarCompra.Visible = false;
+            this.lblttlpagos.AutoSize = true;
+            this.lblttlpagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblttlpagos.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblttlpagos.Location = new System.Drawing.Point(92, 147);
+            this.lblttlpagos.Name = "lblttlpagos";
+            this.lblttlpagos.Size = new System.Drawing.Size(101, 19);
+            this.lblttlpagos.TabIndex = 70;
+            this.lblttlpagos.Text = "Total en pagos:";
+            // 
+            // lblDuda
+            // 
+            this.lblDuda.AutoSize = true;
+            this.lblDuda.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDuda.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblDuda.Location = new System.Drawing.Point(141, 166);
+            this.lblDuda.Name = "lblDuda";
+            this.lblDuda.Size = new System.Drawing.Size(52, 19);
+            this.lblDuda.TabIndex = 69;
+            this.lblDuda.Text = "Deuda:";
+            // 
+            // lblttlcompras
+            // 
+            this.lblttlcompras.AutoSize = true;
+            this.lblttlcompras.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblttlcompras.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblttlcompras.Location = new System.Drawing.Point(76, 128);
+            this.lblttlcompras.Name = "lblttlcompras";
+            this.lblttlcompras.Size = new System.Drawing.Size(117, 19);
+            this.lblttlcompras.TabIndex = 68;
+            this.lblttlcompras.Text = "Total en compras:";
             // 
             // btnRegistrarpago
             // 
@@ -674,92 +692,74 @@
             this.btnRegistrarpago.UseVisualStyleBackColor = false;
             this.btnRegistrarpago.Visible = false;
             // 
-            // lblttlcompras
+            // btnRegistrarCompra
             // 
-            this.lblttlcompras.AutoSize = true;
-            this.lblttlcompras.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblttlcompras.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblttlcompras.Location = new System.Drawing.Point(76, 128);
-            this.lblttlcompras.Name = "lblttlcompras";
-            this.lblttlcompras.Size = new System.Drawing.Size(117, 19);
-            this.lblttlcompras.TabIndex = 68;
-            this.lblttlcompras.Text = "Total en compras:";
+            this.btnRegistrarCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.btnRegistrarCompra.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegistrarCompra.FlatAppearance.BorderSize = 0;
+            this.btnRegistrarCompra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarCompra.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarCompra.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrarCompra.Location = new System.Drawing.Point(18, 72);
+            this.btnRegistrarCompra.Name = "btnRegistrarCompra";
+            this.btnRegistrarCompra.Size = new System.Drawing.Size(139, 28);
+            this.btnRegistrarCompra.TabIndex = 65;
+            this.btnRegistrarCompra.Text = "Registrar compra";
+            this.btnRegistrarCompra.UseVisualStyleBackColor = false;
+            this.btnRegistrarCompra.Visible = false;
             // 
-            // lblDuda
+            // lbltotalPago
             // 
-            this.lblDuda.AutoSize = true;
-            this.lblDuda.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDuda.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblDuda.Location = new System.Drawing.Point(141, 166);
-            this.lblDuda.Name = "lblDuda";
-            this.lblDuda.Size = new System.Drawing.Size(52, 19);
-            this.lblDuda.TabIndex = 69;
-            this.lblDuda.Text = "Deuda:";
+            this.lbltotalPago.AutoSize = true;
+            this.lbltotalPago.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalPago.ForeColor = System.Drawing.Color.White;
+            this.lbltotalPago.Location = new System.Drawing.Point(180, 22);
+            this.lbltotalPago.Name = "lbltotalPago";
+            this.lbltotalPago.Size = new System.Drawing.Size(77, 19);
+            this.lbltotalPago.TabIndex = 66;
+            this.lbltotalPago.Text = "Total pago:";
             // 
-            // lblttlpagos
+            // lbltotalCompra
             // 
-            this.lblttlpagos.AutoSize = true;
-            this.lblttlpagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblttlpagos.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblttlpagos.Location = new System.Drawing.Point(92, 147);
-            this.lblttlpagos.Name = "lblttlpagos";
-            this.lblttlpagos.Size = new System.Drawing.Size(101, 19);
-            this.lblttlpagos.TabIndex = 70;
-            this.lblttlpagos.Text = "Total en pagos:";
+            this.lbltotalCompra.AutoSize = true;
+            this.lbltotalCompra.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbltotalCompra.ForeColor = System.Drawing.Color.White;
+            this.lbltotalCompra.Location = new System.Drawing.Point(14, 22);
+            this.lbltotalCompra.Name = "lbltotalCompra";
+            this.lbltotalCompra.Size = new System.Drawing.Size(93, 19);
+            this.lbltotalCompra.TabIndex = 65;
+            this.lbltotalCompra.Text = "Total compra:";
             // 
-            // textBox3
+            // textBox2
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(195, 129);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(115, 16);
-            this.textBox3.TabIndex = 62;
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Black;
+            this.textBox2.Location = new System.Drawing.Point(184, 44);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(127, 22);
+            this.textBox2.TabIndex = 64;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox4
+            // lblCtaCte
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(195, 149);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(115, 16);
-            this.textBox4.TabIndex = 71;
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(195, 169);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(115, 16);
-            this.textBox5.TabIndex = 72;
-            // 
-            // lblEstadoActual
-            // 
-            this.lblEstadoActual.AutoSize = true;
-            this.lblEstadoActual.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEstadoActual.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
-            this.lblEstadoActual.Location = new System.Drawing.Point(3, 107);
-            this.lblEstadoActual.Name = "lblEstadoActual";
-            this.lblEstadoActual.Size = new System.Drawing.Size(96, 19);
-            this.lblEstadoActual.TabIndex = 73;
-            this.lblEstadoActual.Text = "Estado Actual:";
+            this.lblCtaCte.AutoSize = true;
+            this.lblCtaCte.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCtaCte.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
+            this.lblCtaCte.Location = new System.Drawing.Point(3, 0);
+            this.lblCtaCte.Name = "lblCtaCte";
+            this.lblCtaCte.Size = new System.Drawing.Size(131, 19);
+            this.lblCtaCte.TabIndex = 62;
+            this.lblCtaCte.Text = "Cta. Cte. Proveedor:";
             // 
             // frmProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
-            this.ClientSize = new System.Drawing.Size(749, 499);
+            this.ClientSize = new System.Drawing.Size(749, 523);
             this.Controls.Add(this.panelCtaCte);
             this.Controls.Add(this.panelArt);
             this.Controls.Add(this.panelDetalle);
