@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Ventas_Hardware
+namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
 {
-    public partial class frmVendedores : Form
+    public partial class frmSubCat : Form
     {
-        public frmVendedores()
+        public frmSubCat()
         {
             InitializeComponent();
         }

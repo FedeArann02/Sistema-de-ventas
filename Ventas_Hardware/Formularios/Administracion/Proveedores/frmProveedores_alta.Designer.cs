@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lblAltaProveedores = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSalir
@@ -45,21 +46,36 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // lblAltaProveedores
+            // 
+            this.lblAltaProveedores.AutoSize = true;
+            this.lblAltaProveedores.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblAltaProveedores.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAltaProveedores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.lblAltaProveedores.Location = new System.Drawing.Point(12, 9);
+            this.lblAltaProveedores.Name = "lblAltaProveedores";
+            this.lblAltaProveedores.Size = new System.Drawing.Size(244, 32);
+            this.lblAltaProveedores.TabIndex = 54;
+            this.lblAltaProveedores.Text = "Alta de Proveedores";
+            // 
             // frmProveedores_alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(28)))), ((int)(((byte)(55)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(684, 261);
+            this.Controls.Add(this.lblAltaProveedores);
             this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProveedores_alta";
             this.Text = "frmProveedores_alta";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblAltaProveedores;
     }
 }

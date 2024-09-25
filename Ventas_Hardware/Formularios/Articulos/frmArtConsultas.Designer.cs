@@ -62,14 +62,17 @@
             this.lblGanancia = new System.Windows.Forms.Label();
             this.lblPrecioVenta = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
-            this.lblConsulta = new System.Windows.Forms.Label();
             this.lblDetalle = new System.Windows.Forms.Label();
+            this.lblConsulta = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDetalle.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbDescripcion
             // 
+            this.cmbDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbDescripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbDescripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbDescripcion.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,6 +85,8 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbCategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbCategoria.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,6 +100,8 @@
             // 
             // cmbSubcategoria
             // 
+            this.cmbSubcategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbSubcategoria.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbSubcategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbSubcategoria.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,6 +114,8 @@
             // 
             // cmbProveedor
             // 
+            this.cmbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProveedor.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -120,6 +129,9 @@
             // 
             // txtCodigo
             // 
+            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCodigo.BackColor = System.Drawing.Color.White;
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -133,6 +145,9 @@
             // dgvArticulos
             // 
             this.dgvArticulos.AllowUserToAddRows = false;
+            this.dgvArticulos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
@@ -170,119 +185,139 @@
             // 
             // txtCodigoDetalle
             // 
+            this.txtCodigoDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCodigoDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtCodigoDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCodigoDetalle.Enabled = false;
             this.txtCodigoDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoDetalle.ForeColor = System.Drawing.Color.White;
             this.txtCodigoDetalle.Location = new System.Drawing.Point(9, 46);
             this.txtCodigoDetalle.Name = "txtCodigoDetalle";
+            this.txtCodigoDetalle.ReadOnly = true;
             this.txtCodigoDetalle.Size = new System.Drawing.Size(174, 22);
             this.txtCodigoDetalle.TabIndex = 6;
             this.txtCodigoDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCatDetalle
             // 
+            this.txtCatDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCatDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtCatDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCatDetalle.Enabled = false;
             this.txtCatDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCatDetalle.ForeColor = System.Drawing.Color.White;
             this.txtCatDetalle.Location = new System.Drawing.Point(241, 46);
             this.txtCatDetalle.Name = "txtCatDetalle";
+            this.txtCatDetalle.ReadOnly = true;
             this.txtCatDetalle.Size = new System.Drawing.Size(203, 22);
             this.txtCatDetalle.TabIndex = 7;
+            this.txtCatDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtSubCatDetalle
             // 
+            this.txtSubCatDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubCatDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtSubCatDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSubCatDetalle.Enabled = false;
             this.txtSubCatDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSubCatDetalle.ForeColor = System.Drawing.Color.White;
             this.txtSubCatDetalle.Location = new System.Drawing.Point(513, 46);
             this.txtSubCatDetalle.Name = "txtSubCatDetalle";
+            this.txtSubCatDetalle.ReadOnly = true;
             this.txtSubCatDetalle.Size = new System.Drawing.Size(190, 22);
             this.txtSubCatDetalle.TabIndex = 8;
             // 
             // txtDescDetalle
             // 
+            this.txtDescDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtDescDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescDetalle.Enabled = false;
             this.txtDescDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescDetalle.ForeColor = System.Drawing.Color.White;
             this.txtDescDetalle.Location = new System.Drawing.Point(9, 95);
             this.txtDescDetalle.Name = "txtDescDetalle";
+            this.txtDescDetalle.ReadOnly = true;
             this.txtDescDetalle.Size = new System.Drawing.Size(435, 22);
             this.txtDescDetalle.TabIndex = 9;
+            this.txtDescDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtProvDetalle
             // 
+            this.txtProvDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProvDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtProvDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProvDetalle.Enabled = false;
             this.txtProvDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProvDetalle.ForeColor = System.Drawing.Color.White;
             this.txtProvDetalle.Location = new System.Drawing.Point(513, 95);
             this.txtProvDetalle.Name = "txtProvDetalle";
+            this.txtProvDetalle.ReadOnly = true;
             this.txtProvDetalle.Size = new System.Drawing.Size(190, 22);
             this.txtProvDetalle.TabIndex = 10;
             // 
             // txtStockDetalle
             // 
+            this.txtStockDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtStockDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtStockDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStockDetalle.Enabled = false;
             this.txtStockDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStockDetalle.ForeColor = System.Drawing.Color.White;
             this.txtStockDetalle.Location = new System.Drawing.Point(9, 143);
             this.txtStockDetalle.Name = "txtStockDetalle";
+            this.txtStockDetalle.ReadOnly = true;
             this.txtStockDetalle.Size = new System.Drawing.Size(102, 22);
             this.txtStockDetalle.TabIndex = 11;
             this.txtStockDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtCostoDetalle
             // 
+            this.txtCostoDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCostoDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtCostoDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCostoDetalle.Enabled = false;
             this.txtCostoDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCostoDetalle.ForeColor = System.Drawing.Color.White;
             this.txtCostoDetalle.Location = new System.Drawing.Point(133, 143);
             this.txtCostoDetalle.Name = "txtCostoDetalle";
+            this.txtCostoDetalle.ReadOnly = true;
             this.txtCostoDetalle.Size = new System.Drawing.Size(102, 22);
             this.txtCostoDetalle.TabIndex = 12;
             this.txtCostoDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtGananciaDetalle
             // 
+            this.txtGananciaDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtGananciaDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtGananciaDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtGananciaDetalle.Enabled = false;
             this.txtGananciaDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGananciaDetalle.ForeColor = System.Drawing.Color.White;
             this.txtGananciaDetalle.Location = new System.Drawing.Point(255, 143);
             this.txtGananciaDetalle.Name = "txtGananciaDetalle";
+            this.txtGananciaDetalle.ReadOnly = true;
             this.txtGananciaDetalle.Size = new System.Drawing.Size(105, 22);
             this.txtGananciaDetalle.TabIndex = 13;
             this.txtGananciaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtPrecioVentaDetalle
             // 
+            this.txtPrecioVentaDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrecioVentaDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(34)))), ((int)(((byte)(100)))));
             this.txtPrecioVentaDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPrecioVentaDetalle.Enabled = false;
             this.txtPrecioVentaDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioVentaDetalle.ForeColor = System.Drawing.Color.White;
             this.txtPrecioVentaDetalle.Location = new System.Drawing.Point(581, 143);
             this.txtPrecioVentaDetalle.Name = "txtPrecioVentaDetalle";
+            this.txtPrecioVentaDetalle.ReadOnly = true;
             this.txtPrecioVentaDetalle.Size = new System.Drawing.Size(122, 22);
             this.txtPrecioVentaDetalle.TabIndex = 14;
             this.txtPrecioVentaDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuscar.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -298,6 +333,7 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLimpiar.BackColor = System.Drawing.Color.IndianRed;
             this.btnLimpiar.FlatAppearance.BorderSize = 0;
             this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -313,6 +349,9 @@
             // 
             // lblCodigo
             // 
+            this.lblCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.White;
@@ -324,6 +363,8 @@
             // 
             // lblCategoria
             // 
+            this.lblCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCategoria.AutoSize = true;
             this.lblCategoria.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoria.ForeColor = System.Drawing.Color.White;
@@ -335,6 +376,8 @@
             // 
             // lblSubCat
             // 
+            this.lblSubCat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSubCat.AutoSize = true;
             this.lblSubCat.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubCat.ForeColor = System.Drawing.Color.White;
@@ -346,6 +389,8 @@
             // 
             // lblDescrip
             // 
+            this.lblDescrip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDescrip.AutoSize = true;
             this.lblDescrip.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescrip.ForeColor = System.Drawing.Color.White;
@@ -357,6 +402,8 @@
             // 
             // lblProovedor
             // 
+            this.lblProovedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lblProovedor.AutoSize = true;
             this.lblProovedor.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProovedor.ForeColor = System.Drawing.Color.White;
@@ -368,6 +415,7 @@
             // 
             // lblCodigoDetalle
             // 
+            this.lblCodigoDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCodigoDetalle.AutoSize = true;
             this.lblCodigoDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigoDetalle.ForeColor = System.Drawing.Color.DarkGray;
@@ -379,6 +427,8 @@
             // 
             // lblCategoriaDetalle
             // 
+            this.lblCategoriaDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCategoriaDetalle.AutoSize = true;
             this.lblCategoriaDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoriaDetalle.ForeColor = System.Drawing.Color.DarkGray;
@@ -390,6 +440,8 @@
             // 
             // lblSubCatDetalle
             // 
+            this.lblSubCatDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSubCatDetalle.AutoSize = true;
             this.lblSubCatDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSubCatDetalle.ForeColor = System.Drawing.Color.DarkGray;
@@ -401,6 +453,7 @@
             // 
             // lblDescripcionDetalle
             // 
+            this.lblDescripcionDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDescripcionDetalle.AutoSize = true;
             this.lblDescripcionDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescripcionDetalle.ForeColor = System.Drawing.Color.DarkGray;
@@ -412,6 +465,8 @@
             // 
             // lblProveedorDetalle
             // 
+            this.lblProveedorDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProveedorDetalle.AutoSize = true;
             this.lblProveedorDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProveedorDetalle.ForeColor = System.Drawing.Color.DarkGray;
@@ -423,6 +478,7 @@
             // 
             // lblCantStock
             // 
+            this.lblCantStock.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCantStock.AutoSize = true;
             this.lblCantStock.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantStock.ForeColor = System.Drawing.Color.DarkGray;
@@ -434,6 +490,9 @@
             // 
             // lblCosto
             // 
+            this.lblCosto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCosto.AutoSize = true;
             this.lblCosto.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCosto.ForeColor = System.Drawing.Color.DarkGray;
@@ -445,6 +504,8 @@
             // 
             // lblGanancia
             // 
+            this.lblGanancia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblGanancia.AutoSize = true;
             this.lblGanancia.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGanancia.ForeColor = System.Drawing.Color.DarkGray;
@@ -456,6 +517,8 @@
             // 
             // lblPrecioVenta
             // 
+            this.lblPrecioVenta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPrecioVenta.AutoSize = true;
             this.lblPrecioVenta.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecioVenta.ForeColor = System.Drawing.Color.DarkGray;
@@ -467,6 +530,8 @@
             // 
             // panelDetalle
             // 
+            this.panelDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDetalle.Controls.Add(this.lblDetalle);
             this.panelDetalle.Controls.Add(this.lblDescripcionDetalle);
             this.panelDetalle.Controls.Add(this.lblPrecioVenta);
@@ -492,6 +557,18 @@
             this.panelDetalle.TabIndex = 31;
             this.panelDetalle.Visible = false;
             // 
+            // lblDetalle
+            // 
+            this.lblDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblDetalle.AutoSize = true;
+            this.lblDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
+            this.lblDetalle.Location = new System.Drawing.Point(2, 2);
+            this.lblDetalle.Name = "lblDetalle";
+            this.lblDetalle.Size = new System.Drawing.Size(125, 19);
+            this.lblDetalle.TabIndex = 60;
+            this.lblDetalle.Text = "Detalle de artículo:";
+            // 
             // lblConsulta
             // 
             this.lblConsulta.AutoSize = true;
@@ -503,17 +580,6 @@
             this.lblConsulta.Size = new System.Drawing.Size(220, 32);
             this.lblConsulta.TabIndex = 50;
             this.lblConsulta.Text = "Consulta Articulo:";
-            // 
-            // lblDetalle
-            // 
-            this.lblDetalle.AutoSize = true;
-            this.lblDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
-            this.lblDetalle.Location = new System.Drawing.Point(2, 2);
-            this.lblDetalle.Name = "lblDetalle";
-            this.lblDetalle.Size = new System.Drawing.Size(125, 19);
-            this.lblDetalle.TabIndex = 60;
-            this.lblDetalle.Text = "Detalle de artículo:";
             // 
             // frmArtConsultas
             // 

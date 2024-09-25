@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDatosEncabezado = new System.Windows.Forms.Panel();
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -57,31 +57,31 @@
             this.lblClientes = new System.Windows.Forms.Label();
             this.dgvRemPres = new System.Windows.Forms.DataGridView();
             this.panelRemitos_Presupuestos = new System.Windows.Forms.Panel();
+            this.lblDetalle = new System.Windows.Forms.Label();
+            this.lblVer = new System.Windows.Forms.Label();
+            this.cmbRemPres = new System.Windows.Forms.ComboBox();
             this.dgvRemPresDetalle = new System.Windows.Forms.DataGridView();
             this.C_CodArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_PrecioUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.C_Pxcant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbRemPres = new System.Windows.Forms.ComboBox();
-            this.lblVer = new System.Windows.Forms.Label();
-            this.lblDetalle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblCompras = new System.Windows.Forms.Label();
-            this.txtCompras = new System.Windows.Forms.TextBox();
-            this.lblPagos = new System.Windows.Forms.Label();
-            this.txtPagos = new System.Windows.Forms.TextBox();
+            this.btnPagar = new System.Windows.Forms.Button();
             this.lblDeuda = new System.Windows.Forms.Label();
             this.txtDeudas = new System.Windows.Forms.TextBox();
+            this.lblPagos = new System.Windows.Forms.Label();
+            this.txtPagos = new System.Windows.Forms.TextBox();
+            this.lblCompras = new System.Windows.Forms.Label();
+            this.txtCompras = new System.Windows.Forms.TextBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnPagar = new System.Windows.Forms.Button();
             this.panelRegistrarPagos = new System.Windows.Forms.Panel();
-            this.lblRegistrarPagos = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.btnRegistrar = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.lblRegistrarPagos = new System.Windows.Forms.Label();
             this.panelDatosEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemPres)).BeginInit();
             this.panelRemitos_Presupuestos.SuspendLayout();
@@ -350,24 +350,24 @@
             this.dgvRemPres.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRemPres.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvRemPres.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.NullValue = null;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRemPres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRemPres.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvRemPres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRemPres.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRemPres.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRemPres.EnableHeadersVisualStyles = false;
             this.dgvRemPres.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvRemPres.Location = new System.Drawing.Point(12, 55);
@@ -392,26 +392,63 @@
             this.panelRemitos_Presupuestos.Size = new System.Drawing.Size(706, 200);
             this.panelRemitos_Presupuestos.TabIndex = 63;
             // 
+            // lblDetalle
+            // 
+            this.lblDetalle.AutoSize = true;
+            this.lblDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalle.ForeColor = System.Drawing.Color.White;
+            this.lblDetalle.Location = new System.Drawing.Point(178, 5);
+            this.lblDetalle.Name = "lblDetalle";
+            this.lblDetalle.Size = new System.Drawing.Size(47, 16);
+            this.lblDetalle.TabIndex = 68;
+            this.lblDetalle.Text = "Detalle:";
+            // 
+            // lblVer
+            // 
+            this.lblVer.AutoSize = true;
+            this.lblVer.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVer.ForeColor = System.Drawing.Color.White;
+            this.lblVer.Location = new System.Drawing.Point(10, 5);
+            this.lblVer.Name = "lblVer";
+            this.lblVer.Size = new System.Drawing.Size(28, 16);
+            this.lblVer.TabIndex = 63;
+            this.lblVer.Text = "Ver:";
+            // 
+            // cmbRemPres
+            // 
+            this.cmbRemPres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbRemPres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbRemPres.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRemPres.FormattingEnabled = true;
+            this.cmbRemPres.Items.AddRange(new object[] {
+            "REMITOS",
+            "PRESUPUESTOS"});
+            this.cmbRemPres.Location = new System.Drawing.Point(12, 27);
+            this.cmbRemPres.Margin = new System.Windows.Forms.Padding(1);
+            this.cmbRemPres.Name = "cmbRemPres";
+            this.cmbRemPres.Size = new System.Drawing.Size(163, 24);
+            this.cmbRemPres.TabIndex = 66;
+            // 
             // dgvRemPresDetalle
             // 
             this.dgvRemPresDetalle.AllowUserToAddRows = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.IndianRed;
-            this.dgvRemPresDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.IndianRed;
+            this.dgvRemPresDetalle.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvRemPresDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvRemPresDetalle.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvRemPresDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRemPresDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRemPresDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRemPresDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRemPresDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRemPresDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.C_CodArt,
@@ -419,27 +456,27 @@
             this.C_PrecioUnit,
             this.C_Cantidad,
             this.C_Pxcant});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRemPresDetalle.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.IndianRed;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvRemPresDetalle.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvRemPresDetalle.EnableHeadersVisualStyles = false;
             this.dgvRemPresDetalle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(99)))), ((int)(((byte)(170)))));
             this.dgvRemPresDetalle.Location = new System.Drawing.Point(181, 27);
             this.dgvRemPresDetalle.Name = "dgvRemPresDetalle";
             this.dgvRemPresDetalle.ReadOnly = true;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRemPresDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvRemPresDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvRemPresDetalle.RowHeadersVisible = false;
             this.dgvRemPresDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRemPresDetalle.Size = new System.Drawing.Size(515, 164);
@@ -478,43 +515,6 @@
             this.C_Pxcant.ReadOnly = true;
             this.C_Pxcant.Width = 150;
             // 
-            // cmbRemPres
-            // 
-            this.cmbRemPres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cmbRemPres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbRemPres.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRemPres.FormattingEnabled = true;
-            this.cmbRemPres.Items.AddRange(new object[] {
-            "REMITOS",
-            "PRESUPUESTOS"});
-            this.cmbRemPres.Location = new System.Drawing.Point(12, 27);
-            this.cmbRemPres.Margin = new System.Windows.Forms.Padding(1);
-            this.cmbRemPres.Name = "cmbRemPres";
-            this.cmbRemPres.Size = new System.Drawing.Size(163, 24);
-            this.cmbRemPres.TabIndex = 66;
-            // 
-            // lblVer
-            // 
-            this.lblVer.AutoSize = true;
-            this.lblVer.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVer.ForeColor = System.Drawing.Color.White;
-            this.lblVer.Location = new System.Drawing.Point(10, 5);
-            this.lblVer.Name = "lblVer";
-            this.lblVer.Size = new System.Drawing.Size(28, 16);
-            this.lblVer.TabIndex = 63;
-            this.lblVer.Text = "Ver:";
-            // 
-            // lblDetalle
-            // 
-            this.lblDetalle.AutoSize = true;
-            this.lblDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetalle.ForeColor = System.Drawing.Color.White;
-            this.lblDetalle.Location = new System.Drawing.Point(178, 5);
-            this.lblDetalle.Name = "lblDetalle";
-            this.lblDetalle.Size = new System.Drawing.Size(47, 16);
-            this.lblDetalle.TabIndex = 68;
-            this.lblDetalle.Text = "Detalle:";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
@@ -530,28 +530,42 @@
             this.panel1.Size = new System.Drawing.Size(443, 110);
             this.panel1.TabIndex = 69;
             // 
-            // lblCompras
+            // btnPagar
             // 
-            this.lblCompras.AutoSize = true;
-            this.lblCompras.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompras.ForeColor = System.Drawing.Color.White;
-            this.lblCompras.Location = new System.Drawing.Point(10, 12);
-            this.lblCompras.Name = "lblCompras";
-            this.lblCompras.Size = new System.Drawing.Size(60, 16);
-            this.lblCompras.TabIndex = 64;
-            this.lblCompras.Text = "Compras:";
+            this.btnPagar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnPagar.FlatAppearance.BorderSize = 0;
+            this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagar.ForeColor = System.Drawing.Color.White;
+            this.btnPagar.Location = new System.Drawing.Point(353, 68);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(78, 28);
+            this.btnPagar.TabIndex = 72;
+            this.btnPagar.Text = "Pagar";
+            this.btnPagar.UseVisualStyleBackColor = false;
             // 
-            // txtCompras
+            // lblDeuda
             // 
-            this.txtCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCompras.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompras.ForeColor = System.Drawing.Color.Black;
-            this.txtCompras.Location = new System.Drawing.Point(13, 31);
-            this.txtCompras.Name = "txtCompras";
-            this.txtCompras.Size = new System.Drawing.Size(119, 22);
-            this.txtCompras.TabIndex = 63;
-            this.txtCompras.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lblDeuda.AutoSize = true;
+            this.lblDeuda.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeuda.ForeColor = System.Drawing.Color.White;
+            this.lblDeuda.Location = new System.Drawing.Point(306, 12);
+            this.lblDeuda.Name = "lblDeuda";
+            this.lblDeuda.Size = new System.Drawing.Size(44, 16);
+            this.lblDeuda.TabIndex = 68;
+            this.lblDeuda.Text = "Deuda:";
+            // 
+            // txtDeudas
+            // 
+            this.txtDeudas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtDeudas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeudas.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeudas.ForeColor = System.Drawing.Color.Black;
+            this.txtDeudas.Location = new System.Drawing.Point(309, 31);
+            this.txtDeudas.Name = "txtDeudas";
+            this.txtDeudas.Size = new System.Drawing.Size(122, 22);
+            this.txtDeudas.TabIndex = 67;
+            this.txtDeudas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblPagos
             // 
@@ -576,28 +590,28 @@
             this.txtPagos.TabIndex = 65;
             this.txtPagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // lblDeuda
+            // lblCompras
             // 
-            this.lblDeuda.AutoSize = true;
-            this.lblDeuda.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeuda.ForeColor = System.Drawing.Color.White;
-            this.lblDeuda.Location = new System.Drawing.Point(306, 12);
-            this.lblDeuda.Name = "lblDeuda";
-            this.lblDeuda.Size = new System.Drawing.Size(44, 16);
-            this.lblDeuda.TabIndex = 68;
-            this.lblDeuda.Text = "Deuda:";
+            this.lblCompras.AutoSize = true;
+            this.lblCompras.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompras.ForeColor = System.Drawing.Color.White;
+            this.lblCompras.Location = new System.Drawing.Point(10, 12);
+            this.lblCompras.Name = "lblCompras";
+            this.lblCompras.Size = new System.Drawing.Size(60, 16);
+            this.lblCompras.TabIndex = 64;
+            this.lblCompras.Text = "Compras:";
             // 
-            // txtDeudas
+            // txtCompras
             // 
-            this.txtDeudas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtDeudas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDeudas.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeudas.ForeColor = System.Drawing.Color.Black;
-            this.txtDeudas.Location = new System.Drawing.Point(309, 31);
-            this.txtDeudas.Name = "txtDeudas";
-            this.txtDeudas.Size = new System.Drawing.Size(122, 22);
-            this.txtDeudas.TabIndex = 67;
-            this.txtDeudas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCompras.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompras.ForeColor = System.Drawing.Color.Black;
+            this.txtCompras.Location = new System.Drawing.Point(13, 31);
+            this.txtCompras.Name = "txtCompras";
+            this.txtCompras.Size = new System.Drawing.Size(119, 22);
+            this.txtCompras.TabIndex = 63;
+            this.txtCompras.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnLimpiar
             // 
@@ -627,20 +641,6 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
             // 
-            // btnPagar
-            // 
-            this.btnPagar.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnPagar.FlatAppearance.BorderSize = 0;
-            this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagar.ForeColor = System.Drawing.Color.White;
-            this.btnPagar.Location = new System.Drawing.Point(353, 68);
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(78, 28);
-            this.btnPagar.TabIndex = 72;
-            this.btnPagar.Text = "Pagar";
-            this.btnPagar.UseVisualStyleBackColor = false;
-            // 
             // panelRegistrarPagos
             // 
             this.panelRegistrarPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
@@ -655,47 +655,6 @@
             this.panelRegistrarPagos.Size = new System.Drawing.Size(257, 110);
             this.panelRegistrarPagos.TabIndex = 73;
             // 
-            // lblRegistrarPagos
-            // 
-            this.lblRegistrarPagos.AutoSize = true;
-            this.lblRegistrarPagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistrarPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
-            this.lblRegistrarPagos.Location = new System.Drawing.Point(0, 0);
-            this.lblRegistrarPagos.Name = "lblRegistrarPagos";
-            this.lblRegistrarPagos.Size = new System.Drawing.Size(108, 19);
-            this.lblRegistrarPagos.TabIndex = 63;
-            this.lblRegistrarPagos.Text = "Registrar pagos:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 31);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(224, 20);
-            this.dateTimePicker1.TabIndex = 64;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(11, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 16);
-            this.label4.TabIndex = 74;
-            this.label4.Text = "Nombre:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.Black;
-            this.textBox5.Location = new System.Drawing.Point(14, 74);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(122, 22);
-            this.textBox5.TabIndex = 73;
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // btnRegistrar
             // 
             this.btnRegistrar.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -709,6 +668,48 @@
             this.btnRegistrar.TabIndex = 73;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(11, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.TabIndex = 74;
+            this.label4.Text = "Nombre:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(14, 31);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(224, 22);
+            this.dateTimePicker1.TabIndex = 64;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.ForeColor = System.Drawing.Color.Black;
+            this.textBox5.Location = new System.Drawing.Point(14, 74);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(122, 22);
+            this.textBox5.TabIndex = 73;
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblRegistrarPagos
+            // 
+            this.lblRegistrarPagos.AutoSize = true;
+            this.lblRegistrarPagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistrarPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
+            this.lblRegistrarPagos.Location = new System.Drawing.Point(0, 0);
+            this.lblRegistrarPagos.Name = "lblRegistrarPagos";
+            this.lblRegistrarPagos.Size = new System.Drawing.Size(108, 19);
+            this.lblRegistrarPagos.TabIndex = 63;
+            this.lblRegistrarPagos.Text = "Registrar pagos:";
             // 
             // frmCliente
             // 

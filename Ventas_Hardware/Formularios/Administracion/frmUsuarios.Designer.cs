@@ -1,6 +1,6 @@
 ﻿namespace Ventas_Hardware
 {
-    partial class frmVendedores
+    partial class frmUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.lblUsuarios = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(94, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(491, 73);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "VENDEDORES";
             // 
             // btnSalir
             // 
@@ -56,16 +46,28 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // frmVendedores
+            // lblUsuarios
+            // 
+            this.lblUsuarios.AutoSize = true;
+            this.lblUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblUsuarios.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.lblUsuarios.Location = new System.Drawing.Point(12, 9);
+            this.lblUsuarios.Name = "lblUsuarios";
+            this.lblUsuarios.Size = new System.Drawing.Size(112, 32);
+            this.lblUsuarios.TabIndex = 54;
+            this.lblUsuarios.Text = "Usuarios";
+            // 
+            // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(28)))), ((int)(((byte)(55)))));
-            this.ClientSize = new System.Drawing.Size(684, 261);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
+            this.ClientSize = new System.Drawing.Size(684, 506);
+            this.Controls.Add(this.lblUsuarios);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmVendedores";
+            this.Name = "frmUsuarios";
             this.Text = "frmVendedores";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -73,8 +75,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Label lblUsuarios;
     }
 }

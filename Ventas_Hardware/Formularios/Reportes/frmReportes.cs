@@ -16,30 +16,37 @@ namespace Ventas_Hardware
         public frmReportes()
         {
             InitializeComponent();
+            SelectedMenuColor(btnPresupuestos);
             Funciones.AbrirForm(new R_Presupuestos(), panel_contenedor);
         }
 
-        private void presupuestosTSM_Click(object sender, EventArgs e)
+        private void btnPresupuestos_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnPresupuestos);
             Funciones.AbrirForm(new R_Presupuestos(), panel_contenedor);
         }
 
-        private void RemitosTSM_Click(object sender, EventArgs e)
+        private void btnRemitos_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnRemitos);
             Funciones.AbrirForm(new R_Remitos(), panel_contenedor);
-
         }
 
-        private void IngEgrVariosTSM_Click(object sender, EventArgs e)
+        private void btnIngresosEgresos_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnIngresosEgresos);
             Funciones.AbrirForm(new R_IngresosEgresos(), panel_contenedor);
-
         }
 
-        private void balanceGeneralTSM_Click(object sender, EventArgs e)
+        private void btnBalanceGral_Click(object sender, EventArgs e)
         {
+            SelectedMenuColor(btnBalanceGral);
             Funciones.AbrirForm(new R_BalanceGral(), panel_contenedor);
-
+        }
+        private void SelectedMenuColor(Button boton)
+        {
+            btnRemitos.BackColor = btnPresupuestos.BackColor = btnIngresosEgresos.BackColor = btnBalanceGral.BackColor = Color.FromArgb(116, 89, 160);
+            boton.BackColor = Color.FromArgb(106, 79, 150);
         }
     }
 }
