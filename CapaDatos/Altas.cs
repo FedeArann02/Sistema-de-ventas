@@ -127,5 +127,72 @@ namespace CapaDatos
                 }
             }
         }
+
+        public void AltaCliente(string Doc, string Nombre, string Apellido, string Dir, string Tel, string Correo, string Entidad)
+        {
+            clearConfirm = false;
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES");
+                    Query.AppendLine("(@Doc, @Nombre, @Apellido, @Dir, @Tel, @Correo, @Entidad);");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Doc", Doc);
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Dir", Dir);
+                        cmd.Parameters.AddWithValue("@Tel", Tel);
+                        cmd.Parameters.AddWithValue("@Correo", Correo);
+                        cmd.Parameters.AddWithValue("@Entidad", Entidad);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    clearConfirm = true;
+                    MessageBox.Show("Cliente registrado con éxito", "CLIENTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void AltaCliente_PresupuestoRemito(string Doc, string Nombre, string Apellido, string Dir, string Tel, string Correo, string Entidad)
+        {
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES");
+                    Query.AppendLine("(@Doc, @Nombre, @Apellido, @Dir, @Tel, @Correo, @Entidad);");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Doc", Doc);
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Dir", Dir);
+                        cmd.Parameters.AddWithValue("@Tel", Tel);
+                        cmd.Parameters.AddWithValue("@Correo", Correo);
+                        cmd.Parameters.AddWithValue("@Entidad", Entidad);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }

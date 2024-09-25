@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaPresupuesto));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaPresupuesto));
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.lblPresupuestoNuevo = new System.Windows.Forms.Label();
             this.panelDatosEncabezado = new System.Windows.Forms.Panel();
@@ -65,8 +65,10 @@
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtDocumentacionCliente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDNICUIL_T = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnRestar = new System.Windows.Forms.Button();
             this.lblDetalle = new System.Windows.Forms.Label();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.C_CodArt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,7 +94,7 @@
             this.cmbCliente.Items.AddRange(new object[] {
             "Cliente Nuevo",
             "Cliente Regular"});
-            this.cmbCliente.Location = new System.Drawing.Point(257, 25);
+            this.cmbCliente.Location = new System.Drawing.Point(262, 25);
             this.cmbCliente.Margin = new System.Windows.Forms.Padding(1);
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(174, 24);
@@ -113,7 +115,7 @@
             // 
             // panelDatosEncabezado
             // 
-            this.panelDatosEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.panelDatosEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.panelDatosEncabezado.Controls.Add(this.lblApellido);
             this.panelDatosEncabezado.Controls.Add(this.txtApellido);
             this.panelDatosEncabezado.Controls.Add(this.lblDatos);
@@ -130,7 +132,7 @@
             this.panelDatosEncabezado.Controls.Add(this.txtDireccion);
             this.panelDatosEncabezado.Controls.Add(this.lblDireccion);
             this.panelDatosEncabezado.Enabled = false;
-            this.panelDatosEncabezado.Location = new System.Drawing.Point(21, 72);
+            this.panelDatosEncabezado.Location = new System.Drawing.Point(26, 72);
             this.panelDatosEncabezado.Name = "panelDatosEncabezado";
             this.panelDatosEncabezado.Size = new System.Drawing.Size(706, 116);
             this.panelDatosEncabezado.TabIndex = 36;
@@ -456,7 +458,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(646, 24);
+            this.btnBuscar.Location = new System.Drawing.Point(651, 24);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(78, 28);
             this.btnBuscar.TabIndex = 53;
@@ -471,28 +473,30 @@
             this.txtDocumentacionCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDocumentacionCliente.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumentacionCliente.ForeColor = System.Drawing.Color.Black;
-            this.txtDocumentacionCliente.Location = new System.Drawing.Point(459, 23);
+            this.txtDocumentacionCliente.Location = new System.Drawing.Point(464, 23);
             this.txtDocumentacionCliente.Name = "txtDocumentacionCliente";
             this.txtDocumentacionCliente.Size = new System.Drawing.Size(181, 29);
             this.txtDocumentacionCliente.TabIndex = 49;
             this.txtDocumentacionCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDocumentacionCliente.Visible = false;
             // 
-            // label1
+            // lblDNICUIL_T
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(456, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 16);
-            this.label1.TabIndex = 50;
-            this.label1.Text = "DNI/CUIL/CUIT:";
-            this.label1.Visible = false;
+            this.lblDNICUIL_T.AutoSize = true;
+            this.lblDNICUIL_T.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDNICUIL_T.ForeColor = System.Drawing.Color.White;
+            this.lblDNICUIL_T.Location = new System.Drawing.Point(461, 4);
+            this.lblDNICUIL_T.Name = "lblDNICUIL_T";
+            this.lblDNICUIL_T.Size = new System.Drawing.Size(93, 16);
+            this.lblDNICUIL_T.TabIndex = 50;
+            this.lblDNICUIL_T.Text = "DNI/CUIL/CUIT:";
+            this.lblDNICUIL_T.Visible = false;
             // 
             // panelDetalle
             // 
-            this.panelDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.panelDetalle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.panelDetalle.Controls.Add(this.btnEliminar);
+            this.panelDetalle.Controls.Add(this.btnRestar);
             this.panelDetalle.Controls.Add(this.lblDetalle);
             this.panelDetalle.Controls.Add(this.dgvArticulos);
             this.panelDetalle.Controls.Add(this.btnReCalcular);
@@ -513,10 +517,50 @@
             this.panelDetalle.Controls.Add(this.txtDescuento);
             this.panelDetalle.Controls.Add(this.lblDescuento);
             this.panelDetalle.Enabled = false;
-            this.panelDetalle.Location = new System.Drawing.Point(21, 194);
+            this.panelDetalle.Location = new System.Drawing.Point(26, 194);
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(706, 293);
             this.panelDetalle.TabIndex = 49;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.btnEliminar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEliminar.BackgroundImage")));
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(674, 9);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(23, 22);
+            this.btnEliminar.TabIndex = 61;
+            this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnRestar
+            // 
+            this.btnRestar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRestar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.btnRestar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRestar.BackgroundImage")));
+            this.btnRestar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRestar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRestar.FlatAppearance.BorderSize = 0;
+            this.btnRestar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestar.ForeColor = System.Drawing.Color.White;
+            this.btnRestar.Location = new System.Drawing.Point(628, 10);
+            this.btnRestar.Name = "btnRestar";
+            this.btnRestar.Size = new System.Drawing.Size(23, 22);
+            this.btnRestar.TabIndex = 60;
+            this.btnRestar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRestar.UseVisualStyleBackColor = false;
+            this.btnRestar.Click += new System.EventHandler(this.btnRestar_Click);
             // 
             // lblDetalle
             // 
@@ -540,7 +584,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -581,6 +625,7 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(686, 160);
             this.dgvArticulos.TabIndex = 58;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // C_CodArt
             // 
@@ -671,6 +716,7 @@
             this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(99)))), ((int)(((byte)(170)))));
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -704,11 +750,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(749, 499);
             this.Controls.Add(this.panelDetalle);
             this.Controls.Add(this.txtDocumentacionCliente);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblDNICUIL_T);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.panelDatosEncabezado);
             this.Controls.Add(this.lblPresupuestoNuevo);
@@ -757,7 +803,7 @@
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.TextBox txtDocumentacionCliente;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDNICUIL_T;
         private System.Windows.Forms.Panel panelDetalle;
         private System.Windows.Forms.Button btnBuscarArt;
         private System.Windows.Forms.Button btnAgregar;
@@ -774,5 +820,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn C_Pxcant;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtApellido;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnRestar;
     }
 }

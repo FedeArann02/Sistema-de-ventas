@@ -45,7 +45,6 @@ namespace Ventas_Hardware
             cmbCategoria.ValueMember = "Cod_categoria";
             cmbCategoria.DataSource = categoria;
             cmbCategoria.SelectedIndex = -1;
-
         }
         private void verGrillaFiltrada(DataGridView DGV, string codigo = "", string descripcion = "", string categoria = "", string subcat = "", string proveedor = "") //funcion que filtra con la grilla
         {

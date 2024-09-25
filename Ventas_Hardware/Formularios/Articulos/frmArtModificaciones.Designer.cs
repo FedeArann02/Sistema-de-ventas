@@ -63,6 +63,7 @@
             this.btnAplicarGanancia = new System.Windows.Forms.Button();
             this.lblAumentoCosto = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblModificacion = new System.Windows.Forms.Label();
             this.panelDetalle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -518,12 +519,25 @@
             this.label1.TabIndex = 48;
             this.label1.Text = "% de aumento de GANANCIA a aplicar:";
             // 
+            // lblModificacion
+            // 
+            this.lblModificacion.AutoSize = true;
+            this.lblModificacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblModificacion.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModificacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.lblModificacion.Location = new System.Drawing.Point(12, 17);
+            this.lblModificacion.Name = "lblModificacion";
+            this.lblModificacion.Size = new System.Drawing.Size(270, 32);
+            this.lblModificacion.TabIndex = 49;
+            this.lblModificacion.Text = "Modificación Articulo:";
+            // 
             // frmArtModificaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(749, 499);
+            this.Controls.Add(this.lblModificacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblAumentoCosto);
             this.Controls.Add(this.btnAplicarGanancia);
@@ -584,5 +598,6 @@
         private System.Windows.Forms.Button btnAplicarGanancia;
         private System.Windows.Forms.Label lblAumentoCosto;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblModificacion;
     }
 }

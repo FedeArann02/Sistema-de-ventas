@@ -41,5 +41,23 @@ namespace CapaNegocio
                 clearConf = false;
             }
         }
+
+        public void CN_AltaCliente_PresupuestoRemito(string Doc, string Nombre, string Apellido, string Dir, string Tel, string Correo, string Entidad)
+        {
+            objcd_Altas.AltaCliente_PresupuestoRemito(Doc, Nombre, Apellido, Dir, Tel, Correo, Entidad);
+        }
+
+        public void CN_AltaCliente(string Doc, string Nombre, string Apellido, string Dir, string Tel, string Correo, string Entidad)
+        {
+            objcd_Altas.AltaCliente(Doc, Nombre, Apellido, Dir, Tel, Correo, Entidad);
+            if (objcd_Altas.clearConfirm)
+            {
+                clearConf = true;
+            }
+            else
+            {
+                clearConf = false;
+            }
+        }
     }
 }

@@ -156,6 +156,7 @@
     <Compile Include="CN_Articulo.cs" />
     <Compile Include="CN_Categoria.cs" />
     <Compile Include="CN_Consultas.cs" />
+    <Compile Include="CN_H_Presupuesto.cs" />
     <Compile Include="CN_Modificaciones.cs" />
     <Compile Include="CN_Permiso.cs" />
     <Compile Include="CN_Proveedores.cs" />

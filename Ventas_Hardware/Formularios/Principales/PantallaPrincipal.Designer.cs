@@ -36,7 +36,7 @@
             this.opciones = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesión = new System.Windows.Forms.ToolStripMenuItem();
             this.administrar = new System.Windows.Forms.ToolStripMenuItem();
-            this.vendedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Cliente_alta_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Cliente_mod_menu = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +113,7 @@
             // administrar
             // 
             this.administrar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vendedoresToolStripMenuItem,
+            this.UsuariosToolStripMenuItem,
             this.clientesToolStripMenuItem,
             this.proveedoresToolStripMenuItem,
             this.categoriasSubcategoríasToolStripMenuItem});
@@ -122,14 +122,14 @@
             this.administrar.Size = new System.Drawing.Size(90, 23);
             this.administrar.Text = "administrar";
             // 
-            // vendedoresToolStripMenuItem
+            // UsuariosToolStripMenuItem
             // 
-            this.vendedoresToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
-            this.vendedoresToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.vendedoresToolStripMenuItem.Name = "vendedoresToolStripMenuItem";
-            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
-            this.vendedoresToolStripMenuItem.Text = "vendedores";
-            this.vendedoresToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
+            this.UsuariosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
+            this.UsuariosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem";
+            this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
+            this.UsuariosToolStripMenuItem.Text = "Usuarios";
+            this.UsuariosToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -147,7 +147,7 @@
             this.Cliente_alta_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
             this.Cliente_alta_menu.ForeColor = System.Drawing.Color.White;
             this.Cliente_alta_menu.Name = "Cliente_alta_menu";
-            this.Cliente_alta_menu.Size = new System.Drawing.Size(156, 24);
+            this.Cliente_alta_menu.Size = new System.Drawing.Size(180, 24);
             this.Cliente_alta_menu.Text = "alta";
             this.Cliente_alta_menu.Click += new System.EventHandler(this.Cliente_alta_menu_Click);
             // 
@@ -156,7 +156,7 @@
             this.Cliente_mod_menu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(38)))), ((int)(((byte)(65)))));
             this.Cliente_mod_menu.ForeColor = System.Drawing.Color.White;
             this.Cliente_mod_menu.Name = "Cliente_mod_menu";
-            this.Cliente_mod_menu.Size = new System.Drawing.Size(156, 24);
+            this.Cliente_mod_menu.Size = new System.Drawing.Size(180, 24);
             this.Cliente_mod_menu.Text = "modificación";
             this.Cliente_mod_menu.Click += new System.EventHandler(this.Cliente_mod_menu_Click);
             // 
@@ -436,7 +436,7 @@
         private System.Windows.Forms.ToolStripMenuItem opciones;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesión;
         private System.Windows.Forms.ToolStripMenuItem administrar;
-        private System.Windows.Forms.ToolStripMenuItem vendedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Cliente_alta_menu;
         private System.Windows.Forms.ToolStripMenuItem Cliente_mod_menu;
