@@ -81,7 +81,7 @@ namespace Ventas_Hardware
         }
 
         private void btnBuscarArt_Click(object sender, EventArgs e)
-        {;
+        {
             dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
             if (dt.Rows.Count != null && dt.Rows.Count != 0)
             {
@@ -120,9 +120,12 @@ namespace Ventas_Hardware
                     {
                         dgvArticulos.Rows.Add(txtCodigo.Text, txtDescripcion.Text, Precio, txtCantidad.Text, PxCant);
                     }
-                    txtDescripcion.Text = "";
-                    txtCodigo.Text = "";
-                    txtCantidad.Text = "";
+                    if (dgvArticulos.Rows.Count > 1)
+                    {
+                        txtDescripcion.Text = "";
+                        txtCodigo.Text = "";
+                        txtCantidad.Text = "";
+                    }
                 }
             }
             catch (Exception ex)
@@ -146,7 +149,7 @@ namespace Ventas_Hardware
         {
             decimal Descuento = decimal.Parse(txtDescuento.Text);
             decimal SubTotal = decimal.Parse(txtSubTotal.Text);
-            txtTotal.Text = (SubTotal-(SubTotal*Descuento/100)).ToString();
+            txtTotal.Text = Decimal.Round((SubTotal-(SubTotal*Descuento/100)), 2).ToString();
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -157,9 +160,16 @@ namespace Ventas_Hardware
             txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text), 
             decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos);
 
-            if(cN_Altas.clearConf)
+            if (cmbCliente.Text == "Cliente Nuevo")
+            {
+                cN_Altas.CN_AltaCliente_PresupuestoRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text,
+                txtEntidad.Text);
+            }
+
+            if (cN_Altas.clearConf)
             {
                 clear();
+                clearDetalle();
             }
         }
 
@@ -189,6 +199,109 @@ namespace Ventas_Hardware
             txtDescuento.Text = "";
             txtTotal.Text = "";
             dgvArticulos.Rows.Clear();
+        }
+
+        private void clearDetalle()
+        {
+            txtCodigo.Text = "";
+            txtCantidad.Text = "";
+            txtDescripcion.Text = "";
+            txtSubTotal.Text = "";
+            txtDescuento.Text = "";
+            txtTotal.Text = "";
+        }
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+
+            if (dgvArticulos.CurrentRow != null && !dgvArticulos.CurrentRow.IsNewRow)
+            {
+                DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                txtCodigo.Text = filaSelec.Cells[0].Value.ToString();
+                txtDescripcion.Text = filaSelec.Cells[1].Value.ToString();
+                txtCantidad.Text = filaSelec.Cells[3].Value.ToString();
+            }
+        }
+
+        private void btnRestar_Click(object sender, EventArgs e)
+        {
+            if (txtDescripcion.Text != null && txtDescripcion.Text != "")
+            {
+                foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                {
+                    if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                    {
+                        decimal Precio = precioVenta();
+
+                        int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
+                        if (cantidadActual == 1)
+                        {
+                            SubTotal -= Precio;
+                            txtSubTotal.Text = SubTotal.ToString();
+                            DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                            dgvArticulos.Rows.Remove(filaSelec);
+
+                            if (dgvArticulos.Rows.Count == 0)
+                            {
+                                clearDetalle();
+                            }
+                        }
+                        else
+                        {
+                            if (cantidadActual > 0)
+                            {
+                                decimal PxCant = (Convert.ToDecimal(txtCantidad.Text) - 1) * Precio;
+                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                                fila.Cells["C_Cantidad"].Value = cantidadActual - 1;
+                                fila.Cells["C_Pxcant"].Value = PxCant;
+                                txtCantidad.Text = (cantidadActual - 1).ToString();
+                                SubTotal -= Precio;
+                                txtSubTotal.Text = SubTotal.ToString();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto de la lista","Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.Rows.Count != null && dgvArticulos.Rows.Count != 0)
+            {
+                DialogResult dres = MessageBox.Show("¿Desea remover este articulo de la lista?", "Remover", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dres == DialogResult.OK)
+                {
+                    if (dgvArticulos.Rows.Count == 1)
+                    {
+                        clearDetalle();
+                    }
+                    else
+                    {
+                        foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                        {
+                            DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                            decimal Precio = precioVenta();
+                            if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                            {
+                                //decimal PxCant = (Convert.ToDecimal(txtCantidad.Text)) * Precio;
+                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                                SubTotal -= PxCantActual;
+                                txtSubTotal.Text = SubTotal.ToString();
+                                dgvArticulos.Rows.Remove(filaSelec);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

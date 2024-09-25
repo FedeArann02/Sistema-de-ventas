@@ -22,7 +22,7 @@ namespace Ventas_Hardware
         {
             if (obj_usuario == null)
             {
-                Usuario_actual = new Usuario() { Nombre = "ADMIN PROGRAMADOR", ID_Usuario = 1 };
+                Usuario_actual = new Usuario() { Nombre = "ADMIN PROGRAMADOR", ID_Usuario = 0 };
             }
             else
             {
@@ -42,9 +42,9 @@ namespace Ventas_Hardware
 
             if (!ListaPermisos.Any(m => m.NombreMenu == "administrar"))
             {
-                btnProveedores.Visible = false;
-                btnListaCompras.Visible = false;
-                administrar.Visible = false;
+                //btnProveedores.Visible = false;
+                //btnListaCompras.Visible = false;
+                //administrar.Visible = false;
             }
 
             lblUsuario.Text = Usuario_actual.Nombre;
@@ -64,6 +64,13 @@ namespace Ventas_Hardware
             frmHija.Dock = DockStyle.Fill;
             panContenedor.Controls.Add(frmHija);
             frmHija.Show();
+        }
+        private void AbrirFormDialog(Form frmHija)
+        {
+            frmActicvo = frmHija;
+            frmHija.FormBorderStyle = FormBorderStyle.None;
+            frmHija.StartPosition = FormStartPosition.CenterScreen;
+            frmHija.ShowDialog();
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
@@ -103,32 +110,32 @@ namespace Ventas_Hardware
 
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmVendedores());
+            AbrirFormDialog(new frmVendedores());
         }
 
         private void Cliente_alta_menu_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmClientes_alta());
+            AbrirFormDialog(new frmClientes_alta());
         }
 
         private void Cliente_mod_menu_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmClientes_modificacion());
+            AbrirFormDialog(new frmClientes_modificacion());
         }
 
         private void Proveedores_alta_menu_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmProveedores_alta());
+            AbrirFormDialog(new frmProveedores_alta());
         }
 
         private void Proveedores_mod_menu_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmProveedores_modificacion());
+            AbrirFormDialog(new frmProveedores_modificacion());
         }
 
         private void Categorias_alta_menu_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmCatSubcat_alta());
+            AbrirFormDialog(new frmCatSubcat_alta());
         }
 
         private void lblInicio_Click(object sender, EventArgs e)

@@ -1,48 +1,45 @@
 ﻿using CapaEntidad;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 using CapaDatos;
 using CapaEntidad;
-using System.Data;
-using System.Data.SqlClient;
-using System.Net.NetworkInformation;
 
 namespace CapaDatos
 {
-    public class CD_Categoria
+    public class CD_H_Presupuesto
     {
-        public List<Categoria> Listar(string filtro)
+        public List<H_Presupuesto> ListarNombreNro()
         {
-            List<Categoria> Lista = new List<Categoria>();
+            List<H_Presupuesto> Lista = new List<H_Presupuesto>();
             using (SqlConnection obj_conexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
-                    StringBuilder Query = new StringBuilder();
-                    Query.Append("select c.Cod_categoria, c.Nombre from CATEGORIA c ");
-                    Query.Append("where c.Nombre LIKE @filtro");
+                    string Query = "select p.nombre, p.id_Presupuesto, p.dni from H_Presupuesto p";
                     SqlCommand cmd = new SqlCommand(Query.ToString(), obj_conexion);
-                    cmd.Parameters.AddWithValue("filtro", filtro + "%");
-                    cmd.CommandType = CommandType.Text; //indico al comando que es un tipo de comando de Texto.
+                    cmd.CommandType = CommandType.Text;
                     obj_conexion.Open();
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
                         while (dr.Read())
                         {
-                            Lista.Add(new Categoria()
+                            Lista.Add(new H_Presupuesto()
                             {
-                                Cod_categoria = Convert.ToInt32(dr["Cod_categoria"]),
-                                Nombre = dr["Nombre"].ToString()
+                                nombre = dr["nombre"].ToString(),
+                                id_presupuesto = Convert.ToInt32(dr["id_presupuesto"]),
+                                dni = dr["dni"].ToString()
                             });
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Lista = new List<Categoria>();
+                    Lista = new List<H_Presupuesto>();
                 }
             }
             return Lista;

@@ -47,6 +47,7 @@
             this.lblCategoriaDetalle = new System.Windows.Forms.Label();
             this.txtGanancia = new System.Windows.Forms.TextBox();
             this.lblCodigoDetalle = new System.Windows.Forms.Label();
+            this.lblAlta = new System.Windows.Forms.Label();
             this.panelDetalle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,7 @@
             this.panelDetalle.Controls.Add(this.lblCategoriaDetalle);
             this.panelDetalle.Controls.Add(this.txtGanancia);
             this.panelDetalle.Controls.Add(this.lblCodigoDetalle);
-            this.panelDetalle.Location = new System.Drawing.Point(19, 12);
+            this.panelDetalle.Location = new System.Drawing.Point(19, 38);
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(711, 176);
             this.panelDetalle.TabIndex = 32;
@@ -291,12 +292,25 @@
             this.lblCodigoDetalle.TabIndex = 22;
             this.lblCodigoDetalle.Text = "Código:";
             // 
+            // lblAlta
+            // 
+            this.lblAlta.AutoSize = true;
+            this.lblAlta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblAlta.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.lblAlta.Location = new System.Drawing.Point(12, 17);
+            this.lblAlta.Name = "lblAlta";
+            this.lblAlta.Size = new System.Drawing.Size(166, 32);
+            this.lblAlta.TabIndex = 50;
+            this.lblAlta.Text = "Alta Articulo:";
+            // 
             // frmArtAltas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(749, 499);
+            this.Controls.Add(this.lblAlta);
             this.Controls.Add(this.panelDetalle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmArtAltas";
@@ -304,6 +318,7 @@
             this.panelDetalle.ResumeLayout(false);
             this.panelDetalle.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -328,5 +343,6 @@
         private System.Windows.Forms.ComboBox cmbSubcategoria;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label lblAlta;
     }
 }
