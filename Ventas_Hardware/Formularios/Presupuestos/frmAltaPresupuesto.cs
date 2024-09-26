@@ -145,11 +145,40 @@ namespace Ventas_Hardware
             return Decimal.Round(Precio_Venta, 2);
         }
 
-        private void btnReCalcular_Click(object sender, EventArgs e)
+        private void reCalcular()
         {
-            decimal Descuento = decimal.Parse(txtDescuento.Text);
-            decimal SubTotal = decimal.Parse(txtSubTotal.Text);
-            txtTotal.Text = Decimal.Round((SubTotal-(SubTotal*Descuento/100)), 2).ToString();
+            try
+            {
+                if (txtDescuento.Text == null || txtDescuento.Text == "")
+                {
+                    decimal Descuento = 0;
+                    if (txtSubTotal.Text == null || txtSubTotal.Text == "")
+                    {
+                        decimal SubTotal = 0;
+                    }
+                    else
+                    {
+                        decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                        txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+                    }
+                }
+                else if (decimal.Parse(txtDescuento.Text) > 100)
+                {
+                    MessageBox.Show("El descuento no puede ser mayor al 100%", "Error");
+                    txtDescuento.Text = "";
+                }
+                else
+                {
+                    decimal Descuento = decimal.Parse(txtDescuento.Text);
+                    decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                    txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Posible error en el formato ingresado, solo se admiten números enteros o decimales positivos");
+                txtDescuento.Text = "";
+            }
         }
 
         private void btnGenerar_Click(object sender, EventArgs e)
@@ -158,7 +187,7 @@ namespace Ventas_Hardware
 
             cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, 
             txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text), 
-            decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos);
+            decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
 
             if (cmbCliente.Text == "Cliente Nuevo")
             {
@@ -192,22 +221,24 @@ namespace Ventas_Hardware
             txtEntidad.Text = "";
 
             //PanelDetalle
+            txtCodigoPresupuesto.Text = "";
             txtCodigo.Text = "";
             txtCantidad.Text = "";
             txtDescripcion.Text = "";
-            txtSubTotal.Text = "";
             txtDescuento.Text = "";
+            txtSubTotal.Text = "";
             txtTotal.Text = "";
             dgvArticulos.Rows.Clear();
         }
 
         private void clearDetalle()
         {
+            txtCodigoPresupuesto.Text = "";
             txtCodigo.Text = "";
             txtCantidad.Text = "";
             txtDescripcion.Text = "";
-            txtSubTotal.Text = "";
             txtDescuento.Text = "";
+            txtSubTotal.Text = "";
             txtTotal.Text = "";
         }
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -302,6 +333,16 @@ namespace Ventas_Hardware
             {
                 MessageBox.Show("Seleccione un producto de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            reCalcular();
+        }
+
+        private void txtSubTotal_TextChanged(object sender, EventArgs e)
+        {
+            reCalcular();
         }
     }
 }

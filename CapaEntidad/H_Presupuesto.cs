@@ -11,6 +11,7 @@ namespace CapaEntidad
     public class H_Presupuesto
     {
         public int id_presupuesto {  get; set; }
+        public string Nro_presupuesto { get; set; }
         public DateTime fecha_hora {  get; set; }
         public string apellido { get; set; }
         public string nombre { get; set; }

@@ -20,7 +20,7 @@ namespace CapaDatos
             {
                 try
                 {
-                    string Query = "select p.nombre, p.id_Presupuesto, p.dni from H_Presupuesto p";
+                    string Query = "select p.nombre, p.id_Presupuesto, p.Nro_presupuesto, p.dni from H_Presupuesto p";
                     SqlCommand cmd = new SqlCommand(Query.ToString(), obj_conexion);
                     cmd.CommandType = CommandType.Text;
                     obj_conexion.Open();
@@ -32,6 +32,7 @@ namespace CapaDatos
                             {
                                 nombre = dr["nombre"].ToString(),
                                 id_presupuesto = Convert.ToInt32(dr["id_presupuesto"]),
+                                Nro_presupuesto = dr["Nro_presupuesto"].ToString(),
                                 dni = dr["dni"].ToString()
                             });
                         }

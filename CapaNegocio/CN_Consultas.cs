@@ -28,13 +28,13 @@ namespace CapaNegocio
             return Querys.ConsultaCliente(Documentacion);
         }
 
-        public DataTable ConsultaPresupuesto(int id_prespsupuesto)
+        public DataTable ConsultaPresupuesto(string Nro_prespuesto)
         {
-            return Querys.ConsultaPresupuesto(id_prespsupuesto);
+            return Querys.ConsultaPresupuesto(Nro_prespuesto);
         }
-        public DataTable ConsultaP_Detalle(int id_prespsupuesto)
+        public DataTable ConsultaP_Detalle(string Nro_presupuesto)
         {
-            return Querys.ConsultaPresupuestoDetalle(id_prespsupuesto);
+            return Querys.ConsultaPresupuestoDetalle(Nro_presupuesto);
         }
     }
 }

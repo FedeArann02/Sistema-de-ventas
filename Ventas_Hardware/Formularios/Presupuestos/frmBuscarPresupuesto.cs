@@ -18,6 +18,7 @@ namespace Ventas_Hardware
     {
         public CN_Consultas cN_Consultas = new CN_Consultas();
         public DataTable dt = new DataTable();
+        public CN_Modificaciones modificacion = new CN_Modificaciones();
         public decimal SubTotal;
         public frmBuscarPresupuesto()
         {
@@ -63,8 +64,8 @@ namespace Ventas_Hardware
                     .Where(p => p.dni == selectedDNI)
                     .ToList(); //Lambda que aplica el metodo Where de la clase List, que filtra donde los codigos hagan match.
 
-                cmbNro.DisplayMember = "id_presupuesto";
-                cmbNro.ValueMember = "id_presupuesto";
+                cmbNro.DisplayMember = "Nro_presupuesto";
+                cmbNro.ValueMember = "Nro_presupuesto";
                 cmbNro.DataSource = presupuestos;
                 cmbNro.SelectedIndex = -1;
             }
@@ -78,7 +79,7 @@ namespace Ventas_Hardware
         private void ConsultarPresupuesto()
         {
             dgvArticulos.Rows.Clear();
-            dt = cN_Consultas.ConsultaPresupuesto(Convert.ToInt32(cmbNro.Text));
+            dt = cN_Consultas.ConsultaPresupuesto((cmbNro.Text));
 
             //Lllenar textboxes
             txtNombre.Text = dt.Rows[0]["nombre"].ToString();
@@ -92,9 +93,10 @@ namespace Ventas_Hardware
             txtDescuento.Text = dt.Rows[0]["descuento"].ToString();
             txtTotal.Text = dt.Rows[0]["total"].ToString();
             txtFechaHora.Text = dt.Rows[0]["Fecha y hora"].ToString();
+            txtCodigoPresupuesto.Text = dt.Rows[0]["Nro_presupuesto"].ToString();
             SubTotal = decimal.Parse(txtSubTotal.Text);
 
-            dt = cN_Consultas.ConsultaP_Detalle(Convert.ToInt32(cmbNro.Text));
+            dt = cN_Consultas.ConsultaP_Detalle((cmbNro.Text));
 
             //Llenar grilla
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -117,12 +119,15 @@ namespace Ventas_Hardware
             txtEntidad.Text = "";
 
             //PanelDetalle
+            txtFechaHora.Text = "";
+            txtCodigoPresupuesto.Text = "";
             txtCodigo.Text = "";
             txtCantidad.Text = "";
             txtDescripcion.Text = "";
-            txtSubTotal.Text = "";
             txtDescuento.Text = "";
+            txtSubTotal.Text = "";
             txtTotal.Text = "";
+            txtCodigoPresupuesto.Text = "";
             dgvArticulos.Rows.Clear();
         }
 
@@ -179,21 +184,45 @@ namespace Ventas_Hardware
             txtSubTotal.Text = SubTotal.ToString();
         }
 
-        private void btnReCalcular_Click_1(object sender, EventArgs e)
+        private void reCalcular()
         {
-            decimal Descuento = decimal.Parse(txtDescuento.Text);
-            decimal SubTotal = decimal.Parse(txtSubTotal.Text);
-            txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+            try
+            {
+                if (txtDescuento.Text == null || txtDescuento.Text == "")
+                {
+                    decimal Descuento = 0;
+                    if (txtSubTotal.Text == null || txtSubTotal.Text == "")
+                    {
+                        decimal SubTotal = 0;
+                    }
+                    else
+                    {
+                        decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                        txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+                    }
+                }
+                else if (decimal.Parse(txtDescuento.Text) > 100)
+                {
+                    MessageBox.Show("El descuento no puede ser mayor al 100%", "Error");
+                    txtDescuento.Text = "";
+                }
+                else
+                {
+                    decimal Descuento = decimal.Parse(txtDescuento.Text);
+                    decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                    txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Posible error en el formato ingresado, solo se admiten números enteros o decimales positivos");
+                txtDescuento.Text = "";
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             clear();
-        }
-
-        private void btnGenerar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRestar_Click(object sender, EventArgs e)
@@ -280,11 +309,13 @@ namespace Ventas_Hardware
 
         private void clearDetalle()
         {
+            txtFechaHora.Text = "";
+            txtCodigoPresupuesto.Text = "";
             txtCodigo.Text = "";
             txtCantidad.Text = "";
             txtDescripcion.Text = "";
-            txtSubTotal.Text = "";
             txtDescuento.Text = "";
+            txtSubTotal.Text = "";
             txtTotal.Text = "";
         }
 
@@ -310,6 +341,29 @@ namespace Ventas_Hardware
                 txtDescripcion.Text = filaSelec.Cells[1].Value.ToString();
                 txtCantidad.Text = filaSelec.Cells[3].Value.ToString();
             }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            modificacion.mod_Presupuesto(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
+            txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
+            decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
+
+            if (modificacion.modConfirm)
+            {
+                clear();
+                clearDetalle();
+            }
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            reCalcular();
+        }
+
+        private void txtSubTotal_TextChanged(object sender, EventArgs e)
+        {
+            reCalcular();
         }
     }
 }

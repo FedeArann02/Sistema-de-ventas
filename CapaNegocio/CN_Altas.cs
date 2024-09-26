@@ -28,9 +28,9 @@ namespace CapaNegocio
             }
         }
 
-        public void CN_PresupAlta (string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv)
+        public void CN_PresupAlta (string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP)
         {
-            objcd_Altas.altaPresupuesto(Doc, Nombre, Apellido, Tel, Mail, Ent, Dir, Sub, Descuento, Total, F_H, dgv);
+            objcd_Altas.altaPresupuesto(Doc, Nombre, Apellido, Tel, Mail, Ent, Dir, Sub, Descuento, Total, F_H, dgv, NroP);
 
             if (objcd_Altas.clearConfirm)
             {

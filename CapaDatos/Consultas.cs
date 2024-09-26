@@ -84,7 +84,7 @@ namespace CapaDatos
                     if (Documentacion == "TodosNombres")
                     {
                         Query.AppendLine("SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad");
-                        Query.AppendLine("FROM CLIENTE");
+                        Query.AppendLine(" FROM CLIENTE");
                     }
                     else
                     {
@@ -107,7 +107,7 @@ namespace CapaDatos
             return dt;
         }
 
-        public DataTable ConsultaPresupuesto(int id_presupuesto)
+        public DataTable ConsultaPresupuesto(string Nro_presupuesto)
         {
             DataTable dt = new DataTable();
 
@@ -116,14 +116,14 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder Query = new StringBuilder();
-                    Query.AppendLine("SELECT p.id_presupuesto, p.nombre, p.Apellido, p.tel, p.email, p.entidad, p.dni, p.subtotal, p.descuento, p.total, p.direccion, p.fecha_hora AS 'Fecha y Hora',");
-                    Query.AppendLine("d.id_presupuesto_detalle, d.id_presupuesto, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'");
+                    Query.AppendLine("SELECT p.id_presupuesto, p.Nro_presupuesto, p.nombre, p.Apellido, p.tel, p.email, p.entidad, p.dni, p.subtotal, p.descuento, p.total, p.direccion, p.fecha_hora AS 'Fecha y Hora',");
+                    Query.AppendLine("d.id_presupuesto_detalle, d.id_presupuesto_detalle, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'");
                     Query.AppendLine("FROM H_Presupuesto p");
-                    Query.AppendLine("INNER JOIN H_Presupuesto_Detalle d ON p.id_presupuesto = d.id_presupuesto");
-                    Query.AppendLine("WHERE p.id_presupuesto = @id_presupuesto;");
+                    Query.AppendLine("INNER JOIN H_Presupuesto_Detalle d ON p.Nro_presupuesto = d.Nro_presupuesto");
+                    Query.AppendLine("WHERE p.Nro_presupuesto = @NroP;");
 
                     SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
-                    cmd.Parameters.AddWithValue("@id_presupuesto", id_presupuesto);
+                    cmd.Parameters.AddWithValue("@NroP", Nro_presupuesto);
                     cmd.CommandType = CommandType.Text;
                     objConexion.Open();
                     SqlDataReader dR = cmd.ExecuteReader();
@@ -137,7 +137,7 @@ namespace CapaDatos
             return dt;
         }
 
-        public DataTable ConsultaPresupuestoDetalle(int id_presupuesto)
+        public DataTable ConsultaPresupuestoDetalle(string Nro_presupuesto)
         {
             DataTable dt = new DataTable();
 
@@ -146,12 +146,12 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder Query = new StringBuilder();
-                    Query.AppendLine("SELECT d.id_presupuesto_detalle, d.id_presupuesto, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'");
+                    Query.AppendLine("SELECT d.id_presupuesto_detalle, d.Nro_presupuesto, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'\r\n");
                     Query.AppendLine("FROM H_Presupuesto_detalle d");
-                    Query.AppendLine("WHERE d.id_presupuesto = @id_presupuesto;");
+                    Query.AppendLine("WHERE d.Nro_presupuesto = @NroP;");
 
                     SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
-                    cmd.Parameters.AddWithValue("@id_presupuesto", id_presupuesto);
+                    cmd.Parameters.AddWithValue("@NroP", Nro_presupuesto);
                     cmd.CommandType = CommandType.Text;
                     objConexion.Open();
                     SqlDataReader dR = cmd.ExecuteReader();

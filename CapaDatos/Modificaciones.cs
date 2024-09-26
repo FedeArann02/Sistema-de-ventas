@@ -120,5 +120,79 @@ namespace CapaDatos
                 }
             }
         }
+
+        public void modPresupuesto(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP)
+        {
+            modConfirm = false;
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                objConexion.Open();
+                try
+                {
+
+                    StringBuilder insertDetalleQuery = new StringBuilder();
+                    StringBuilder DeleteDetalle = new StringBuilder();
+                    StringBuilder insertPresupuestoQuery = new StringBuilder();
+
+                    DeleteDetalle.AppendLine("Delete H_presupuesto_detalle where H_Presupuesto_Detalle.Nro_presupuesto = @NroP");
+                    SqlCommand cmdDeleteDetalle = new SqlCommand(DeleteDetalle.ToString(), objConexion);
+                    cmdDeleteDetalle.Parameters.AddWithValue("NroP", NroP);
+
+                    insertPresupuestoQuery.AppendLine("UPDATE H_Presupuesto SET dni = @documentacion, nombre = @Nombre, Apellido = @Apellido, tel = @Telefono,");
+                    insertPresupuestoQuery.AppendLine("email = @Mail, entidad = @Entidad, direccion = @Direccion, subtotal = @Subtotal, descuento = @Descuento, total = @Total, fecha_hora = @FechaHora where Nro_Presupuesto = @NroP;");
+
+                    SqlCommand cmdPresupuesto = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion);
+
+                    cmdPresupuesto.Parameters.AddWithValue("@NroP", NroP);
+                    cmdPresupuesto.Parameters.AddWithValue("@documentacion", Doc);
+                    cmdPresupuesto.Parameters.AddWithValue("@Nombre", Nombre);
+                    cmdPresupuesto.Parameters.AddWithValue("@Apellido", Apellido);
+                    cmdPresupuesto.Parameters.AddWithValue("@Telefono", Tel);
+                    cmdPresupuesto.Parameters.AddWithValue("@Mail", Mail);
+                    cmdPresupuesto.Parameters.AddWithValue("@Entidad", Ent);
+                    cmdPresupuesto.Parameters.AddWithValue("@Direccion", Dir);
+                    cmdPresupuesto.Parameters.AddWithValue("@Subtotal", Sub);
+                    cmdPresupuesto.Parameters.AddWithValue("@Descuento", Descuento);
+                    cmdPresupuesto.Parameters.AddWithValue("@Total", Total);
+                    cmdPresupuesto.Parameters.AddWithValue("@FechaHora", F_H);
+
+                    cmdDeleteDetalle.ExecuteNonQuery();
+                    cmdPresupuesto.ExecuteNonQuery();
+
+                    foreach (DataGridViewRow Rows in dgv.Rows)
+                    {
+                        if (!Rows.IsNewRow)
+                        {
+                            insertDetalleQuery.AppendLine("INSERT INTO H_Presupuesto_Detalle(Nro_Presupuesto, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES");
+                            insertDetalleQuery.AppendLine("(@Nro_Presupuesto ,@Cod_articulo, @Descripcion, @PrecioUnitario, @Cantidad, @PxCant);");
+
+                            SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion);
+
+                            string CodArt = Rows.Cells["C_CodArt"].Value.ToString();
+                            string Desc = Rows.Cells["C_Descripcion"].Value.ToString();
+                            decimal P_Unit = decimal.Parse(Rows.Cells["C_PrecioUnit"].Value.ToString());
+                            int Cant = int.Parse(Rows.Cells["C_Cantidad"].Value.ToString());
+                            decimal PxCant = decimal.Parse(Rows.Cells["C_Pxcant"].Value.ToString());
+                            cmdDetalle.Parameters.AddWithValue("@Nro_Presupuesto", NroP);
+                            cmdDetalle.Parameters.AddWithValue("@Cod_articulo", CodArt);
+                            cmdDetalle.Parameters.AddWithValue("@Descripcion", Desc);
+                            cmdDetalle.Parameters.AddWithValue("@PrecioUnitario", P_Unit);
+                            cmdDetalle.Parameters.AddWithValue("@Cantidad", Cant);
+                            cmdDetalle.Parameters.AddWithValue("@PxCant", PxCant);
+                            cmdDetalle.ExecuteNonQuery();
+                            insertDetalleQuery.Clear();
+                        }
+                    }
+
+                    modConfirm = true;
+                    MessageBox.Show("Presupuesto modificado con éxito", "PRESUPUESTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del Registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
