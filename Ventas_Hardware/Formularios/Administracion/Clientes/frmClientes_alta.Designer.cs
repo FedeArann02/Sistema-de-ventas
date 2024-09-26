@@ -45,9 +45,9 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.panelDatosEncabezado = new System.Windows.Forms.Panel();
-            this.lblDatos = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.lblDatos = new System.Windows.Forms.Label();
             this.panelDatosEncabezado.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -263,17 +263,6 @@
             this.panelDatosEncabezado.Size = new System.Drawing.Size(641, 206);
             this.panelDatosEncabezado.TabIndex = 77;
             // 
-            // lblDatos
-            // 
-            this.lblDatos.AutoSize = true;
-            this.lblDatos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
-            this.lblDatos.Location = new System.Drawing.Point(0, 0);
-            this.lblDatos.Name = "lblDatos";
-            this.lblDatos.Size = new System.Drawing.Size(108, 19);
-            this.lblDatos.TabIndex = 60;
-            this.lblDatos.Text = "Datos de cliente";
-            // 
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.IndianRed;
@@ -303,11 +292,22 @@
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // lblDatos
+            // 
+            this.lblDatos.AutoSize = true;
+            this.lblDatos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
+            this.lblDatos.Location = new System.Drawing.Point(0, 0);
+            this.lblDatos.Name = "lblDatos";
+            this.lblDatos.Size = new System.Drawing.Size(108, 19);
+            this.lblDatos.TabIndex = 60;
+            this.lblDatos.Text = "Datos de cliente";
+            // 
             // frmClientes_alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(23)))), ((int)(((byte)(84)))));
             this.ClientSize = new System.Drawing.Size(700, 300);
             this.Controls.Add(this.panelDatosEncabezado);
             this.Controls.Add(this.btnSalir);

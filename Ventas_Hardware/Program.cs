@@ -12,6 +12,7 @@ namespace Ventas_Hardware
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         /// //DESKTOP-6M7LNLV\SQLEXPRESS >> SERVIDOR DE NETBOOK fede
+        /// DESKTOP-QVQ3K29\SQLEXPRESS >> SERVIDOR PC
         [STAThread]
         static void Main()
         {

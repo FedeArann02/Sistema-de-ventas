@@ -32,6 +32,7 @@ namespace Ventas_Hardware
             if (cN_Modificaciones.modConfirm)
             {
                 clear();
+                txtCodigo.Enabled = true;
                 disableButtons();
             }
         }
@@ -181,6 +182,7 @@ namespace Ventas_Hardware
             if (cN_Modificaciones.modConfirm)
             {
                 clear();
+                txtCodigo.Enabled = true;
                 disableButtons();
             }
         }
@@ -191,6 +193,7 @@ namespace Ventas_Hardware
             if (cN_Modificaciones.modConfirm)
             {
                 clear();
+                txtCodigo.Enabled = true;
                 disableButtons();
             }
         }
