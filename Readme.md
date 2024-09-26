@@ -10,7 +10,7 @@
     <header>
         <h1>Sistema de Ventas</h1>
         <h2>¡Llevá un manejo ordenado y detallado de tu Negocio!</h2>
-        <img src="C:\Users\Leo\source\repos\FedeArann02\Sistema-de-ventas\Readme\images">
+        <img src="https://github.com/FedeArann02/Sistema-de-ventas/blob/master/images/SisVentas.jpg">
     </header>
     <main>
         <section>
