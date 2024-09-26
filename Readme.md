@@ -1,9 +1,6 @@
-# 🛒 SISTEMA DE VENTAS
-
+## 🛒 SISTEMA DE VENTAS
 ![Sistema de Ventas](https://github.com/FedeArann02/Sistema-de-ventas/blob/master/images/SisVentas.jpg)
-
-© 2024 Federico Aran
-
+- © 2024 Federico Aran 
 ---
 
 ## 🚀 Funcionalidades Principales
