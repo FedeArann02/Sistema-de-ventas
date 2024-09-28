@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
 {
     public partial class frmCategorias : Form
     {
+        CN_Categoria cN_Categoria = new CN_Categoria();
         public frmCategorias()
         {
             InitializeComponent();
+            llenarGrilla();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -25,6 +28,11 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
         private void btnAgregar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void llenarGrilla()
+        {
+            dgvCategorias.DataSource = cN_Categoria.Listar("");
         }
     }
 }

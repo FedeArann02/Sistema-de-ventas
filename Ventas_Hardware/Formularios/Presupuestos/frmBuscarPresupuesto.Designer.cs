@@ -34,6 +34,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblCodigoPres = new System.Windows.Forms.Label();
             this.txtCodigoPresupuesto = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnRestar = new System.Windows.Forms.Button();
@@ -81,10 +83,8 @@
             this.cmbNombres = new System.Windows.Forms.ComboBox();
             this.lblNombresBuscar = new System.Windows.Forms.Label();
             this.cmbNro = new System.Windows.Forms.ComboBox();
-            this.lblNro = new System.Windows.Forms.Label();
+            this.lblCodigoP = new System.Windows.Forms.Label();
             this.btnCargar = new System.Windows.Forms.Button();
-            this.lblCodigoPres = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
             this.panelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDatosEncabezado.SuspendLayout();
@@ -125,6 +125,30 @@
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(706, 293);
             this.panelDetalle.TabIndex = 52;
+            // 
+            // lblFecha
+            // 
+            this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.ForeColor = System.Drawing.Color.White;
+            this.lblFecha.Location = new System.Drawing.Point(403, 8);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(78, 16);
+            this.lblFecha.TabIndex = 70;
+            this.lblFecha.Text = "Fecha y hora:";
+            // 
+            // lblCodigoPres
+            // 
+            this.lblCodigoPres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCodigoPres.AutoSize = true;
+            this.lblCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoPres.ForeColor = System.Drawing.Color.White;
+            this.lblCodigoPres.Location = new System.Drawing.Point(174, 8);
+            this.lblCodigoPres.Name = "lblCodigoPres";
+            this.lblCodigoPres.Size = new System.Drawing.Size(139, 16);
+            this.lblCodigoPres.TabIndex = 69;
+            this.lblCodigoPres.Text = "Código del Presupuesto:";
             // 
             // txtCodigoPresupuesto
             // 
@@ -802,17 +826,17 @@
             this.cmbNro.Size = new System.Drawing.Size(87, 24);
             this.cmbNro.TabIndex = 56;
             // 
-            // lblNro
+            // lblCodigoP
             // 
-            this.lblNro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNro.AutoSize = true;
-            this.lblNro.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNro.ForeColor = System.Drawing.Color.White;
-            this.lblNro.Location = new System.Drawing.Point(518, 4);
-            this.lblNro.Name = "lblNro";
-            this.lblNro.Size = new System.Drawing.Size(31, 16);
-            this.lblNro.TabIndex = 55;
-            this.lblNro.Text = "Nro:";
+            this.lblCodigoP.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCodigoP.AutoSize = true;
+            this.lblCodigoP.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoP.ForeColor = System.Drawing.Color.White;
+            this.lblCodigoP.Location = new System.Drawing.Point(518, 4);
+            this.lblCodigoP.Name = "lblCodigoP";
+            this.lblCodigoP.Size = new System.Drawing.Size(77, 16);
+            this.lblCodigoP.TabIndex = 55;
+            this.lblCodigoP.Text = "Presupuesto:";
             // 
             // btnCargar
             // 
@@ -831,30 +855,6 @@
             this.btnCargar.UseVisualStyleBackColor = false;
             this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
-            // lblCodigoPres
-            // 
-            this.lblCodigoPres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCodigoPres.AutoSize = true;
-            this.lblCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPres.ForeColor = System.Drawing.Color.White;
-            this.lblCodigoPres.Location = new System.Drawing.Point(174, 8);
-            this.lblCodigoPres.Name = "lblCodigoPres";
-            this.lblCodigoPres.Size = new System.Drawing.Size(139, 16);
-            this.lblCodigoPres.TabIndex = 69;
-            this.lblCodigoPres.Text = "Código del Presupuesto:";
-            // 
-            // lblFecha
-            // 
-            this.lblFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.ForeColor = System.Drawing.Color.White;
-            this.lblFecha.Location = new System.Drawing.Point(403, 8);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(78, 16);
-            this.lblFecha.TabIndex = 70;
-            this.lblFecha.Text = "Fecha y hora:";
-            // 
             // frmBuscarPresupuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -863,7 +863,7 @@
             this.ClientSize = new System.Drawing.Size(749, 499);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.cmbNro);
-            this.Controls.Add(this.lblNro);
+            this.Controls.Add(this.lblCodigoP);
             this.Controls.Add(this.cmbNombres);
             this.Controls.Add(this.lblNombresBuscar);
             this.Controls.Add(this.panelDetalle);
@@ -928,7 +928,7 @@
         private System.Windows.Forms.ComboBox cmbNombres;
         private System.Windows.Forms.Label lblNombresBuscar;
         private System.Windows.Forms.ComboBox cmbNro;
-        private System.Windows.Forms.Label lblNro;
+        private System.Windows.Forms.Label lblCodigoP;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.TextBox txtFechaHora;
         private System.Windows.Forms.Button btnEliminar;

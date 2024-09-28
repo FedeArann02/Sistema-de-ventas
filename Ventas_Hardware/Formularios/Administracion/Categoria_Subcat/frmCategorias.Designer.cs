@@ -94,6 +94,7 @@
             // dgvCategorias
             // 
             this.dgvCategorias.AllowUserToAddRows = false;
+            this.dgvCategorias.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategorias.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvCategorias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCategorias.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;

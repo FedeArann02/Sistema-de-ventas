@@ -205,6 +205,7 @@ namespace Ventas_Hardware
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             clear();
+            cmbCliente.Text = "SELECCIONE UNA OPCIÓN";
         }
 
         private void clear()
@@ -343,6 +344,19 @@ namespace Ventas_Hardware
         private void txtSubTotal_TextChanged(object sender, EventArgs e)
         {
             reCalcular();
+        }
+
+        private void cmbCliente_DropDown(object sender, EventArgs e)
+        {
+            cmbCliente.Text = "";
+        }
+
+        private void cmbCliente_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cmbCliente.SelectedIndex == -1 || cmbCliente.Text == "")
+            {
+                cmbCliente.Text = "SELECCIONE UNA OPCIÓN";
+            }
         }
     }
 }

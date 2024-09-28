@@ -194,5 +194,38 @@ namespace CapaDatos
                 }
             }
         }
+
+        public void RegistraPagoCliente(string Documentacion, decimal Monto)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("update CTA_CTE_CLIENTE set pagos = @Monto where Documentacion = @Doc");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Doc", Documentacion);
+                        cmd.Parameters.AddWithValue("@Monto", Monto);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    {
+                        modConfirm = true;
+                        MessageBox.Show("Pago registrado con éxito", "REGISTRO DE PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del pago", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
+
     }
 }

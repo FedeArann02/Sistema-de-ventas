@@ -172,6 +172,9 @@ namespace CapaDatos
                     StringBuilder Query = new StringBuilder();
                     Query.AppendLine("INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES");
                     Query.AppendLine("(@Doc, @Nombre, @Apellido, @Dir, @Tel, @Correo, @Entidad);");
+                    Query.AppendLine("INSERT INTO CTA_CTE_CLIENTE(Documentacion, compras, pagos, Fecha) VALUES");
+                    Query.AppendLine("(@Doc, 0, 0, @Fecha);");
+
 
                     SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
                     {
@@ -182,6 +185,7 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@Tel", Tel);
                         cmd.Parameters.AddWithValue("@Correo", Correo);
                         cmd.Parameters.AddWithValue("@Entidad", Entidad);
+                        cmd.Parameters.AddWithValue("@Fecha", DateTime.Now.Date);
                     }
                     objConexion.Open();
                     cmd.ExecuteNonQuery();

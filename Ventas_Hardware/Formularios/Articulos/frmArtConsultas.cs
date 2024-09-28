@@ -172,5 +172,21 @@ namespace Ventas_Hardware
         {
             SubCategoriaFuncion();
         }
+
+        private void txtStockDetalle_TextChanged(object sender, EventArgs e)
+        {
+            if (int.Parse(txtStockDetalle.Text) <= 5)
+            {
+                txtStockDetalle.ForeColor = Color.Crimson;
+            }
+            else if (int.Parse(txtStockDetalle.Text) <= 10)
+            {
+                txtStockDetalle.ForeColor = Color.Yellow;
+            }
+            else
+            {
+                txtStockDetalle.ForeColor= Color.White;
+            }
+        }
     }
 }

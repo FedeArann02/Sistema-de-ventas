@@ -67,6 +67,7 @@
             this.txtDocumentacionCliente = new System.Windows.Forms.TextBox();
             this.lblDNICUIL_T = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.lblCodigoPres = new System.Windows.Forms.Label();
             this.txtCodigoPresupuesto = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnRestar = new System.Windows.Forms.Button();
@@ -81,7 +82,6 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscarArt = new System.Windows.Forms.Button();
-            this.lblCodigoPres = new System.Windows.Forms.Label();
             this.panelDatosEncabezado.SuspendLayout();
             this.panelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
@@ -100,7 +100,10 @@
             this.cmbCliente.Name = "cmbCliente";
             this.cmbCliente.Size = new System.Drawing.Size(174, 24);
             this.cmbCliente.TabIndex = 34;
+            this.cmbCliente.Text = "SELECCIONE UNA OPCIÓN";
+            this.cmbCliente.DropDown += new System.EventHandler(this.cmbCliente_DropDown);
             this.cmbCliente.SelectedIndexChanged += new System.EventHandler(this.cmbCliente_SelectedIndexChanged);
+            this.cmbCliente.DropDownClosed += new System.EventHandler(this.cmbCliente_DropDownClosed);
             // 
             // lblPresupuestoNuevo
             // 
@@ -577,6 +580,18 @@
             this.panelDetalle.Size = new System.Drawing.Size(706, 293);
             this.panelDetalle.TabIndex = 49;
             // 
+            // lblCodigoPres
+            // 
+            this.lblCodigoPres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCodigoPres.AutoSize = true;
+            this.lblCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoPres.ForeColor = System.Drawing.Color.White;
+            this.lblCodigoPres.Location = new System.Drawing.Point(324, 4);
+            this.lblCodigoPres.Name = "lblCodigoPres";
+            this.lblCodigoPres.Size = new System.Drawing.Size(139, 16);
+            this.lblCodigoPres.TabIndex = 68;
+            this.lblCodigoPres.Text = "Código del Presupuesto:";
+            // 
             // txtCodigoPresupuesto
             // 
             this.txtCodigoPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -794,18 +809,6 @@
             this.btnBuscarArt.TabIndex = 54;
             this.btnBuscarArt.UseVisualStyleBackColor = false;
             this.btnBuscarArt.Click += new System.EventHandler(this.btnBuscarArt_Click);
-            // 
-            // lblCodigoPres
-            // 
-            this.lblCodigoPres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCodigoPres.AutoSize = true;
-            this.lblCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPres.ForeColor = System.Drawing.Color.White;
-            this.lblCodigoPres.Location = new System.Drawing.Point(324, 4);
-            this.lblCodigoPres.Name = "lblCodigoPres";
-            this.lblCodigoPres.Size = new System.Drawing.Size(139, 16);
-            this.lblCodigoPres.TabIndex = 68;
-            this.lblCodigoPres.Text = "Código del Presupuesto:";
             // 
             // frmAltaPresupuesto
             // 

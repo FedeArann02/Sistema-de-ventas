@@ -20,6 +20,7 @@ namespace CapaDatos
                 try
                 {
                     string Query = "select s.Cod_subcategoria, s.Cod_categoria, s.Nombre from SUBCATEGORIA s";
+
                     SqlCommand cmd = new SqlCommand(Query, obj_conexion);
                     cmd.CommandType = CommandType.Text; //indico al comando que es un tipo de comando de Texto.
                     obj_conexion.Open();
@@ -30,7 +31,7 @@ namespace CapaDatos
                             Lista.Add(new Subcategoria()
                             {
                                 Cod_subcategoria = Convert.ToInt32(dr["Cod_subcategoria"]),
-                                objCategoria = new Categoria() {Cod_categoria = Convert.ToInt32(dr["Cod_categoria"])},
+                                objCategoria = new Categoria() { Cod_categoria = Convert.ToInt32(dr["Cod_categoria"]) },
                                 Nombre = dr["Nombre"].ToString()
                             });
                         }
@@ -43,6 +44,7 @@ namespace CapaDatos
             }
             return Lista;
         }
-    }
 
+        //
+    }
 }

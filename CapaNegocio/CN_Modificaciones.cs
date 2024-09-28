@@ -62,5 +62,19 @@ namespace CapaNegocio
                 modConfirm = false;
             }
         }
+
+        public void RegistraPagoCliente(string Documentacion, decimal Monto)
+        {
+            objcd_modificaciones.RegistraPagoCliente(Documentacion, Monto);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
     }
 }

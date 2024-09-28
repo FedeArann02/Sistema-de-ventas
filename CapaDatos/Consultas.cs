@@ -107,6 +107,35 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaClienteCtaCte(string Documentacion)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+
+                    Query.AppendLine("SELECT compras, pagos, Fecha,Documentacion FROM CTA_CTE_CLIENTE");
+                    Query.AppendLine("WHERE Documentacion = @Doc");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@Doc", Documentacion);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+
         public DataTable ConsultaPresupuesto(string Nro_presupuesto)
         {
             DataTable dt = new DataTable();
@@ -164,5 +193,73 @@ namespace CapaDatos
             }
             return dt;
         }
+
+        public DataTable ConsultaPresupuesto_Remito_Cliente(string Documentacion, string Opcion)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    if (Opcion == "Presupuesto")
+                    {
+                        Query.AppendLine("SELECT Nro_Presupuesto, total, descuento, fecha_hora");
+                        Query.AppendLine("FROM H_Presupuesto");
+                        Query.AppendLine("WHERE dni = @Doc;");
+                    }
+                    else
+                    {
+                        Query.AppendLine("SELECT Nro_Remito, total, descuento, fecha_hora");
+                        Query.AppendLine("FROM H_Remito");
+                        Query.AppendLine("WHERE dni = @Doc;");
+                    }
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@Doc", Documentacion);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+        public DataTable ConsultaSubcategorias()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+
+                    Query.AppendLine("select s.Nombre as 'SUB CATEGORÍA', c.Nombre as 'CATEGORÍA'");
+                    Query.AppendLine("from CATEGORIA c");
+                    Query.AppendLine("inner join SUBCATEGORIA s on c.Cod_categoria = s.Cod_categoria");
+
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+
     }
 }

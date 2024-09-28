@@ -142,12 +142,13 @@ CREATE TABLE STOCK (
     FOREIGN KEY (Cod_articulo) REFERENCES ARTICULO(Cod_articulo)
 );
 
-CREATE TABLE CLIENTE_PAGO (
+CREATE TABLE CTA_CTE_CLIENTE (
     ID_pago INT PRIMARY KEY IDENTITY,
-    ID_cliente INT,
+    Documentacion VARCHAR(15) NOT NULL UNIQUE,
+	pagos DECIMAL(10, 2),
+	compras DECIMAL(10, 2),
     Fecha DATE,
-    Monto DECIMAL(10, 2),
-    FOREIGN KEY (ID_cliente) REFERENCES CLIENTE(ID_cliente)
+    FOREIGN KEY (Documentacion) REFERENCES CLIENTE(Documentacion)
 );
 
 CREATE TABLE VENDEDOR_VENTA (
@@ -235,13 +236,14 @@ VALUES ('Leo', 'Yamil', '35499330', 10),
 
 INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES 
 ('12345678A', 'Juan', 'Pérez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Entidad A'),
-('44395339', 'Federico', 'Aran', 'Calle Falsa 123', '1159444354', 'aranfederico3@gmail.com', 'Entidad A'),
-('87654321B', 'Ana', 'Gómez', 'Avenida Siempre Viva 742', '555-5678', 'ana.gomez@example.com', 'Entidad B'),
-('11223344C', 'Carlos', 'López', 'Plaza Mayor 9', '555-9012', 'carlos.lopez@example.com', 'Entidad C');
+('44395339', 'Federico', 'Aran', 'Calle Falsa 123', '1159444354', 'aranfederico3@gmail.com', 'Entidad A');
+
+INSERT INTO CTA_CTE_CLIENTE(Documentacion, compras, pagos, Fecha) VALUES
+('12345678A', 0, 0, '2024-09-28'),
+('44395339', 0, 0, '2024-09-28')
 
 INSERT INTO H_Presupuesto(Nro_Presupuesto, nombre, Apellido, tel, email, direccion, entidad, dni, subtotal, descuento, total, fecha_hora) VALUES
-('AAAA-0001', 'Federico', 'Aran', '115944354', 'aranfederico3@gmail.com', 'Calle Falsa 123', 'Entidad A', '44395339', 0, 0, 0,'2024-09-25'),
-('AAAA-0002', 'Federico', 'Aran', '115944354', 'aranfederico3@gmail.com', 'Calle Falsa 123', 'Entidad A', '44395339', 0, 0, 0,'2024-09-25')
+('AAAA-0001', 'Federico', 'Aran', '115944354', 'aranfederico3@gmail.com', 'Calle Falsa 123', 'Entidad A', '44395339', 0, 0, 0,'2024-09-25')
 
 INSERT INTO H_Presupuesto_Detalle(Nro_Presupuesto, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES
 ('AAAA-0001', 'f1001', 'RTX NVIDIA 4090 24 GB', 120000+120000*35/100, 5, (120000+120000*35/100)*5),
@@ -249,7 +251,14 @@ INSERT INTO H_Presupuesto_Detalle(Nro_Presupuesto, Cod_articulo, descripcion, pr
 ('AAAA-0001', 'j1002', 'LOGITECH G406 HERO', 70000+70000*30/100, 7, (70000+70000*30/100)*7)
 
 
-select * from H_Presupuesto
+select * from H_Presupuesto_Detalle
+select * from H_Remito
+
+select * from CTA_CTE_CLIENTE
+
+truncate table H_Presupuesto
+
+update CTA_CTE_CLIENTE set compras = 450000 where Documentacion = '12345678A'
 
 SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad FROM CLIENTE
 
@@ -332,3 +341,9 @@ SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo,
 SELECT d.id_presupuesto_detalle, d.Nro_presupuesto, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'
 FROM H_Presupuesto_detalle d
 WHERE d.Nro_presupuesto = 'AAAA-0009'
+
+-----------------CONSULTAR PRESUPUESTO O REMITO por Documento/cliente:
+SELECT Nro_Presupuesto, total, descuento, fecha_hora from H_Presupuesto where dni = '44395339'
+SELECT Nro_Remito, total, descuento, fecha_hora from H_Remito where dni = '44395339'
+
+----------------CONSULTAR DETALLES P o R por codigo

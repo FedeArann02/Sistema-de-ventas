@@ -268,6 +268,7 @@
             this.txtStockDetalle.Size = new System.Drawing.Size(102, 22);
             this.txtStockDetalle.TabIndex = 11;
             this.txtStockDetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtStockDetalle.TextChanged += new System.EventHandler(this.txtStockDetalle_TextChanged);
             // 
             // txtCostoDetalle
             // 
