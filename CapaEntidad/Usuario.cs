@@ -13,7 +13,6 @@ namespace CapaEntidad
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Contraseña { get; set; }
-
         public Rol objRol { get; set; }
     }
 }

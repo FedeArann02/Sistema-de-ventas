@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace CapaDatos
 {
@@ -220,6 +221,42 @@ namespace CapaDatos
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error en el procedimiento del pago", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void ActualizarStock(DataGridView dgv) //PROBAR!!!!
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("update Stock set Cantidad = @Cantidad where Cod_articulo = @CodArt");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        objConexion.Open();
+                        foreach (DataGridViewRow fila in dgv.Rows)
+                        {
+                           
+                            string Cod_art = fila.Cells["C_CodArt"].Value.ToString();
+                            int Cant = int.Parse(fila.Cells["C_Cantidad"].Value.ToString());
+
+                            cmd.Parameters.AddWithValue("@CodArt", Cod_art);
+                            cmd.Parameters.AddWithValue("@Cantidad", Cant);
+
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                 modConfirm = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del stock", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

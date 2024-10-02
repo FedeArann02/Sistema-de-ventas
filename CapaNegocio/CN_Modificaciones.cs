@@ -76,5 +76,20 @@ namespace CapaNegocio
                 modConfirm = false;
             }
         }
+
+        public void ActualizarStock(DataGridView dgv)
+        {
+            objcd_modificaciones.ActualizarStock(dgv);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
+        
     }
 }

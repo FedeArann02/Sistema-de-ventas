@@ -26,9 +26,11 @@ namespace Ventas_Hardware
         {
             if (cmbCliente.SelectedIndex == 0)
             {
+                clear();
+
                 btnBuscar.Visible = false;
                 txtDocumentacionCliente.Visible = false;
-
+                lblDNICUIL_T.Visible = false;
                 {
                     panelDatosEncabezado.Enabled = true;
                     panelDetalle.Enabled = true;
@@ -38,6 +40,7 @@ namespace Ventas_Hardware
             {
                 btnBuscar.Visible = true;
                 txtDocumentacionCliente.Visible = true;
+                lblDNICUIL_T.Visible = true;
 
                 {
                     panelDatosEncabezado.Enabled = false;
@@ -48,6 +51,7 @@ namespace Ventas_Hardware
             {
                 btnBuscar.Visible = false;
                 txtDocumentacionCliente.Visible = false;
+                lblDNICUIL_T.Visible = false;
 
                 {
                     panelDatosEncabezado.Enabled = false;
@@ -60,8 +64,8 @@ namespace Ventas_Hardware
         {
             try
             {
-                CN_Consultas cN_Consultas = new CN_Consultas();
                 dt = cN_Consultas.ConsultaCliente(txtDocumentacionCliente.Text);
+
                 txtNombre.Text = dt.Rows[0]["Nombre"].ToString();
                 txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
                 txtDoc.Text = dt.Rows[0]["Documentacion"].ToString();
@@ -222,6 +226,7 @@ namespace Ventas_Hardware
             txtEntidad.Text = "";
 
             //PanelDetalle
+            dgvArticulos.Rows.Clear();
             txtCodigoPresupuesto.Text = "";
             txtCodigo.Text = "";
             txtCantidad.Text = "";
@@ -229,7 +234,7 @@ namespace Ventas_Hardware
             txtDescuento.Text = "";
             txtSubTotal.Text = "";
             txtTotal.Text = "";
-            dgvArticulos.Rows.Clear();
+            
         }
 
         private void clearDetalle()

@@ -7,14 +7,484 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocio;
 
 namespace Ventas_Hardware
 {
     public partial class frmRemitos : Form
     {
+        public CN_Consultas cN_Consultas = new CN_Consultas();
+        public DataTable dt = new DataTable();
+        public decimal SubTotal;
         public frmRemitos()
         {
             InitializeComponent();
+        }
+
+        private void cmbOpciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbOpciones.SelectedIndex == 0)//Cleinte nuevo
+            {
+                clear();
+
+                txtDocumentacionCliente.Enabled = false;
+                lblDNICUIL_T.Enabled = false;
+
+                txtCodigoPres.Enabled = false;
+                lblCodigoPres.Enabled = false;
+
+                btnBuscar.Enabled = false;
+                {
+                    panelDatosEncabezado.Enabled = true;
+                    panelDetalle.Enabled = true;
+                }
+            }
+            else if (cmbOpciones.SelectedIndex == 1)//Cliente regular
+            {
+                txtDocumentacionCliente.Enabled = true;
+                lblDNICUIL_T.Enabled = true;
+
+                txtCodigoPres.Enabled = false;
+                lblCodigoPres.Enabled = false;
+
+                btnBuscar.Enabled = true;
+                {
+                    panelDatosEncabezado.Enabled = false;
+                    panelDetalle.Enabled = false;
+                }
+            }
+            else if (cmbOpciones.SelectedIndex == 2)
+            {
+                txtDocumentacionCliente.Enabled = false;
+                lblDNICUIL_T.Enabled= false;
+
+                txtCodigoPres.Enabled = true;
+                lblCodigoPres.Enabled = true;
+
+                btnBuscar.Enabled = true;
+                {
+                    panelDatosEncabezado.Enabled = false;
+                    panelDetalle.Enabled = false;
+                }
+            }
+            else
+            {
+                {
+                    panelDatosEncabezado.Enabled = false;
+                    panelDetalle.Enabled = false;
+                }
+            }
+        }//Control de opciones de carga de datos
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbOpciones.SelectedIndex == 1)
+                {
+                    dt = cN_Consultas.ConsultaCliente(txtDocumentacionCliente.Text);
+
+                    txtNombre.Text = dt.Rows[0]["Nombre"].ToString();
+                    txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
+                    txtDoc.Text = dt.Rows[0]["Documentacion"].ToString();
+                    txtEmail.Text = dt.Rows[0]["Correo"].ToString();
+                    txtTelefono.Text = dt.Rows[0]["Telefono"].ToString();
+                    txtDireccion.Text = dt.Rows[0]["Direccion"].ToString();
+                    txtEntidad.Text = dt.Rows[0]["Entidad"].ToString();
+                    txtDocumentacionCliente.Text = "";
+                    {
+                        panelDetalle.Enabled = true;
+                    }
+                }
+                else if (cmbOpciones.SelectedIndex == 2)
+                {
+                    ConsultarPresupuesto();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione una opci+on válida", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ConsultarPresupuesto()
+        {
+            dgvArticulos.Rows.Clear();
+            dt = cN_Consultas.ConsultaPresupuesto((txtCodigoPres.Text));
+
+            //Lllenar textboxes
+            txtNombre.Text = dt.Rows[0]["nombre"].ToString();
+            txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
+            txtDoc.Text = dt.Rows[0]["dni"].ToString();
+            txtEmail.Text = dt.Rows[0]["email"].ToString();
+            txtTelefono.Text = dt.Rows[0]["tel"].ToString();
+            txtDireccion.Text = dt.Rows[0]["direccion"].ToString();
+            txtEntidad.Text = dt.Rows[0]["entidad"].ToString();
+            txtSubTotal.Text = dt.Rows[0]["subtotal"].ToString();
+            txtDescuento.Text = dt.Rows[0]["descuento"].ToString();
+            txtTotal.Text = dt.Rows[0]["total"].ToString();
+            SubTotal = decimal.Parse(txtSubTotal.Text);
+
+            dt = cN_Consultas.ConsultaP_Detalle((txtCodigoPres.Text));
+
+            //Llenar grilla
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dgvArticulos.Rows.Add(dt.Rows[i]["Cod_Articulo"], dt.Rows[i]["Descripción"], dt.Rows[i]["Precio unitario"], dt.Rows[i]["Cantidad"], dt.Rows[i]["Precio por cantidad"]);
+                panelDetalle.Enabled = true;
+                txtCodigoPres.Text = "";
+            }
+        }
+
+            private void btnBuscarArt_Click(object sender, EventArgs e)
+        {
+            BuscarArticulo();
+        }
+
+        private void BuscarArticulo()
+        {
+            dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
+            if (dt.Rows.Count != null && dt.Rows.Count != 0)
+            {
+                txtDescripcion.Text = dt.Rows[0]["Descripcion"].ToString();
+                txtStock.Text = dt.Rows[0]["Cantidad"].ToString();
+            }
+            else
+            {
+                MessageBox.Show("El código que ingresó no se encuentra en la Base de datos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool ArtExiste = false;
+                bool excep = false;
+                dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
+                decimal Precio = precioVenta();
+                decimal PxCant = Convert.ToDecimal(txtCantidad.Text) * Precio;
+                SubTotal += PxCant;
+                {
+                    foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                    {
+                        if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                        {
+                            // Si el código ya existe, actualiza la cantidad sumando la nueva cantidad
+                            int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
+
+                            if ((cantidadActual + int.Parse(txtCantidad.Text)) > int.Parse(txtStock.Text)) //si la cantidad total del Articulo a vender supera la cantidad en stock
+                            {
+                                MessageBox.Show("Cantidad en stock de " + txtDescripcion.Text + " insuficiente", "Stock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ArtExiste = true;
+                                excep = true;
+                                SubTotal -= PxCant;
+                                break;
+                            }
+
+                            decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                            fila.Cells["C_Cantidad"].Value = cantidadActual + int.Parse(txtCantidad.Text);
+                            fila.Cells["C_Pxcant"].Value = PxCantActual + PxCant;
+                            ArtExiste = true;
+                            break;
+                        }
+                    }
+
+                    if (!ArtExiste)
+                    {
+                        dgvArticulos.Rows.Add(txtCodigo.Text, txtDescripcion.Text, Precio, txtCantidad.Text, PxCant);
+                    }
+                    if (dgvArticulos.Rows.Count > 1 && excep == false)
+                    {
+                        txtDescripcion.Text = "";
+                        txtCodigo.Text = "";
+                        dgvArticulos.CurrentRow.Selected = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            txtCantidad.Text = "";
+            txtSubTotal.Text = SubTotal.ToString();
+        }
+
+        private decimal precioVenta()
+        {
+            dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
+            decimal costo = decimal.Parse(dt.Rows[0]["Costo"].ToString());
+            decimal Ganancia = decimal.Parse(dt.Rows[0]["Ganancia"].ToString());
+            decimal Precio_Venta = costo + (costo * Ganancia / 100);
+            return Decimal.Round(Precio_Venta, 2);
+        }
+
+        private void reCalcular()
+        {
+            try
+            {
+                if (txtDescuento.Text == null || txtDescuento.Text == "")
+                {
+                    decimal Descuento = 0;
+                    if (txtSubTotal.Text == null || txtSubTotal.Text == "")
+                    {
+                        decimal SubTotal = 0;
+                    }
+                    else
+                    {
+                        decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                        txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+                    }
+                }
+                else if (decimal.Parse(txtDescuento.Text) > 100)
+                {
+                    MessageBox.Show("El descuento no puede ser mayor al 100%", "Error");
+                    txtDescuento.Text = "";
+                }
+                else
+                {
+                    decimal Descuento = decimal.Parse(txtDescuento.Text);
+                    decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                    txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Posible error en el formato ingresado, solo se admiten números enteros o decimales positivos");
+                txtDescuento.Text = "";
+            }
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            CN_Altas cN_Altas = new CN_Altas();
+
+            //como cada cantidad que entra a la grilla está validada, ahora queda restarle la cantidad al stock!
+            //obtengo la grilla de cada posicion con su Codigo de articulo y updateo el stock de cada articulo
+            //puedo replicar algo como lo que hice con el detalle de un remito!
+
+            //cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
+            //txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
+            //decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
+
+            if (cmbOpciones.Text == "Cliente Nuevo")
+            {
+                cN_Altas.CN_AltaCliente_PresupuestoRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text,
+                txtEntidad.Text);
+            }
+
+            if (cN_Altas.clearConf)
+            {
+                clear();
+                clearDetalle();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            clear();
+            cmbOpciones.Text = "SELECCIONE UNA OPCIÓN";
+        }
+
+        private void clear()
+        {
+            //PanelEncabezado
+            cmbOpciones.SelectedIndex = -1;
+            txtDocumentacionCliente.Text = "";
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtDoc.Text = "";
+            txtEmail.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+            txtEntidad.Text = "";
+
+            //PanelDetalle
+            dgvArticulos.Rows.Clear();
+            txtCodigoRemito.Text = "";
+            txtCodigo.Text = "";
+            txtCantidad.Text = "";
+            txtDescripcion.Text = "";
+            txtDescuento.Text = "";
+            txtSubTotal.Text = "";
+            txtTotal.Text = "";
+            txtStock.Text = "";
+        }
+
+        private void clearDetalle()
+        {
+            txtCodigoRemito.Text = "";
+            txtCodigo.Text = "";
+            txtCantidad.Text = "";
+            txtDescripcion.Text = "";
+            txtDescuento.Text = "";
+            txtSubTotal.Text = "";
+            txtTotal.Text = "";
+        }
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+
+            if (dgvArticulos.CurrentRow != null && !dgvArticulos.CurrentRow.IsNewRow && dgvArticulos.CurrentRow.Selected != false)
+            {
+                DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                txtCodigo.Text = filaSelec.Cells[0].Value.ToString();
+                txtDescripcion.Text = filaSelec.Cells[1].Value.ToString();
+
+                DataTable dtStock = new DataTable();
+                dtStock = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
+                txtStock.Text = dtStock.Rows[0]["Cantidad"].ToString();
+            }
+            else if (dgvArticulos.Rows.Count == 0 || dgvArticulos.CurrentRow.Selected == false) //entra solo cuando no hay filas en la grilla o no estan seleccionadas
+            {
+                txtStock.Text = "";
+            }
+        }
+
+        private void btnRestar_Click(object sender, EventArgs e)
+        {
+            if (txtDescripcion.Text != null && txtDescripcion.Text != "")
+            {
+                foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                {
+                    if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                    {
+                        decimal Precio = precioVenta();
+
+                        int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
+                        if (cantidadActual == 1)
+                        {
+                            SubTotal -= Precio;
+                            txtSubTotal.Text = SubTotal.ToString();
+                            DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                            dgvArticulos.Rows.Remove(filaSelec);
+
+                            if (dgvArticulos.Rows.Count == 0)
+                            {
+                                clearDetalle();
+                            }
+                        }
+                        else
+                        {
+                            if (cantidadActual > 0)
+                            {
+                                decimal PxCant = (Convert.ToDecimal(cantidadActual) - 1) * Precio;
+                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                                fila.Cells["C_Cantidad"].Value = cantidadActual - 1;
+                                fila.Cells["C_Pxcant"].Value = PxCant;
+                                SubTotal -= Precio;
+                                txtSubTotal.Text = SubTotal.ToString();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.Rows.Count != null && dgvArticulos.Rows.Count != 0)
+            {
+                DialogResult dres = MessageBox.Show("¿Desea remover este articulo de la lista?", "Remover", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (dres == DialogResult.OK)
+                {
+                    if (dgvArticulos.Rows.Count == 1)
+                    {
+                        clearDetalle();
+                    }
+                    else
+                    {
+                        foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                        {
+                            DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                            decimal Precio = precioVenta();
+                            if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                            {
+                                //decimal PxCant = (Convert.ToDecimal(txtCantidad.Text)) * Precio;
+                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                                SubTotal -= PxCantActual;
+                                txtSubTotal.Text = SubTotal.ToString();
+                                dgvArticulos.Rows.Remove(filaSelec);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void txtDescuento_TextChanged(object sender, EventArgs e)
+        {
+            reCalcular();
+        }
+
+        private void txtSubTotal_TextChanged(object sender, EventArgs e)
+        {
+            reCalcular();
+        }
+
+        private void cmbCliente_DropDown(object sender, EventArgs e)
+        {
+            cmbOpciones.Text = "";
+        }
+
+        private void cmbCliente_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cmbOpciones.SelectedIndex == -1 || cmbOpciones.Text == "")
+            {
+                cmbOpciones.Text = "SELECCIONE UNA OPCIÓN";
+            }
+        }
+
+        private void txtStock_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtStock.Text))
+            {
+                if (int.Parse(txtStock.Text) <= 5)
+                {
+                    txtStock.ForeColor = Color.Crimson;
+                }
+                else if (int.Parse(txtStock.Text) <= 10)
+                {
+                    txtStock.ForeColor = Color.Yellow;
+                }
+                else
+                {
+                    txtStock.ForeColor = Color.White;
+                }
+            }
+        }
+
+        private void txtCantidad_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(txtCantidad.Text) && !String.IsNullOrEmpty(txtStock.Text))
+                {
+                    if (int.Parse(txtStock.Text) < int.Parse(txtCantidad.Text))
+                    {
+                        MessageBox.Show("Cantidad en stock insuficiente", "Stock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCantidad.Text = "";
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error solo se permiten datos numericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

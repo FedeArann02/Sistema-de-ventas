@@ -43,7 +43,6 @@ namespace CapaDatos
                 catch (Exception ex)
                 {
                     Lista = new List<Usuario>();
-                    
                 }
             }
             return Lista;

@@ -79,25 +79,38 @@ namespace Ventas_Hardware
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            if (ClienteCombo.SelectedIndex != -1)
+            {
+                dt = cN_Consultas.ConsultaCliente(ClienteCombo.SelectedValue.ToString());
+            }
+            else
+            {
+                dt = cN_Consultas.ConsultaCliente(txtDocumentacionCliente.Text);
+            }
 
-            dt = cN_Consultas.ConsultaCliente(ClienteCombo.SelectedValue.ToString());
-            
-            txtNombre.Text = dt.Rows[0]["Nombre"].ToString();
-            txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
-            txtDoc.Text = dt.Rows[0]["Documentacion"].ToString();
-            txtEmail.Text = dt.Rows[0]["Correo"].ToString();
-            txtTelefono.Text = dt.Rows[0]["Telefono"].ToString();
-            txtDireccion.Text = dt.Rows[0]["Direccion"].ToString();
-            txtEntidad.Text = dt.Rows[0]["Entidad"].ToString();
-            txtDocumentacionCliente.Text = "";
+            if (dt.Rows.Count != 0)
+            {
+                txtNombre.Text = dt.Rows[0]["Nombre"].ToString();
+                txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
+                txtDoc.Text = dt.Rows[0]["Documentacion"].ToString();
+                txtEmail.Text = dt.Rows[0]["Correo"].ToString();
+                txtTelefono.Text = dt.Rows[0]["Telefono"].ToString();
+                txtDireccion.Text = dt.Rows[0]["Direccion"].ToString();
+                txtEntidad.Text = dt.Rows[0]["Entidad"].ToString();
+                txtDocumentacionCliente.Text = "";
 
-            dtCtaCte = cN_Consultas.ConsultaClienteCtaCte(txtDoc.Text);
+                dtCtaCte = cN_Consultas.ConsultaClienteCtaCte(txtDoc.Text);
 
-            txtCompras.Text = dtCtaCte.Rows[0]["compras"].ToString();
-            txtPagos.Text = dtCtaCte.Rows[0]["pagos"].ToString();
-            txtDeudas.Text = calcularDeuda().ToString();
+                txtCompras.Text = dtCtaCte.Rows[0]["compras"].ToString();
+                txtPagos.Text = dtCtaCte.Rows[0]["pagos"].ToString();
+                txtDeudas.Text = calcularDeuda().ToString();
 
-            btnBuscar.Enabled = false;
+                btnBuscar.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("No se encotró el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private decimal calcularDeuda()

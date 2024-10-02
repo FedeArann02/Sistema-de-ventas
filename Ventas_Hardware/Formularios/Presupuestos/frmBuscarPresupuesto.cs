@@ -57,8 +57,8 @@ namespace Ventas_Hardware
         {
             if (cmbNombres.SelectedIndex != -1 && cmbNombres.SelectedValue != null)
             {
+                cmbNro.SelectedIndex = -1;
                 string selectedDNI = cmbNombres.SelectedValue.ToString();
-
 
                 List<H_Presupuesto> presupuestos = new CN_H_Presupuesto().ListarNombreNro()
                     .Where(p => p.dni == selectedDNI)
@@ -103,6 +103,8 @@ namespace Ventas_Hardware
             {
                 dgvArticulos.Rows.Add(dt.Rows[i]["Cod_Articulo"], dt.Rows[i]["Descripción"], dt.Rows[i]["Precio unitario"], dt.Rows[i]["Cantidad"], dt.Rows[i]["Precio por cantidad"]);
                 panelDetalle.Enabled = true;
+                cmbNro.SelectedIndex = -1;
+                cmbNombres.SelectedIndex = -1;
             }
         }
 
@@ -119,6 +121,7 @@ namespace Ventas_Hardware
             txtEntidad.Text = "";
 
             //PanelDetalle
+            dgvArticulos.Rows.Clear();
             txtFechaHora.Text = "";
             txtCodigoPresupuesto.Text = "";
             txtCodigo.Text = "";
@@ -128,7 +131,7 @@ namespace Ventas_Hardware
             txtSubTotal.Text = "";
             txtTotal.Text = "";
             txtCodigoPresupuesto.Text = "";
-            dgvArticulos.Rows.Clear();
+            
         }
 
         private decimal precioVenta()
@@ -223,6 +226,8 @@ namespace Ventas_Hardware
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             clear();
+            panelDetalle.Enabled = false;
+            panelDatosEncabezado.Enabled = false;
         }
 
         private void btnRestar_Click(object sender, EventArgs e)

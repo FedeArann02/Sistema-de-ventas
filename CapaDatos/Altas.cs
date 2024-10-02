@@ -16,7 +16,18 @@ namespace CapaDatos
     public class Altas
     {
         public bool clearConfirm;
-        
+
+        /// <summary>
+        /// da de alta un artículo y lo registra en una base de datos.
+        /// </summary>
+        /// <param name="Codigo">El código de un artículo</param>
+        /// <param name="codCategoria">EL código de la categoría de un artículo</param>
+        /// <param name="codSubCategoria">EL código de la sub categoría de un artículo</param>
+        /// <param name="Descripcion">La descripción de un artículo</param>
+        /// <param name="IdProveedor">El id de un Proveedor</param>
+        /// <param name="Cantidad">La cantidad de Stock inicial de un artículo</param>
+        /// <param name="Costo">El costo de un artículo</param>
+        /// <param name="Ganancia">La ganancia % de un artículo</param>
         public void altaArt(string Codigo, int codCategoria, int codSubCategoria, string Descripcion, int IdProveedor, int Cantidad, decimal Costo, decimal Ganancia)
         {
             clearConfirm = false;
@@ -197,5 +208,85 @@ namespace CapaDatos
                 }
             }
         }
+
+        //CONSULTAR AL PROFESOR SOBRE SI RELACIONAR UN REMITO CON UN USUARIO TIPO VENDEDOR QUE A SU VEZ TIENE UNA TABLA (QUE DEBO CORREGIR)
+        //PARA SU COMISION!!! podria agregar la comision como un campo por default 0 a cada usuario y listo jaja
+        // TODO:
+        public void altaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP)
+        {
+            clearConfirm = false;
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                objConexion.Open();
+                try
+                {
+
+                    StringBuilder insertDetalleQuery = new StringBuilder();
+                    StringBuilder insertPresupuestoQuery = new StringBuilder();
+
+                    insertPresupuestoQuery.AppendLine("INSERT INTO H_Remito(Nro_remito, dni, nombre, Apellido, tel, email, entidad, direccion, subtotal, descuento, total, fecha_hora) VALUES");
+                    insertPresupuestoQuery.AppendLine("(@NroP, @documentacion, @Nombre, @Apellido, @Telefono, @Mail, @Entidad, @Direccion, @Subtotal, @Descuento, @Total, @FechaHora);");
+
+                    SqlCommand cmdPresupuesto = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion);
+
+                    cmdPresupuesto.Parameters.AddWithValue("@NroP", NroP);
+                    cmdPresupuesto.Parameters.AddWithValue("@documentacion", Doc);
+                    cmdPresupuesto.Parameters.AddWithValue("@Nombre", Nombre);
+                    cmdPresupuesto.Parameters.AddWithValue("@Apellido", Apellido);
+                    cmdPresupuesto.Parameters.AddWithValue("@Telefono", Tel);
+                    cmdPresupuesto.Parameters.AddWithValue("@Mail", Mail);
+                    cmdPresupuesto.Parameters.AddWithValue("@Entidad", Ent);
+                    cmdPresupuesto.Parameters.AddWithValue("@Direccion", Dir);
+                    cmdPresupuesto.Parameters.AddWithValue("@Subtotal", Sub);
+                    cmdPresupuesto.Parameters.AddWithValue("@Descuento", Descuento);
+                    cmdPresupuesto.Parameters.AddWithValue("@Total", Total);
+                    cmdPresupuesto.Parameters.AddWithValue("@FechaHora", F_H);
+
+                    cmdPresupuesto.ExecuteNonQuery();
+
+                    foreach (DataGridViewRow Rows in dgv.Rows)
+                    {
+                        if (!Rows.IsNewRow)
+                        {
+                            insertDetalleQuery.AppendLine("INSERT INTO H_remito_detalle(Nro_remito, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES");
+                            insertDetalleQuery.AppendLine("(@Nro_Presupuesto ,@Cod_articulo, @Descripcion, @PrecioUnitario, @Cantidad, @PxCant);");
+
+                            SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion);
+
+                            string CodArt = Rows.Cells["C_CodArt"].Value.ToString();
+                            string Desc = Rows.Cells["C_Descripcion"].Value.ToString();
+                            decimal P_Unit = decimal.Parse(Rows.Cells["C_PrecioUnit"].Value.ToString());
+                            int Cant = int.Parse(Rows.Cells["C_Cantidad"].Value.ToString());
+                            decimal PxCant = decimal.Parse(Rows.Cells["C_Pxcant"].Value.ToString());
+                            cmdDetalle.Parameters.AddWithValue("@Nro_Presupuesto", NroP);
+                            cmdDetalle.Parameters.AddWithValue("@Cod_articulo", CodArt);
+                            cmdDetalle.Parameters.AddWithValue("@Descripcion", Desc);
+                            cmdDetalle.Parameters.AddWithValue("@PrecioUnitario", P_Unit);
+                            cmdDetalle.Parameters.AddWithValue("@Cantidad", Cant);
+                            cmdDetalle.Parameters.AddWithValue("@PxCant", PxCant);
+
+
+                            cmdDetalle.ExecuteNonQuery();
+
+                            insertDetalleQuery.Clear();
+                        }
+                    }
+
+                    clearConfirm = true;
+                    MessageBox.Show("Remito generado con éxito", "REMITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del Registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }

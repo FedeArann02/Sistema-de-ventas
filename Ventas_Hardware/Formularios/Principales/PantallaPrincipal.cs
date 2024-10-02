@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using CapaEntidad;
 using CapaNegocio;
 using Ventas_Hardware.Formularios.Administracion.Categoria_Subcat;
 
@@ -17,29 +16,31 @@ namespace Ventas_Hardware
 {
     public partial class PantallaPrincipal : Form
     {
-        private static Usuario Usuario_actual;
+        private static Usuario usuario_actual;
+
         private static Form frmActicvo = null;
+
         public PantallaPrincipal(Usuario obj_usuario = null) //Acpeta nulos por el momento para pruebas
         {
             if (obj_usuario == null)
             {
-                Usuario_actual = new Usuario() { Nombre = "ADMIN PROGRAMADOR", ID_Usuario = 0 };
+                usuario_actual = new Usuario() { Nombre = "ADMIN PROGRAMADOR", ID_Usuario = 0 };
             }
             else
             {
-                Usuario_actual = obj_usuario;
+                usuario_actual = obj_usuario;
             }
             InitializeComponent();
         }
 
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
+        public static Usuario UsuarioActual() //Método de acceso "GETTER" para saber el usuario actual
+        { 
+            return usuario_actual;
         }
 
         private void PantallaPrincipal_Load(object sender, EventArgs e)
         {
-            List<Permiso> ListaPermisos = new CN_Permiso().Listar(Usuario_actual.ID_Usuario);
+            List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuario_actual.ID_Usuario);
 
             if (!ListaPermisos.Any(m => m.NombreMenu == "administrar"))
             {
@@ -48,7 +49,7 @@ namespace Ventas_Hardware
                 //administrar.Visible = false;
             }
 
-            lblUsuario.Text = Usuario_actual.Nombre;
+            lblUsuario.Text = usuario_actual.Nombre;
             AbrirForm(new frmInicio());
         }
 
@@ -85,6 +86,11 @@ namespace Ventas_Hardware
             {
                 MessageBox.Show("Error al cargar el formulario \n\n" + ex.Message + "", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void btnArticulos_Click(object sender, EventArgs e)
@@ -180,7 +186,6 @@ namespace Ventas_Hardware
         {
             this.Close();
         }
-
         private void pbxMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

@@ -256,50 +256,11 @@ select * from H_Remito
 
 select * from CTA_CTE_CLIENTE
 
-truncate table H_Presupuesto
+
 
 update CTA_CTE_CLIENTE set compras = 450000 where Documentacion = '12345678A'
 
 SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad FROM CLIENTE
-
---INSERT INTO CTA_CTE_PROVEEDOR (ID_Proveedor, Compras, Pagos, Fecha)
---VALUES (1, 5000.00, 3000.00, '2024-08-01'),
---       (2, 6000.00, 2500.00, '2024-08-02'),
---       (2, 7000.00, 4000.00, '2024-08-03');
-
---INSERT INTO VENDEDOR_PAGO (ID_vendedor, Fecha_pago, Monto)
---VALUES (1, '2024-08-01', 500.00),
---       (2, '2024-08-02', 750.00),
---       (3, '2024-08-03', 600.00);
-
---INSERT INTO CLIENTE_PAGO (ID_cliente, Fecha, Monto)
---VALUES (1, '2024-08-01', 450.00),
---       (2, '2024-08-02', 630.00),
---	 (2, '2024-08-02', 1200.00),
---       (3, '2024-08-03', 270.00);
-
-	   
---INSERT INTO H_Remito (fecha_hora, nombre, tel, email, entidad, dni, subtotal, descuento, total, total_costos, mes, año, direccion)
---VALUES ('2024-08-08 14:30:00', 'Juan Pérez', '1234567890', 'juan.perez@example.com', 'Empresa A', '12345678', 1000.00, 50.00, 950.00, 100.00, 'Agosto', '2024', 'Calle Falsa 123'),
---       ('2024-08-08 15:00:00', 'Ana Gómez', '0987654321', 'ana.gomez@example.com', 'Empresa B', '87654321', 1500.00, 75.00, 1425.00, 150.00, 'Agosto', '2024', 'Avenida Siempre Viva 742'),
---       ('2024-08-08 15:30:00', 'Luis Martínez', '1122334455', 'luis.martinez@example.com', 'Empresa C', '55667788', 2000.00, 100.00, 1900.00, 200.00, 'Agosto', '2024', 'Boulevard de los Sueños 456');
-
---INSERT INTO VENDEDOR_VENTA (ID_vendedor, id_remito, Fecha, Remito_total, Remito_costo, Comision, Comision_total, Mes, Año)
---VALUES (1, 1, '2024-08-01', 450.00, 200.00, 50.00, 50.00, '08', '2024'),
---       (2, 1,'2024-08-02', 630.00, 300.00, 70.00, 70.00, '08', '2024'),
---       (3, 1, '2024-08-03', 270.00, 100.00, 30.00, 30.00, '08', '2024');
-
---INSERT INTO H_Remito_detalle (id_remito, cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad)
---VALUES (1, 'F1001', 'RTX NVIDIA 4090 24 GB', 120000.00, 2, 240000.00),
---       (1, 'J1001', 'SHURE PDX', 90000.00, 1, 90000.00),
---       (2, 'J1002', 'LOGITECH G406 HERO', 70000.00, 2, 140000.00),
---       (3, 'F1001', 'RTX NVIDIA 3060 12 GB', 120000.00, 3, 360000.00),
---       (3, 'J1002', 'LOGITECH G406 HERO', 70000.00, 4, 280000.00);
-
---INSERT INTO Ingreso_egreso (ID_vendedor, tipo, detalle, monto, fecha, mes, año)
---VALUES (1, 'I', 'Venta de productos', 500.00, '2024-08-01', 'Agosto', '2024'),
---       (2, 'E', 'Pago a proveedor', 250.00, '2024-08-02', 'Agosto', '2024'),
---       (3, 'I', 'Venta de productos', 600.00, '2024-08-03', 'Agosto', '2024');
 
 --CONSULTAS
 
@@ -347,3 +308,11 @@ SELECT Nro_Presupuesto, total, descuento, fecha_hora from H_Presupuesto where dn
 SELECT Nro_Remito, total, descuento, fecha_hora from H_Remito where dni = '44395339'
 
 ----------------CONSULTAR DETALLES P o R por codigo
+
+
+----------------CONSULTAR SUBCATEGORIA Y CATEGORIA NOMBRES
+select s.Nombre as 'SUB CATEGORÍA', c.Nombre as 'CATEGORÍA'
+from CATEGORIA c
+inner join SUBCATEGORIA s on c.Cod_categoria = s.Cod_categoria
+
+----------------------
