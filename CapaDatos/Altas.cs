@@ -209,10 +209,7 @@ namespace CapaDatos
             }
         }
 
-        //CONSULTAR AL PROFESOR SOBRE SI RELACIONAR UN REMITO CON UN USUARIO TIPO VENDEDOR QUE A SU VEZ TIENE UNA TABLA (QUE DEBO CORREGIR)
-        //PARA SU COMISION!!! podria agregar la comision como un campo por default 0 a cada usuario y listo jaja
-        // TODO:
-        public void altaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP)
+        public void altaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP, int id_user)
         {
             clearConfirm = false;
 
@@ -225,31 +222,32 @@ namespace CapaDatos
                     StringBuilder insertDetalleQuery = new StringBuilder();
                     StringBuilder insertPresupuestoQuery = new StringBuilder();
 
-                    insertPresupuestoQuery.AppendLine("INSERT INTO H_Remito(Nro_remito, dni, nombre, Apellido, tel, email, entidad, direccion, subtotal, descuento, total, fecha_hora) VALUES");
-                    insertPresupuestoQuery.AppendLine("(@NroP, @documentacion, @Nombre, @Apellido, @Telefono, @Mail, @Entidad, @Direccion, @Subtotal, @Descuento, @Total, @FechaHora);");
+                    insertPresupuestoQuery.AppendLine("INSERT INTO H_Remito(Nro_remito, dni, nombre, Apellido, tel, email, entidad, direccion, subtotal, descuento, total, fecha_hora, id_usuario) VALUES");
+                    insertPresupuestoQuery.AppendLine("(@NroP, @documentacion, @Nombre, @Apellido, @Telefono, @Mail, @Entidad, @Direccion, @Subtotal, @Descuento, @Total, @FechaHora, @id_usuario);");
 
-                    SqlCommand cmdPresupuesto = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion);
+                    SqlCommand cmbRemito = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion);
 
-                    cmdPresupuesto.Parameters.AddWithValue("@NroP", NroP);
-                    cmdPresupuesto.Parameters.AddWithValue("@documentacion", Doc);
-                    cmdPresupuesto.Parameters.AddWithValue("@Nombre", Nombre);
-                    cmdPresupuesto.Parameters.AddWithValue("@Apellido", Apellido);
-                    cmdPresupuesto.Parameters.AddWithValue("@Telefono", Tel);
-                    cmdPresupuesto.Parameters.AddWithValue("@Mail", Mail);
-                    cmdPresupuesto.Parameters.AddWithValue("@Entidad", Ent);
-                    cmdPresupuesto.Parameters.AddWithValue("@Direccion", Dir);
-                    cmdPresupuesto.Parameters.AddWithValue("@Subtotal", Sub);
-                    cmdPresupuesto.Parameters.AddWithValue("@Descuento", Descuento);
-                    cmdPresupuesto.Parameters.AddWithValue("@Total", Total);
-                    cmdPresupuesto.Parameters.AddWithValue("@FechaHora", F_H);
+                    cmbRemito.Parameters.AddWithValue("@NroP", NroP);
+                    cmbRemito.Parameters.AddWithValue("@documentacion", Doc);
+                    cmbRemito.Parameters.AddWithValue("@Nombre", Nombre);
+                    cmbRemito.Parameters.AddWithValue("@Apellido", Apellido);
+                    cmbRemito.Parameters.AddWithValue("@Telefono", Tel);
+                    cmbRemito.Parameters.AddWithValue("@Mail", Mail);
+                    cmbRemito.Parameters.AddWithValue("@Entidad", Ent);
+                    cmbRemito.Parameters.AddWithValue("@Direccion", Dir);
+                    cmbRemito.Parameters.AddWithValue("@Subtotal", Sub);
+                    cmbRemito.Parameters.AddWithValue("@Descuento", Descuento);
+                    cmbRemito.Parameters.AddWithValue("@Total", Total);
+                    cmbRemito.Parameters.AddWithValue("@FechaHora", F_H);
+                    cmbRemito.Parameters.AddWithValue("@id_usuario", id_user);
 
-                    cmdPresupuesto.ExecuteNonQuery();
+                    cmbRemito.ExecuteNonQuery();
 
                     foreach (DataGridViewRow Rows in dgv.Rows)
                     {
                         if (!Rows.IsNewRow)
                         {
-                            insertDetalleQuery.AppendLine("INSERT INTO H_remito_detalle(Nro_remito, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES");
+                            insertDetalleQuery.AppendLine("INSERT INTO H_Remito_detalle(Nro_remito, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES");
                             insertDetalleQuery.AppendLine("(@Nro_Presupuesto ,@Cod_articulo, @Descripcion, @PrecioUnitario, @Cantidad, @PxCant);");
 
                             SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion);

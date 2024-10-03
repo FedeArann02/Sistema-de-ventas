@@ -278,7 +278,7 @@ namespace Ventas_Hardware
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvArticulos.Rows.Count != null && dgvArticulos.Rows.Count != 0)
+            if (dgvArticulos.Rows.Count != 0)
             {
                 DialogResult dres = MessageBox.Show("¿Desea remover este articulo de la lista?", "Remover", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dres == DialogResult.OK)
@@ -327,7 +327,7 @@ namespace Ventas_Hardware
         private void btnBuscarArt_Click(object sender, EventArgs e)
         {
             dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
-            if (dt.Rows.Count != null && dt.Rows.Count != 0)
+            if (dt.Rows.Count != 0)
             {
                 txtDescripcion.Text = dt.Rows[0]["Descripcion"].ToString();
             }

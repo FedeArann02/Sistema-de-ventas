@@ -39,8 +39,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbxNoVer = new System.Windows.Forms.PictureBox();
+            this.pbxVer = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoVer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxVer)).BeginInit();
             this.SuspendLayout();
             // 
             // lblLogin
@@ -63,6 +67,7 @@
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(200, 27);
             this.txtDocumento.TabIndex = 1;
+            this.txtDocumento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtContraseña
             // 
@@ -73,6 +78,8 @@
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(200, 27);
             this.txtContraseña.TabIndex = 2;
+            this.txtContraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtContraseña.UseSystemPasswordChar = true;
             // 
             // lblDoc
             // 
@@ -159,12 +166,39 @@
             this.panel1.Size = new System.Drawing.Size(234, 329);
             this.panel1.TabIndex = 9;
             // 
+            // pbxNoVer
+            // 
+            this.pbxNoVer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxNoVer.Image = ((System.Drawing.Image)(resources.GetObject("pbxNoVer.Image")));
+            this.pbxNoVer.Location = new System.Drawing.Point(477, 183);
+            this.pbxNoVer.Name = "pbxNoVer";
+            this.pbxNoVer.Size = new System.Drawing.Size(40, 25);
+            this.pbxNoVer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxNoVer.TabIndex = 10;
+            this.pbxNoVer.TabStop = false;
+            this.pbxNoVer.Click += new System.EventHandler(this.pbxNoVer_Click);
+            // 
+            // pbxVer
+            // 
+            this.pbxVer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxVer.Image = ((System.Drawing.Image)(resources.GetObject("pbxVer.Image")));
+            this.pbxVer.Location = new System.Drawing.Point(477, 183);
+            this.pbxVer.Name = "pbxVer";
+            this.pbxVer.Size = new System.Drawing.Size(40, 25);
+            this.pbxVer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbxVer.TabIndex = 11;
+            this.pbxVer.TabStop = false;
+            this.pbxVer.Visible = false;
+            this.pbxVer.Click += new System.EventHandler(this.pbxVer_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(79)))), ((int)(((byte)(140)))));
             this.ClientSize = new System.Drawing.Size(654, 329);
+            this.Controls.Add(this.pbxVer);
+            this.Controls.Add(this.pbxNoVer);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnSalir);
@@ -181,6 +215,8 @@
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxNoVer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxVer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +234,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbxNoVer;
+        private System.Windows.Forms.PictureBox pbxVer;
     }
 }
