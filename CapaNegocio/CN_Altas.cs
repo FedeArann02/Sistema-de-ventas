@@ -59,5 +59,19 @@ namespace CapaNegocio
                 clearConf = false;
             }
         }
+
+        public void CN_AltaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP, int id_user)
+        {
+            objcd_Altas.altaRemito(Doc, Nombre, Apellido, Tel, Mail, Ent, Dir, Sub, Descuento, Total, F_H, dgv, NroP, id_user);
+
+            if (objcd_Altas.clearConfirm)
+            {
+                clearConf = true;
+            }
+            else
+            {
+                clearConf = false;
+            }
+        }
     }
 }

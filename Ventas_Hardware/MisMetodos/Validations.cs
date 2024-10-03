@@ -22,7 +22,7 @@ namespace Ventas_Hardware.MisMetodos
             if (esAlta == true)
             {
                 List<Categoria> articulo = new CN_Categoria().Listar(Categoria);
-                if (articulo.Count != null && articulo.Count != 0)
+                if (articulo.Count != 0)
                 {
                     MessageBox.Show("Esta categoría ya existe");
                     return false;
@@ -68,7 +68,7 @@ namespace Ventas_Hardware.MisMetodos
                 MessageBox.Show("Formato incorrecto, solo se permiten entre 1 a 5 letras seguido de 4 a 15 núumeros\n\tPor ejemplo: ABCDE12345...15");
                 return false;
             }
-            else if (articulo.Count != null && articulo.Count != 0)
+            else if (articulo.Count != 0)
             {
                 MessageBox.Show("Este código ya existe, ingrese uno distinto");
                 return false;

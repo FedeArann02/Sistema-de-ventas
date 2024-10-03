@@ -232,36 +232,98 @@ namespace CapaDatos
             {
                 try
                 {
-                    StringBuilder Query = new StringBuilder();
-                    Query.AppendLine("update Stock set Cantidad = @Cantidad where Cod_articulo = @CodArt");
+                    objConexion.Open();
+                    StringBuilder Update = new StringBuilder();
+                    StringBuilder QueryStock = new StringBuilder();
 
-                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    Update.AppendLine("update Stock set Cantidad = @Cantidad where Cod_articulo = @CodArt");
+                    QueryStock.AppendLine("select Cantidad from Stock where Cod_articulo = @CodArt");
+
+                    foreach (DataGridViewRow fila in dgv.Rows)
                     {
-                        objConexion.Open();
-                        foreach (DataGridViewRow fila in dgv.Rows)
+                        if (fila.Cells["C_CodArt"].Value == null || fila.Cells["C_Cantidad"].Value == null)
                         {
-                           
-                            string Cod_art = fila.Cells["C_CodArt"].Value.ToString();
-                            int Cant = int.Parse(fila.Cells["C_Cantidad"].Value.ToString());
+                            continue; // Saltar filas vacías si las hay
+                        }
 
-                            cmd.Parameters.AddWithValue("@CodArt", Cod_art);
-                            cmd.Parameters.AddWithValue("@Cantidad", Cant);
+                        string Cod_art = fila.Cells["C_CodArt"].Value.ToString(); // Obtiene el código del artículo
+                        int CantNueva = int.Parse(fila.Cells["C_Cantidad"].Value.ToString()); // Cantidad del detalle del remito
 
-                            cmd.ExecuteNonQuery();
+                        // Primero obtenemos el stock actual
+                        SqlCommand cmdCant = new SqlCommand(QueryStock.ToString(), objConexion);
+                        cmdCant.Parameters.AddWithValue("@CodArt", Cod_art); // Filtra por código de artículo
+                        SqlDataReader dR = cmdCant.ExecuteReader();
+
+                        if (dR.Read()) // Verifica si hay datos
+                        {
+                            int CantidadStock = int.Parse(dR["Cantidad"].ToString()); // Obtiene la cantidad en stock
+
+                            CantNueva = CantidadStock - CantNueva; // Resta la cantidad del detalle del remito
+
+                            dR.Close(); // Cierra el DataReader antes de ejecutar otra consulta
+
+                            // Ahora actualizamos el stock
+                            SqlCommand cmd = new SqlCommand(Update.ToString(), objConexion);
+                            cmd.Parameters.AddWithValue("@CodArt", Cod_art); // Parámetro del código de artículo
+                            cmd.Parameters.AddWithValue("@Cantidad", CantNueva); // Parámetro de la nueva cantidad
+
+                            cmd.ExecuteNonQuery(); // Ejecuta la actualización
+                        }
+                        else
+                        {
+                            dR.Close(); // Cierra el DataReader si no hay datos
                         }
                     }
 
-                 modConfirm = true;
-
+                    modConfirm = true;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el procedimiento del stock", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error en el procedimiento del stock: " + ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
 
+        public void RegistraCompraCliente(string Documentacion, decimal Monto)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    objConexion.Open();
+                    StringBuilder Query = new StringBuilder();
+                    StringBuilder QueryCompras = new StringBuilder();
+
+                    Query.AppendLine("update CTA_CTE_CLIENTE set compras = @Monto where Documentacion = @Doc");
+                    QueryCompras.AppendLine("select Compras from CTA_CTE_CLIENTE where Documentacion = @Doc");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    SqlCommand cmdCompras = new SqlCommand(QueryCompras.ToString(), objConexion);
+                    cmdCompras.CommandType = CommandType.Text;
+
+                    cmdCompras.Parameters.AddWithValue("@Doc", Documentacion);
+                    SqlDataReader dR = cmdCompras.ExecuteReader();
+
+                    if (dR.Read()) // Asegurarse de que se lee la fila de datos
+                    {
+                        decimal comprasActuales = decimal.Parse(dR["Compras"].ToString()); // Leer el valor actual de "Compras"
+                        Monto += comprasActuales; // Sumar el monto a las compras actuales
+                    }
+
+                    dR.Close(); // Cerrar el SqlDataReader antes de ejecutar otro comando
+
+                    cmd.Parameters.AddWithValue("@Doc", Documentacion);
+                    cmd.Parameters.AddWithValue("@Monto", Monto); // Parametriza el nuevo monto
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                
+                }
+            }
+        }
 
 
     }

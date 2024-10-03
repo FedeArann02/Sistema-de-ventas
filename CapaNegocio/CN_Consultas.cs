@@ -41,7 +41,10 @@ namespace CapaNegocio
         {
             return Querys.ConsultaPresupuestoDetalle(Nro_presupuesto);
         }
-
+        public DataTable ConsultaR_Detalle(string Nro_presupuesto)
+        {
+            return Querys.ConsultaRemitoDetalle(Nro_presupuesto);
+        }
         public DataTable ConsultaPresupuesto_Remito_Cliente(string Documentacion, string Opcion)
         {
             return Querys.ConsultaPresupuesto_Remito_Cliente(Documentacion, Opcion);
@@ -50,5 +53,6 @@ namespace CapaNegocio
         {
             return Querys.ConsultaSubcategorias();
         }
+
     }
 }

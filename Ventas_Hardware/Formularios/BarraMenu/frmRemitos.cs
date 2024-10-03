@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaEntidad;
 using CapaNegocio;
 
 namespace Ventas_Hardware
 {
     public partial class frmRemitos : Form
     {
+        Usuario user_actual = PantallaPrincipal.ObtenerUsuarioActual();
         public CN_Consultas cN_Consultas = new CN_Consultas();
         public DataTable dt = new DataTable();
         public decimal SubTotal;
@@ -23,7 +25,7 @@ namespace Ventas_Hardware
 
         private void cmbOpciones_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOpciones.SelectedIndex == 0)//Cleinte nuevo
+            if (cmbOpciones.SelectedIndex == 0)//Cliente nuevo
             {
                 clear();
 
@@ -148,7 +150,7 @@ namespace Ventas_Hardware
         private void BuscarArticulo()
         {
             dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
-            if (dt.Rows.Count != null && dt.Rows.Count != 0)
+            if (dt.Rows.Count != 0)
             {
                 txtDescripcion.Text = dt.Rows[0]["Descripcion"].ToString();
                 txtStock.Text = dt.Rows[0]["Cantidad"].ToString();
@@ -263,26 +265,40 @@ namespace Ventas_Hardware
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             CN_Altas cN_Altas = new CN_Altas();
+            CN_Modificaciones cN_Modificaciones = new CN_Modificaciones();
 
-            //como cada cantidad que entra a la grilla está validada, ahora queda restarle la cantidad al stock!
-            //obtengo la grilla de cada posicion con su Codigo de articulo y updateo el stock de cada articulo
-            //puedo replicar algo como lo que hice con el detalle de un remito!
-
-            //cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
-            //txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
-            //decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
-
-            if (cmbOpciones.Text == "Cliente Nuevo")
+            try
             {
-                cN_Altas.CN_AltaCliente_PresupuestoRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text,
-                txtEntidad.Text);
+                int Id_usuario = user_actual.ID_Usuario;
+
+                if (String.IsNullOrEmpty(txtDescuento.Text))
+                {
+                    txtDescuento.Text = "0";
+                }
+
+                cN_Altas.CN_AltaRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
+                txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
+                decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoRemito.Text, Id_usuario);
+
+                if (cmbOpciones.Text == "Cliente Nuevo" && cN_Altas.clearConf == true)
+                {
+                    cN_Altas.CN_AltaCliente_PresupuestoRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text,
+                    txtEntidad.Text); //reegistra cliente nuevo
+                }
+
+                if (cN_Altas.clearConf)
+                {
+                    cN_Modificaciones.RegistraCompraCliente(txtDoc.Text, decimal.Parse(txtTotal.Text));
+                    cN_Modificaciones.ActualizarStock(dgvArticulos);
+                    clear();
+                    clearDetalle();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error general al registrar un remito", "comuníquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            if (cN_Altas.clearConf)
-            {
-                clear();
-                clearDetalle();
-            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -392,7 +408,7 @@ namespace Ventas_Hardware
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (dgvArticulos.Rows.Count != null && dgvArticulos.Rows.Count != 0)
+            if (dgvArticulos.Rows.Count != 0)
             {
                 DialogResult dres = MessageBox.Show("¿Desea remover este articulo de la lista?", "Remover", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dres == DialogResult.OK)

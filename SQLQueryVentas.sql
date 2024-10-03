@@ -1,5 +1,5 @@
-CREATE DATABASE TP_3;
-USE TP_3;
+CREATE DATABASE TP_6;
+USE TP_6;
 
 -- Tablas principales
 
@@ -7,18 +7,6 @@ CREATE TABLE ROL
 (
     IdRol INT PRIMARY KEY IDENTITY,
     Descripcion VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE USUARIO
-(
-    ID_usuario INT IDENTITY PRIMARY KEY,
-	Estado BIT default 1,
-    Contraseña VARCHAR(100) NOT NULL UNIQUE,
-    DNI VARCHAR(15) NOT NULL UNIQUE,
-    Nombre VARCHAR(30) NOT NULL,
-    Apellido VARCHAR(30) NOT NULL,
-    IdRol INT,
-    FOREIGN KEY (IdRol) REFERENCES ROL(IdRol)
 );
 
 CREATE TABLE CLIENTE (
@@ -40,35 +28,9 @@ CREATE TABLE PROVEEDOR (
     Correo VARCHAR(100)
 );
 
-CREATE TABLE VENDEDOR (
-    ID_vendedor INT IDENTITY PRIMARY KEY,
-    DNI VARCHAR(15) NOT NULL UNIQUE,
-    Nombre VARCHAR(30) NOT NULL,
-    Apellido VARCHAR(30) NOT NULL,
-    Comision DECIMAL(10, 2)
-);
-
 CREATE TABLE CATEGORIA (
     Cod_categoria INT PRIMARY KEY IDENTITY,
     Nombre VARCHAR(50) NOT NULL
-);
-
-CREATE TABLE H_Remito (
-    id_remito INT IDENTITY PRIMARY KEY,
-	Nro_remito VARCHAR(30) NOT NULL UNIQUE,
-    fecha_hora DATETIME NOT NULL,
-    nombre VARCHAR(50) NOT NULL,
-    tel VARCHAR(50),
-    email VARCHAR(50),
-    entidad VARCHAR(50),
-    dni VARCHAR(50),
-    subtotal DECIMAL(10, 2),
-    descuento DECIMAL(10, 2),
-    total DECIMAL(10, 2),
-    total_costos DECIMAL(10, 2),
-    mes VARCHAR(30),
-    año CHAR(4),
-    direccion VARCHAR(50)
 );
 
 CREATE TABLE H_Presupuesto (
@@ -88,6 +50,18 @@ CREATE TABLE H_Presupuesto (
 );
 
 -- Tablas dependientes
+CREATE TABLE USUARIO
+(
+    ID_usuario INT IDENTITY PRIMARY KEY,
+	Estado BIT default 1,
+    Contraseña VARCHAR(100) NOT NULL,
+    DNI VARCHAR(15) NOT NULL UNIQUE,
+    Nombre VARCHAR(30) NOT NULL,
+    Apellido VARCHAR(30) NOT NULL,
+	Comision DECIMAL(10, 2) default 0,
+    IdRol INT,
+    FOREIGN KEY (IdRol) REFERENCES ROL(IdRol)
+);
 
 CREATE TABLE PERMISO
 (
@@ -119,18 +93,18 @@ CREATE TABLE ARTICULO (
 CREATE TABLE CTA_CTE_PROVEEDOR (
     ID_CtaCteProv INT PRIMARY KEY IDENTITY,
     ID_Proveedor INT,
-    Compras DECIMAL(10, 2),
+    Compras DECIMAL(10, 2) default 0,
     Pagos DECIMAL(10, 2),
     Fecha DATE,
     FOREIGN KEY (ID_Proveedor) REFERENCES PROVEEDOR(ID_Proveedor)
 );
 
-CREATE TABLE VENDEDOR_PAGO (
+CREATE TABLE CTA_CTE_USUARIO (
     ID_pago INT IDENTITY PRIMARY KEY,
-    ID_vendedor INT,
+    ID_usuario INT,
     Fecha_pago DATE,
-    Monto DECIMAL(10, 2),
-    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDOR(ID_vendedor)
+    Monto DECIMAL(10, 2) default 0,
+    FOREIGN KEY (ID_usuario) REFERENCES USUARIO(ID_usuario)
 );
 
 CREATE TABLE STOCK (
@@ -146,24 +120,30 @@ CREATE TABLE CTA_CTE_CLIENTE (
     ID_pago INT PRIMARY KEY IDENTITY,
     Documentacion VARCHAR(15) NOT NULL UNIQUE,
 	pagos DECIMAL(10, 2),
-	compras DECIMAL(10, 2),
+	compras DECIMAL(10, 2) default 0,
     Fecha DATE,
     FOREIGN KEY (Documentacion) REFERENCES CLIENTE(Documentacion)
 );
 
-CREATE TABLE VENDEDOR_VENTA (
-    ID_vendedor_venta INT IDENTITY PRIMARY KEY,
-    ID_vendedor INT NOT NULL,
-    id_remito INT NOT NULL,
-    Fecha DATE NOT NULL,
-    Remito_total DECIMAL(10, 2),
-    Remito_costo DECIMAL(10, 2),
-    Comision DECIMAL(10, 2),
-    Comision_total DECIMAL(10, 2),
-    Mes VARCHAR(2),
-    Año CHAR(4),
-    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDOR(ID_vendedor),
-    FOREIGN KEY (id_remito) REFERENCES  H_Remito(id_remito)
+CREATE TABLE H_Remito (
+    id_remito INT IDENTITY PRIMARY KEY,
+	ID_usuario INT NOT NULL,
+	Nro_remito VARCHAR(30) NOT NULL UNIQUE,
+    fecha_hora DATETIME NOT NULL,
+    nombre VARCHAR(50) NOT NULL,
+	Apellido varchar (30) NOT NULL,
+    tel VARCHAR(50),
+    email VARCHAR(50),
+    entidad VARCHAR(50),
+    dni VARCHAR(50),
+    subtotal DECIMAL(10, 2),
+    descuento DECIMAL(10, 2),
+    total DECIMAL(10, 2),
+    total_costos DECIMAL(10, 2),
+    mes VARCHAR(30),
+    año CHAR(4),
+    direccion VARCHAR(50)
+	FOREIGN KEY (ID_usuario) REFERENCES USUARIO(ID_usuario)
 );
 
 CREATE TABLE H_Remito_detalle (
@@ -178,17 +158,17 @@ CREATE TABLE H_Remito_detalle (
     FOREIGN KEY (cod_articulo) REFERENCES ARTICULO(Cod_articulo)
 );
 
-CREATE TABLE INGRESO_EGRESO (
-    ID_movimiento INT IDENTITY PRIMARY KEY,
-    ID_vendedor INT,
-    tipo CHAR(1) NOT NULL,
-    detalle VARCHAR(250),
-    monto DECIMAL(10, 2),
-    fecha DATE NOT NULL,
-    mes VARCHAR(20),
-    año CHAR(4),
-    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDOR(ID_vendedor)
-);
+--CREATE TABLE INGRESO_EGRESO (
+--    ID_movimiento INT IDENTITY PRIMARY KEY,
+--    ID_vendedor INT,
+--    tipo CHAR(1) NOT NULL,
+--    detalle VARCHAR(250),
+--    monto DECIMAL(10, 2),
+--    fecha DATE NOT NULL,
+--    mes VARCHAR(20),
+--    año CHAR(4),
+--    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDOR(ID_vendedor)
+--);
 
 create table H_Presupuesto_Detalle(
     id_presupuesto_detalle int identity (1,1) not null,
@@ -227,13 +207,6 @@ VALUES ('F1001', 10, 120000.00, 35.00),
        ('J1001', 20, 90000.00, 33.00),
        ('J1002', 50, 70000.00, 30.00);
 
-INSERT INTO VENDEDOR (Nombre, Apellido, DNI, Comision)
-VALUES ('Leo', 'Yamil', '35499330', 10),
-       ('Pepe', 'Ruiz', '3389873378', 14),
-       ('Federico', 'Palmieri', '44395339', 20),
-       ('leandro', 'Pini', '32499330', 9),
-       ('Jorge', 'Aran', '22499330', 10);
-
 INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES 
 ('12345678A', 'Juan', 'Pérez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Entidad A'),
 ('44395339', 'Federico', 'Aran', 'Calle Falsa 123', '1159444354', 'aranfederico3@gmail.com', 'Entidad A');
@@ -242,13 +215,30 @@ INSERT INTO CTA_CTE_CLIENTE(Documentacion, compras, pagos, Fecha) VALUES
 ('12345678A', 0, 0, '2024-09-28'),
 ('44395339', 0, 0, '2024-09-28')
 
-INSERT INTO H_Presupuesto(Nro_Presupuesto, nombre, Apellido, tel, email, direccion, entidad, dni, subtotal, descuento, total, fecha_hora) VALUES
-('AAAA-0001', 'Federico', 'Aran', '115944354', 'aranfederico3@gmail.com', 'Calle Falsa 123', 'Entidad A', '44395339', 0, 0, 0,'2024-09-25')
+INSERT INTO ROL(Descripcion) VALUES
+('Administrador'),
+('Vendedor');
 
-INSERT INTO H_Presupuesto_Detalle(Nro_Presupuesto, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES
-('AAAA-0001', 'f1001', 'RTX NVIDIA 4090 24 GB', 120000+120000*35/100, 5, (120000+120000*35/100)*5),
-('AAAA-0001', 'j1001', 'SHURE PDX', 90000+90000*33/100, 3, (90000+90000*33/100)*3),
-('AAAA-0001', 'j1002', 'LOGITECH G406 HERO', 70000+70000*30/100, 7, (70000+70000*30/100)*7)
+insert into PERMISO(IdRol, NombreMenu) values
+(1, 'administrar'),
+(2, 'ventas');
+
+insert into USUARIO(contraseña, DNI, Nombre, apellido, IdRol) VALUES
+('12345Aran', '44395339', 'Federico', 'Aran', 1),
+('12345Aran', '22482292', 'Pepe', 'Gomez', 2);
+
+select * from H_Remito
+select * from H_Remito_detalle
+
+ --   ID_usuario INT IDENTITY PRIMARY KEY,
+	--Estado BIT default 1,
+ --   Contraseña VARCHAR(100) NOT NULL UNIQUE,
+ --   DNI VARCHAR(15) NOT NULL UNIQUE,
+ --   Nombre VARCHAR(30) NOT NULL,
+ --   Apellido VARCHAR(30) NOT NULL,
+	--Comision DECIMAL(10, 2) default 0,
+ --   IdRol INT,
+ --   FOREIGN KEY (IdRol) REFERENCES ROL(IdRol)
 
 
 select * from H_Presupuesto_Detalle
@@ -316,3 +306,22 @@ from CATEGORIA c
 inner join SUBCATEGORIA s on c.Cod_categoria = s.Cod_categoria
 
 ----------------------
+SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad FROM CLIENTE
+--------------------------
+
+SELECT rd.id_remito_detalle, rd.Nro_remito, rd.cod_articulo, rd.descripcion AS 'Descripción', rd.precio_unitario AS 'Precio unitario', rd.cantidad AS Cantidad, rd.precio_x_cantidad AS 'Precio por cantidad'
+FROM H_remito_detalle rd
+WHERE rd.Nro_remito = 'AAAA-0001';
+
+-------- update de compras cliente
+
+update CTA_CTE_CLIENTE set compras = 20000 where Documentacion = '44395339'
+
+-------- consulta de monto de compras
+
+select Compras from CTA_CTE_CLIENTE where Documentacion = '44395339'
+
+------
+
+select * from H_Remito
+select * from CTA_CTE_CLIENTE

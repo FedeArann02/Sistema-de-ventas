@@ -20,20 +20,13 @@ namespace Ventas_Hardware
 
         private static Form frmActicvo = null;
 
-        public PantallaPrincipal(Usuario obj_usuario = null) //Acpeta nulos por el momento para pruebas
+        public PantallaPrincipal(Usuario obj_usuario)
         {
-            if (obj_usuario == null)
-            {
-                usuario_actual = new Usuario() { Nombre = "ADMIN PROGRAMADOR", ID_Usuario = 0 };
-            }
-            else
-            {
-                usuario_actual = obj_usuario;
-            }
+            usuario_actual = obj_usuario;
             InitializeComponent();
         }
 
-        public static Usuario UsuarioActual() //Método de acceso "GETTER" para saber el usuario actual
+        public static Usuario ObtenerUsuarioActual() //Método de acceso "GETTER" para saber el usuario actual
         { 
             return usuario_actual;
         }
@@ -44,12 +37,16 @@ namespace Ventas_Hardware
 
             if (!ListaPermisos.Any(m => m.NombreMenu == "administrar"))
             {
-                //btnProveedores.Visible = false;
-                //btnListaCompras.Visible = false;
-                //administrar.Visible = false;
+                btnProveedores.Visible = false;
+                btnListaCompras.Visible = false;
+                administrar.Visible = false;
+                lblUsuario.Text = "Usuario: " + usuario_actual.Nombre + "    Vendedor";
+            }
+            else
+            {
+                lblUsuario.Text = "Usuario: " + usuario_actual.Nombre;
             }
 
-            lblUsuario.Text = usuario_actual.Nombre;
             AbrirForm(new frmInicio());
         }
 
@@ -184,7 +181,7 @@ namespace Ventas_Hardware
 
         private void pbxCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
         private void pbxMinimizar_Click(object sender, EventArgs e)
         {

@@ -195,6 +195,34 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaRemitoDetalle(string Nro_Remito)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("SELECT rd.id_remito_detalle, rd.Nro_remito, rd.cod_articulo, rd.descripcion AS 'Descripción', rd.precio_unitario AS 'Precio unitario', rd.cantidad AS Cantidad, rd.precio_x_cantidad AS 'Precio por cantidad'\r\n");
+                    Query.AppendLine("FROM H_remito_detalle rd");
+                    Query.AppendLine("WHERE rd.Nro_remito = @NroR;");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@NroR", Nro_Remito);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
         public DataTable ConsultaPresupuesto_Remito_Cliente(string Documentacion, string Opcion)
         {
             DataTable dt = new DataTable();

@@ -90,6 +90,20 @@ namespace CapaNegocio
                 modConfirm = false;
             }
         }
-        
+        public void RegistraCompraCliente(string DNI, decimal Monto)
+        {
+            objcd_modificaciones.RegistraCompraCliente(DNI, Monto);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
+
+
     }
 }

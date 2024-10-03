@@ -58,23 +58,28 @@ namespace Ventas_Hardware
         {
             if (cmbRemPres.SelectedIndex == 0) //REMITOS
             {
-                
+                dgvRemPresDetalle.Rows.Clear();
+                dtDetalle = cN_Consultas.ConsultaR_Detalle(Nro);
             }
             else if (cmbRemPres.SelectedIndex == 1) //PRESUPUESTOS
             {
                 dgvRemPresDetalle.Rows.Clear(); //limpia la grilla para que no se superponga con las otras
                 dtDetalle = cN_Consultas.ConsultaP_Detalle(Nro);
+            }
+            else
+            {
+                cmbRemPres.Text = "";
+            }
 
+            if (dtDetalle.Rows.Count > 0)
+            {
                 //Llenar grilla
                 for (int i = 0; i < dtDetalle.Rows.Count; i++)
                 {
                     dgvRemPresDetalle.Rows.Add(dtDetalle.Rows[i]["Cod_Articulo"], dtDetalle.Rows[i]["Descripción"], dtDetalle.Rows[i]["Precio unitario"], dtDetalle.Rows[i]["Cantidad"], dtDetalle.Rows[i]["Precio por cantidad"]);
                 }
             }
-            else
-            {
-                cmbRemPres.Text = "";
-            }
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -119,16 +124,6 @@ namespace Ventas_Hardware
             decimal compras = decimal.Parse(txtCompras.Text);
             return Decimal.Round((compras - pagos), 2);
         }
-
-
-
-
-
-
-
-
-
-
 
 
 

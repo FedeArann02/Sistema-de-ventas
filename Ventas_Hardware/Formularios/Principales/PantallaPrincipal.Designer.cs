@@ -58,7 +58,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panContenedor = new System.Windows.Forms.Panel();
-            this.lblUser = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.pbxMinimizar = new System.Windows.Forms.PictureBox();
             this.pbxMaximizar = new System.Windows.Forms.PictureBox();
@@ -115,7 +114,7 @@
             this.cerrarSesión.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.cerrarSesión.ForeColor = System.Drawing.Color.White;
             this.cerrarSesión.Name = "cerrarSesión";
-            this.cerrarSesión.Size = new System.Drawing.Size(155, 24);
+            this.cerrarSesión.Size = new System.Drawing.Size(180, 24);
             this.cerrarSesión.Text = "cerrar sesión";
             this.cerrarSesión.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
@@ -392,20 +391,6 @@
             this.panContenedor.Size = new System.Drawing.Size(749, 523);
             this.panContenedor.TabIndex = 20;
             // 
-            // lblUser
-            // 
-            this.lblUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUser.AutoSize = true;
-            this.lblUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(596, 5);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(51, 16);
-            this.lblUser.TabIndex = 21;
-            this.lblUser.Text = "Usuario:";
-            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // lblUsuario
             // 
             this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -413,8 +398,9 @@
             this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Variable Small", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(643, 5);
+            this.lblUsuario.Location = new System.Drawing.Point(191, 5);
             this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblUsuario.Size = new System.Drawing.Size(66, 16);
             this.lblUsuario.TabIndex = 22;
             this.lblUsuario.Text = "lblUsuario";
@@ -488,7 +474,6 @@
             this.Controls.Add(this.pbxMaximizar);
             this.Controls.Add(this.pbxMinimizar);
             this.Controls.Add(this.lblUsuario);
-            this.Controls.Add(this.lblUser);
             this.Controls.Add(this.panContenedor);
             this.Controls.Add(this.panBarraLateral);
             this.Controls.Add(this.mstripBarra);
@@ -543,7 +528,6 @@
         private System.Windows.Forms.Panel panContenedor;
         private System.Windows.Forms.ToolStripMenuItem categoriasSubcategoríasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem Categorias_alta_menu;
-        private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.ToolStripMenuItem subcategoríasToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbxMinimizar;

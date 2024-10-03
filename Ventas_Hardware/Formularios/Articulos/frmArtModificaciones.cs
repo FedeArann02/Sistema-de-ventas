@@ -93,7 +93,7 @@ namespace Ventas_Hardware
             CN_Consultas cN_Consultas = new CN_Consultas();
             DataTable dt = new DataTable();
             dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
-            if (dt.Rows.Count != null && dt.Rows.Count != 0)
+            if (dt.Rows.Count != 0)
             {
                 txtCategoria.Text = dt.Rows[0]["Categoria"].ToString();
                 txtSubCategoria.Text = dt.Rows[0]["SubCategoria"].ToString();

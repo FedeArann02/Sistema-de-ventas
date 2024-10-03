@@ -30,7 +30,6 @@ namespace Ventas_Hardware
             Usuario objUsuario = new CN_Usuario().Listar().Where(u => u.DNI == txtDocumento.Text && //Expresión LAMBDA que nos devuelve un usuario
             u.Contraseña == txtContraseña.Text).FirstOrDefault(); //"DONDE" el DNI y la contraseña sean iguales a las ingresadas.
 
-
             if (objUsuario != null) //Si se "encontró" (no es nulo) el usuario entones va a dar permiso para acceder.
             {
                 PantallaPrincipal frm = new PantallaPrincipal(objUsuario);
@@ -49,6 +48,20 @@ namespace Ventas_Hardware
             this.Show();
             txtContraseña.Text = "";
             txtDocumento.Text = "";
+        }
+
+        private void pbxNoVer_Click(object sender, EventArgs e)
+        {
+            pbxVer.Visible = true;
+            pbxNoVer.Visible = false;
+            txtContraseña.UseSystemPasswordChar = true;
+        }
+
+        private void pbxVer_Click(object sender, EventArgs e)
+        {
+            pbxVer.Visible = false;
+            pbxNoVer.Visible = true;
+            txtContraseña.UseSystemPasswordChar = false;
         }
     }
 }
