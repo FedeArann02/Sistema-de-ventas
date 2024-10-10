@@ -1,5 +1,5 @@
-CREATE DATABASE TP_6;
-USE TP_6;
+CREATE DATABASE TP_7;
+USE TP_7;
 
 -- Tablas principales
 
@@ -94,7 +94,7 @@ CREATE TABLE CTA_CTE_PROVEEDOR (
     ID_CtaCteProv INT PRIMARY KEY IDENTITY,
     ID_Proveedor INT,
     Compras DECIMAL(10, 2) default 0,
-    Pagos DECIMAL(10, 2),
+    Pagos DECIMAL(10, 2) default 0,
     Fecha DATE,
     FOREIGN KEY (ID_Proveedor) REFERENCES PROVEEDOR(ID_Proveedor)
 );
@@ -226,6 +226,12 @@ insert into PERMISO(IdRol, NombreMenu) values
 insert into USUARIO(contraseña, DNI, Nombre, apellido, IdRol) VALUES
 ('12345Aran', '44395339', 'Federico', 'Aran', 1),
 ('12345Aran', '22482292', 'Pepe', 'Gomez', 2);
+
+insert into CTA_CTE_PROVEEDOR(ID_Proveedor, Compras, Pagos, Fecha) VALUES
+(1, 0, 0, '2024-10-09'),
+(2, 0, 0, '2024-10-09');
+
+select ctp.Compras, ctp.Pagos from CTA_CTE_PROVEEDOR ctp where ID_Proveedor = 1
 
 select * from H_Remito
 select * from H_Remito_detalle

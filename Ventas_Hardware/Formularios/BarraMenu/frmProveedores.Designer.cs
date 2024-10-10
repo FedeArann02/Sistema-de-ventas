@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.lblProveedores = new System.Windows.Forms.Label();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
             this.panelDatosContacto = new System.Windows.Forms.Panel();
@@ -66,12 +65,12 @@
             this.txtPrecioVentaDetalle = new System.Windows.Forms.TextBox();
             this.lblArticulos = new System.Windows.Forms.Label();
             this.panelArt = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTotalCompra = new System.Windows.Forms.TextBox();
             this.panelCtaCte = new System.Windows.Forms.Panel();
             this.lblEstadoActual = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDeuda = new System.Windows.Forms.TextBox();
+            this.txtTotalPagoEstAct = new System.Windows.Forms.TextBox();
+            this.txtTotalCompraEstAct = new System.Windows.Forms.TextBox();
             this.lblttlpagos = new System.Windows.Forms.Label();
             this.lblDuda = new System.Windows.Forms.Label();
             this.lblttlcompras = new System.Windows.Forms.Label();
@@ -79,7 +78,7 @@
             this.btnRegistrarCompra = new System.Windows.Forms.Button();
             this.lbltotalPago = new System.Windows.Forms.Label();
             this.lbltotalCompra = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTotalPago = new System.Windows.Forms.TextBox();
             this.lblCtaCte = new System.Windows.Forms.Label();
             this.panelDatosContacto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
@@ -87,22 +86,6 @@
             this.panelArt.SuspendLayout();
             this.panelCtaCte.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(372, 15);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(78, 28);
-            this.btnBuscar.TabIndex = 56;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Visible = false;
             // 
             // lblProveedores
             // 
@@ -126,6 +109,7 @@
             this.cmbProveedor.Name = "cmbProveedor";
             this.cmbProveedor.Size = new System.Drawing.Size(174, 24);
             this.cmbProveedor.TabIndex = 54;
+            this.cmbProveedor.SelectedIndexChanged += new System.EventHandler(this.cmbProveedor_SelectedIndexChanged);
             // 
             // panelDatosContacto
             // 
@@ -254,6 +238,7 @@
             // dgvArticulos
             // 
             this.dgvArticulos.AllowUserToAddRows = false;
+            this.dgvArticulos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvArticulos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvArticulos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
@@ -278,15 +263,15 @@
             this.dgvArticulos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvArticulos.EnableHeadersVisualStyles = false;
             this.dgvArticulos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.dgvArticulos.Location = new System.Drawing.Point(5, 24);
+            this.dgvArticulos.Location = new System.Drawing.Point(13, 30);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.ReadOnly = true;
             this.dgvArticulos.RowHeadersVisible = false;
             this.dgvArticulos.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(348, 126);
+            this.dgvArticulos.Size = new System.Drawing.Size(330, 126);
             this.dgvArticulos.TabIndex = 58;
-            this.dgvArticulos.Visible = false;
+            this.dgvArticulos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentDoubleClick);
             // 
             // panelDetalle
             // 
@@ -554,32 +539,30 @@
             this.panelArt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.panelArt.Controls.Add(this.lblArticulos);
             this.panelArt.Controls.Add(this.dgvArticulos);
-            this.panelArt.Enabled = false;
             this.panelArt.Location = new System.Drawing.Point(21, 147);
             this.panelArt.Name = "panelArt";
             this.panelArt.Size = new System.Drawing.Size(357, 169);
             this.panelArt.TabIndex = 63;
             // 
-            // textBox1
+            // txtTotalCompra
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(18, 44);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(139, 22);
-            this.textBox1.TabIndex = 63;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtTotalCompra.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalCompra.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalCompra.ForeColor = System.Drawing.Color.Black;
+            this.txtTotalCompra.Location = new System.Drawing.Point(18, 44);
+            this.txtTotalCompra.Name = "txtTotalCompra";
+            this.txtTotalCompra.Size = new System.Drawing.Size(139, 22);
+            this.txtTotalCompra.TabIndex = 63;
+            this.txtTotalCompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panelCtaCte
             // 
             this.panelCtaCte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.panelCtaCte.Controls.Add(this.lblEstadoActual);
-            this.panelCtaCte.Controls.Add(this.textBox5);
-            this.panelCtaCte.Controls.Add(this.textBox4);
-            this.panelCtaCte.Controls.Add(this.textBox3);
+            this.panelCtaCte.Controls.Add(this.txtDeuda);
+            this.panelCtaCte.Controls.Add(this.txtTotalPagoEstAct);
+            this.panelCtaCte.Controls.Add(this.txtTotalCompraEstAct);
             this.panelCtaCte.Controls.Add(this.lblttlpagos);
             this.panelCtaCte.Controls.Add(this.lblDuda);
             this.panelCtaCte.Controls.Add(this.lblttlcompras);
@@ -587,10 +570,9 @@
             this.panelCtaCte.Controls.Add(this.btnRegistrarCompra);
             this.panelCtaCte.Controls.Add(this.lbltotalPago);
             this.panelCtaCte.Controls.Add(this.lbltotalCompra);
-            this.panelCtaCte.Controls.Add(this.textBox2);
-            this.panelCtaCte.Controls.Add(this.textBox1);
+            this.panelCtaCte.Controls.Add(this.txtTotalPago);
+            this.panelCtaCte.Controls.Add(this.txtTotalCompra);
             this.panelCtaCte.Controls.Add(this.lblCtaCte);
-            this.panelCtaCte.Enabled = false;
             this.panelCtaCte.Location = new System.Drawing.Point(392, 147);
             this.panelCtaCte.Name = "panelCtaCte";
             this.panelCtaCte.Size = new System.Drawing.Size(335, 194);
@@ -607,41 +589,44 @@
             this.lblEstadoActual.TabIndex = 73;
             this.lblEstadoActual.Text = "Estado Actual:";
             // 
-            // textBox5
+            // txtDeuda
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.White;
-            this.textBox5.Location = new System.Drawing.Point(195, 169);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(115, 16);
-            this.textBox5.TabIndex = 72;
+            this.txtDeuda.BackColor = System.Drawing.Color.White;
+            this.txtDeuda.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeuda.Enabled = false;
+            this.txtDeuda.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeuda.ForeColor = System.Drawing.Color.White;
+            this.txtDeuda.Location = new System.Drawing.Point(195, 169);
+            this.txtDeuda.Name = "txtDeuda";
+            this.txtDeuda.Size = new System.Drawing.Size(115, 16);
+            this.txtDeuda.TabIndex = 72;
+            this.txtDeuda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox4
+            // txtTotalPagoEstAct
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Enabled = false;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(195, 149);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(115, 16);
-            this.textBox4.TabIndex = 71;
+            this.txtTotalPagoEstAct.BackColor = System.Drawing.Color.White;
+            this.txtTotalPagoEstAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalPagoEstAct.Enabled = false;
+            this.txtTotalPagoEstAct.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPagoEstAct.ForeColor = System.Drawing.Color.White;
+            this.txtTotalPagoEstAct.Location = new System.Drawing.Point(195, 149);
+            this.txtTotalPagoEstAct.Name = "txtTotalPagoEstAct";
+            this.txtTotalPagoEstAct.Size = new System.Drawing.Size(115, 16);
+            this.txtTotalPagoEstAct.TabIndex = 71;
+            this.txtTotalPagoEstAct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // txtTotalCompraEstAct
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(195, 129);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(115, 16);
-            this.textBox3.TabIndex = 62;
+            this.txtTotalCompraEstAct.BackColor = System.Drawing.Color.White;
+            this.txtTotalCompraEstAct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalCompraEstAct.Enabled = false;
+            this.txtTotalCompraEstAct.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalCompraEstAct.ForeColor = System.Drawing.Color.White;
+            this.txtTotalCompraEstAct.Location = new System.Drawing.Point(195, 129);
+            this.txtTotalCompraEstAct.Name = "txtTotalCompraEstAct";
+            this.txtTotalCompraEstAct.Size = new System.Drawing.Size(115, 16);
+            this.txtTotalCompraEstAct.TabIndex = 62;
+            this.txtTotalCompraEstAct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblttlpagos
             // 
@@ -690,7 +675,6 @@
             this.btnRegistrarpago.TabIndex = 67;
             this.btnRegistrarpago.Text = "Registrar pago";
             this.btnRegistrarpago.UseVisualStyleBackColor = false;
-            this.btnRegistrarpago.Visible = false;
             // 
             // btnRegistrarCompra
             // 
@@ -706,7 +690,6 @@
             this.btnRegistrarCompra.TabIndex = 65;
             this.btnRegistrarCompra.Text = "Registrar compra";
             this.btnRegistrarCompra.UseVisualStyleBackColor = false;
-            this.btnRegistrarCompra.Visible = false;
             // 
             // lbltotalPago
             // 
@@ -730,18 +713,17 @@
             this.lbltotalCompra.TabIndex = 65;
             this.lbltotalCompra.Text = "Total compra:";
             // 
-            // textBox2
+            // txtTotalPago
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Black;
-            this.textBox2.Location = new System.Drawing.Point(184, 44);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(127, 22);
-            this.textBox2.TabIndex = 64;
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtTotalPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTotalPago.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPago.ForeColor = System.Drawing.Color.Black;
+            this.txtTotalPago.Location = new System.Drawing.Point(184, 44);
+            this.txtTotalPago.Name = "txtTotalPago";
+            this.txtTotalPago.Size = new System.Drawing.Size(127, 22);
+            this.txtTotalPago.TabIndex = 64;
+            this.txtTotalPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblCtaCte
             // 
@@ -764,7 +746,6 @@
             this.Controls.Add(this.panelArt);
             this.Controls.Add(this.panelDetalle);
             this.Controls.Add(this.panelDatosContacto);
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.lblProveedores);
             this.Controls.Add(this.cmbProveedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -785,8 +766,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Label lblProveedores;
         private System.Windows.Forms.ComboBox cmbProveedor;
         private System.Windows.Forms.Panel panelDatosContacto;
@@ -822,20 +801,20 @@
         private System.Windows.Forms.Label lblDetalle;
         private System.Windows.Forms.Label lblArticulos;
         private System.Windows.Forms.Panel panelArt;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotalCompra;
         private System.Windows.Forms.Panel panelCtaCte;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTotalPago;
         private System.Windows.Forms.Label lblCtaCte;
         private System.Windows.Forms.Button btnRegistrarpago;
         private System.Windows.Forms.Button btnRegistrarCompra;
         private System.Windows.Forms.Label lbltotalPago;
         private System.Windows.Forms.Label lbltotalCompra;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTotalCompraEstAct;
         private System.Windows.Forms.Label lblttlpagos;
         private System.Windows.Forms.Label lblDuda;
         private System.Windows.Forms.Label lblttlcompras;
         private System.Windows.Forms.Label lblEstadoActual;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtDeuda;
+        private System.Windows.Forms.TextBox txtTotalPagoEstAct;
     }
 }
