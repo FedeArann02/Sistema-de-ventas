@@ -42,6 +42,32 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaArtXproveedor(string ID_Proveedor)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select * from ARTICULO a where ID_Proveedor = @ID_P;");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@ID_P", ID_Proveedor);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
         public DataTable ConsultaArtMod(string Codigo)
         {
             DataTable dt = new DataTable();
@@ -136,6 +162,33 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaProveedorCtaCte(string ID_Proveedor)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+
+                    Query.AppendLine("select ctp.Compras, ctp.Pagos from CTA_CTE_PROVEEDOR ctp");
+                    Query.AppendLine("WHERE ID_Proveedor = @ID_P");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@ID_P", ID_Proveedor);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
 
         public DataTable ConsultaPresupuesto(string Nro_presupuesto)
         {
@@ -288,6 +341,57 @@ namespace CapaDatos
             }
             return dt;
         }
+        public DataTable ConsultaProveedores()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select p.ID_proveedor, p.Nombre, p.Apellido, p.Telefono, p.Correo from PROVEEDOR p");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+        public DataTable ConsultaProveedores(string ID_Proveedor)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select p.ID_proveedor, p.Nombre, p.Apellido, p.Telefono, p.Correo from PROVEEDOR p where ID_Proveedor = @ID_P");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@ID_P", ID_Proveedor);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
 
 
     }

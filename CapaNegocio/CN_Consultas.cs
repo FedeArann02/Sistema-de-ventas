@@ -33,6 +33,25 @@ namespace CapaNegocio
             return Querys.ConsultaClienteCtaCte(Documentacion);
         }
 
+        public DataTable ConsultaProveedores()
+        {
+            return Querys.ConsultaProveedores();
+        }
+        public DataTable ConsultaProveedores(string ID_Proveedor)
+        {
+            return Querys.ConsultaProveedores(ID_Proveedor);
+        }
+
+        public DataTable ConsultaArtXproveedor(string ID_Proveedor)
+        {
+            return Querys.ConsultaArtXproveedor(ID_Proveedor);
+        }
+
+        public DataTable ConsultaProveedorCtaCte(string ID_Proveedor)
+        {
+            return Querys.ConsultaProveedorCtaCte(ID_Proveedor);
+        }
+
         public DataTable ConsultaPresupuesto(string Nro_prespuesto)
         {
             return Querys.ConsultaPresupuesto(Nro_prespuesto);
