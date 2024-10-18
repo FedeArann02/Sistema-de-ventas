@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,9 @@ namespace Ventas_Hardware
     public partial class frmProveedores : Form
     {
         CN_Consultas cN_Consultas = new CN_Consultas();
+        CN_Modificaciones CN_Modificaciones = new CN_Modificaciones();
         DataTable dt = new DataTable();
+        
         public frmProveedores()
         {
             InitializeComponent();
@@ -49,7 +52,7 @@ namespace Ventas_Hardware
             dt = cN_Consultas.ConsultaProveedorCtaCte(ID_Proveedor);
             txtTotalPagoEstAct.Text = dt.Rows[0]["Pagos"].ToString();
             txtTotalCompraEstAct.Text = dt.Rows[0]["Compras"].ToString();
-            txtDeuda.Text = (decimal.Parse(txtTotalPagoEstAct.Text) - decimal.Parse(txtTotalCompraEstAct.Text)).ToString();
+            txtDeuda.Text = (decimal.Parse(txtTotalCompraEstAct.Text) - decimal.Parse(txtTotalPagoEstAct.Text)).ToString();
             dt.Clear();
         }
 
@@ -117,6 +120,65 @@ namespace Ventas_Hardware
             decimal Ganancia = decimal.Parse(txtGananciaDetalle.Text);
             decimal Precio_Venta = costo + (costo * Ganancia / 100);
             return Decimal.Round(Precio_Venta, 2); //Decimal.Round = redondea los decimales a dos valores
+        }
+
+        private void clearAll()
+        {
+            txtApellido.Text = "";
+            txtNombre.Text = "";
+            txtTelefono.Text = "";
+            txtEmail.Text = "";
+
+            txtTotalPago.Text = "";
+            txtTotalCompra.Text = "";
+            txtTotalPagoEstAct.Text = "";
+            txtTotalCompraEstAct.Text = "";
+        }
+
+        private void btnRegistrarCompra_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //los decimal abarcan un maximo de 19 caracteres (IMPORTANTE PARA VALIDAR EN CADA ENTRADA DE DECIMAL);
+                if (txtTotalCompra.Text.Length < 20 && decimal.Parse(txtTotalCompra.Text) >= 0)
+                {
+                    CN_Modificaciones.RegistraCompraProveedor(Convert.ToString(cmbProveedor.SelectedValue), decimal.Parse(txtTotalCompra.Text));
+                    txtTotalCompra.Text = "";
+                    cargarCTACTE(Convert.ToString(cmbProveedor.SelectedValue));
+                }
+                else
+                {
+                    MessageBox.Show("Monto fuera de rango, ingrese un valor correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTotalCompra.Text = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error de formato de entrada, solo puede ingresar valores enteros o decimales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnRegistrarpago_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtTotalPago.Text.Length < 20 && decimal.Parse(txtTotalPago.Text) >= 0)
+                {
+                    decimal Monto = decimal.Parse(txtTotalPago.Text) + decimal.Parse(txtTotalPagoEstAct.Text);
+                    CN_Modificaciones.RegistraPagoProveedor(Convert.ToString(cmbProveedor.SelectedValue), Monto);
+                    txtTotalPago.Text = "";
+                    cargarCTACTE(Convert.ToString(cmbProveedor.SelectedValue));
+                }
+                else
+                {
+                    MessageBox.Show("Monto fuera de rango, ingrese un valor correcto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtTotalPago.Text = "0";
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error de formato de entrada, solo puede ingresar valores enteros o decimales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

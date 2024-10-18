@@ -175,6 +175,7 @@
             this.txtCodigoRemito.ForeColor = System.Drawing.Color.Black;
             this.txtCodigoRemito.Location = new System.Drawing.Point(327, 23);
             this.txtCodigoRemito.Name = "txtCodigoRemito";
+            this.txtCodigoRemito.ReadOnly = true;
             this.txtCodigoRemito.Size = new System.Drawing.Size(201, 22);
             this.txtCodigoRemito.TabIndex = 67;
             this.txtCodigoRemito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

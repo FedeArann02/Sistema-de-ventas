@@ -210,6 +210,7 @@ namespace Ventas_Hardware
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+
             decimal Monto = decimal.Parse(txtMonto.Text) + decimal.Parse(txtPagos.Text);
 
             cN_Modificaciones.RegistraPagoCliente(txtDoc.Text, Monto);

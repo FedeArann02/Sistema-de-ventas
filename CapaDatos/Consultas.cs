@@ -392,6 +392,30 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaUltimoCodigoRemito()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select Top 1 R.Nro_remito from H_Remito R order by id_remito DESC");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
 
 
     }

@@ -158,6 +158,7 @@
   <ItemGroup>
     <Compile Include="CN_Altas.cs" />
     <Compile Include="CN_Articulo.cs" />
+    <Compile Include="CN_Bajas.cs" />
     <Compile Include="CN_Categoria.cs" />
     <Compile Include="CN_Consultas.cs" />
     <Compile Include="CN_H_Presupuesto.cs" />

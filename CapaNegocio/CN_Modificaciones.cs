@@ -103,6 +103,32 @@ namespace CapaNegocio
                 modConfirm = false;
             }
         }
+        public void RegistraCompraProveedor(string ID, decimal Monto)
+        {
+            objcd_modificaciones.RegistraCompraProveedor(ID, Monto);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
+        public void RegistraPagoProveedor(string ID, decimal Monto)
+        {
+            objcd_modificaciones.RegistraPagoProveedor(ID, Monto);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
 
 
     }

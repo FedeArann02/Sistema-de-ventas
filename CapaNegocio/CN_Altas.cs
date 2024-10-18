@@ -60,9 +60,9 @@ namespace CapaNegocio
             }
         }
 
-        public void CN_AltaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP, int id_user)
+        public void CN_AltaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP, int id_user, string Codigo_Presupuesto)
         {
-            objcd_Altas.altaRemito(Doc, Nombre, Apellido, Tel, Mail, Ent, Dir, Sub, Descuento, Total, F_H, dgv, NroP, id_user);
+            objcd_Altas.altaRemito(Doc, Nombre, Apellido, Tel, Mail, Ent, Dir, Sub, Descuento, Total, F_H, dgv, NroP, id_user, Codigo_Presupuesto);
 
             if (objcd_Altas.clearConfirm)
             {
