@@ -76,7 +76,17 @@ namespace Ventas_Hardware
                     panelDetalle.Enabled = false;
                 }
             }
+
+            crearCodigoRemito();
+
         }//Control de opciones de carga de datos
+
+        private void crearCodigoRemito()
+        {
+            DataTable CodigoR = cN_Consultas.ConsultaUltimoCodigoRemito();
+            string LastCode = CodigoR.Rows[0]["Nro_remito"].ToString();
+            txtCodigoRemito.Text = GenerarNumeroFactura(LastCode);
+        }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -104,7 +114,7 @@ namespace Ventas_Hardware
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione una opci+on válida", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Seleccione una opción válida", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
@@ -118,27 +128,35 @@ namespace Ventas_Hardware
             dgvArticulos.Rows.Clear();
             dt = cN_Consultas.ConsultaPresupuesto((txtCodigoPres.Text));
 
-            //Lllenar textboxes
-            txtNombre.Text = dt.Rows[0]["nombre"].ToString();
-            txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
-            txtDoc.Text = dt.Rows[0]["dni"].ToString();
-            txtEmail.Text = dt.Rows[0]["email"].ToString();
-            txtTelefono.Text = dt.Rows[0]["tel"].ToString();
-            txtDireccion.Text = dt.Rows[0]["direccion"].ToString();
-            txtEntidad.Text = dt.Rows[0]["entidad"].ToString();
-            txtSubTotal.Text = dt.Rows[0]["subtotal"].ToString();
-            txtDescuento.Text = dt.Rows[0]["descuento"].ToString();
-            txtTotal.Text = dt.Rows[0]["total"].ToString();
-            SubTotal = decimal.Parse(txtSubTotal.Text);
-
-            dt = cN_Consultas.ConsultaP_Detalle((txtCodigoPres.Text));
-
-            //Llenar grilla
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count > 0)
             {
-                dgvArticulos.Rows.Add(dt.Rows[i]["Cod_Articulo"], dt.Rows[i]["Descripción"], dt.Rows[i]["Precio unitario"], dt.Rows[i]["Cantidad"], dt.Rows[i]["Precio por cantidad"]);
-                panelDetalle.Enabled = true;
-                txtCodigoPres.Text = "";
+                //Lllenar textboxes
+                txtNombre.Text = dt.Rows[0]["nombre"].ToString();
+                txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
+                txtDoc.Text = dt.Rows[0]["dni"].ToString();
+                txtEmail.Text = dt.Rows[0]["email"].ToString();
+                txtTelefono.Text = dt.Rows[0]["tel"].ToString();
+                txtDireccion.Text = dt.Rows[0]["direccion"].ToString();
+                txtEntidad.Text = dt.Rows[0]["entidad"].ToString();
+                txtSubTotal.Text = dt.Rows[0]["subtotal"].ToString();
+                txtDescuento.Text = dt.Rows[0]["descuento"].ToString();
+                txtTotal.Text = dt.Rows[0]["total"].ToString();
+                SubTotal = decimal.Parse(txtSubTotal.Text);
+
+                dt = cN_Consultas.ConsultaP_Detalle((txtCodigoPres.Text));
+
+                //Llenar grilla
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    dgvArticulos.Rows.Add(dt.Rows[i]["Cod_Articulo"], dt.Rows[i]["Descripción"], dt.Rows[i]["Precio unitario"], dt.Rows[i]["Cantidad"], dt.Rows[i]["Precio por cantidad"]);
+                    panelDetalle.Enabled = true;
+                    txtCodigoPres.Enabled = false;
+                    btnBuscar.Enabled = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("El presupuesto no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -211,6 +229,7 @@ namespace Ventas_Hardware
             catch (Exception ex)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                crearCodigoRemito();
             }
 
             txtCantidad.Text = "";
@@ -278,7 +297,7 @@ namespace Ventas_Hardware
 
                 cN_Altas.CN_AltaRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
                 txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
-                decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoRemito.Text, Id_usuario);
+                decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoRemito.Text, Id_usuario, txtCodigoPres.Text);
 
                 if (cmbOpciones.Text == "Cliente Nuevo" && cN_Altas.clearConf == true)
                 {
@@ -330,6 +349,8 @@ namespace Ventas_Hardware
             txtSubTotal.Text = "";
             txtTotal.Text = "";
             txtStock.Text = "";
+            txtCodigoPres.Text = "";
+            btnBuscar.Enabled = false;
         }
 
         private void clearDetalle()
@@ -501,6 +522,50 @@ namespace Ventas_Hardware
             {
                 MessageBox.Show("Error solo se permiten datos numericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public string GenerarNumeroFactura(string ultimoNumeroFactura) //Algoritmo prestado de Nico (un crack)
+        {
+            // Si no hay último número, comienza con AA-0000-0001
+            if (string.IsNullOrEmpty(ultimoNumeroFactura))
+                return "AA-0000-0001";
+
+            // Descomponer el número en partes
+            string letras = ultimoNumeroFactura.Substring(0, 2);
+            string numeros = ultimoNumeroFactura.Substring(3).Replace("-", "");
+
+            // Incrementar el número
+            int numeroActual = int.Parse(numeros);
+            numeroActual++;
+
+            // Si se alcanzó el límite de 999999999, cambiar las letras
+            if (numeroActual > 999999999)
+            {
+                numeroActual = 1;  // Reinicia el número
+                letras = IncrementarLetras(letras);  // Cambia las letras
+            }
+
+            // Retornar el nuevo número en formato AA-0000-0000
+            return $"{letras}-{numeroActual.ToString("D9").Insert(4, "-")}";
+        }
+
+        public string IncrementarLetras(string letras)
+        {
+            char[] letrasArray = letras.ToCharArray();
+            // Incrementa la segunda letra, y si llega a 'Z', incrementa la primera
+            if (letrasArray[1] < 'Z')
+            {
+                letrasArray[1]++;
+            }
+            else
+            {
+                letrasArray[1] = 'A';
+                if (letrasArray[0] < 'Z')
+                    letrasArray[0]++;
+                else
+                    throw new Exception("Se han agotado todas las combinaciones de letras contactese con el desarrollador.");
+            }
+            return new string(letrasArray);
         }
     }
 }

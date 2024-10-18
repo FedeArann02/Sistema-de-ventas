@@ -73,5 +73,9 @@ namespace CapaNegocio
             return Querys.ConsultaSubcategorias();
         }
 
+        public DataTable ConsultaUltimoCodigoRemito()
+        {
+            return Querys.ConsultaUltimoCodigoRemito();
+        }
     }
 }

@@ -140,6 +140,12 @@ namespace Ventas_Hardware
             txtSubTotal.Text =SubTotal.ToString();
         }
 
+
+        //TODO
+        //Implementar eal codigo automatico en los presupuestos y realizar validaciones!
+        //terminar los abms y estaria todo listo
+        //ultimo trabajo hecho en netbook 18/10/24
+
         private decimal precioVenta()
         {
             dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
@@ -188,6 +194,8 @@ namespace Ventas_Hardware
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             CN_Altas cN_Altas = new CN_Altas();
+
+            if (String.IsNullOrEmpty(txtDescuento.Text)) txtDescuento.Text = "0";
 
             cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, 
             txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text), 

@@ -16,6 +16,7 @@ namespace CapaDatos
     public class Altas
     {
         public bool clearConfirm;
+        Bajas baja = new Bajas();
 
         /// <summary>
         /// da de alta un artículo y lo registra en una base de datos.
@@ -71,20 +72,24 @@ namespace CapaDatos
         {
             clearConfirm = false;
 
-            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
             {
                 objConexion.Open();
+                // Iniciar la transacción
+                SqlTransaction transaction = objConexion.BeginTransaction();
+
                 try
                 {
-                    
                     StringBuilder insertDetalleQuery = new StringBuilder();
                     StringBuilder insertPresupuestoQuery = new StringBuilder();
 
+                    // Insert para H_Presupuesto
                     insertPresupuestoQuery.AppendLine("INSERT INTO H_Presupuesto(Nro_presupuesto, dni, nombre, Apellido, tel, email, entidad, direccion, subtotal, descuento, total, fecha_hora) VALUES");
                     insertPresupuestoQuery.AppendLine("(@NroP, @documentacion, @Nombre, @Apellido, @Telefono, @Mail, @Entidad, @Direccion, @Subtotal, @Descuento, @Total, @FechaHora);");
 
-                    SqlCommand cmdPresupuesto = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion);
+                    SqlCommand cmdPresupuesto = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion, transaction);
 
+                    // Parámetros del presupuesto
                     cmdPresupuesto.Parameters.AddWithValue("@NroP", NroP);
                     cmdPresupuesto.Parameters.AddWithValue("@documentacion", Doc);
                     cmdPresupuesto.Parameters.AddWithValue("@Nombre", Nombre);
@@ -98,8 +103,10 @@ namespace CapaDatos
                     cmdPresupuesto.Parameters.AddWithValue("@Total", Total);
                     cmdPresupuesto.Parameters.AddWithValue("@FechaHora", F_H);
 
+                    // Ejecutar el insert del presupuesto
                     cmdPresupuesto.ExecuteNonQuery();
 
+                    // Insertar el detalle de cada artículo
                     foreach (DataGridViewRow Rows in dgv.Rows)
                     {
                         if (!Rows.IsNewRow)
@@ -107,13 +114,16 @@ namespace CapaDatos
                             insertDetalleQuery.AppendLine("INSERT INTO H_Presupuesto_Detalle(Nro_Presupuesto, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES");
                             insertDetalleQuery.AppendLine("(@Nro_Presupuesto ,@Cod_articulo, @Descripcion, @PrecioUnitario, @Cantidad, @PxCant);");
 
-                            SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion);
+                            SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion, transaction);
 
+                            // Obtener los valores del DataGridView
                             string CodArt = Rows.Cells["C_CodArt"].Value.ToString();
                             string Desc = Rows.Cells["C_Descripcion"].Value.ToString();
                             decimal P_Unit = decimal.Parse(Rows.Cells["C_PrecioUnit"].Value.ToString());
                             int Cant = int.Parse(Rows.Cells["C_Cantidad"].Value.ToString());
                             decimal PxCant = decimal.Parse(Rows.Cells["C_Pxcant"].Value.ToString());
+
+                            // Parámetros del detalle
                             cmdDetalle.Parameters.AddWithValue("@Nro_Presupuesto", NroP);
                             cmdDetalle.Parameters.AddWithValue("@Cod_articulo", CodArt);
                             cmdDetalle.Parameters.AddWithValue("@Descripcion", Desc);
@@ -121,22 +131,28 @@ namespace CapaDatos
                             cmdDetalle.Parameters.AddWithValue("@Cantidad", Cant);
                             cmdDetalle.Parameters.AddWithValue("@PxCant", PxCant);
 
-                            
+                            // Ejecutar el insert del detalle
                             cmdDetalle.ExecuteNonQuery();
 
-                            insertDetalleQuery.Clear();
+                            insertDetalleQuery.Clear(); // Limpiar el StringBuilder para la próxima iteración
                         }
                     }
+
+                    // Si todo va bien, se confirma la transacción
+                    transaction.Commit();
 
                     clearConfirm = true;
                     MessageBox.Show("Presupuesto guardado con éxito", "PRESUPUESTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el procedimiento del Registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Si hay un error, se realiza el rollback
+                    transaction.Rollback();
+                    MessageBox.Show("Error en el procedimiento del Registro. Se realizó un rollback de los cambios.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
 
         public void AltaCliente(string Doc, string Nombre, string Apellido, string Dir, string Tel, string Correo, string Entidad)
         {
@@ -209,24 +225,28 @@ namespace CapaDatos
             }
         }
 
-        public void altaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP, int id_user)
+        public void altaRemito(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP, int id_user, string Codigo_Presupuesto)
         {
             clearConfirm = false;
 
             using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
             {
                 objConexion.Open();
+                // Iniciar la transacción
+                SqlTransaction transaction = objConexion.BeginTransaction();
+
                 try
                 {
-
                     StringBuilder insertDetalleQuery = new StringBuilder();
                     StringBuilder insertPresupuestoQuery = new StringBuilder();
 
+                    // Insert para H_Remito
                     insertPresupuestoQuery.AppendLine("INSERT INTO H_Remito(Nro_remito, dni, nombre, Apellido, tel, email, entidad, direccion, subtotal, descuento, total, fecha_hora, id_usuario) VALUES");
                     insertPresupuestoQuery.AppendLine("(@NroP, @documentacion, @Nombre, @Apellido, @Telefono, @Mail, @Entidad, @Direccion, @Subtotal, @Descuento, @Total, @FechaHora, @id_usuario);");
 
-                    SqlCommand cmbRemito = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion);
+                    SqlCommand cmbRemito = new SqlCommand(insertPresupuestoQuery.ToString(), objConexion, transaction);
 
+                    // Parámetros del remito
                     cmbRemito.Parameters.AddWithValue("@NroP", NroP);
                     cmbRemito.Parameters.AddWithValue("@documentacion", Doc);
                     cmbRemito.Parameters.AddWithValue("@Nombre", Nombre);
@@ -241,22 +261,27 @@ namespace CapaDatos
                     cmbRemito.Parameters.AddWithValue("@FechaHora", F_H);
                     cmbRemito.Parameters.AddWithValue("@id_usuario", id_user);
 
+                    // Ejecutar el insert del remito
                     cmbRemito.ExecuteNonQuery();
 
+                    // Insertar el detalle de cada artículo
                     foreach (DataGridViewRow Rows in dgv.Rows)
                     {
                         if (!Rows.IsNewRow)
                         {
                             insertDetalleQuery.AppendLine("INSERT INTO H_Remito_detalle(Nro_remito, Cod_articulo, descripcion, precio_unitario, cantidad, precio_x_cantidad) VALUES");
-                            insertDetalleQuery.AppendLine("(@Nro_Presupuesto ,@Cod_articulo, @Descripcion, @PrecioUnitario, @Cantidad, @PxCant);");
+                            insertDetalleQuery.AppendLine("(@Nro_Presupuesto, @Cod_articulo, @Descripcion, @PrecioUnitario, @Cantidad, @PxCant);");
 
-                            SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion);
+                            SqlCommand cmdDetalle = new SqlCommand(insertDetalleQuery.ToString(), objConexion, transaction);
 
+                            // Obtener los valores del DataGridView
                             string CodArt = Rows.Cells["C_CodArt"].Value.ToString();
                             string Desc = Rows.Cells["C_Descripcion"].Value.ToString();
                             decimal P_Unit = decimal.Parse(Rows.Cells["C_PrecioUnit"].Value.ToString());
                             int Cant = int.Parse(Rows.Cells["C_Cantidad"].Value.ToString());
                             decimal PxCant = decimal.Parse(Rows.Cells["C_Pxcant"].Value.ToString());
+
+                            // Parámetros del detalle
                             cmdDetalle.Parameters.AddWithValue("@Nro_Presupuesto", NroP);
                             cmdDetalle.Parameters.AddWithValue("@Cod_articulo", CodArt);
                             cmdDetalle.Parameters.AddWithValue("@Descripcion", Desc);
@@ -264,22 +289,32 @@ namespace CapaDatos
                             cmdDetalle.Parameters.AddWithValue("@Cantidad", Cant);
                             cmdDetalle.Parameters.AddWithValue("@PxCant", PxCant);
 
-
+                            // Ejecutar el insert del detalle
                             cmdDetalle.ExecuteNonQuery();
 
-                            insertDetalleQuery.Clear();
+                            insertDetalleQuery.Clear(); // Limpiar el StringBuilder para la próxima iteración
                         }
                     }
+
+                    // Si todo va bien, se confirma la transacción e intenta eliminar algun presupuesto si es que se cargo desde uno
+
+                    if (!String.IsNullOrEmpty(Codigo_Presupuesto))
+                    baja.EliminarPresupuesto(Codigo_Presupuesto); //intenta borrar un presupuesto si es que hay alguno
+
+                    transaction.Commit();
 
                     clearConfirm = true;
                     MessageBox.Show("Remito generado con éxito", "REMITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error en el procedimiento del Registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Si hay un error, se realiza el rollback
+                    transaction.Rollback();
+                    MessageBox.Show("Error en el procedimiento del Registro. Se realizó un rollback de los cambios.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
 
 
 

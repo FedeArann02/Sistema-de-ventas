@@ -157,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Altas.cs" />
+    <Compile Include="Bajas.cs" />
     <Compile Include="CD_Articulo.cs" />
     <Compile Include="CD_Categoria.cs" />
     <Compile Include="CD_Permiso.cs" />

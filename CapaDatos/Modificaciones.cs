@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using System.Security.AccessControl;
 
 namespace CapaDatos
 {
@@ -320,11 +321,82 @@ namespace CapaDatos
                 }
                 catch (Exception ex)
                 {
-                
+
                 }
             }
         }
 
+        public void RegistraPagoProveedor(string id_proveedor, decimal Monto)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("update CTA_CTE_PROVEEDOR set pagos = @Monto where ID_Proveedor = @id");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@id", id_proveedor);
+                        cmd.Parameters.AddWithValue("@Monto", Monto);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    {
+                        modConfirm = true;
+                        MessageBox.Show("Pago registrado con éxito", "REGISTRO DE PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del pago", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void RegistraCompraProveedor(string id_proveedor, decimal Monto)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    objConexion.Open();
+                    StringBuilder Query = new StringBuilder();
+                    StringBuilder QueryCompras = new StringBuilder();
+
+                    Query.AppendLine("update CTA_CTE_PROVEEDOR set Compras = @Monto where ID_Proveedor = @id");
+                    QueryCompras.AppendLine("select Compras from CTA_CTE_PROVEEDOR where ID_Proveedor = @id");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    SqlCommand cmdCompras = new SqlCommand(QueryCompras.ToString(), objConexion);
+                    cmdCompras.CommandType = CommandType.Text;
+
+                    cmdCompras.Parameters.AddWithValue("@id", id_proveedor);
+                    SqlDataReader dR = cmdCompras.ExecuteReader();
+
+                    if (dR.Read()) // Asegurarse de que se lee la fila de datos
+                    {
+                        decimal comprasActuales = decimal.Parse(dR["Compras"].ToString()); // Leer el valor actual de "Compras"
+                        Monto += comprasActuales; // Sumar el monto a las compras actuales
+                    }
+
+                    dR.Close(); // Cerrar el SqlDataReader antes de ejecutar otro comando
+
+                    cmd.Parameters.AddWithValue("@id", id_proveedor);
+                    cmd.Parameters.AddWithValue("@Monto", Monto); // Parametriza el nuevo monto
+                    cmd.ExecuteNonQuery();
+
+                    modConfirm = true;
+                    MessageBox.Show("Compra registrada con éxito", "REGISTRO DE COMPRA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro de la compra", "Compra a proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
     }
 }
