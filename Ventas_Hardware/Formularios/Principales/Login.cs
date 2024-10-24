@@ -54,14 +54,14 @@ namespace Ventas_Hardware
         {
             pbxVer.Visible = true;
             pbxNoVer.Visible = false;
-            txtContraseña.UseSystemPasswordChar = true;
+            txtContraseña.UseSystemPasswordChar = false;
         }
 
         private void pbxVer_Click(object sender, EventArgs e)
         {
             pbxVer.Visible = false;
             pbxNoVer.Visible = true;
-            txtContraseña.UseSystemPasswordChar = false;
+            txtContraseña.UseSystemPasswordChar = true;
         }
     }
 }

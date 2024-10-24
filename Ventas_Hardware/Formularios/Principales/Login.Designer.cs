@@ -182,7 +182,7 @@
             // 
             this.pbxVer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxVer.Image = ((System.Drawing.Image)(resources.GetObject("pbxVer.Image")));
-            this.pbxVer.Location = new System.Drawing.Point(477, 183);
+            this.pbxVer.Location = new System.Drawing.Point(477, 182);
             this.pbxVer.Name = "pbxVer";
             this.pbxVer.Size = new System.Drawing.Size(40, 25);
             this.pbxVer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

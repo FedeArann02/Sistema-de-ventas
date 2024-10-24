@@ -130,28 +130,58 @@ namespace Ventas_Hardware
 
             if (dt.Rows.Count > 0)
             {
-                //Lllenar textboxes
-                txtNombre.Text = dt.Rows[0]["nombre"].ToString();
-                txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
-                txtDoc.Text = dt.Rows[0]["dni"].ToString();
-                txtEmail.Text = dt.Rows[0]["email"].ToString();
-                txtTelefono.Text = dt.Rows[0]["tel"].ToString();
-                txtDireccion.Text = dt.Rows[0]["direccion"].ToString();
-                txtEntidad.Text = dt.Rows[0]["entidad"].ToString();
-                txtSubTotal.Text = dt.Rows[0]["subtotal"].ToString();
-                txtDescuento.Text = dt.Rows[0]["descuento"].ToString();
-                txtTotal.Text = dt.Rows[0]["total"].ToString();
-                SubTotal = decimal.Parse(txtSubTotal.Text);
-
-                dt = cN_Consultas.ConsultaP_Detalle((txtCodigoPres.Text));
-
-                //Llenar grilla
-                for (int i = 0; i < dt.Rows.Count; i++)
+                string ArticulosSinStock = ""; //variable para almacenar el mensaje de error
+                try
                 {
-                    dgvArticulos.Rows.Add(dt.Rows[i]["Cod_Articulo"], dt.Rows[i]["Descripción"], dt.Rows[i]["Precio unitario"], dt.Rows[i]["Cantidad"], dt.Rows[i]["Precio por cantidad"]);
-                    panelDetalle.Enabled = true;
-                    txtCodigoPres.Enabled = false;
-                    btnBuscar.Enabled = false;
+                    //Lllenar textboxes
+                    txtNombre.Text = dt.Rows[0]["nombre"].ToString();
+                    txtApellido.Text = dt.Rows[0]["Apellido"].ToString();
+                    txtDoc.Text = dt.Rows[0]["dni"].ToString();
+                    txtEmail.Text = dt.Rows[0]["email"].ToString();
+                    txtTelefono.Text = dt.Rows[0]["tel"].ToString();
+                    txtDireccion.Text = dt.Rows[0]["direccion"].ToString();
+                    txtEntidad.Text = dt.Rows[0]["entidad"].ToString();
+                    txtSubTotal.Text = dt.Rows[0]["subtotal"].ToString();
+                    txtDescuento.Text = dt.Rows[0]["descuento"].ToString();
+                    txtTotal.Text = dt.Rows[0]["total"].ToString();
+                    SubTotal = decimal.Parse(txtSubTotal.Text);
+
+                    dt = cN_Consultas.ConsultaP_Detalle((txtCodigoPres.Text));
+
+                    //Llenar grilla
+                    
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+
+                        int cantidadGrilla = int.Parse(dt.Rows[i]["Cantidad"].ToString()); //almacena la cantidad demandada de un articulo de la posicion 'i' de la grilla Presupuesto
+                        DataTable dtArt = new DataTable();
+                        dtArt = cN_Consultas.ConsultaArtMod(dt.Rows[i]["Cod_Articulo"].ToString()); //almacena el articulo obtenido de SQL a traves del codigo del articulo del Presupuesto
+                        int cantidadBD = int.Parse(dtArt.Rows[i]["Cantidad"].ToString()); //almacena la cantidad Real de ese articulo
+
+                        if (cantidadGrilla <= cantidadBD) //si la cantidad demandada es menor o IGUAL al stock entonces le permite usar el presupuesto como remito
+                        {
+                            dgvArticulos.Rows.Add(dt.Rows[i]["Cod_Articulo"], dt.Rows[i]["Descripción"], dt.Rows[i]["Precio unitario"], dt.Rows[i]["Cantidad"], dt.Rows[i]["Precio por cantidad"]);
+                            panelDetalle.Enabled = true;
+                            txtCodigoPres.Enabled = false;
+                            btnBuscar.Enabled = false;
+                        }
+                        else
+                        {
+                            ArticulosSinStock += "● " + dtArt.Rows[i]["Descripcion"].ToString() + "\n"; //guarda el articulo en un mensaje de error
+                        }
+                    }
+                    if (ArticulosSinStock.Length > 0)
+                    {
+                        throw new Exception(); //si hay algun articulo faltante de stock suficiente entonces arroja una excepcion y la toma en el Catch
+                    }
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("No se pudo usar el Presupuesto (" + txtCodigoPres.Text + ") por que los siguientes artículos superan la cantidad del Stock: \n" + ArticulosSinStock, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dgvArticulos.Rows.Clear();
+                    panelDetalle.Enabled = false;
+                    txtCodigoPres.Enabled = true;
+                    btnBuscar.Enabled = true;
                 }
             }
             else
@@ -319,6 +349,11 @@ namespace Ventas_Hardware
             }
 
         }
+
+        //private bool validarStockDesdePresupuesto()
+        //{
+
+        //}
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

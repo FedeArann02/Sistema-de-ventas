@@ -73,5 +73,45 @@ namespace CapaNegocio
                 clearConf = false;
             }
         }
+
+        public void CN_AltaCategoria(string NombreCat)
+        {
+            objcd_Altas.AltaCategoría(NombreCat);
+
+            if (objcd_Altas.clearConfirm)
+            {
+                clearConf = true;
+            }
+            else
+            {
+                clearConf = false;
+            }
+        }
+        public void CN_AltaSubCategoria(string NombreSubCat, string CodCat)
+        {
+            objcd_Altas.AltaSubCategoría(NombreSubCat, CodCat);
+
+            if (objcd_Altas.clearConfirm)
+            {
+                clearConf = true;
+            }
+            else
+            {
+                clearConf = false;
+            }
+        }
+        public void CN_AltaProveedor(string Nombre, string Apellido, string Correo, string Telefono)
+        {
+            objcd_Altas.AltaProveedor(Nombre, Apellido, Correo, Telefono);
+
+            if (objcd_Altas.clearConfirm)
+            {
+                clearConf = true;
+            }
+            else
+            {
+                clearConf = false;
+            }
+        }
     }
 }

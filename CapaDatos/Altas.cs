@@ -299,7 +299,7 @@ namespace CapaDatos
                     // Si todo va bien, se confirma la transacción e intenta eliminar algun presupuesto si es que se cargo desde uno
 
                     if (!String.IsNullOrEmpty(Codigo_Presupuesto))
-                    baja.EliminarPresupuesto(Codigo_Presupuesto); //intenta borrar un presupuesto si es que hay alguno
+                        baja.EliminarPresupuesto(Codigo_Presupuesto); //intenta borrar un presupuesto si es que hay alguno
 
                     transaction.Commit();
 
@@ -315,7 +315,128 @@ namespace CapaDatos
             }
         }
 
+        public void AltaUsuario(string Nombre, string Apellido, string Dir, string Tel, string idRol)
+        {
+            clearConfirm = false;
 
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("INSERT INTO USUARIO() VALUES");
+                    Query.AppendLine("");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Dir", Dir);
+                        cmd.Parameters.AddWithValue("@Tel", Tel);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    clearConfirm = true;
+                    MessageBox.Show("Usuario registrado con éxito", "USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void AltaCategoría(string NombreCat)
+        {
+            clearConfirm = false;
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("INSERT INTO Categoria(Nombre) VALUES");
+                    Query.AppendLine("(@Nombre);");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", NombreCat);
+
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    clearConfirm = true;
+                    MessageBox.Show("Categoria registrada con éxito", "CATEGORIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void AltaSubCategoría(string NombreSubCat, string CodCategoria)
+        {
+            clearConfirm = false;
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("INSERT INTO SUBCATEGORIA(Nombre, Cod_categoria) VALUES");
+                    Query.AppendLine("(@Nombre, @CodCat);");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", NombreSubCat);
+                        cmd.Parameters.AddWithValue("@CodCat", CodCategoria);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    clearConfirm = true;
+                    MessageBox.Show("Subcategoría registrada con éxito", "SUBCATEGORIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        public void AltaProveedor(string Nombre, string Apellido, string Correo, string Telefono)
+        {
+            clearConfirm = false;
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("INSERT INTO PROVEEDOR(Nombre, Apellido, Telefono, Correo) VALUES");
+                    Query.AppendLine("(@Nombre, @Apellido, @Tel, @Correo);");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Tel", Telefono);
+                        cmd.Parameters.AddWithValue("@Correo", Correo);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    clearConfirm = true;
+                    MessageBox.Show("Proveedor registrado con éxito", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
 
 

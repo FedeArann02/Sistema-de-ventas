@@ -123,6 +123,8 @@ namespace CapaDatos
             }
         }
 
+        //TODO:
+        //23-10-2024 FEDE
         public void modPresupuesto(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP)
         {
             modConfirm = false;
@@ -397,6 +399,73 @@ namespace CapaDatos
                 }
             }
         }
+
+        public void ModificarProveedor(string Nombre, string Apellido, string Telefono, string Correo, string idProveedor)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("update PROVEEDOR set Nombre = @Nombre, Apellido = @Apellido, Correo = @Correo, Telefono = @Tel where ID_Proveedor = @ID");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Tel", Telefono);
+                        cmd.Parameters.AddWithValue("@Correo", Correo);
+                        cmd.Parameters.AddWithValue("@ID", idProveedor);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    {
+                        modConfirm = true;
+                        MessageBox.Show("Proveedor modificado con éxito", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento de la modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        public void ModificarCliente(string Nombre, string Apellido, string Telefono, string Correo, string Direccion, string Entidad, string Documentacion)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("update CLIENTE set Nombre = @Nombre, Apellido = @Apellido, Correo = @Correo, Telefono = @Tel, Direccion = @Dir, Entidad = @Entidad where Documentacion = @Doc");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Tel", Telefono);
+                        cmd.Parameters.AddWithValue("@Correo", Correo);
+                        cmd.Parameters.AddWithValue("@Entidad", Entidad);
+                        cmd.Parameters.AddWithValue("@Dir", Direccion);
+                        cmd.Parameters.AddWithValue("@Doc", Documentacion);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    {
+                        modConfirm = true;
+                        MessageBox.Show("Cliente modificado con éxito", "CLIENTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error en el procedimiento de la modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
 
     }
 }

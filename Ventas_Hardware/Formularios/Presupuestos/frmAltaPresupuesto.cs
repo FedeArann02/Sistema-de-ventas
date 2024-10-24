@@ -58,6 +58,14 @@ namespace Ventas_Hardware
                     panelDetalle.Enabled = false;
                 }
             }
+            crearCodigoRemito();
+        }
+
+        private void crearCodigoRemito()
+        {
+            DataTable CodigoR = cN_Consultas.ConsultaUltimoCodigoPresupuesto();
+            string LastCode = CodigoR.Rows[0]["Nro_Presupuesto"].ToString();
+            txtCodigoPresupuesto.Text = GenerarNumeroPresupuesto(LastCode);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -139,12 +147,6 @@ namespace Ventas_Hardware
 
             txtSubTotal.Text =SubTotal.ToString();
         }
-
-
-        //TODO
-        //Implementar eal codigo automatico en los presupuestos y realizar validaciones!
-        //terminar los abms y estaria todo listo
-        //ultimo trabajo hecho en netbook 18/10/24
 
         private decimal precioVenta()
         {
@@ -370,6 +372,50 @@ namespace Ventas_Hardware
             {
                 cmbCliente.Text = "SELECCIONE UNA OPCIÓN";
             }
+        }
+
+        public string GenerarNumeroPresupuesto(string ultimoNumeroPresupuesto) //Algoritmo prestado de Nico (un crack)
+        {
+            // Si no hay último número, comienza con AA-0000-0001
+            if (string.IsNullOrEmpty(ultimoNumeroPresupuesto))
+                return "AA-0000-0001";
+
+            // Descomponer el número en partes
+            string letras = ultimoNumeroPresupuesto.Substring(0, 2);
+            string numeros = ultimoNumeroPresupuesto.Substring(3).Replace("-", "");
+
+            // Incrementar el número
+            int numeroActual = int.Parse(numeros);
+            numeroActual++;
+
+            // Si se alcanzó el límite de 999999999, cambiar las letras
+            if (numeroActual > 999999999)
+            {
+                numeroActual = 1;  // Reinicia el número
+                letras = IncrementarLetras(letras);  // Cambia las letras
+            }
+
+            // Retornar el nuevo número en formato AA-0000-0000
+            return $"{letras}-{numeroActual.ToString("D9").Insert(4, "-")}";
+        }
+
+        public string IncrementarLetras(string letras)
+        {
+            char[] letrasArray = letras.ToCharArray();
+            // Incrementa la segunda letra, y si llega a 'Z', incrementa la primera
+            if (letrasArray[1] < 'Z')
+            {
+                letrasArray[1]++;
+            }
+            else
+            {
+                letrasArray[1] = 'A';
+                if (letrasArray[0] < 'Z')
+                    letrasArray[0]++;
+                else
+                    throw new Exception("Se han agotado todas las combinaciones de letras contactese con el desarrollador.");
+            }
+            return new string(letrasArray);
         }
     }
 }

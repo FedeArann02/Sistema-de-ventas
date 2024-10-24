@@ -129,6 +129,34 @@ namespace CapaNegocio
                 modConfirm = false;
             }
         }
+        public void ModificarProveedor(string Nombre, string Apellido, string Telefono, string Correo,string ID)
+        {
+            objcd_modificaciones.ModificarProveedor(Nombre, Apellido, Telefono, Correo, ID);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
+
+        public void ModificarCliente(string Nombre, string Apellido, string Telefono, string Correo, string Direccion, string Entidad, string Documentacion)
+        {
+            objcd_modificaciones.ModificarCliente(Nombre, Apellido, Telefono, Correo, Direccion, Entidad, Documentacion);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
+
 
 
     }

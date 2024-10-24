@@ -31,7 +31,6 @@
             this.lblModCliente = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
             this.panelDatosEncabezado = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblDatos = new System.Windows.Forms.Label();
             this.txtDoc = new System.Windows.Forms.TextBox();
@@ -83,7 +82,6 @@
             // panelDatosEncabezado
             // 
             this.panelDatosEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.panelDatosEncabezado.Controls.Add(this.btnCancelar);
             this.panelDatosEncabezado.Controls.Add(this.btnGuardar);
             this.panelDatosEncabezado.Controls.Add(this.lblDatos);
             this.panelDatosEncabezado.Controls.Add(this.txtDoc);
@@ -105,20 +103,6 @@
             this.panelDatosEncabezado.Size = new System.Drawing.Size(641, 206);
             this.panelDatosEncabezado.TabIndex = 78;
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.IndianRed;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(533, 153);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(84, 28);
-            this.btnCancelar.TabIndex = 78;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -126,7 +110,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(443, 153);
+            this.btnGuardar.Location = new System.Drawing.Point(539, 153);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(78, 28);
             this.btnGuardar.TabIndex = 77;
@@ -317,6 +301,7 @@
             this.txtDocumentacionCliente.Size = new System.Drawing.Size(181, 29);
             this.txtDocumentacionCliente.TabIndex = 79;
             this.txtDocumentacionCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDocumentacionCliente.TextChanged += new System.EventHandler(this.txtDocumentacionCliente_TextChanged);
             // 
             // lblDNICUIL_T
             // 
@@ -333,6 +318,7 @@
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
             this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -343,6 +329,7 @@
             this.btnBuscar.TabIndex = 81;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // frmClientes_modificacion
             // 
@@ -371,7 +358,6 @@
         private System.Windows.Forms.Label lblModCliente;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Panel panelDatosEncabezado;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblDatos;
         private System.Windows.Forms.TextBox txtDoc;
