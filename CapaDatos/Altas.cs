@@ -61,7 +61,7 @@ namespace CapaDatos
                         MessageBox.Show("Articulo registrado con éxito", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -144,7 +144,7 @@ namespace CapaDatos
                     clearConfirm = true;
                     MessageBox.Show("Presupuesto guardado con éxito", "PRESUPUESTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Si hay un error, se realiza el rollback
                     transaction.Rollback();
@@ -165,6 +165,8 @@ namespace CapaDatos
                     StringBuilder Query = new StringBuilder();
                     Query.AppendLine("INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES");
                     Query.AppendLine("(@Doc, @Nombre, @Apellido, @Dir, @Tel, @Correo, @Entidad);");
+                    Query.AppendLine("INSERT INTO CTA_CTE_CLIENTE(Documentacion, compras, pagos, Fecha) VALUES");
+                    Query.AppendLine("(@Doc, 0, 0, @Fecha);");
 
                     SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
                     {
@@ -175,6 +177,7 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@Tel", Tel);
                         cmd.Parameters.AddWithValue("@Correo", Correo);
                         cmd.Parameters.AddWithValue("@Entidad", Entidad);
+                        cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);
                     }
                     objConexion.Open();
                     cmd.ExecuteNonQuery();
@@ -182,7 +185,7 @@ namespace CapaDatos
                     MessageBox.Show("Cliente registrado con éxito", "CLIENTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -218,7 +221,7 @@ namespace CapaDatos
                     cmd.ExecuteNonQuery();
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -306,7 +309,7 @@ namespace CapaDatos
                     clearConfirm = true;
                     MessageBox.Show("Remito generado con éxito", "REMITO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Si hay un error, se realiza el rollback
                     transaction.Rollback();
@@ -315,7 +318,7 @@ namespace CapaDatos
             }
         }
 
-        public void AltaUsuario(string Nombre, string Apellido, string Dir, string Tel, string idRol)
+        public void AltaUsuario(string Nombre, string Apellido, string DNI, string Contraseña, string idRol, decimal comision)
         {
             clearConfirm = false;
 
@@ -324,15 +327,17 @@ namespace CapaDatos
                 try
                 {
                     StringBuilder Query = new StringBuilder();
-                    Query.AppendLine("INSERT INTO USUARIO() VALUES");
-                    Query.AppendLine("");
+                    Query.AppendLine("INSERT INTO USUARIO(Nombre, Apellido, Contraseña, DNI, Comision, IdRol) VALUES");
+                    Query.AppendLine("(@Nombre, @Apellido, @Constraseña, @DNI, @comision, @Rol);");
 
                     SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
                     {
                         cmd.Parameters.AddWithValue("@Nombre", Nombre);
                         cmd.Parameters.AddWithValue("@Apellido", Apellido);
-                        cmd.Parameters.AddWithValue("@Dir", Dir);
-                        cmd.Parameters.AddWithValue("@Tel", Tel);
+                        cmd.Parameters.AddWithValue("@DNI", DNI);
+                        cmd.Parameters.AddWithValue("@Constraseña", Contraseña);
+                        cmd.Parameters.AddWithValue("@Rol", idRol);
+                        cmd.Parameters.AddWithValue("@comision", comision);
                     }
                     objConexion.Open();
                     cmd.ExecuteNonQuery();
@@ -340,7 +345,7 @@ namespace CapaDatos
                     MessageBox.Show("Usuario registrado con éxito", "USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -370,7 +375,7 @@ namespace CapaDatos
                     MessageBox.Show("Categoria registrada con éxito", "CATEGORIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -400,7 +405,7 @@ namespace CapaDatos
                     MessageBox.Show("Subcategoría registrada con éxito", "SUBCATEGORIA", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -417,27 +422,29 @@ namespace CapaDatos
                     StringBuilder Query = new StringBuilder();
                     Query.AppendLine("INSERT INTO PROVEEDOR(Nombre, Apellido, Telefono, Correo) VALUES");
                     Query.AppendLine("(@Nombre, @Apellido, @Tel, @Correo);");
+                    Query.AppendLine("DECLARE @ID INT = SCOPE_IDENTITY();");  // Capturar el último ID insertado
+                    Query.AppendLine("INSERT INTO CTA_CTE_PROVEEDOR(ID_Proveedor, compras, pagos, Fecha) VALUES");
+                    Query.AppendLine("(@ID, 0, 0, @Fecha);");
 
                     SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
-                    {
-                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
-                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
-                        cmd.Parameters.AddWithValue("@Tel", Telefono);
-                        cmd.Parameters.AddWithValue("@Correo", Correo);
-                    }
+                    cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                    cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                    cmd.Parameters.AddWithValue("@Tel", Telefono);
+                    cmd.Parameters.AddWithValue("@Correo", Correo);
+                    cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);  // Ajusta la fecha según tus necesidades
+
                     objConexion.Open();
                     cmd.ExecuteNonQuery();
                     clearConfirm = true;
-                    MessageBox.Show("Proveedor registrado con éxito", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    MessageBox.Show("Proveedor registrado con éxito", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
 
 
 

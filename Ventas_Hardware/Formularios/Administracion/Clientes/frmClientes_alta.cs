@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ventas_Hardware.MisMetodos;
 
 namespace Ventas_Hardware
 {
@@ -26,10 +27,25 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            cN_AltaCLiente.CN_AltaCliente(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text, txtEntidad.Text);
-            if (cN_AltaCLiente.clearConf)
+            TextBox[] txts = {txtTelefono, txtNombre, txtApellido, txtDireccion, txtDoc, txtEmail, txtEntidad};
+            if (!Validations.TextboxNullOrEmpty(txts))
             {
-                clear();
+                if (long.TryParse(txtTelefono.Text, out long tel) && long.TryParse(txtDoc.Text, out long Doc))
+                {
+                    cN_AltaCLiente.CN_AltaCliente(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text, txtEntidad.Text);
+                    if (cN_AltaCLiente.clearConf)
+                    {
+                        clear();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese datos válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

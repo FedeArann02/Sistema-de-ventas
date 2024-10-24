@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Design</title>
+    <style>
+        table.border {
+            border-collapse: collapse;
+        }
+
+            table.border th, table.border td {
+                padding: 5px;
+                border: 1px solid black;
+            }
+    </style>
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <td style="width: 20%"></td>
+            <td style="width: 60%" align="center">
+                <table>
+                    <tr><td align="center">SUPER HARD</td></tr>
+                    <tr><td align="center">Direccion: Av. Prueba 123</td></tr>
+                    <tr><td align="center">Telefono: 123123</td></tr>
+                </table>
+            </td>
+            <td style="width: 20%">
+                <table class="border" style="width:100%">
+                    <tr><td align="center">CUIL:</td></tr>
+                    <tr><td align="center">BOLETA</td></tr>
+                    <tr><td align="center">NRO: @NROBOLETA</td></tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr><td colspan="3" height="20"></td></tr>
+
+        <tr>
+            <td colspan="3">
+                <table style="width:100%">
+                    <tr>
+                        <td colspan="1" style="width:20%"> Nombre:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @NOMBRE</td>
+                        <td colspan="1" style="width:20%"> Apellido:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @APELLIDO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="width:20%"> Documento:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @DOCUMENTO</td>
+                        <td colspan="1" style="width:20%"> Telefono:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @TELEFONO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="width:20%"> Entidad:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @ENTIDAD</td>
+                        <td colspan="1" style="width:20%"> Correo:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @CORREO</td>
+                    </tr>
+                    <tr>
+                        <td colspan="1" style="width:20%"> Direccion:</td>
+                        <td colspan="1" style="width:30%;border-bottom:1px solid black"> @DIRECCION</td>
+                        <td colspan="1" style="width:10%"> Fecha:</td>
+                        <td colspan="1" style="width:20%;border-bottom:1px solid black"> @FECHA</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr><td colspan="3" height="20"></td></tr>
+
+        <tr>
+            <td colspan="3">
+                <table class="border" style="width:100%">
+                    <thead style="background-color:#D8D8D8">
+                        <tr>
+                            <th>Cod.Art</th>
+                            <th>Descripcion</th>
+                            <th>P. Unit</th>
+                            <th>Cantidad</th>
+                            <th>PxCant.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       @FILAS
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr><td colspan="3" height="10"></td></tr>
+
+        <tr>
+            <td colspan="3">
+                <table class="border" style="width:100%">
+                    <thead style="background-color:#D8D8D8">
+                        <tr>
+                            <th>SUBTOTAL</th>
+                            <th>DESCUENTO %</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td align="right">@SUBTOTAL</td>
+                            <td align="right">@DESCUENTO</td>
+                            <td align="right">@TOTAL</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

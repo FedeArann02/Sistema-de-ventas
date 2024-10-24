@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ventas_Hardware.MisMetodos;
 
 namespace Ventas_Hardware
 {
@@ -28,13 +29,23 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            cN_Modificaciones.modArt(txtCodigo.Text, txtDescripcion.Text, int.Parse(txtStock.Text), decimal.Parse(txtCosto.Text), decimal.Parse(txtGanancia.Text));
-            if (cN_Modificaciones.modConfirm)
+            TextBox[] txts = { txtCodigo, txtCosto, txtDescripcion, txtGanancia, txtStock };
+
+            if (!Validations.TextboxNullOrEmpty(txts))
             {
-                clear();
-                txtCodigo.Enabled = true;
-                disableButtons();
+                cN_Modificaciones.modArt(txtCodigo.Text, txtDescripcion.Text, int.Parse(txtStock.Text), decimal.Parse(txtCosto.Text), decimal.Parse(txtGanancia.Text));
+                if (cN_Modificaciones.modConfirm)
+                {
+                    clear();
+                    txtCodigo.Enabled = true;
+                    disableButtons();
+                }
             }
+            else
+            {
+                MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

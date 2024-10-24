@@ -135,6 +135,7 @@
             this.txtNuevaCategoria.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNuevaCategoria.ForeColor = System.Drawing.Color.Black;
             this.txtNuevaCategoria.Location = new System.Drawing.Point(433, 89);
+            this.txtNuevaCategoria.MaxLength = 50;
             this.txtNuevaCategoria.Name = "txtNuevaCategoria";
             this.txtNuevaCategoria.Size = new System.Drawing.Size(196, 23);
             this.txtNuevaCategoria.TabIndex = 58;

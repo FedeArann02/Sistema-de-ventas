@@ -55,7 +55,7 @@ namespace Ventas_Hardware
                     panelDetalle.Enabled = false;
                 }
             }
-            else if (cmbOpciones.SelectedIndex == 2)
+            else if (cmbOpciones.SelectedIndex == 2)//Presupuesto
             {
                 txtDocumentacionCliente.Enabled = false;
                 lblDNICUIL_T.Enabled= false;
@@ -67,6 +67,10 @@ namespace Ventas_Hardware
                 {
                     panelDatosEncabezado.Enabled = false;
                     panelDetalle.Enabled = false;
+
+                    DataTable dtP = cN_Consultas.ConsultaUltimoCodigoPresupuesto();
+                    string LastCodePres = dtP.Rows[0]["Nro_Presupuesto"].ToString();
+                    txtCodigoPres.Text = LastCodePres;
                 }
             }
             else
@@ -84,8 +88,16 @@ namespace Ventas_Hardware
         private void crearCodigoRemito()
         {
             DataTable CodigoR = cN_Consultas.ConsultaUltimoCodigoRemito();
-            string LastCode = CodigoR.Rows[0]["Nro_remito"].ToString();
-            txtCodigoRemito.Text = GenerarNumeroFactura(LastCode);
+
+            if (CodigoR.Rows.Count > 0)
+            {
+                string LastCode = CodigoR.Rows[0]["Nro_remito"].ToString();
+                txtCodigoRemito.Text = GenerarNumeroFactura(LastCode);
+            }
+            else
+            {
+                txtCodigoRemito.Text = GenerarNumeroFactura(null);
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -117,7 +129,7 @@ namespace Ventas_Hardware
                     MessageBox.Show("Seleccione una opción válida", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -156,7 +168,7 @@ namespace Ventas_Hardware
                         int cantidadGrilla = int.Parse(dt.Rows[i]["Cantidad"].ToString()); //almacena la cantidad demandada de un articulo de la posicion 'i' de la grilla Presupuesto
                         DataTable dtArt = new DataTable();
                         dtArt = cN_Consultas.ConsultaArtMod(dt.Rows[i]["Cod_Articulo"].ToString()); //almacena el articulo obtenido de SQL a traves del codigo del articulo del Presupuesto
-                        int cantidadBD = int.Parse(dtArt.Rows[i]["Cantidad"].ToString()); //almacena la cantidad Real de ese articulo
+                        int cantidadBD = int.Parse(dtArt.Rows[0]["Cantidad"].ToString()); //almacena la cantidad Real de ese articulo
 
                         if (cantidadGrilla <= cantidadBD) //si la cantidad demandada es menor o IGUAL al stock entonces le permite usar el presupuesto como remito
                         {
@@ -167,7 +179,7 @@ namespace Ventas_Hardware
                         }
                         else
                         {
-                            ArticulosSinStock += "● " + dtArt.Rows[i]["Descripcion"].ToString() + "\n"; //guarda el articulo en un mensaje de error
+                            ArticulosSinStock += "● " + dtArt.Rows[0]["Descripcion"].ToString() + "\n"; //guarda el articulo en un mensaje de error
                         }
                     }
                     if (ArticulosSinStock.Length > 0)
@@ -177,7 +189,7 @@ namespace Ventas_Hardware
                 }
                 catch(Exception)
                 {
-                    MessageBox.Show("No se pudo usar el Presupuesto (" + txtCodigoPres.Text + ") por que los siguientes artículos superan la cantidad del Stock: \n" + ArticulosSinStock, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No se pudo usar el Presupuesto (" + txtCodigoPres.Text + ") por que los siguientes artículos superan la cantidad del Stock: \n\n" + ArticulosSinStock, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     dgvArticulos.Rows.Clear();
                     panelDetalle.Enabled = false;
                     txtCodigoPres.Enabled = true;
@@ -213,50 +225,57 @@ namespace Ventas_Hardware
         {
             try
             {
-                bool ArtExiste = false;
-                bool excep = false;
-                dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
-                decimal Precio = precioVenta();
-                decimal PxCant = Convert.ToDecimal(txtCantidad.Text) * Precio;
-                SubTotal += PxCant;
+                if (int.Parse(txtCantidad.Text) > 0 || !txtCantidad.Text.Contains("-"))
                 {
-                    foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                    bool ArtExiste = false;
+                    bool excep = false;
+                    dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
+                    decimal Precio = precioVenta();
+                    decimal PxCant = Convert.ToDecimal(txtCantidad.Text) * Precio;
+                    SubTotal += PxCant;
                     {
-                        if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                        foreach (DataGridViewRow fila in dgvArticulos.Rows)
                         {
-                            // Si el código ya existe, actualiza la cantidad sumando la nueva cantidad
-                            int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
-
-                            if ((cantidadActual + int.Parse(txtCantidad.Text)) > int.Parse(txtStock.Text)) //si la cantidad total del Articulo a vender supera la cantidad en stock
+                            if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
                             {
-                                MessageBox.Show("Cantidad en stock de " + txtDescripcion.Text + " insuficiente", "Stock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                // Si el código ya existe, actualiza la cantidad sumando la nueva cantidad
+                                int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
+
+                                if ((cantidadActual + int.Parse(txtCantidad.Text)) > int.Parse(txtStock.Text)) //si la cantidad total del Articulo a vender supera la cantidad en stock
+                                {
+                                    MessageBox.Show("Cantidad en stock de " + txtDescripcion.Text + " insuficiente", "Stock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    ArtExiste = true;
+                                    excep = true;
+                                    SubTotal -= PxCant;
+                                    break;
+                                }
+
+                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                                fila.Cells["C_Cantidad"].Value = cantidadActual + int.Parse(txtCantidad.Text);
+                                fila.Cells["C_Pxcant"].Value = PxCantActual + PxCant;
                                 ArtExiste = true;
-                                excep = true;
-                                SubTotal -= PxCant;
                                 break;
                             }
+                        }
 
-                            decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
-                            fila.Cells["C_Cantidad"].Value = cantidadActual + int.Parse(txtCantidad.Text);
-                            fila.Cells["C_Pxcant"].Value = PxCantActual + PxCant;
-                            ArtExiste = true;
-                            break;
+                        if (!ArtExiste)
+                        {
+                            dgvArticulos.Rows.Add(txtCodigo.Text, txtDescripcion.Text, Precio, txtCantidad.Text, PxCant);
+                        }
+                        if (dgvArticulos.Rows.Count > 1 && excep == false)
+                        {
+                            txtDescripcion.Text = "";
+                            txtCodigo.Text = "";
+                            dgvArticulos.CurrentRow.Selected = false;
                         }
                     }
-
-                    if (!ArtExiste)
-                    {
-                        dgvArticulos.Rows.Add(txtCodigo.Text, txtDescripcion.Text, Precio, txtCantidad.Text, PxCant);
-                    }
-                    if (dgvArticulos.Rows.Count > 1 && excep == false)
-                    {
-                        txtDescripcion.Text = "";
-                        txtCodigo.Text = "";
-                        dgvArticulos.CurrentRow.Selected = false;
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se puede ingresar cantidades negativas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 crearCodigoRemito();
@@ -277,6 +296,7 @@ namespace Ventas_Hardware
 
         private void reCalcular()
         {
+            decimal SubTotal = 0;
             try
             {
                 if (txtDescuento.Text == null || txtDescuento.Text == "")
@@ -284,11 +304,11 @@ namespace Ventas_Hardware
                     decimal Descuento = 0;
                     if (txtSubTotal.Text == null || txtSubTotal.Text == "")
                     {
-                        decimal SubTotal = 0;
+
                     }
                     else
                     {
-                        decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                        SubTotal = decimal.Parse(txtSubTotal.Text);
                         txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
                     }
                 }
@@ -300,11 +320,11 @@ namespace Ventas_Hardware
                 else
                 {
                     decimal Descuento = decimal.Parse(txtDescuento.Text);
-                    decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                    SubTotal = decimal.Parse(txtSubTotal.Text);
                     txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Posible error en el formato ingresado, solo se admiten números enteros o decimales positivos");
                 txtDescuento.Text = "";
@@ -343,17 +363,12 @@ namespace Ventas_Hardware
                     clearDetalle();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Error general al registrar un remito", "comuníquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-
-        //private bool validarStockDesdePresupuesto()
-        //{
-
-        //}
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -469,27 +484,22 @@ namespace Ventas_Hardware
                 DialogResult dres = MessageBox.Show("¿Desea remover este articulo de la lista?", "Remover", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dres == DialogResult.OK)
                 {
-                    if (dgvArticulos.Rows.Count == 1)
+
+                    foreach (DataGridViewRow fila in dgvArticulos.Rows)
                     {
-                        clearDetalle();
-                    }
-                    else
-                    {
-                        foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                        DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                        decimal Precio = precioVenta();
+                        if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
                         {
-                            DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
-                            decimal Precio = precioVenta();
-                            if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
-                            {
-                                //decimal PxCant = (Convert.ToDecimal(txtCantidad.Text)) * Precio;
-                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
-                                SubTotal -= PxCantActual;
-                                txtSubTotal.Text = SubTotal.ToString();
-                                dgvArticulos.Rows.Remove(filaSelec);
-                                break;
-                            }
+                            //decimal PxCant = (Convert.ToDecimal(txtCantidad.Text)) * Precio;
+                            decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                            SubTotal -= PxCantActual;
+                            txtSubTotal.Text = SubTotal.ToString();
+                            dgvArticulos.Rows.Remove(filaSelec);
+                            break;
                         }
                     }
+
                 }
             }
             else
@@ -553,7 +563,7 @@ namespace Ventas_Hardware
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Error solo se permiten datos numericos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

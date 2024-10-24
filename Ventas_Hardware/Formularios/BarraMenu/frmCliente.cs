@@ -210,14 +210,20 @@ namespace Ventas_Hardware
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-
-            decimal Monto = decimal.Parse(txtMonto.Text) + decimal.Parse(txtPagos.Text);
-
-            cN_Modificaciones.RegistraPagoCliente(txtDoc.Text, Monto);
-
-            if (cN_Modificaciones.modConfirm)
+            if (decimal.TryParse(txtMonto.Text, out decimal monto) && decimal.TryParse(txtPagos.Text, out decimal pagos))
             {
-                clearAll();
+                decimal Monto = monto + pagos; 
+
+                cN_Modificaciones.RegistraPagoCliente(txtDoc.Text, Monto);
+
+                if (cN_Modificaciones.modConfirm)
+                {
+                    clearAll();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese valores válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

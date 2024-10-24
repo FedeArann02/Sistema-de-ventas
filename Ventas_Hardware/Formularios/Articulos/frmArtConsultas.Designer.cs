@@ -64,6 +64,7 @@
             this.panelDetalle = new System.Windows.Forms.Panel();
             this.lblDetalle = new System.Windows.Forms.Label();
             this.lblConsulta = new System.Windows.Forms.Label();
+            this.cbxFiltros = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDetalle.SuspendLayout();
             this.SuspendLayout();
@@ -129,8 +130,7 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCodigo.BackColor = System.Drawing.Color.White;
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -181,7 +181,7 @@
             this.dgvArticulos.Size = new System.Drawing.Size(694, 152);
             this.dgvArticulos.TabIndex = 5;
             this.dgvArticulos.Visible = false;
-            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
             // 
             // txtCodigoDetalle
             // 
@@ -582,12 +582,29 @@
             this.lblConsulta.TabIndex = 50;
             this.lblConsulta.Text = "Consulta Articulo:";
             // 
+            // cbxFiltros
+            // 
+            this.cbxFiltros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxFiltros.AutoSize = true;
+            this.cbxFiltros.Checked = true;
+            this.cbxFiltros.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxFiltros.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxFiltros.ForeColor = System.Drawing.Color.White;
+            this.cbxFiltros.Location = new System.Drawing.Point(392, 129);
+            this.cbxFiltros.Name = "cbxFiltros";
+            this.cbxFiltros.Size = new System.Drawing.Size(60, 20);
+            this.cbxFiltros.TabIndex = 51;
+            this.cbxFiltros.Text = "Filtros";
+            this.cbxFiltros.UseVisualStyleBackColor = true;
+            this.cbxFiltros.CheckedChanged += new System.EventHandler(this.cbxFiltros_CheckedChanged);
+            // 
             // frmArtConsultas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(749, 499);
+            this.Controls.Add(this.cbxFiltros);
             this.Controls.Add(this.lblConsulta);
             this.Controls.Add(this.lblProovedor);
             this.Controls.Add(this.lblDescrip);
@@ -651,5 +668,6 @@
         private System.Windows.Forms.Panel panelDetalle;
         private System.Windows.Forms.Label lblConsulta;
         private System.Windows.Forms.Label lblDetalle;
+        private System.Windows.Forms.CheckBox cbxFiltros;
     }
 }

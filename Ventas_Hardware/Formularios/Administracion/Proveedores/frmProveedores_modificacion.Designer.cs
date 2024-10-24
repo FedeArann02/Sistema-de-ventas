@@ -90,7 +90,7 @@
             this.panelDatosEncabezado.Controls.Add(this.lblNombreAlt);
             this.panelDatosEncabezado.Location = new System.Drawing.Point(22, 59);
             this.panelDatosEncabezado.Name = "panelDatosEncabezado";
-            this.panelDatosEncabezado.Size = new System.Drawing.Size(641, 221);
+            this.panelDatosEncabezado.Size = new System.Drawing.Size(641, 208);
             this.panelDatosEncabezado.TabIndex = 79;
             // 
             // lblProovedor
@@ -177,6 +177,7 @@
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.Location = new System.Drawing.Point(351, 167);
+            this.txtTelefono.MaxLength = 15;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(135, 22);
             this.txtTelefono.TabIndex = 63;
@@ -200,6 +201,7 @@
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.ForeColor = System.Drawing.Color.Black;
             this.txtApellido.Location = new System.Drawing.Point(262, 109);
+            this.txtApellido.MaxLength = 30;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(158, 22);
             this.txtApellido.TabIndex = 75;
@@ -212,6 +214,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.Location = new System.Drawing.Point(27, 167);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(280, 22);
             this.txtEmail.TabIndex = 73;
@@ -224,6 +227,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.Location = new System.Drawing.Point(27, 109);
+            this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(184, 22);
             this.txtNombre.TabIndex = 71;
@@ -245,7 +249,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(23)))), ((int)(((byte)(84)))));
-            this.ClientSize = new System.Drawing.Size(684, 292);
+            this.ClientSize = new System.Drawing.Size(684, 285);
             this.Controls.Add(this.panelDatosEncabezado);
             this.Controls.Add(this.lblModProveedores);
             this.Controls.Add(this.btnSalir);

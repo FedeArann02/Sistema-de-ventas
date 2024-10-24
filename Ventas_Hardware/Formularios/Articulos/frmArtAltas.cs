@@ -72,14 +72,24 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            CN_Altas cN_Altas = new CN_Altas();
-            if (validations.Cod_articulo(txtCodigo.Text))
+            TextBox[] txts = {txtCodigo, txtCosto, txtDescripcion, txtGanancia, txtStock};
+            ComboBox[] cmbs = {cmbCategoria, cmbProveedor, cmbSubcategoria};
+
+            if (!Validations.TextboxNullOrEmpty(txts) && !Validations.ComboBoxNullOrEmpty(cmbs))
             {
-                cN_Altas.CN_ArtAlta(txtCodigo.Text.ToUpper(), Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbSubcategoria.SelectedValue), txtDescripcion.Text, Convert.ToInt32(cmbProveedor.SelectedValue), int.Parse(txtStock.Text), decimal.Parse(txtCosto.Text), decimal.Parse(txtGanancia.Text));
-                if (cN_Altas.clearConf)
+                CN_Altas cN_Altas = new CN_Altas();
+                if (validations.Cod_articulo(txtCodigo.Text))
                 {
-                    clear();
+                    cN_Altas.CN_ArtAlta(txtCodigo.Text.ToUpper(), Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbSubcategoria.SelectedValue), txtDescripcion.Text, Convert.ToInt32(cmbProveedor.SelectedValue), int.Parse(txtStock.Text), decimal.Parse(txtCosto.Text), decimal.Parse(txtGanancia.Text));
+                    if (cN_Altas.clearConf)
+                    {
+                        clear();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

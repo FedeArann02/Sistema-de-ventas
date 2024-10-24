@@ -486,6 +486,7 @@
             this.txtCantidad.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.ForeColor = System.Drawing.Color.Black;
             this.txtCantidad.Location = new System.Drawing.Point(549, 66);
+            this.txtCantidad.MaxLength = 10;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(57, 22);
             this.txtCantidad.TabIndex = 51;

@@ -113,5 +113,19 @@ namespace CapaNegocio
                 clearConf = false;
             }
         }
+
+        public void AltaUsuario(string Nombre, string Apellido, string DNI, string Contraseña, string idRol, decimal comision)
+        {
+            objcd_Altas.AltaUsuario(Nombre, Apellido, DNI, Contraseña, idRol, comision);
+
+            if (objcd_Altas.clearConfirm)
+            {
+                clearConf = true;
+            }
+            else
+            {
+                clearConf = false;
+            }
+        }
     }
 }

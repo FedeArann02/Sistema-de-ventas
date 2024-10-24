@@ -67,7 +67,7 @@ namespace Ventas_Hardware
                     }
                 }
                 dgvArticulos.Visible = true;
-            }catch (Exception ex)
+            }catch (Exception)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -75,7 +75,7 @@ namespace Ventas_Hardware
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (!filtrosVacios())
+            if (!filtrosVacios() || cbxFiltros.Checked == false)
             {
                 verGrillaFiltrada(dgvArticulos, txtCodigo.Text, cmbDescripcion.Text.Trim(), cmbCategoria.Text, cmbSubcategoria.Text, cmbProveedor.Text);
             }
@@ -98,6 +98,7 @@ namespace Ventas_Hardware
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             clear();
+            cbxFiltros.Checked = true;
         }
         private void clear()
         {
@@ -111,28 +112,7 @@ namespace Ventas_Hardware
             cargaCombos();
             dgvArticulos.Visible = false;
         }
-        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgvArticulos.CurrentRow != null && !dgvArticulos.CurrentRow.IsNewRow)
-            {
-                DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
-                txtCodigoDetalle.Text = filaSelec.Cells[0].Value.ToString();
-                txtDescDetalle.Text = filaSelec.Cells[1].Value.ToString();
-                txtCatDetalle.Text = filaSelec.Cells[2].Value.ToString();
-                txtSubCatDetalle.Text = filaSelec.Cells[3].Value.ToString();
-                txtProvDetalle.Text = filaSelec.Cells[4].Value.ToString();
-                txtStockDetalle.Text = filaSelec.Cells[5].Value.ToString();
-                txtCostoDetalle.Text = filaSelec.Cells[6].Value.ToString();
-                txtGananciaDetalle.Text = filaSelec.Cells[7].Value.ToString();
-                txtPrecioVentaDetalle.Text = precioVenta().ToString();
 
-                panelDetalle.Visible = true;
-            }
-            else
-            {
-                clear();
-            }
-        }
         private decimal precioVenta()
         {
             decimal costo = decimal.Parse(txtCostoDetalle.Text);
@@ -186,6 +166,60 @@ namespace Ventas_Hardware
             else
             {
                 txtStockDetalle.ForeColor= Color.White;
+            }
+        }
+
+        
+        private void cbxFiltros_CheckedChanged(object sender, EventArgs e)
+        {
+            System.Windows.Forms.ComboBox[] combos = { cmbCategoria, cmbDescripcion, cmbProveedor, cmbSubcategoria };
+
+            if (cbxFiltros.Checked == false)
+            {
+                foreach (System.Windows.Forms.ComboBox cmb in combos)
+                {
+                    cmb.Enabled = false;
+                }
+                txtCodigo.Enabled = false;
+            }
+            else
+            {
+                foreach (System.Windows.Forms.ComboBox cmb in combos)
+                {
+                    cmb.Enabled = true;
+                }
+                txtCodigo.Enabled = true;
+
+                if (dgvArticulos.Rows.Count > 0)
+                {
+                    for (int i = dgvArticulos.Rows.Count - 1; i > -1; i--)
+                    {
+                        dgvArticulos.Rows.RemoveAt(i);
+                    }
+                }
+            }
+        }
+
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null && !dgvArticulos.CurrentRow.IsNewRow)
+            {
+                DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                txtCodigoDetalle.Text = filaSelec.Cells[0].Value.ToString();
+                txtDescDetalle.Text = filaSelec.Cells[1].Value.ToString();
+                txtCatDetalle.Text = filaSelec.Cells[2].Value.ToString();
+                txtSubCatDetalle.Text = filaSelec.Cells[3].Value.ToString();
+                txtProvDetalle.Text = filaSelec.Cells[4].Value.ToString();
+                txtStockDetalle.Text = filaSelec.Cells[5].Value.ToString();
+                txtCostoDetalle.Text = filaSelec.Cells[6].Value.ToString();
+                txtGananciaDetalle.Text = filaSelec.Cells[7].Value.ToString();
+                txtPrecioVentaDetalle.Text = precioVenta().ToString();
+
+                panelDetalle.Visible = true;
+            }
+            else
+            {
+                clear();
             }
         }
     }

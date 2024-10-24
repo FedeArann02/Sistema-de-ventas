@@ -34,7 +34,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader ();
                     dt.Load (dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -60,7 +60,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -91,7 +91,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -126,7 +126,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -154,7 +154,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -182,7 +182,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -212,7 +212,36 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+        public DataTable ConsultaRemito(string Nro_Remito)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("SELECT r.id_remito, r.Nro_remito, r.nombre, r.Apellido, r.tel, r.email, r.entidad, r.dni, r.subtotal, r.descuento, r.total, r.direccion, r.fecha_hora AS 'Fecha y Hora',");
+                    Query.AppendLine("rd.id_remito_detalle, rd.Cod_articulo, rd.descripcion AS 'Descripción', rd.precio_unitario AS 'Precio unitario', rd.cantidad AS Cantidad, rd.precio_x_cantidad AS 'Precio por cantidad'");
+                    Query.AppendLine("FROM H_Remito r");
+                    Query.AppendLine("INNER JOIN H_Remito_detalle rd ON r.Nro_remito = rd.Nro_remito");
+                    Query.AppendLine("WHERE r.Nro_remito = @NroR;");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@NroR", Nro_Remito);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -240,7 +269,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -268,7 +297,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -305,7 +334,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -334,7 +363,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -358,7 +387,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -384,7 +413,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -409,7 +438,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }
@@ -434,7 +463,7 @@ namespace CapaDatos
                     SqlDataReader dR = cmd.ExecuteReader();
                     dt.Load(dR);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     dt = new DataTable();
                 }

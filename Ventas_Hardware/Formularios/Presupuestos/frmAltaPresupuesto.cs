@@ -64,8 +64,15 @@ namespace Ventas_Hardware
         private void crearCodigoRemito()
         {
             DataTable CodigoR = cN_Consultas.ConsultaUltimoCodigoPresupuesto();
-            string LastCode = CodigoR.Rows[0]["Nro_Presupuesto"].ToString();
-            txtCodigoPresupuesto.Text = GenerarNumeroPresupuesto(LastCode);
+            if (CodigoR.Rows.Count > 0)
+            {
+                string LastCode = CodigoR.Rows[0]["Nro_Presupuesto"].ToString();
+                txtCodigoPresupuesto.Text = GenerarNumeroPresupuesto(LastCode);
+            }
+            else
+            {
+                txtCodigoPresupuesto.Text = GenerarNumeroPresupuesto(null);
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -86,7 +93,7 @@ namespace Ventas_Hardware
                     panelDetalle.Enabled = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -107,45 +114,53 @@ namespace Ventas_Hardware
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            try { 
-            bool ArtExiste = false;
-            dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
-            decimal Precio = precioVenta();
-            decimal PxCant = Convert.ToDecimal(txtCantidad.Text) * Precio;
-            SubTotal += PxCant;
+            try
+            {
+                if (int.Parse(txtCantidad.Text) > 0 || !txtCantidad.Text.Contains("-"))
                 {
-                    foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                    bool ArtExiste = false;
+                    dt = cN_Consultas.ConsultaArtMod(txtCodigo.Text);
+                    decimal Precio = precioVenta();
+                    decimal PxCant = Convert.ToDecimal(txtCantidad.Text) * Precio;
+                    SubTotal += PxCant;
                     {
-                        if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                        foreach (DataGridViewRow fila in dgvArticulos.Rows)
                         {
-                            // Si el código ya existe, actualiza la cantidad sumando la nueva cantidad
-                            int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
-                            decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
-                            fila.Cells["C_Cantidad"].Value = cantidadActual + int.Parse(txtCantidad.Text);
-                            fila.Cells["C_Pxcant"].Value = PxCantActual + PxCant;
-                            ArtExiste = true;
-                            break;
+                            if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
+                            {
+                                // Si el código ya existe, actualiza la cantidad sumando la nueva cantidad
+                                int cantidadActual = Convert.ToInt32(fila.Cells["C_Cantidad"].Value);
+                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                                fila.Cells["C_Cantidad"].Value = cantidadActual + int.Parse(txtCantidad.Text);
+                                fila.Cells["C_Pxcant"].Value = PxCantActual + PxCant;
+                                ArtExiste = true;
+                                break;
+                            }
+                        }
+
+                        if (!ArtExiste)
+                        {
+                            dgvArticulos.Rows.Add(txtCodigo.Text, txtDescripcion.Text, Precio, txtCantidad.Text, PxCant);
+                        }
+                        if (dgvArticulos.Rows.Count > 1)
+                        {
+                            txtDescripcion.Text = "";
+                            txtCodigo.Text = "";
+                            txtCantidad.Text = "";
                         }
                     }
-
-                    if (!ArtExiste)
-                    {
-                        dgvArticulos.Rows.Add(txtCodigo.Text, txtDescripcion.Text, Precio, txtCantidad.Text, PxCant);
-                    }
-                    if (dgvArticulos.Rows.Count > 1)
-                    {
-                        txtDescripcion.Text = "";
-                        txtCodigo.Text = "";
-                        txtCantidad.Text = "";
-                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se puede ingresar cantidades negativas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            txtSubTotal.Text =SubTotal.ToString();
+            txtSubTotal.Text = SubTotal.ToString();
         }
 
         private decimal precioVenta()
@@ -159,6 +174,7 @@ namespace Ventas_Hardware
 
         private void reCalcular()
         {
+            decimal SubTotal = 0;
             try
             {
                 if (txtDescuento.Text == null || txtDescuento.Text == "")
@@ -166,11 +182,11 @@ namespace Ventas_Hardware
                     decimal Descuento = 0;
                     if (txtSubTotal.Text == null || txtSubTotal.Text == "")
                     {
-                        decimal SubTotal = 0;
+                        SubTotal = 0;
                     }
                     else
                     {
-                        decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                        SubTotal = decimal.Parse(txtSubTotal.Text);
                         txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
                     }
                 }
@@ -182,11 +198,11 @@ namespace Ventas_Hardware
                 else
                 {
                     decimal Descuento = decimal.Parse(txtDescuento.Text);
-                    decimal SubTotal = decimal.Parse(txtSubTotal.Text);
+                    SubTotal = decimal.Parse(txtSubTotal.Text);
                     txtTotal.Text = Decimal.Round((SubTotal - (SubTotal * Descuento / 100)), 2).ToString();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Posible error en el formato ingresado, solo se admiten números enteros o decimales positivos");
                 txtDescuento.Text = "";
@@ -196,23 +212,29 @@ namespace Ventas_Hardware
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             CN_Altas cN_Altas = new CN_Altas();
-
-            if (String.IsNullOrEmpty(txtDescuento.Text)) txtDescuento.Text = "0";
-
-            cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, 
-            txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text), 
-            decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
-
-            if (cmbCliente.Text == "Cliente Nuevo")
+            try
             {
-                cN_Altas.CN_AltaCliente_PresupuestoRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text,
-                txtEntidad.Text);
+                if (String.IsNullOrEmpty(txtDescuento.Text)) txtDescuento.Text = "0";
+
+                cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
+                txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
+                decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
+
+                if (cmbCliente.Text == "Cliente Nuevo")
+                {
+                    cN_Altas.CN_AltaCliente_PresupuestoRemito(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtDireccion.Text, txtTelefono.Text, txtEmail.Text,
+                    txtEntidad.Text);
+                }
+
+                if (cN_Altas.clearConf)
+                {
+                    clear();
+                    clearDetalle();
+                }
             }
-
-            if (cN_Altas.clearConf)
+            catch (Exception)
             {
-                clear();
-                clearDetalle();
+                MessageBox.Show("Error al generar el presupuesto, revise los campos y completelos.", "Presupuesto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -322,25 +344,18 @@ namespace Ventas_Hardware
                 DialogResult dres = MessageBox.Show("¿Desea remover este articulo de la lista?", "Remover", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (dres == DialogResult.OK)
                 {
-                    if (dgvArticulos.Rows.Count == 1)
+                    foreach (DataGridViewRow fila in dgvArticulos.Rows)
                     {
-                        clearDetalle();
-                    }
-                    else
-                    {
-                        foreach (DataGridViewRow fila in dgvArticulos.Rows)
+                        DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
+                        decimal Precio = precioVenta();
+                        if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
                         {
-                            DataGridViewRow filaSelec = dgvArticulos.CurrentRow;
-                            decimal Precio = precioVenta();
-                            if (fila.Cells["C_CodArt"].Value != null && fila.Cells["C_CodArt"].Value.ToString() == txtCodigo.Text)
-                            {
-                                //decimal PxCant = (Convert.ToDecimal(txtCantidad.Text)) * Precio;
-                                decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
-                                SubTotal -= PxCantActual;
-                                txtSubTotal.Text = SubTotal.ToString();
-                                dgvArticulos.Rows.Remove(filaSelec);
-                                break;
-                            }
+                            //decimal PxCant = (Convert.ToDecimal(txtCantidad.Text)) * Precio;
+                            decimal PxCantActual = decimal.Parse(fila.Cells["C_Pxcant"].Value.ToString());
+                            SubTotal -= PxCantActual;
+                            txtSubTotal.Text = SubTotal.ToString();
+                            dgvArticulos.Rows.Remove(filaSelec);
+                            break;
                         }
                     }
                 }

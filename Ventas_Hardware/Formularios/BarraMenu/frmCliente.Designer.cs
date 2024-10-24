@@ -57,6 +57,12 @@
             this.lblClientes = new System.Windows.Forms.Label();
             this.dgvRemPres = new System.Windows.Forms.DataGridView();
             this.panelRemitos_Presupuestos = new System.Windows.Forms.Panel();
+            this.dgvRemPresDetalle = new System.Windows.Forms.DataGridView();
+            this.C_Cod_Art = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_P_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_PxCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDetalle = new System.Windows.Forms.Label();
             this.lblVer = new System.Windows.Forms.Label();
             this.cmbRemPres = new System.Windows.Forms.ComboBox();
@@ -76,22 +82,18 @@
             this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.lblRegistrarPagos = new System.Windows.Forms.Label();
-            this.dgvRemPresDetalle = new System.Windows.Forms.DataGridView();
-            this.C_Cod_Art = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_P_unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_PxCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelDatosEncabezado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemPres)).BeginInit();
             this.panelRemitos_Presupuestos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRemPresDetalle)).BeginInit();
             this.panelCTACTE.SuspendLayout();
             this.panelRegistrarPagos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRemPresDetalle)).BeginInit();
             this.SuspendLayout();
             // 
             // panelDatosEncabezado
             // 
+            this.panelDatosEncabezado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelDatosEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.panelDatosEncabezado.Controls.Add(this.lblApellido);
             this.panelDatosEncabezado.Controls.Add(this.txtApellido);
@@ -131,6 +133,7 @@
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.ForeColor = System.Drawing.Color.Black;
             this.txtApellido.Location = new System.Drawing.Point(161, 40);
+            this.txtApellido.MaxLength = 30;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(137, 22);
             this.txtApellido.TabIndex = 61;
@@ -182,11 +185,13 @@
             // 
             // txtTelefono
             // 
+            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTelefono.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtTelefono.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.Location = new System.Drawing.Point(463, 40);
+            this.txtTelefono.MaxLength = 15;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(106, 22);
             this.txtTelefono.TabIndex = 31;
@@ -199,6 +204,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.Location = new System.Drawing.Point(13, 40);
+            this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(137, 22);
             this.txtNombre.TabIndex = 43;
@@ -206,11 +212,14 @@
             // 
             // txtDoc
             // 
+            this.txtDoc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDoc.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc.ForeColor = System.Drawing.Color.Black;
             this.txtDoc.Location = new System.Drawing.Point(309, 40);
+            this.txtDoc.MaxLength = 15;
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(143, 22);
             this.txtDoc.TabIndex = 37;
@@ -234,6 +243,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.Location = new System.Drawing.Point(74, 86);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(280, 22);
             this.txtEmail.TabIndex = 47;
@@ -241,11 +251,13 @@
             // 
             // txtEntidad
             // 
+            this.txtEntidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEntidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtEntidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEntidad.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEntidad.ForeColor = System.Drawing.Color.Black;
             this.txtEntidad.Location = new System.Drawing.Point(580, 40);
+            this.txtEntidad.MaxLength = 60;
             this.txtEntidad.Name = "txtEntidad";
             this.txtEntidad.Size = new System.Drawing.Size(116, 22);
             this.txtEntidad.TabIndex = 35;
@@ -264,11 +276,13 @@
             // 
             // txtDireccion
             // 
+            this.txtDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDireccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDireccion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.Black;
             this.txtDireccion.Location = new System.Drawing.Point(365, 86);
+            this.txtDireccion.MaxLength = 100;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(271, 22);
             this.txtDireccion.TabIndex = 41;
@@ -311,11 +325,14 @@
             // 
             // txtDocumentacionCliente
             // 
+            this.txtDocumentacionCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDocumentacionCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtDocumentacionCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDocumentacionCliente.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumentacionCliente.ForeColor = System.Drawing.Color.Black;
             this.txtDocumentacionCliente.Location = new System.Drawing.Point(341, 26);
+            this.txtDocumentacionCliente.MaxLength = 15;
             this.txtDocumentacionCliente.Name = "txtDocumentacionCliente";
             this.txtDocumentacionCliente.Size = new System.Drawing.Size(143, 22);
             this.txtDocumentacionCliente.TabIndex = 63;
@@ -348,7 +365,9 @@
             // dgvRemPres
             // 
             this.dgvRemPres.AllowUserToAddRows = false;
-            this.dgvRemPres.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.dgvRemPres.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dgvRemPres.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.dgvRemPres.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRemPres.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             this.dgvRemPres.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -384,6 +403,9 @@
             // 
             // panelRemitos_Presupuestos
             // 
+            this.panelRemitos_Presupuestos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelRemitos_Presupuestos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.panelRemitos_Presupuestos.Controls.Add(this.dgvRemPresDetalle);
             this.panelRemitos_Presupuestos.Controls.Add(this.lblDetalle);
@@ -395,246 +417,6 @@
             this.panelRemitos_Presupuestos.Size = new System.Drawing.Size(706, 200);
             this.panelRemitos_Presupuestos.TabIndex = 63;
             // 
-            // lblDetalle
-            // 
-            this.lblDetalle.AutoSize = true;
-            this.lblDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDetalle.ForeColor = System.Drawing.Color.White;
-            this.lblDetalle.Location = new System.Drawing.Point(178, 5);
-            this.lblDetalle.Name = "lblDetalle";
-            this.lblDetalle.Size = new System.Drawing.Size(47, 16);
-            this.lblDetalle.TabIndex = 68;
-            this.lblDetalle.Text = "Detalle:";
-            // 
-            // lblVer
-            // 
-            this.lblVer.AutoSize = true;
-            this.lblVer.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVer.ForeColor = System.Drawing.Color.White;
-            this.lblVer.Location = new System.Drawing.Point(10, 5);
-            this.lblVer.Name = "lblVer";
-            this.lblVer.Size = new System.Drawing.Size(28, 16);
-            this.lblVer.TabIndex = 63;
-            this.lblVer.Text = "Ver:";
-            // 
-            // cmbRemPres
-            // 
-            this.cmbRemPres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cmbRemPres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbRemPres.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbRemPres.FormattingEnabled = true;
-            this.cmbRemPres.Items.AddRange(new object[] {
-            "REMITOS",
-            "PRESUPUESTOS"});
-            this.cmbRemPres.Location = new System.Drawing.Point(12, 27);
-            this.cmbRemPres.Margin = new System.Windows.Forms.Padding(1);
-            this.cmbRemPres.Name = "cmbRemPres";
-            this.cmbRemPres.Size = new System.Drawing.Size(163, 24);
-            this.cmbRemPres.TabIndex = 66;
-            this.cmbRemPres.SelectedValueChanged += new System.EventHandler(this.cmbRemPres_SelectedValueChanged);
-            // 
-            // panelCTACTE
-            // 
-            this.panelCTACTE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.panelCTACTE.Controls.Add(this.btnPagar);
-            this.panelCTACTE.Controls.Add(this.lblDeuda);
-            this.panelCTACTE.Controls.Add(this.txtDeudas);
-            this.panelCTACTE.Controls.Add(this.lblPagos);
-            this.panelCTACTE.Controls.Add(this.txtPagos);
-            this.panelCTACTE.Controls.Add(this.lblCompras);
-            this.panelCTACTE.Controls.Add(this.txtCompras);
-            this.panelCTACTE.Location = new System.Drawing.Point(21, 195);
-            this.panelCTACTE.Name = "panelCTACTE";
-            this.panelCTACTE.Size = new System.Drawing.Size(443, 110);
-            this.panelCTACTE.TabIndex = 69;
-            // 
-            // btnPagar
-            // 
-            this.btnPagar.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnPagar.FlatAppearance.BorderSize = 0;
-            this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPagar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPagar.ForeColor = System.Drawing.Color.White;
-            this.btnPagar.Location = new System.Drawing.Point(353, 68);
-            this.btnPagar.Name = "btnPagar";
-            this.btnPagar.Size = new System.Drawing.Size(78, 28);
-            this.btnPagar.TabIndex = 72;
-            this.btnPagar.Text = "Pagar";
-            this.btnPagar.UseVisualStyleBackColor = false;
-            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
-            // 
-            // lblDeuda
-            // 
-            this.lblDeuda.AutoSize = true;
-            this.lblDeuda.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDeuda.ForeColor = System.Drawing.Color.White;
-            this.lblDeuda.Location = new System.Drawing.Point(306, 12);
-            this.lblDeuda.Name = "lblDeuda";
-            this.lblDeuda.Size = new System.Drawing.Size(44, 16);
-            this.lblDeuda.TabIndex = 68;
-            this.lblDeuda.Text = "Deuda:";
-            // 
-            // txtDeudas
-            // 
-            this.txtDeudas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtDeudas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDeudas.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeudas.ForeColor = System.Drawing.Color.Black;
-            this.txtDeudas.Location = new System.Drawing.Point(309, 31);
-            this.txtDeudas.Name = "txtDeudas";
-            this.txtDeudas.Size = new System.Drawing.Size(122, 22);
-            this.txtDeudas.TabIndex = 67;
-            this.txtDeudas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblPagos
-            // 
-            this.lblPagos.AutoSize = true;
-            this.lblPagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPagos.ForeColor = System.Drawing.Color.White;
-            this.lblPagos.Location = new System.Drawing.Point(158, 12);
-            this.lblPagos.Name = "lblPagos";
-            this.lblPagos.Size = new System.Drawing.Size(42, 16);
-            this.lblPagos.TabIndex = 66;
-            this.lblPagos.Text = "Pagos:";
-            // 
-            // txtPagos
-            // 
-            this.txtPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPagos.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPagos.ForeColor = System.Drawing.Color.Black;
-            this.txtPagos.Location = new System.Drawing.Point(161, 31);
-            this.txtPagos.Name = "txtPagos";
-            this.txtPagos.Size = new System.Drawing.Size(122, 22);
-            this.txtPagos.TabIndex = 65;
-            this.txtPagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblCompras
-            // 
-            this.lblCompras.AutoSize = true;
-            this.lblCompras.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCompras.ForeColor = System.Drawing.Color.White;
-            this.lblCompras.Location = new System.Drawing.Point(10, 12);
-            this.lblCompras.Name = "lblCompras";
-            this.lblCompras.Size = new System.Drawing.Size(60, 16);
-            this.lblCompras.TabIndex = 64;
-            this.lblCompras.Text = "Compras:";
-            // 
-            // txtCompras
-            // 
-            this.txtCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCompras.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCompras.ForeColor = System.Drawing.Color.Black;
-            this.txtCompras.Location = new System.Drawing.Point(13, 31);
-            this.txtCompras.Name = "txtCompras";
-            this.txtCompras.Size = new System.Drawing.Size(119, 22);
-            this.txtCompras.TabIndex = 63;
-            this.txtCompras.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.BackColor = System.Drawing.Color.IndianRed;
-            this.btnLimpiar.FlatAppearance.BorderSize = 0;
-            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiar.Location = new System.Drawing.Point(649, 20);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(78, 28);
-            this.btnLimpiar.TabIndex = 71;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = false;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnBuscar.Enabled = false;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(553, 20);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(78, 28);
-            this.btnBuscar.TabIndex = 70;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // panelRegistrarPagos
-            // 
-            this.panelRegistrarPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.panelRegistrarPagos.Controls.Add(this.btnRegistrar);
-            this.panelRegistrarPagos.Controls.Add(this.llbMonto);
-            this.panelRegistrarPagos.Controls.Add(this.dtpFechaPago);
-            this.panelRegistrarPagos.Controls.Add(this.txtMonto);
-            this.panelRegistrarPagos.Controls.Add(this.lblRegistrarPagos);
-            this.panelRegistrarPagos.Enabled = false;
-            this.panelRegistrarPagos.Location = new System.Drawing.Point(470, 195);
-            this.panelRegistrarPagos.Name = "panelRegistrarPagos";
-            this.panelRegistrarPagos.Size = new System.Drawing.Size(257, 110);
-            this.panelRegistrarPagos.TabIndex = 73;
-            // 
-            // btnRegistrar
-            // 
-            this.btnRegistrar.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnRegistrar.FlatAppearance.BorderSize = 0;
-            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrar.Location = new System.Drawing.Point(142, 68);
-            this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(96, 28);
-            this.btnRegistrar.TabIndex = 73;
-            this.btnRegistrar.Text = "Registrar";
-            this.btnRegistrar.UseVisualStyleBackColor = false;
-            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
-            // 
-            // llbMonto
-            // 
-            this.llbMonto.AutoSize = true;
-            this.llbMonto.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.llbMonto.ForeColor = System.Drawing.Color.White;
-            this.llbMonto.Location = new System.Drawing.Point(11, 55);
-            this.llbMonto.Name = "llbMonto";
-            this.llbMonto.Size = new System.Drawing.Size(47, 16);
-            this.llbMonto.TabIndex = 74;
-            this.llbMonto.Text = "Monto:";
-            // 
-            // dtpFechaPago
-            // 
-            this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaPago.Location = new System.Drawing.Point(14, 31);
-            this.dtpFechaPago.Name = "dtpFechaPago";
-            this.dtpFechaPago.Size = new System.Drawing.Size(224, 22);
-            this.dtpFechaPago.TabIndex = 64;
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtMonto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtMonto.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.ForeColor = System.Drawing.Color.Black;
-            this.txtMonto.Location = new System.Drawing.Point(14, 74);
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(122, 22);
-            this.txtMonto.TabIndex = 73;
-            this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblRegistrarPagos
-            // 
-            this.lblRegistrarPagos.AutoSize = true;
-            this.lblRegistrarPagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegistrarPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
-            this.lblRegistrarPagos.Location = new System.Drawing.Point(0, 0);
-            this.lblRegistrarPagos.Name = "lblRegistrarPagos";
-            this.lblRegistrarPagos.Size = new System.Drawing.Size(108, 19);
-            this.lblRegistrarPagos.TabIndex = 63;
-            this.lblRegistrarPagos.Text = "Registrar pagos:";
-            // 
             // dgvRemPresDetalle
             // 
             this.dgvRemPresDetalle.AllowUserToAddRows = false;
@@ -645,7 +427,7 @@
             this.dgvRemPresDetalle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvRemPresDetalle.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.dgvRemPresDetalle.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.dgvRemPresDetalle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvRemPresDetalle.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -722,6 +504,264 @@
             this.C_PxCant.ReadOnly = true;
             this.C_PxCant.Width = 150;
             // 
+            // lblDetalle
+            // 
+            this.lblDetalle.AutoSize = true;
+            this.lblDetalle.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDetalle.ForeColor = System.Drawing.Color.White;
+            this.lblDetalle.Location = new System.Drawing.Point(178, 5);
+            this.lblDetalle.Name = "lblDetalle";
+            this.lblDetalle.Size = new System.Drawing.Size(47, 16);
+            this.lblDetalle.TabIndex = 68;
+            this.lblDetalle.Text = "Detalle:";
+            // 
+            // lblVer
+            // 
+            this.lblVer.AutoSize = true;
+            this.lblVer.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVer.ForeColor = System.Drawing.Color.White;
+            this.lblVer.Location = new System.Drawing.Point(10, 5);
+            this.lblVer.Name = "lblVer";
+            this.lblVer.Size = new System.Drawing.Size(28, 16);
+            this.lblVer.TabIndex = 63;
+            this.lblVer.Text = "Ver:";
+            // 
+            // cmbRemPres
+            // 
+            this.cmbRemPres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbRemPres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbRemPres.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbRemPres.FormattingEnabled = true;
+            this.cmbRemPres.Items.AddRange(new object[] {
+            "REMITOS",
+            "PRESUPUESTOS"});
+            this.cmbRemPres.Location = new System.Drawing.Point(12, 27);
+            this.cmbRemPres.Margin = new System.Windows.Forms.Padding(1);
+            this.cmbRemPres.Name = "cmbRemPres";
+            this.cmbRemPres.Size = new System.Drawing.Size(163, 24);
+            this.cmbRemPres.TabIndex = 66;
+            this.cmbRemPres.SelectedValueChanged += new System.EventHandler(this.cmbRemPres_SelectedValueChanged);
+            // 
+            // panelCTACTE
+            // 
+            this.panelCTACTE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelCTACTE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.panelCTACTE.Controls.Add(this.btnPagar);
+            this.panelCTACTE.Controls.Add(this.lblDeuda);
+            this.panelCTACTE.Controls.Add(this.txtDeudas);
+            this.panelCTACTE.Controls.Add(this.lblPagos);
+            this.panelCTACTE.Controls.Add(this.txtPagos);
+            this.panelCTACTE.Controls.Add(this.lblCompras);
+            this.panelCTACTE.Controls.Add(this.txtCompras);
+            this.panelCTACTE.Location = new System.Drawing.Point(21, 195);
+            this.panelCTACTE.Name = "panelCTACTE";
+            this.panelCTACTE.Size = new System.Drawing.Size(443, 110);
+            this.panelCTACTE.TabIndex = 69;
+            // 
+            // btnPagar
+            // 
+            this.btnPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPagar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnPagar.FlatAppearance.BorderSize = 0;
+            this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagar.ForeColor = System.Drawing.Color.White;
+            this.btnPagar.Location = new System.Drawing.Point(353, 68);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(78, 28);
+            this.btnPagar.TabIndex = 72;
+            this.btnPagar.Text = "Pagar";
+            this.btnPagar.UseVisualStyleBackColor = false;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
+            // 
+            // lblDeuda
+            // 
+            this.lblDeuda.AutoSize = true;
+            this.lblDeuda.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeuda.ForeColor = System.Drawing.Color.White;
+            this.lblDeuda.Location = new System.Drawing.Point(306, 12);
+            this.lblDeuda.Name = "lblDeuda";
+            this.lblDeuda.Size = new System.Drawing.Size(44, 16);
+            this.lblDeuda.TabIndex = 68;
+            this.lblDeuda.Text = "Deuda:";
+            // 
+            // txtDeudas
+            // 
+            this.txtDeudas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDeudas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtDeudas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDeudas.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeudas.ForeColor = System.Drawing.Color.Black;
+            this.txtDeudas.Location = new System.Drawing.Point(309, 31);
+            this.txtDeudas.MaxLength = 27;
+            this.txtDeudas.Name = "txtDeudas";
+            this.txtDeudas.Size = new System.Drawing.Size(122, 22);
+            this.txtDeudas.TabIndex = 67;
+            this.txtDeudas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblPagos
+            // 
+            this.lblPagos.AutoSize = true;
+            this.lblPagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPagos.ForeColor = System.Drawing.Color.White;
+            this.lblPagos.Location = new System.Drawing.Point(158, 12);
+            this.lblPagos.Name = "lblPagos";
+            this.lblPagos.Size = new System.Drawing.Size(42, 16);
+            this.lblPagos.TabIndex = 66;
+            this.lblPagos.Text = "Pagos:";
+            // 
+            // txtPagos
+            // 
+            this.txtPagos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtPagos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPagos.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPagos.ForeColor = System.Drawing.Color.Black;
+            this.txtPagos.Location = new System.Drawing.Point(161, 31);
+            this.txtPagos.MaxLength = 27;
+            this.txtPagos.Name = "txtPagos";
+            this.txtPagos.Size = new System.Drawing.Size(122, 22);
+            this.txtPagos.TabIndex = 65;
+            this.txtPagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblCompras
+            // 
+            this.lblCompras.AutoSize = true;
+            this.lblCompras.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCompras.ForeColor = System.Drawing.Color.White;
+            this.lblCompras.Location = new System.Drawing.Point(10, 12);
+            this.lblCompras.Name = "lblCompras";
+            this.lblCompras.Size = new System.Drawing.Size(60, 16);
+            this.lblCompras.TabIndex = 64;
+            this.lblCompras.Text = "Compras:";
+            // 
+            // txtCompras
+            // 
+            this.txtCompras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCompras.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompras.ForeColor = System.Drawing.Color.Black;
+            this.txtCompras.Location = new System.Drawing.Point(13, 31);
+            this.txtCompras.MaxLength = 27;
+            this.txtCompras.Name = "txtCompras";
+            this.txtCompras.Size = new System.Drawing.Size(119, 22);
+            this.txtCompras.TabIndex = 63;
+            this.txtCompras.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpiar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnLimpiar.FlatAppearance.BorderSize = 0;
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.Location = new System.Drawing.Point(649, 20);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(78, 28);
+            this.btnLimpiar.TabIndex = 71;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuscar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnBuscar.Enabled = false;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(553, 20);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(78, 28);
+            this.btnBuscar.TabIndex = 70;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // panelRegistrarPagos
+            // 
+            this.panelRegistrarPagos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelRegistrarPagos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.panelRegistrarPagos.Controls.Add(this.btnRegistrar);
+            this.panelRegistrarPagos.Controls.Add(this.llbMonto);
+            this.panelRegistrarPagos.Controls.Add(this.dtpFechaPago);
+            this.panelRegistrarPagos.Controls.Add(this.txtMonto);
+            this.panelRegistrarPagos.Controls.Add(this.lblRegistrarPagos);
+            this.panelRegistrarPagos.Enabled = false;
+            this.panelRegistrarPagos.Location = new System.Drawing.Point(470, 195);
+            this.panelRegistrarPagos.Name = "panelRegistrarPagos";
+            this.panelRegistrarPagos.Size = new System.Drawing.Size(257, 110);
+            this.panelRegistrarPagos.TabIndex = 73;
+            // 
+            // btnRegistrar
+            // 
+            this.btnRegistrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegistrar.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnRegistrar.FlatAppearance.BorderSize = 0;
+            this.btnRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrar.ForeColor = System.Drawing.Color.White;
+            this.btnRegistrar.Location = new System.Drawing.Point(142, 68);
+            this.btnRegistrar.Name = "btnRegistrar";
+            this.btnRegistrar.Size = new System.Drawing.Size(96, 28);
+            this.btnRegistrar.TabIndex = 73;
+            this.btnRegistrar.Text = "Registrar";
+            this.btnRegistrar.UseVisualStyleBackColor = false;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
+            // 
+            // llbMonto
+            // 
+            this.llbMonto.AutoSize = true;
+            this.llbMonto.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.llbMonto.ForeColor = System.Drawing.Color.White;
+            this.llbMonto.Location = new System.Drawing.Point(11, 55);
+            this.llbMonto.Name = "llbMonto";
+            this.llbMonto.Size = new System.Drawing.Size(47, 16);
+            this.llbMonto.TabIndex = 74;
+            this.llbMonto.Text = "Monto:";
+            // 
+            // dtpFechaPago
+            // 
+            this.dtpFechaPago.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpFechaPago.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaPago.Location = new System.Drawing.Point(14, 31);
+            this.dtpFechaPago.Name = "dtpFechaPago";
+            this.dtpFechaPago.Size = new System.Drawing.Size(224, 22);
+            this.dtpFechaPago.TabIndex = 64;
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtMonto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtMonto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMonto.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.ForeColor = System.Drawing.Color.Black;
+            this.txtMonto.Location = new System.Drawing.Point(14, 74);
+            this.txtMonto.MaxLength = 27;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(122, 22);
+            this.txtMonto.TabIndex = 73;
+            this.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblRegistrarPagos
+            // 
+            this.lblRegistrarPagos.AutoSize = true;
+            this.lblRegistrarPagos.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegistrarPagos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(109)))), ((int)(((byte)(190)))));
+            this.lblRegistrarPagos.Location = new System.Drawing.Point(0, 0);
+            this.lblRegistrarPagos.Name = "lblRegistrarPagos";
+            this.lblRegistrarPagos.Size = new System.Drawing.Size(108, 19);
+            this.lblRegistrarPagos.TabIndex = 63;
+            this.lblRegistrarPagos.Text = "Registrar pagos:";
+            // 
             // frmCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,11 +787,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemPres)).EndInit();
             this.panelRemitos_Presupuestos.ResumeLayout(false);
             this.panelRemitos_Presupuestos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRemPresDetalle)).EndInit();
             this.panelCTACTE.ResumeLayout(false);
             this.panelCTACTE.PerformLayout();
             this.panelRegistrarPagos.ResumeLayout(false);
             this.panelRegistrarPagos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRemPresDetalle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

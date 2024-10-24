@@ -78,5 +78,32 @@ namespace Ventas_Hardware.MisMetodos
                 return true;
             }
         }
+        public static bool TextboxNullOrEmpty(TextBox[] textboxes)
+        {
+            bool Invalid = false;
+            foreach (TextBox box in textboxes)
+            {
+                if (String.IsNullOrEmpty(box.Text))
+                {
+                    Invalid = true;
+                }
+            }
+
+            return Invalid;
+        }
+
+        public static bool ComboBoxNullOrEmpty(ComboBox[] combos)
+        {
+            bool Invalid = false;
+            foreach (ComboBox box in combos)
+            {
+                if (String.IsNullOrEmpty(box.Text))
+                {
+                    Invalid = true;
+                }
+            }
+
+            return Invalid;
+        }
     }
 }

@@ -108,7 +108,7 @@ namespace Ventas_Hardware
                 }
                 dgvArticulos.Visible = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error en el procedimiento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -152,7 +152,7 @@ namespace Ventas_Hardware
                     txtTotalCompra.Text = "0";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Error de formato de entrada, solo puede ingresar valores enteros o decimales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -175,7 +175,7 @@ namespace Ventas_Hardware
                     txtTotalPago.Text = "0";
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Error de formato de entrada, solo puede ingresar valores enteros o decimales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

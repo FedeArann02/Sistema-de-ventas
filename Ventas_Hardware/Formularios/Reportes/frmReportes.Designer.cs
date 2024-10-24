@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panelBarraSuperiorArt = new System.Windows.Forms.Panel();
+            this.btnBalanceGral = new System.Windows.Forms.Button();
+            this.btnIngresosEgresos = new System.Windows.Forms.Button();
             this.btnRemitos = new System.Windows.Forms.Button();
             this.btnPresupuestos = new System.Windows.Forms.Button();
-            this.btnIngresosEgresos = new System.Windows.Forms.Button();
-            this.btnBalanceGral = new System.Windows.Forms.Button();
             this.panel_contenedor = new System.Windows.Forms.Panel();
             this.panelBarraSuperiorArt.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +49,38 @@
             this.panelBarraSuperiorArt.Name = "panelBarraSuperiorArt";
             this.panelBarraSuperiorArt.Size = new System.Drawing.Size(733, 24);
             this.panelBarraSuperiorArt.TabIndex = 2;
+            // 
+            // btnBalanceGral
+            // 
+            this.btnBalanceGral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.btnBalanceGral.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnBalanceGral.FlatAppearance.BorderSize = 0;
+            this.btnBalanceGral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBalanceGral.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBalanceGral.ForeColor = System.Drawing.Color.White;
+            this.btnBalanceGral.Location = new System.Drawing.Point(357, 0);
+            this.btnBalanceGral.Name = "btnBalanceGral";
+            this.btnBalanceGral.Size = new System.Drawing.Size(104, 24);
+            this.btnBalanceGral.TabIndex = 3;
+            this.btnBalanceGral.Text = "Balance general";
+            this.btnBalanceGral.UseVisualStyleBackColor = false;
+            this.btnBalanceGral.Click += new System.EventHandler(this.btnBalanceGral_Click);
+            // 
+            // btnIngresosEgresos
+            // 
+            this.btnIngresosEgresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.btnIngresosEgresos.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnIngresosEgresos.FlatAppearance.BorderSize = 0;
+            this.btnIngresosEgresos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresosEgresos.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresosEgresos.ForeColor = System.Drawing.Color.White;
+            this.btnIngresosEgresos.Location = new System.Drawing.Point(207, 0);
+            this.btnIngresosEgresos.Name = "btnIngresosEgresos";
+            this.btnIngresosEgresos.Size = new System.Drawing.Size(150, 24);
+            this.btnIngresosEgresos.TabIndex = 2;
+            this.btnIngresosEgresos.Text = "Ingresos / Egresos varios";
+            this.btnIngresosEgresos.UseVisualStyleBackColor = false;
+            this.btnIngresosEgresos.Click += new System.EventHandler(this.btnIngresosEgresos_Click);
             // 
             // btnRemitos
             // 
@@ -81,38 +113,6 @@
             this.btnPresupuestos.Text = "Presupuestos";
             this.btnPresupuestos.UseVisualStyleBackColor = false;
             this.btnPresupuestos.Click += new System.EventHandler(this.btnPresupuestos_Click);
-            // 
-            // btnIngresosEgresos
-            // 
-            this.btnIngresosEgresos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            this.btnIngresosEgresos.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnIngresosEgresos.FlatAppearance.BorderSize = 0;
-            this.btnIngresosEgresos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresosEgresos.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresosEgresos.ForeColor = System.Drawing.Color.White;
-            this.btnIngresosEgresos.Location = new System.Drawing.Point(207, 0);
-            this.btnIngresosEgresos.Name = "btnIngresosEgresos";
-            this.btnIngresosEgresos.Size = new System.Drawing.Size(150, 24);
-            this.btnIngresosEgresos.TabIndex = 2;
-            this.btnIngresosEgresos.Text = "Ingresos / Egresos varios";
-            this.btnIngresosEgresos.UseVisualStyleBackColor = false;
-            this.btnIngresosEgresos.Click += new System.EventHandler(this.btnIngresosEgresos_Click);
-            // 
-            // btnBalanceGral
-            // 
-            this.btnBalanceGral.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            this.btnBalanceGral.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnBalanceGral.FlatAppearance.BorderSize = 0;
-            this.btnBalanceGral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBalanceGral.Font = new System.Drawing.Font("Segoe UI Variable Display", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBalanceGral.ForeColor = System.Drawing.Color.White;
-            this.btnBalanceGral.Location = new System.Drawing.Point(357, 0);
-            this.btnBalanceGral.Name = "btnBalanceGral";
-            this.btnBalanceGral.Size = new System.Drawing.Size(104, 24);
-            this.btnBalanceGral.TabIndex = 3;
-            this.btnBalanceGral.Text = "Balance general";
-            this.btnBalanceGral.UseVisualStyleBackColor = false;
-            this.btnBalanceGral.Click += new System.EventHandler(this.btnBalanceGral_Click);
             // 
             // panel_contenedor
             // 

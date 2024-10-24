@@ -67,6 +67,8 @@
             this.txtDocumentacionCliente = new System.Windows.Forms.TextBox();
             this.lblDNICUIL_T = new System.Windows.Forms.Label();
             this.panelDetalle = new System.Windows.Forms.Panel();
+            this.lblCodigoPres = new System.Windows.Forms.Label();
+            this.txtCodigoPresupuesto = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnRestar = new System.Windows.Forms.Button();
             this.lblDetalle = new System.Windows.Forms.Label();
@@ -80,8 +82,6 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscarArt = new System.Windows.Forms.Button();
-            this.txtCodigoPresupuesto = new System.Windows.Forms.TextBox();
-            this.lblCodigoPres = new System.Windows.Forms.Label();
             this.panelDatosEncabezado.SuspendLayout();
             this.panelDetalle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
@@ -499,6 +499,7 @@
             this.txtCantidad.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCantidad.ForeColor = System.Drawing.Color.Black;
             this.txtCantidad.Location = new System.Drawing.Point(549, 55);
+            this.txtCantidad.MaxLength = 10;
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(57, 22);
             this.txtCantidad.TabIndex = 51;
@@ -579,6 +580,31 @@
             this.panelDetalle.Name = "panelDetalle";
             this.panelDetalle.Size = new System.Drawing.Size(706, 293);
             this.panelDetalle.TabIndex = 49;
+            // 
+            // lblCodigoPres
+            // 
+            this.lblCodigoPres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCodigoPres.AutoSize = true;
+            this.lblCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoPres.ForeColor = System.Drawing.Color.White;
+            this.lblCodigoPres.Location = new System.Drawing.Point(324, 4);
+            this.lblCodigoPres.Name = "lblCodigoPres";
+            this.lblCodigoPres.Size = new System.Drawing.Size(139, 16);
+            this.lblCodigoPres.TabIndex = 68;
+            this.lblCodigoPres.Text = "Código del Presupuesto:";
+            // 
+            // txtCodigoPresupuesto
+            // 
+            this.txtCodigoPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigoPresupuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCodigoPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodigoPresupuesto.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoPresupuesto.ForeColor = System.Drawing.Color.Black;
+            this.txtCodigoPresupuesto.Location = new System.Drawing.Point(327, 23);
+            this.txtCodigoPresupuesto.Name = "txtCodigoPresupuesto";
+            this.txtCodigoPresupuesto.Size = new System.Drawing.Size(201, 22);
+            this.txtCodigoPresupuesto.TabIndex = 67;
+            this.txtCodigoPresupuesto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnEliminar
             // 
@@ -784,31 +810,6 @@
             this.btnBuscarArt.TabIndex = 54;
             this.btnBuscarArt.UseVisualStyleBackColor = false;
             this.btnBuscarArt.Click += new System.EventHandler(this.btnBuscarArt_Click);
-            // 
-            // txtCodigoPresupuesto
-            // 
-            this.txtCodigoPresupuesto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoPresupuesto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txtCodigoPresupuesto.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCodigoPresupuesto.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoPresupuesto.ForeColor = System.Drawing.Color.Black;
-            this.txtCodigoPresupuesto.Location = new System.Drawing.Point(327, 23);
-            this.txtCodigoPresupuesto.Name = "txtCodigoPresupuesto";
-            this.txtCodigoPresupuesto.Size = new System.Drawing.Size(201, 22);
-            this.txtCodigoPresupuesto.TabIndex = 67;
-            this.txtCodigoPresupuesto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblCodigoPres
-            // 
-            this.lblCodigoPres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCodigoPres.AutoSize = true;
-            this.lblCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoPres.ForeColor = System.Drawing.Color.White;
-            this.lblCodigoPres.Location = new System.Drawing.Point(324, 4);
-            this.lblCodigoPres.Name = "lblCodigoPres";
-            this.lblCodigoPres.Size = new System.Drawing.Size(139, 16);
-            this.lblCodigoPres.TabIndex = 68;
-            this.lblCodigoPres.Text = "Código del Presupuesto:";
             // 
             // frmAltaPresupuesto
             // 

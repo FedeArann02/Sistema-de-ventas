@@ -56,6 +56,10 @@ namespace CapaNegocio
         {
             return Querys.ConsultaPresupuesto(Nro_prespuesto);
         }
+        public DataTable ConsultaRemito(string Nro_Remito)
+        {
+            return Querys.ConsultaRemito(Nro_Remito);
+        }
         public DataTable ConsultaP_Detalle(string Nro_presupuesto)
         {
             return Querys.ConsultaPresupuestoDetalle(Nro_presupuesto);
@@ -72,7 +76,6 @@ namespace CapaNegocio
         {
             return Querys.ConsultaSubcategorias();
         }
-
         public DataTable ConsultaUltimoCodigoRemito()
         {
             return Querys.ConsultaUltimoCodigoRemito();

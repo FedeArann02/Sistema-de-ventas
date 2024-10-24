@@ -28,21 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.lblPROX = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // lblPROX
+            // 
+            this.lblPROX.AutoSize = true;
+            this.lblPROX.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblPROX.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPROX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.lblPROX.Location = new System.Drawing.Point(249, 79);
+            this.lblPROX.Name = "lblPROX";
+            this.lblPROX.Size = new System.Drawing.Size(181, 32);
+            this.lblPROX.TabIndex = 79;
+            this.lblPROX.Text = "Proximamente";
             // 
             // R_BalanceGral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(29)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(733, 460);
+            this.Controls.Add(this.lblPROX);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "R_BalanceGral";
             this.Text = "R_BalanceGral";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label lblPROX;
     }
 }

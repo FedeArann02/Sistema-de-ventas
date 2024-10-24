@@ -10,16 +10,16 @@ using System.Data.SqlClient;
 
 namespace CapaDatos
 {
-    public class CD_Articulo
+    public class CD_Rol
     {
-        public List<Articulo> Listar()
+        public List<Rol> Listar()
         {
-            List<Articulo> Lista = new List<Articulo>();
+            List<Rol> Lista = new List<Rol>();
             using (SqlConnection obj_conexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
-                    string Query = "select ARTICULO.Cod_articulo, ARTICULO.Descripcion from ARTICULO";
+                    string Query = "select r.IdRol, r.Descripcion from ROL r";
                     SqlCommand cmd = new SqlCommand(Query, obj_conexion);
                     cmd.CommandType = CommandType.Text; //indico al comando que es un tipo de comando de Texto.
                     obj_conexion.Open();
@@ -27,9 +27,9 @@ namespace CapaDatos
                     {
                         while (dr.Read())
                         {
-                            Lista.Add(new Articulo()
+                            Lista.Add(new Rol()
                             {
-                                Cod_articulo = dr["Cod_Articulo"].ToString(),
+                                IdRol = int.Parse(dr["IdRol"].ToString()),
                                 Descripcion = dr["Descripcion"].ToString()
                             });
                         }
@@ -37,7 +37,7 @@ namespace CapaDatos
                 }
                 catch (Exception)
                 {
-                    Lista = new List<Articulo>();
+                    Lista = new List<Rol>();
                 }
             }
             return Lista;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using Ventas_Hardware.MisMetodos;
 
 namespace Ventas_Hardware
 {
@@ -26,7 +27,15 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            altas.CN_AltaProveedor(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtTelefono.Text);
+            TextBox[] textboxes = {txtNombre, txtApellido, txtEmail, txtTelefono};
+            if (!Validations.TextboxNullOrEmpty(textboxes))
+            {
+                altas.CN_AltaProveedor(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtTelefono.Text);
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
     }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using Ventas_Hardware.MisMetodos;
 
 namespace Ventas_Hardware
 {
@@ -36,7 +37,25 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            modificaciones.ModificarProveedor(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, cmbProveedor.SelectedValue.ToString());
+            TextBox[] tbx = {txtNombre, txtApellido, txtEmail, txtTelefono};
+            if (!Validations.TextboxNullOrEmpty(tbx))
+            {
+                modificaciones.ModificarProveedor(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, cmbProveedor.SelectedValue.ToString());
+                llenarCombo();
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void clear()
+        {
+            txtApellido.Text = "";
+            txtNombre.Text = "";
+            txtEmail.Text = "";
+            txtTelefono.Text = "";
+            cmbProveedor.Text = "SELECCIONE UN PROVEEDOR";
         }
 
         private void cmbProveedor_SelectionChangeCommitted(object sender, EventArgs e)

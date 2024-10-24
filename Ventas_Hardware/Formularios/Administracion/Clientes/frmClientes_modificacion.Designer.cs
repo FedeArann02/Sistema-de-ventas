@@ -136,6 +136,7 @@
             this.txtDoc.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDoc.ForeColor = System.Drawing.Color.Black;
             this.txtDoc.Location = new System.Drawing.Point(474, 45);
+            this.txtDoc.MaxLength = 15;
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(143, 22);
             this.txtDoc.TabIndex = 67;
@@ -148,6 +149,7 @@
             this.txtEntidad.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEntidad.ForeColor = System.Drawing.Color.Black;
             this.txtEntidad.Location = new System.Drawing.Point(501, 103);
+            this.txtEntidad.MaxLength = 60;
             this.txtEntidad.Name = "txtEntidad";
             this.txtEntidad.Size = new System.Drawing.Size(116, 22);
             this.txtEntidad.TabIndex = 65;
@@ -193,6 +195,7 @@
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.Location = new System.Drawing.Point(351, 103);
+            this.txtTelefono.MaxLength = 15;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(116, 22);
             this.txtTelefono.TabIndex = 63;
@@ -227,6 +230,7 @@
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApellido.ForeColor = System.Drawing.Color.Black;
             this.txtApellido.Location = new System.Drawing.Point(262, 45);
+            this.txtApellido.MaxLength = 30;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(137, 22);
             this.txtApellido.TabIndex = 75;
@@ -239,6 +243,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
             this.txtEmail.Location = new System.Drawing.Point(27, 103);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(280, 22);
             this.txtEmail.TabIndex = 73;
@@ -251,6 +256,7 @@
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.Location = new System.Drawing.Point(27, 45);
+            this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(137, 22);
             this.txtNombre.TabIndex = 71;
@@ -274,6 +280,7 @@
             this.txtDireccion.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDireccion.ForeColor = System.Drawing.Color.Black;
             this.txtDireccion.Location = new System.Drawing.Point(27, 159);
+            this.txtDireccion.MaxLength = 100;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(280, 22);
             this.txtDireccion.TabIndex = 69;
@@ -297,6 +304,7 @@
             this.txtDocumentacionCliente.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumentacionCliente.ForeColor = System.Drawing.Color.Black;
             this.txtDocumentacionCliente.Location = new System.Drawing.Point(349, 31);
+            this.txtDocumentacionCliente.MaxLength = 15;
             this.txtDocumentacionCliente.Name = "txtDocumentacionCliente";
             this.txtDocumentacionCliente.Size = new System.Drawing.Size(181, 29);
             this.txtDocumentacionCliente.TabIndex = 79;

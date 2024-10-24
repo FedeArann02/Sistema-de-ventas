@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ventas_Hardware.MisMetodos;
 
 namespace Ventas_Hardware
 {
@@ -29,7 +30,22 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            modificaciones.ModificarCliente(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtEntidad.Text, txtDoc.Text);
+            TextBox[] txts = { txtTelefono, txtNombre, txtApellido, txtDireccion, txtDoc, txtEmail, txtEntidad };
+            if (!Validations.TextboxNullOrEmpty(txts))
+            {
+                if (long.TryParse(txtTelefono.Text, out long tel) && long.TryParse(txtDoc.Text, out long Doc))
+                {
+                    modificaciones.ModificarCliente(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtEntidad.Text, txtDoc.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese datos válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

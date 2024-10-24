@@ -40,11 +40,11 @@ namespace Ventas_Hardware
                 btnProveedores.Visible = false;
                 btnListaCompras.Visible = false;
                 administrar.Visible = false;
-                lblUsuario.Text = "Usuario: " + usuario_actual.Nombre + "    Vendedor";
+                lblUsuario.Text = usuario_actual.Nombre + "\nVendedor";
             }
             else
             {
-                lblUsuario.Text = "Usuario: " + usuario_actual.Nombre;
+                lblUsuario.Text = usuario_actual.Nombre + "\nAdministrador";
             }
 
             AbrirForm(new frmInicio());

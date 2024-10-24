@@ -114,7 +114,7 @@
             this.cerrarSesión.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.cerrarSesión.ForeColor = System.Drawing.Color.White;
             this.cerrarSesión.Name = "cerrarSesión";
-            this.cerrarSesión.Size = new System.Drawing.Size(180, 24);
+            this.cerrarSesión.Size = new System.Drawing.Size(155, 24);
             this.cerrarSesión.Text = "cerrar sesión";
             this.cerrarSesión.Click += new System.EventHandler(this.cerrarSesiónToolStripMenuItem_Click);
             // 
@@ -234,6 +234,7 @@
             this.panBarraLateral.Controls.Add(this.btnReportes);
             this.panBarraLateral.Controls.Add(this.btnRemitos);
             this.panBarraLateral.Controls.Add(this.btnListaCompras);
+            this.panBarraLateral.Controls.Add(this.lblUsuario);
             this.panBarraLateral.Controls.Add(this.btnClientes);
             this.panBarraLateral.Controls.Add(this.btnArticulos);
             this.panBarraLateral.Controls.Add(this.lblInicio);
@@ -393,18 +394,18 @@
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Variable Small", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Variable Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(191, 5);
+            this.lblUsuario.Location = new System.Drawing.Point(12, 473);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lblUsuario.Size = new System.Drawing.Size(66, 16);
+            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblUsuario.Size = new System.Drawing.Size(90, 21);
             this.lblUsuario.TabIndex = 22;
             this.lblUsuario.Text = "lblUsuario";
-            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pbxMinimizar
             // 
@@ -473,7 +474,6 @@
             this.Controls.Add(this.pbxPestaña);
             this.Controls.Add(this.pbxMaximizar);
             this.Controls.Add(this.pbxMinimizar);
-            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.panContenedor);
             this.Controls.Add(this.panBarraLateral);
             this.Controls.Add(this.mstripBarra);
