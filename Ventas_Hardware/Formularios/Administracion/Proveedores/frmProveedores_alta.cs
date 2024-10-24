@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocio;
 
 namespace Ventas_Hardware
 {
     public partial class frmProveedores_alta : Form
     {
+        CN_Altas altas = new CN_Altas();
         public frmProveedores_alta()
         {
             InitializeComponent();
@@ -21,5 +23,11 @@ namespace Ventas_Hardware
         {
             this.Close();
         }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            altas.CN_AltaProveedor(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtTelefono.Text);
+        }
+
     }
 }

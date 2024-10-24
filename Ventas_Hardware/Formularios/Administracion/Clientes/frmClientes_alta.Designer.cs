@@ -45,7 +45,6 @@
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.panelDatosEncabezado = new System.Windows.Forms.Panel();
-            this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblDatos = new System.Windows.Forms.Label();
             this.panelDatosEncabezado.SuspendLayout();
@@ -241,7 +240,6 @@
             // panelDatosEncabezado
             // 
             this.panelDatosEncabezado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.panelDatosEncabezado.Controls.Add(this.btnCancelar);
             this.panelDatosEncabezado.Controls.Add(this.btnGuardar);
             this.panelDatosEncabezado.Controls.Add(this.lblDatos);
             this.panelDatosEncabezado.Controls.Add(this.txtDoc);
@@ -263,20 +261,6 @@
             this.panelDatosEncabezado.Size = new System.Drawing.Size(641, 206);
             this.panelDatosEncabezado.TabIndex = 77;
             // 
-            // btnCancelar
-            // 
-            this.btnCancelar.BackColor = System.Drawing.Color.IndianRed;
-            this.btnCancelar.FlatAppearance.BorderSize = 0;
-            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(533, 153);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(84, 28);
-            this.btnCancelar.TabIndex = 78;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.CornflowerBlue;
@@ -284,7 +268,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Segoe UI Variable Display Semib", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(443, 153);
+            this.btnGuardar.Location = new System.Drawing.Point(539, 153);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(78, 28);
             this.btnGuardar.TabIndex = 77;
@@ -342,7 +326,6 @@
         private System.Windows.Forms.Label lblDireccion;
         private System.Windows.Forms.Panel panelDatosEncabezado;
         private System.Windows.Forms.Label lblDatos;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
     }
 }

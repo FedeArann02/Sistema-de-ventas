@@ -417,6 +417,30 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaUltimoCodigoPresupuesto()
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select Top 1 Hp.Nro_Presupuesto from H_Presupuesto Hp order by id_presupuesto DESC");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception ex)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
 
     }
 }
