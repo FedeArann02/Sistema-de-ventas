@@ -1,5 +1,5 @@
 ## 🛒 SISTEMA DE VENTAS
-![Sistema de Ventas](https://github.com/FedeArann02/Sistema-de-ventas/blob/master/images/SisVentas.jpg)
+![Sistema de Ventas](Ventas_Hardware/images/SisVentas.jpg)
 - © 2024 Federico Aran 
 ---
 
