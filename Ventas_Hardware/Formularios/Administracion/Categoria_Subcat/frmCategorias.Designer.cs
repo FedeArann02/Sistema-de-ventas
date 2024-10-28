@@ -155,6 +155,7 @@
             this.Controls.Add(this.lblAltaCat);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmCategorias";
+            this.Opacity = 0.99D;
             this.Text = "frmCategorias";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategorias)).EndInit();
             this.ResumeLayout(false);

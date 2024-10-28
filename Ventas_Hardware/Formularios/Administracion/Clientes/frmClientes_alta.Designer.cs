@@ -305,6 +305,7 @@
             this.Controls.Add(this.lblAltaCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClientes_alta";
+            this.Opacity = 0.99D;
             this.Text = "frmClientes_alta";
             this.panelDatosEncabezado.ResumeLayout(false);
             this.panelDatosEncabezado.PerformLayout();

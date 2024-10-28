@@ -14,9 +14,6 @@ namespace Ventas_Hardware
 {
     public partial class frmProveedores_modificacion : Form
     {
-        CN_Modificaciones modificaciones = new CN_Modificaciones();
-        CN_Consultas consultas = new CN_Consultas();
-        DataTable dt = new DataTable();
         public frmProveedores_modificacion()
         {
             InitializeComponent();
@@ -41,6 +38,10 @@ namespace Ventas_Hardware
             if (!Validations.TextboxNullOrEmpty(tbx))
             {
                 modificaciones.ModificarProveedor(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, cmbProveedor.SelectedValue.ToString());
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtTelefono.Text = string.Empty;
                 llenarCombo();
             }
             else
@@ -62,6 +63,7 @@ namespace Ventas_Hardware
         {
             cargarTextBoxes(cmbProveedor.SelectedValue.ToString());
         }
+
         private void cargarTextBoxes(string ID_Proveedor)
         {
             dt = consultas.ConsultaProveedores(ID_Proveedor);
@@ -71,5 +73,10 @@ namespace Ventas_Hardware
             txtTelefono.Text = dt.Rows[0]["Telefono"].ToString();
             dt.Clear();
         }
+
+        CN_Modificaciones modificaciones = new CN_Modificaciones();
+        CN_Consultas consultas = new CN_Consultas();
+        DataTable dt = new DataTable();
+
     }
 }

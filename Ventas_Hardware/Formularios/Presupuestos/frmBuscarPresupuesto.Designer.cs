@@ -474,6 +474,7 @@
             this.txtTotal.Size = new System.Drawing.Size(131, 22);
             this.txtTotal.TabIndex = 29;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
             // 
             // txtCantidad
             // 
@@ -793,6 +794,7 @@
             this.cmbNombres.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbNombres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbNombres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNombres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbNombres.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNombres.FormattingEnabled = true;
@@ -819,6 +821,7 @@
             // 
             this.cmbNro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbNro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbNro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbNro.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbNro.FormattingEnabled = true;

@@ -153,7 +153,6 @@ namespace CapaDatos
             }
         }
 
-
         public void AltaCliente(string Doc, string Nombre, string Apellido, string Dir, string Tel, string Correo, string Entidad)
         {
             clearConfirm = false;
@@ -177,7 +176,7 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@Tel", Tel);
                         cmd.Parameters.AddWithValue("@Correo", Correo);
                         cmd.Parameters.AddWithValue("@Entidad", Entidad);
-                        cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@Fecha", DateTime.Today);
                     }
                     objConexion.Open();
                     cmd.ExecuteNonQuery();
@@ -411,6 +410,7 @@ namespace CapaDatos
                 }
             }
         }
+
         public void AltaProveedor(string Nombre, string Apellido, string Correo, string Telefono)
         {
             clearConfirm = false;
@@ -431,7 +431,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Apellido", Apellido);
                     cmd.Parameters.AddWithValue("@Tel", Telefono);
                     cmd.Parameters.AddWithValue("@Correo", Correo);
-                    cmd.Parameters.AddWithValue("@Fecha", DateTime.Now);  // Ajusta la fecha según tus necesidades
+                    cmd.Parameters.AddWithValue("@Fecha", DateTime.Today);  // Ajusta la fecha según tus necesidades
 
                     objConexion.Open();
                     cmd.ExecuteNonQuery();

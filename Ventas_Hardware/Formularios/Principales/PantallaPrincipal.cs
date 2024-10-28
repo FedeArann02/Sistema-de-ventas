@@ -11,12 +11,13 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using CapaNegocio;
 using Ventas_Hardware.Formularios.Administracion.Categoria_Subcat;
+using Ventas_Hardware.Formularios.Administracion.Usuarios;
 
 namespace Ventas_Hardware
 {
     public partial class PantallaPrincipal : Form
     {
-        private static Usuario usuario_actual;
+        public static Usuario usuario_actual;
 
         private static Form frmActicvo = null;
 
@@ -33,6 +34,11 @@ namespace Ventas_Hardware
 
         private void PantallaPrincipal_Load(object sender, EventArgs e)
         {
+            initPantallaPrincipal();
+        }
+
+        private void initPantallaPrincipal()
+        {
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuario_actual.ID_Usuario);
 
             if (!ListaPermisos.Any(m => m.NombreMenu == "administrar"))
@@ -40,11 +46,11 @@ namespace Ventas_Hardware
                 btnProveedores.Visible = false;
                 btnListaCompras.Visible = false;
                 administrar.Visible = false;
-                lblUsuario.Text = usuario_actual.Nombre + "\nVendedor";
+                lblUsuario.Text = usuario_actual.Nombre + " " + usuario_actual.Apellido + " - Vendedor";
             }
             else
             {
-                lblUsuario.Text = usuario_actual.Nombre + "\nAdministrador";
+                lblUsuario.Text = usuario_actual.Nombre + " " + usuario_actual.Apellido + " - Administrador";
             }
 
             AbrirForm(new frmInicio());
@@ -71,6 +77,7 @@ namespace Ventas_Hardware
                 MessageBox.Show("Error al cargar el formulario \n\n" + ex.Message + "", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void AbrirFormDialog(Form frmHija)
         {
             try
@@ -132,11 +139,6 @@ namespace Ventas_Hardware
             AbrirForm(new frmListaCompras());
         }
 
-        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AbrirFormDialog(new frmUsuarios());
-        }
-
         private void Cliente_alta_menu_Click(object sender, EventArgs e)
         {
             AbrirFormDialog(new frmClientes_alta());
@@ -166,12 +168,14 @@ namespace Ventas_Hardware
         {
             AbrirFormDialog(new frmSubCat());
         }
+
         private void lblInicio_Click(object sender, EventArgs e)
         {
             AbrirForm(new frmInicio());
             btnArticulos.BackColor = btnClientes.BackColor = btnPresupuestos.BackColor = btnRemitos.BackColor =
                 btnReportes.BackColor = btnProveedores.BackColor = btnListaCompras.BackColor = Color.FromArgb(126, 89, 170);
         }
+
         private void SelectedMenuColor(Button boton)
         {
             btnArticulos.BackColor = btnClientes.BackColor = btnPresupuestos.BackColor = btnRemitos.BackColor =
@@ -183,18 +187,38 @@ namespace Ventas_Hardware
         {
             Application.Exit();
         }
+
         private void pbxMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        private void pbxMaximizar_Click_1(object sender, EventArgs e)
+
+        private void pbxMaximizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            pbxMaximizar.Visible = false;
+            pbxPestaña.Visible = true;
         }
 
         private void pbxPestaña_Click_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Normal;
+            pbxMaximizar.Visible = true;
+            pbxPestaña.Visible = false;
         }
+
+        private void crearNuevoUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormDialog(new frmUsuarios());
+        }
+
+        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdminUsuarios frmAdminUsuarios = new frmAdminUsuarios();
+            frmAdminUsuarios.ShowDialog();
+            initPantallaPrincipal();
+        }
+
+
     }
 }

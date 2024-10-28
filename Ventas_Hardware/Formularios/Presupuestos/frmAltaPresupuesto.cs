@@ -1,9 +1,13 @@
 ﻿using CapaNegocio;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,9 +17,6 @@ namespace Ventas_Hardware
 {
     public partial class frmAltaPresupuesto : Form
     {
-        public CN_Consultas cN_Consultas = new CN_Consultas();
-        public DataTable dt = new DataTable();
-        public decimal SubTotal;
 
         public frmAltaPresupuesto()
         {
@@ -218,7 +219,7 @@ namespace Ventas_Hardware
 
                 cN_Altas.CN_PresupAlta(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
                 txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
-                decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
+                decimal.Parse(txtTotal.Text), DateTime.Today, dgvArticulos, txtCodigoPresupuesto.Text);
 
                 if (cmbCliente.Text == "Cliente Nuevo")
                 {
@@ -228,6 +229,7 @@ namespace Ventas_Hardware
 
                 if (cN_Altas.clearConf)
                 {
+                    imprimirPresupuesto();
                     clear();
                     clearDetalle();
                 }
@@ -235,6 +237,72 @@ namespace Ventas_Hardware
             catch (Exception)
             {
                 MessageBox.Show("Error al generar el presupuesto, revise los campos y completelos.", "Presupuesto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void imprimirPresupuesto()
+        {
+            SaveFileDialog sfDialog = new SaveFileDialog(); //creamos un objeto tipo SavefileDialog
+            sfDialog.FileName = "Presupuesto_" + txtCodigoPresupuesto.Text + "_" +DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf"; //le asignamos un nombre predeterminado
+
+            string paginaHTML_texto = Properties.Resources.plantilla.ToString();
+
+            paginaHTML_texto = paginaHTML_texto.Replace("@NOMBRE", txtNombre.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@APELLIDO", txtApellido.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@DOCUMENTO", txtDoc.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@TELEFONO", txtTelefono.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@ENTIDAD", txtEntidad.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@CORREO", txtEmail.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@DIRECCION", txtDireccion.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+            paginaHTML_texto = paginaHTML_texto.Replace("@SUBTOTAL", txtSubTotal.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@DESCUENTO", txtDescuento.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@TOTAL", txtTotal.Text);
+            paginaHTML_texto = paginaHTML_texto.Replace("@NROBOLETA", txtCodigoPresupuesto.Text);
+
+            {
+                string Filas = string.Empty;
+                foreach (DataGridViewRow row in dgvArticulos.Rows)
+                {
+                    Filas += "<tr>";
+                    Filas += "<td>" + row.Cells["C_CodArt"].Value.ToString() + "</td>";
+                    Filas += "<td>" + row.Cells["C_Descripcion"].Value.ToString() + "</td>";
+                    Filas += "<td>" + row.Cells["C_PrecioUnit"].Value.ToString() + "</td>";
+                    Filas += "<td>" + row.Cells["C_Cantidad"].Value.ToString() + "</td>";
+                    Filas += "<td>" + row.Cells["C_Pxcant"].Value.ToString() + "</td>";
+                    Filas += "</tr>";
+                }
+
+                paginaHTML_texto = paginaHTML_texto.Replace("@FILAS", Filas);
+
+            }
+
+            if (sfDialog.ShowDialog() == DialogResult.OK) //si presionamos OK
+            {
+                using (FileStream stream = new FileStream(sfDialog.FileName, FileMode.Create)) //acceso a archivos con filestream
+                {
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25); //instanciamos un documento con tamaño de hoja A4
+                    PdfWriter pdfWr = PdfWriter.GetInstance(pdfDoc, stream); //instanciamos el PDFWRITER
+
+                    pdfDoc.Open(); //Abrimos el documento
+
+                    pdfDoc.Add(new Phrase("")); //Podrías añadir un contenido de prueba, o usar un espacio en blanco si no quieres añadir texto aquí
+
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.SUPHARDLOGO, System.Drawing.Imaging.ImageFormat.Png);
+                    img.ScaleToFit(80, 60);
+                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                    pdfDoc.Add(img);
+
+                    using (StringReader sr = new StringReader(paginaHTML_texto)) //Usar StringReader en lugar de StreamReader
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(pdfWr, pdfDoc, sr); //Parseamos el contenido HTML
+                    }
+
+                    MessageBox.Show("Presupuesto guardado con éxito", "PRESUPUESTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    pdfDoc.Close(); //Cerramos el documento
+                    stream.Close(); //Cerramos el acceso a archivos filestream
+                }
             }
         }
 
@@ -279,6 +347,7 @@ namespace Ventas_Hardware
             txtSubTotal.Text = "";
             txtTotal.Text = "";
         }
+
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
 
@@ -411,7 +480,7 @@ namespace Ventas_Hardware
             }
 
             // Retornar el nuevo número en formato AA-0000-0000
-            return $"{letras}-{numeroActual.ToString("D9").Insert(4, "-")}";
+            return $"{letras}-{numeroActual.ToString("D8").Insert(4, "-")}";
         }
 
         public string IncrementarLetras(string letras)
@@ -432,5 +501,35 @@ namespace Ventas_Hardware
             }
             return new string(letrasArray);
         }
+
+        private void txtDocumentacionCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtDocumentacionCliente.Text))
+            {
+                btnBuscar.Enabled = false;
+            }
+            else
+            {
+                btnBuscar.Enabled = true;
+            }
+        }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtTotal.Text) || decimal.Parse(txtTotal.Text) > 0)
+            {
+                btnAgregar.Enabled = true;
+            }
+            else
+            {
+                btnAgregar.Enabled= false;
+            }
+        }
+
+        public CN_Consultas cN_Consultas = new CN_Consultas();
+        public DataTable dt = new DataTable();
+        public decimal SubTotal;
+
+
     }
 }

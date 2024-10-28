@@ -21,20 +21,20 @@ namespace CapaDatos
                 {
                     objConexion.Open();
 
-                    // Crear el comando y especificar que es un stored procedure
-                    SqlCommand cmd = new SqlCommand("sp_DeletePresupuesto", objConexion);
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    string Query = @"delete H_Presupuesto_Detalle where Nro_Presupuesto = @NroP
+                                    delete H_Presupuesto where Nro_Presupuesto = @NroP";
 
-                    // Agregar el parámetro para el Nro_Presupuesto
-                    cmd.Parameters.AddWithValue("@Nro_Presupuesto", Codigo_Presupuesto);
+                    SqlCommand cmd = new SqlCommand(Query, objConexion);
+                    cmd.CommandType = CommandType.Text;
 
-                    // Ejecutar el procedimiento
+                    cmd.Parameters.AddWithValue("@NroP", Codigo_Presupuesto);
+
                     cmd.ExecuteNonQuery();
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
+                    MessageBox.Show("Error insesperado a la hora de guardar el remito desde un presupuesto, por favor contactese con el programador", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

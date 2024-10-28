@@ -30,5 +30,18 @@ namespace Ventas_Hardware
                 MessageBox.Show("Error al cargar el formulario \n\n"+ ex.Message +"", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public static void AbrirFormDialog(Form frmHija)
+        {
+            try
+            {
+                frmHija.FormBorderStyle = FormBorderStyle.None;
+                frmHija.StartPosition = FormStartPosition.CenterScreen;
+                frmHija.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario \n\n" + ex.Message + "", "Comuniquese con el desarrollador", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

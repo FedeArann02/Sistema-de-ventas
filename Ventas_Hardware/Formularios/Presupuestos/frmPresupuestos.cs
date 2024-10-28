@@ -30,10 +30,13 @@ namespace Ventas_Hardware
             SelectedMenuColor(btnBuscarPresupuesto);
             Funciones.AbrirForm(new frmBuscarPresupuesto(), panel_contenedor);
         }
+
         private void SelectedMenuColor(Button boton)
         {
             btnAltaPresupuesto.BackColor = btnBuscarPresupuesto.BackColor = Color.FromArgb(116, 89, 160);
             boton.BackColor = Color.FromArgb(106, 79, 150);
         }
+
+
     }
 }

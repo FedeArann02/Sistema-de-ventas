@@ -1,5 +1,5 @@
-CREATE DATABASE TP_7;
-USE TP_7;
+CREATE DATABASE SistemaVentasFede;
+USE SistemaVentasFede;
 
 -- Tablas principales
 
@@ -140,8 +140,6 @@ CREATE TABLE H_Remito (
     descuento DECIMAL(10, 2),
     total DECIMAL(10, 2),
     total_costos DECIMAL(10, 2),
-    mes VARCHAR(30),
-    año CHAR(4),
     direccion VARCHAR(50)
 	FOREIGN KEY (ID_usuario) REFERENCES USUARIO(ID_usuario)
 );
@@ -167,7 +165,7 @@ CREATE TABLE H_Remito_detalle (
 --    fecha DATE NOT NULL,
 --    mes VARCHAR(20),
 --    año CHAR(4),
---    FOREIGN KEY (ID_vendedor) REFERENCES VENDEDOR(ID_vendedor)
+--    FOREIGN KEY (Usuario) REFERENCES VENDEDOR(Usuario)
 --);
 
 create table H_Presupuesto_Detalle(
@@ -184,79 +182,11 @@ create table H_Presupuesto_Detalle(
 
 --INSERTS
 
-INSERT INTO PROVEEDOR (Nombre,Apellido,Telefono,Correo) VALUES ('FABIO', 'GOMEZ', '1159444354', 'DATOS@EJEMPLO1.COM');
-INSERT INTO PROVEEDOR (Nombre,Apellido,Telefono,Correo) VALUES ('JORGE', 'DIAZ', '222446788476', 'DATOS@EJEMPLO2.COM');
-
-INSERT INTO CATEGORIA (Nombre) VALUES ( 'HARDWARE');
-INSERT INTO CATEGORIA (Nombre) VALUES ('PERIFERICOS');
-
-INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (1, 'PLACAS DE VIDEO');
-INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (1, 'PROCESADORES');
-INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (1, 'MOTHERBOARDS');
-INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'TECLADOS');
-INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MICROFONOS');
-INSERT INTO SUBCATEGORIA (Cod_categoria, Nombre) VALUES (2, 'MOUSES');
-
-INSERT INTO ARTICULO (Cod_categoria,Cod_subcategoria,ID_Proveedor,Cod_articulo,Descripcion)
-VALUES (1, 1, 1, 'F1001', 'RTX NVIDIA 4090 24 GB'),
-       (2, 5, 2, 'J1001', 'SHURE PDX'),
-       (2, 6, 2, 'J1002', 'LOGITECH G406 HERO');
-
-INSERT INTO STOCK (Cod_articulo, Cantidad, Costo, Ganancia)
-VALUES ('F1001', 10, 120000.00, 35.00), 
-       ('J1001', 20, 90000.00, 33.00),
-       ('J1002', 50, 70000.00, 30.00);
-
-INSERT INTO CLIENTE (Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad) VALUES 
-('12345678A', 'Juan', 'Pérez', 'Calle Falsa 123', '555-1234', 'juan.perez@example.com', 'Entidad A'),
-('44395339', 'Federico', 'Aran', 'Calle Falsa 123', '1159444354', 'aranfederico3@gmail.com', 'Entidad A');
-
-INSERT INTO CTA_CTE_CLIENTE(Documentacion, compras, pagos, Fecha) VALUES
-('12345678A', 0, 0, '2024-09-28'),
-('44395339', 0, 0, '2024-09-28')
-
-INSERT INTO ROL(Descripcion) VALUES
-('Administrador'),
-('Vendedor');
-
 insert into PERMISO(IdRol, NombreMenu) values
-(1, 'administrar'),
-(2, 'ventas');
-
-insert into USUARIO(contraseña, DNI, Nombre, apellido, IdRol) VALUES
-('12345Aran', '44395339', 'Federico', 'Aran', 1),
-('12345Aran', '22482292', 'Pepe', 'Gomez', 2);
-
-insert into CTA_CTE_PROVEEDOR(ID_Proveedor, Compras, Pagos, Fecha) VALUES
-(1, 0, 0, '2024-10-09'),
-(2, 0, 0, '2024-10-09');
-
-select ctp.Compras, ctp.Pagos from CTA_CTE_PROVEEDOR ctp where ID_Proveedor = 1
-
-select * from H_Remito
-select * from H_Remito_detalle
-
- --   ID_usuario INT IDENTITY PRIMARY KEY,
-	--Estado BIT default 1,
- --   Contraseña VARCHAR(100) NOT NULL UNIQUE,
- --   DNI VARCHAR(15) NOT NULL UNIQUE,
- --   Nombre VARCHAR(30) NOT NULL,
- --   Apellido VARCHAR(30) NOT NULL,
-	--Comision DECIMAL(10, 2) default 0,
- --   IdRol INT,
- --   FOREIGN KEY (IdRol) REFERENCES ROL(IdRol)
+(1, 'Administrar'),
+(2, 'Ventas');
 
 
-select * from H_Presupuesto_Detalle
-select * from H_Remito
-
-select * from CTA_CTE_CLIENTE
-
-
-
-update CTA_CTE_CLIENTE set compras = 450000 where Documentacion = '12345678A'
-
-SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad FROM CLIENTE
 
 --CONSULTAS
 
@@ -295,39 +225,39 @@ SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo,
 --WHERE p.Nro_presupuesto = 'AAAA-0009'
 
 -----------------CONSULTAR PRESUPUESTO DETALLE
-SELECT d.id_presupuesto_detalle, d.Nro_presupuesto, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'
-FROM H_Presupuesto_detalle d
-WHERE d.Nro_presupuesto = 'AAAA-0009'
+--SELECT d.id_presupuesto_detalle, d.Nro_presupuesto, d.Cod_articulo, d.descripcion AS 'Descripción', d.precio_unitario AS 'Precio unitario', d.cantidad AS Cantidad, d.precio_x_cantidad AS 'Precio por cantidad'
+--FROM H_Presupuesto_detalle d
+--WHERE d.Nro_presupuesto = 'AAAA-0009'
 
------------------CONSULTAR PRESUPUESTO O REMITO por Documento/cliente:
-SELECT Nro_Presupuesto, total, descuento, fecha_hora from H_Presupuesto where dni = '44395339'
-SELECT Nro_Remito, total, descuento, fecha_hora from H_Remito where dni = '44395339'
+-------------------CONSULTAR PRESUPUESTO O REMITO por Documento/cliente:
+--SELECT Nro_Presupuesto, total, descuento, fecha_hora from H_Presupuesto where dni = '44395339'
+--SELECT Nro_Remito, total, descuento, fecha_hora from H_Remito where dni = '44395339'
 
-----------------CONSULTAR DETALLES P o R por codigo
+------------------CONSULTAR DETALLES P o R por codigo
 
 
-----------------CONSULTAR SUBCATEGORIA Y CATEGORIA NOMBRES
-select s.Nombre as 'SUB CATEGORÍA', c.Nombre as 'CATEGORÍA'
-from CATEGORIA c
-inner join SUBCATEGORIA s on c.Cod_categoria = s.Cod_categoria
+------------------CONSULTAR SUBCATEGORIA Y CATEGORIA NOMBRES
+--select s.Nombre as 'SUB CATEGORÍA', c.Nombre as 'CATEGORÍA'
+--from CATEGORIA c
+--inner join SUBCATEGORIA s on c.Cod_categoria = s.Cod_categoria
 
-----------------------
-SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad FROM CLIENTE
---------------------------
+------------------------
+--SELECT ID_cliente, Documentacion, Nombre, Apellido, Direccion, Telefono, Correo, Entidad FROM CLIENTE
+----------------------------
 
-SELECT rd.id_remito_detalle, rd.Nro_remito, rd.cod_articulo, rd.descripcion AS 'Descripción', rd.precio_unitario AS 'Precio unitario', rd.cantidad AS Cantidad, rd.precio_x_cantidad AS 'Precio por cantidad'
-FROM H_remito_detalle rd
-WHERE rd.Nro_remito = 'AAAA-0001';
+--SELECT rd.id_remito_detalle, rd.Nro_remito, rd.cod_articulo, rd.descripcion AS 'Descripción', rd.precio_unitario AS 'Precio unitario', rd.cantidad AS Cantidad, rd.precio_x_cantidad AS 'Precio por cantidad'
+--FROM H_remito_detalle rd
+--WHERE rd.Nro_remito = 'AAAA-0001';
 
--------- update de compras cliente
+---------- update de compras cliente
 
-update CTA_CTE_CLIENTE set compras = 20000 where Documentacion = '44395339'
+--update CTA_CTE_CLIENTE set compras = 20000 where Documentacion = '44395339'
 
--------- consulta de monto de compras
+---------- consulta de monto de compras
 
-select Compras from CTA_CTE_CLIENTE where Documentacion = '44395339'
+--select Compras from CTA_CTE_CLIENTE where Documentacion = '44395339'
 
-------
+--------
 
-select * from H_Remito
-select * from CTA_CTE_CLIENTE
+--select * from H_Remito
+--select * from CTA_CTE_CLIENTE

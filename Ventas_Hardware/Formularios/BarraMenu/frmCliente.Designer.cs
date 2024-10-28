@@ -110,6 +110,7 @@
             this.panelDatosEncabezado.Controls.Add(this.lblEmpresaEntidad);
             this.panelDatosEncabezado.Controls.Add(this.txtDireccion);
             this.panelDatosEncabezado.Controls.Add(this.lblDireccion);
+            this.panelDatosEncabezado.Enabled = false;
             this.panelDatosEncabezado.Location = new System.Drawing.Point(21, 69);
             this.panelDatosEncabezado.Name = "panelDatosEncabezado";
             this.panelDatosEncabezado.Size = new System.Drawing.Size(706, 120);
@@ -135,6 +136,7 @@
             this.txtApellido.Location = new System.Drawing.Point(161, 40);
             this.txtApellido.MaxLength = 30;
             this.txtApellido.Name = "txtApellido";
+            this.txtApellido.ReadOnly = true;
             this.txtApellido.Size = new System.Drawing.Size(137, 22);
             this.txtApellido.TabIndex = 61;
             this.txtApellido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -193,6 +195,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(463, 40);
             this.txtTelefono.MaxLength = 15;
             this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(106, 22);
             this.txtTelefono.TabIndex = 31;
             this.txtTelefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -206,6 +209,7 @@
             this.txtNombre.Location = new System.Drawing.Point(13, 40);
             this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(137, 22);
             this.txtNombre.TabIndex = 43;
             this.txtNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -221,6 +225,7 @@
             this.txtDoc.Location = new System.Drawing.Point(309, 40);
             this.txtDoc.MaxLength = 15;
             this.txtDoc.Name = "txtDoc";
+            this.txtDoc.ReadOnly = true;
             this.txtDoc.Size = new System.Drawing.Size(143, 22);
             this.txtDoc.TabIndex = 37;
             this.txtDoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -245,6 +250,7 @@
             this.txtEmail.Location = new System.Drawing.Point(74, 86);
             this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(280, 22);
             this.txtEmail.TabIndex = 47;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -259,6 +265,7 @@
             this.txtEntidad.Location = new System.Drawing.Point(580, 40);
             this.txtEntidad.MaxLength = 60;
             this.txtEntidad.Name = "txtEntidad";
+            this.txtEntidad.ReadOnly = true;
             this.txtEntidad.Size = new System.Drawing.Size(116, 22);
             this.txtEntidad.TabIndex = 35;
             this.txtEntidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -284,6 +291,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(365, 86);
             this.txtDireccion.MaxLength = 100;
             this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.ReadOnly = true;
             this.txtDireccion.Size = new System.Drawing.Size(271, 22);
             this.txtDireccion.TabIndex = 41;
             this.txtDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -302,6 +310,7 @@
             // ClienteCombo
             // 
             this.ClienteCombo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ClienteCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ClienteCombo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ClienteCombo.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClienteCombo.FormattingEnabled = true;
@@ -412,6 +421,7 @@
             this.panelRemitos_Presupuestos.Controls.Add(this.lblVer);
             this.panelRemitos_Presupuestos.Controls.Add(this.cmbRemPres);
             this.panelRemitos_Presupuestos.Controls.Add(this.dgvRemPres);
+            this.panelRemitos_Presupuestos.Enabled = false;
             this.panelRemitos_Presupuestos.Location = new System.Drawing.Point(21, 311);
             this.panelRemitos_Presupuestos.Name = "panelRemitos_Presupuestos";
             this.panelRemitos_Presupuestos.Size = new System.Drawing.Size(706, 200);
@@ -529,6 +539,7 @@
             // cmbRemPres
             // 
             this.cmbRemPres.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbRemPres.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRemPres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbRemPres.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRemPres.FormattingEnabled = true;
@@ -554,6 +565,7 @@
             this.panelCTACTE.Controls.Add(this.txtPagos);
             this.panelCTACTE.Controls.Add(this.lblCompras);
             this.panelCTACTE.Controls.Add(this.txtCompras);
+            this.panelCTACTE.Enabled = false;
             this.panelCTACTE.Location = new System.Drawing.Point(21, 195);
             this.panelCTACTE.Name = "panelCTACTE";
             this.panelCTACTE.Size = new System.Drawing.Size(443, 110);
@@ -596,6 +608,7 @@
             this.txtDeudas.Location = new System.Drawing.Point(309, 31);
             this.txtDeudas.MaxLength = 27;
             this.txtDeudas.Name = "txtDeudas";
+            this.txtDeudas.ReadOnly = true;
             this.txtDeudas.Size = new System.Drawing.Size(122, 22);
             this.txtDeudas.TabIndex = 67;
             this.txtDeudas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -622,6 +635,7 @@
             this.txtPagos.Location = new System.Drawing.Point(161, 31);
             this.txtPagos.MaxLength = 27;
             this.txtPagos.Name = "txtPagos";
+            this.txtPagos.ReadOnly = true;
             this.txtPagos.Size = new System.Drawing.Size(122, 22);
             this.txtPagos.TabIndex = 65;
             this.txtPagos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -646,6 +660,7 @@
             this.txtCompras.Location = new System.Drawing.Point(13, 31);
             this.txtCompras.MaxLength = 27;
             this.txtCompras.Name = "txtCompras";
+            this.txtCompras.ReadOnly = true;
             this.txtCompras.Size = new System.Drawing.Size(119, 22);
             this.txtCompras.TabIndex = 63;
             this.txtCompras.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

@@ -84,6 +84,7 @@ namespace Ventas_Hardware
                 MessageBox.Show("Debe colocar al menos un criterio de búsqueda.", "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+
         private bool filtrosVacios ()
         {
             if (txtCodigo.Text == "" && cmbCategoria.Text == "" && cmbSubcategoria.Text == "" && cmbDescripcion.Text == "" && cmbProveedor.Text == "")
@@ -95,11 +96,13 @@ namespace Ventas_Hardware
                 return false;
             }
         }
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             clear();
             cbxFiltros.Checked = true;
         }
+
         private void clear()
         {
             txtCodigo.Text = "";
@@ -168,7 +171,6 @@ namespace Ventas_Hardware
                 txtStockDetalle.ForeColor= Color.White;
             }
         }
-
         
         private void cbxFiltros_CheckedChanged(object sender, EventArgs e)
         {
@@ -222,5 +224,7 @@ namespace Ventas_Hardware
                 clear();
             }
         }
+
+
     }
 }

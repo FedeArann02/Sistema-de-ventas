@@ -1,24 +1,36 @@
-﻿using System;
+﻿using CapaEntidad;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CapaNegocio;
+using Ventas_Hardware.Formularios.Principales;
 
 namespace Ventas_Hardware
 {
     internal static class Program
     {
-        /// <summary>
-        /// Punto de entrada principal para la aplicación.
-        /// </summary>
-        /// //DESKTOP-6M7LNLV\SQLEXPRESS >> SERVIDOR DE NETBOOK fede
-        /// DESKTOP-QVQ3K29\SQLEXPRESS >> SERVIDOR PC
+        //TODO:
+        //TERMINADO BY FEDE
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+
+            int cantidadUsuarios = new CN_Usuario().Listar().Count;
+
+            if (cantidadUsuarios >= 1)
+            {
+                Application.Run(new Login());
+            }
+            else
+            {
+                Application.Run(new CrearUsuario());
+            }
+            
         }
     }
 }

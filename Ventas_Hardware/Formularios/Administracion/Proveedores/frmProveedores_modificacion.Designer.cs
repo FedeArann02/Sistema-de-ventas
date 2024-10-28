@@ -111,6 +111,7 @@
             this.cmbProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmbProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmbProveedor.Font = new System.Drawing.Font("Segoe UI Variable Display", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProveedor.FormattingEnabled = true;
@@ -255,6 +256,7 @@
             this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProveedores_modificacion";
+            this.Opacity = 0.99D;
             this.Text = "frmProveedores_modificacion";
             this.panelDatosEncabezado.ResumeLayout(false);
             this.panelDatosEncabezado.PerformLayout();

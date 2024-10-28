@@ -39,12 +39,46 @@ namespace CapaDatos
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Lista = new List<Categoria>();
                 }
             }
             return Lista;
         }
+
+        public List<Categoria> Listar()
+        {
+            List<Categoria> Lista = new List<Categoria>();
+            using (SqlConnection obj_conexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.Append("select c.Cod_categoria, c.Nombre from CATEGORIA c ");
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), obj_conexion);
+                    cmd.CommandType = CommandType.Text; //indico al comando que es un tipo de comando de Texto.
+                    obj_conexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            Lista.Add(new Categoria()
+                            {
+                                Cod_categoria = Convert.ToInt32(dr["Cod_categoria"]),
+                                Nombre = dr["Nombre"].ToString()
+                            });
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    Lista = new List<Categoria>();
+                }
+            }
+            return Lista;
+        }
+
+
     }
 }

@@ -16,10 +16,6 @@ namespace Ventas_Hardware
 {
     public partial class frmBuscarPresupuesto : Form
     {
-        public CN_Consultas cN_Consultas = new CN_Consultas();
-        public DataTable dt = new DataTable();
-        public CN_Modificaciones modificacion = new CN_Modificaciones();
-        public decimal SubTotal;
         public frmBuscarPresupuesto()
         {
             InitializeComponent();
@@ -42,6 +38,7 @@ namespace Ventas_Hardware
         {
             NroFuncion();
         }
+
         private void cargaCombos()
         {
             DataTable ClienteCombo = cN_Consultas.ConsultaCliente("TodosNombres");
@@ -354,7 +351,7 @@ namespace Ventas_Hardware
         {
             modificacion.mod_Presupuesto(txtDoc.Text, txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text,
             txtEntidad.Text, txtDireccion.Text, decimal.Parse(txtSubTotal.Text), decimal.Parse(txtDescuento.Text),
-            decimal.Parse(txtTotal.Text), DateTime.Now, dgvArticulos, txtCodigoPresupuesto.Text);
+            decimal.Parse(txtTotal.Text), DateTime.Today, dgvArticulos, txtCodigoPresupuesto.Text);
 
             if (modificacion.modConfirm)
             {
@@ -396,5 +393,23 @@ namespace Ventas_Hardware
                 btnCargar.Enabled = true;
             }
         }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtTotal.Text) || decimal.Parse(txtTotal.Text) > 0)
+            {
+                btnAgregar.Enabled = true;
+            }
+            else
+            {
+                btnAgregar.Enabled = false;
+            }
+        }
+
+
+        public CN_Consultas cN_Consultas = new CN_Consultas();
+        public DataTable dt = new DataTable();
+        public CN_Modificaciones modificacion = new CN_Modificaciones();
+        public decimal SubTotal;
     }
 }

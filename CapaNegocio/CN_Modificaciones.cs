@@ -157,6 +157,20 @@ namespace CapaNegocio
             }
         }
 
+        public void ModificarUsuario(string Nombre, string Apellido, decimal Comision, string Contraseña, string Estado, string IdRol, string DNI)
+        {
+            objcd_modificaciones.ModificarUsuario(Nombre, Apellido, Comision, Contraseña, Estado, IdRol, DNI);
+
+            if (objcd_modificaciones.modConfirm)
+            {
+                modConfirm = true;
+            }
+            else
+            {
+                modConfirm = false;
+            }
+        }
+
 
 
     }

@@ -59,6 +59,7 @@ namespace Ventas_Hardware
                 MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void llenarCombo()
         {
             CN_Rol rol = new CN_Rol();
@@ -66,6 +67,7 @@ namespace Ventas_Hardware
             cmbRoles.ValueMember = "IdRol";
             cmbRoles.DisplayMember = "Descripcion";
         }
+
         private bool validaCampos(TextBox[] textboxes)
         {
             bool Invalid = false;
@@ -85,6 +87,25 @@ namespace Ventas_Hardware
             {
                 // Si no es un número o carácter de control, se cancela el evento
                 e.Handled = true;
+            }
+        }
+
+        private void txtComision_TextChanged(object sender, EventArgs e)
+        {
+            if (txtComision.Text == "")
+            {
+                txtComision.Text = "0";
+            }
+            else if (decimal.TryParse(txtComision.Text, out decimal comision))
+            {
+                if (comision > 100)
+                {
+                    MessageBox.Show("La comision no puede ser mayor al 100%", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese un caracter válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

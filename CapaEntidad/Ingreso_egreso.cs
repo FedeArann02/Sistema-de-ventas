@@ -12,7 +12,7 @@ namespace CapaEntidad
     public class Ingreso_egreso
     {
         public int ID_movimiento {  get; set; }
-        public Vendedor ID_vendedor {  get; set; }
+        //public Vendedor ID_vendedor {  get; set; }
         public char tipo {  get; set; }
         public string detalle {  get; set; }
         public decimal monto {  get; set; }

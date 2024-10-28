@@ -201,6 +201,12 @@
     <Compile Include="Formularios\Administracion\Categoria_Subcat\frmSubCat.Designer.cs">
       <DependentUpon>frmSubCat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Administracion\Usuarios\frmAdminUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Administracion\Usuarios\frmAdminUsuarios.Designer.cs">
+      <DependentUpon>frmAdminUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Articulos\frmArtAltas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +261,12 @@
     <Compile Include="Formularios\Administracion\Clientes\frmClientes_modificacion.Designer.cs">
       <DependentUpon>frmClientes_modificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Principales\CrearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Principales\CrearUsuario.Designer.cs">
+      <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Principales\frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,11 +315,17 @@
     <Compile Include="Formularios\Reportes\frmReportes.Designer.cs">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Administracion\frmUsuarios.cs">
+    <Compile Include="Formularios\Administracion\Usuarios\frmUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Administracion\frmUsuarios.Designer.cs">
+    <Compile Include="Formularios\Administracion\Usuarios\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Reportes\RemitoPorVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Reportes\RemitoPorVendedor.Designer.cs">
+      <DependentUpon>RemitoPorVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Reportes\R_BalanceGral.cs">
       <SubType>Form</SubType>
@@ -355,6 +373,9 @@
     <EmbeddedResource Include="Formularios\Administracion\Categoria_Subcat\frmSubCat.resx">
       <DependentUpon>frmSubCat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Administracion\Usuarios\frmAdminUsuarios.resx">
+      <DependentUpon>frmAdminUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Articulos\frmArtAltas.resx">
       <DependentUpon>frmArtAltas.cs</DependentUpon>
     </EmbeddedResource>
@@ -382,6 +403,9 @@
     <EmbeddedResource Include="Formularios\Administracion\Clientes\frmClientes_modificacion.resx">
       <DependentUpon>frmClientes_modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Principales\CrearUsuario.resx">
+      <DependentUpon>CrearUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principales\frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,7 +430,7 @@
     <EmbeddedResource Include="Formularios\Reportes\frmReportes.resx">
       <DependentUpon>frmReportes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Administracion\frmUsuarios.resx">
+    <EmbeddedResource Include="Formularios\Administracion\Usuarios\frmUsuarios.resx">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principales\Login.resx">
@@ -414,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principales\PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Reportes\RemitoPorVendedor.resx">
+      <DependentUpon>RemitoPorVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Reportes\R_BalanceGral.resx">
       <DependentUpon>R_BalanceGral.cs</DependentUpon>
@@ -465,7 +492,11 @@
     <None Include="Resources\plantilla.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\LOGO\SUPHARDLOGO.jpg" />
+    <None Include="images\Logo\SUPHARDLOGO.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="images\Icons\avatar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.5.2.0\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

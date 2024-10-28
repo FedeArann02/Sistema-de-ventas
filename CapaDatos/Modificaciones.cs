@@ -39,7 +39,7 @@ namespace CapaDatos
                         MessageBox.Show("Articulo modificado con éxito", "MODIFICACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento de modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -78,7 +78,7 @@ namespace CapaDatos
                         MessageBox.Show("Costos modificados con éxito", "MODIFICACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento de modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -116,15 +116,13 @@ namespace CapaDatos
                         MessageBox.Show("Costos modificados con éxito", "MODIFICACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento de modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        //TODO:
-        //23-10-2024 FEDE
         public void modPresupuesto(string Doc, string Nombre, string Apellido, string Tel, string Mail, string Ent, string Dir, decimal Sub, decimal Descuento, decimal Total, DateTime F_H, DataGridView dgv, string NroP)
         {
             modConfirm = false;
@@ -192,7 +190,7 @@ namespace CapaDatos
                     modConfirm = true;
                     MessageBox.Show("Presupuesto modificado con éxito", "PRESUPUESTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del Registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -221,14 +219,14 @@ namespace CapaDatos
                         MessageBox.Show("Pago registrado con éxito", "REGISTRO DE PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del pago", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        public void ActualizarStock(DataGridView dgv) //PROBAR!!!!
+        public void ActualizarStock(DataGridView dgv)
         {
             modConfirm = false;
             using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
@@ -287,7 +285,6 @@ namespace CapaDatos
             }
         }
 
-
         public void RegistraCompraCliente(string Documentacion, decimal Monto)
         {
             modConfirm = false;
@@ -321,7 +318,7 @@ namespace CapaDatos
                     cmd.Parameters.AddWithValue("@Monto", Monto); // Parametriza el nuevo monto
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -350,7 +347,7 @@ namespace CapaDatos
                         MessageBox.Show("Pago registrado con éxito", "REGISTRO DE PAGO", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del pago", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -393,7 +390,7 @@ namespace CapaDatos
                     modConfirm = true;
                     MessageBox.Show("Compra registrada con éxito", "REGISTRO DE COMPRA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento del registro de la compra", "Compra a proveedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -425,12 +422,13 @@ namespace CapaDatos
                         MessageBox.Show("Proveedor modificado con éxito", "PROVEEDOR", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento de la modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
         public void ModificarCliente(string Nombre, string Apellido, string Telefono, string Correo, string Direccion, string Entidad, string Documentacion)
         {
             modConfirm = false;
@@ -458,13 +456,46 @@ namespace CapaDatos
                         MessageBox.Show("Cliente modificado con éxito", "CLIENTE", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Error en el procedimiento de la modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+        public void ModificarUsuario(string Nombre, string Apellido, decimal Comision, string Contraseña, string Estado, string IdRol, string DNI)
+        {
+            modConfirm = false;
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("update USUARIO set Nombre = @Nombre, Apellido = @Apellido, Comision = @Comision, Contraseña = @Contraseña, Estado = @Estado, IdRol = @IdRol where DNI = @DNI");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    {
+                        cmd.Parameters.AddWithValue("@Nombre", Nombre);
+                        cmd.Parameters.AddWithValue("@Apellido", Apellido);
+                        cmd.Parameters.AddWithValue("@Comision", Comision);
+                        cmd.Parameters.AddWithValue("@Contraseña", Contraseña);
+                        cmd.Parameters.AddWithValue("@Estado", Estado);
+                        cmd.Parameters.AddWithValue("@IdRol", IdRol);
+                        cmd.Parameters.AddWithValue("@DNI", DNI);
+                    }
+                    objConexion.Open();
+                    cmd.ExecuteNonQuery();
+                    {
+                        modConfirm = true;
+                        MessageBox.Show("Usuario modificado con éxito", "USUARIO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error en el procedimiento de la modificación", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
 
     }

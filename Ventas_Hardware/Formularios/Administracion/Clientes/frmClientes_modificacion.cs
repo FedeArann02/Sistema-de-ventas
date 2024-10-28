@@ -14,10 +14,6 @@ namespace Ventas_Hardware
 {
     public partial class frmClientes_modificacion : Form
     {
-        CN_Consultas consultas = new CN_Consultas();
-        CN_Modificaciones modificaciones = new CN_Modificaciones();
-        DataTable dt = new DataTable();
-
         public frmClientes_modificacion()
         {
             InitializeComponent();
@@ -36,6 +32,7 @@ namespace Ventas_Hardware
                 if (long.TryParse(txtTelefono.Text, out long tel) && long.TryParse(txtDoc.Text, out long Doc))
                 {
                     modificaciones.ModificarCliente(txtNombre.Text, txtApellido.Text, txtTelefono.Text, txtEmail.Text, txtDireccion.Text, txtEntidad.Text, txtDoc.Text);
+                    clear();
                 }
                 else
                 {
@@ -46,6 +43,18 @@ namespace Ventas_Hardware
             {
                 MessageBox.Show("Los campos no pueden quedar vacios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void clear()
+        {
+            txtApellido.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtEntidad.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtDoc.Text = string.Empty;
+            txtDocumentacionCliente.Text = string.Empty;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -79,5 +88,10 @@ namespace Ventas_Hardware
                 btnBuscar.Enabled = true;
             }
         }
+
+        CN_Consultas consultas = new CN_Consultas();
+        CN_Modificaciones modificaciones = new CN_Modificaciones();
+        DataTable dt = new DataTable();
+
     }
 }
