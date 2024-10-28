@@ -15,13 +15,6 @@ namespace Ventas_Hardware
 {
     public partial class frmCliente : Form
     {
-        CN_Consultas cN_Consultas = new CN_Consultas();
-        CN_Modificaciones cN_Modificaciones = new CN_Modificaciones();
-        DataTable dt = new DataTable();
-        DataTable dtCtaCte = new DataTable();
-        DataTable dtDetalle = new DataTable();
-
-        int Count = 0; //para activar los botones
         public frmCliente()
         {
             InitializeComponent();
@@ -111,11 +104,26 @@ namespace Ventas_Hardware
                 txtDeudas.Text = calcularDeuda().ToString();
 
                 btnBuscar.Enabled = false;
+                enablePanels();
             }
             else
             {
                 MessageBox.Show("No se encotró el cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void enablePanels()
+        {
+            panelCTACTE.Enabled = true;
+            panelDatosEncabezado.Enabled = true;
+            panelRemitos_Presupuestos.Enabled = true;
+        }
+
+        private void disablePanels()
+        {
+            panelCTACTE.Enabled = false;
+            panelDatosEncabezado.Enabled = false;
+            panelRemitos_Presupuestos.Enabled = false;
         }
 
         private decimal calcularDeuda()
@@ -124,8 +132,6 @@ namespace Ventas_Hardware
             decimal compras = decimal.Parse(txtCompras.Text);
             return Decimal.Round((compras - pagos), 2);
         }
-
-
 
         private void txtDocumentacionCliente_TextChanged(object sender, EventArgs e)
         {
@@ -173,6 +179,18 @@ namespace Ventas_Hardware
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             clear();
+            clearAll();
+
+            disablePanels();
+
+            ClienteCombo.SelectedIndex = -1;
+            cmbRemPres.SelectedIndex = -1;
+            dgvRemPresDetalle.Rows.Clear();
+
+            for (int i = dgvRemPres.Rows.Count - 1; i > -1; i--)
+            {
+                dgvRemPres.Rows.RemoveAt(i);
+            }
         }
 
         private void clear()
@@ -182,6 +200,7 @@ namespace Ventas_Hardware
             btnBuscar.Enabled = false;
             panelRegistrarPagos.Enabled = false;
         }
+
         private void clearAll()
         {
             txtApellido.Text = "";
@@ -224,6 +243,7 @@ namespace Ventas_Hardware
             else
             {
                 MessageBox.Show("Ingrese valores válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMonto.Text = "";
             }
         }
 
@@ -243,5 +263,14 @@ namespace Ventas_Hardware
 
             }
         }
+
+        CN_Consultas cN_Consultas = new CN_Consultas();
+        CN_Modificaciones cN_Modificaciones = new CN_Modificaciones();
+        DataTable dt = new DataTable();
+        DataTable dtCtaCte = new DataTable();
+        DataTable dtDetalle = new DataTable();
+
+        int Count = 0; //para activar los botones
+
     }
 }

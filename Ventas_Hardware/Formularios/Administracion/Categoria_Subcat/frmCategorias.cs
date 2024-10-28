@@ -14,9 +14,7 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
 {
     public partial class frmCategorias : Form
     {
-        CN_Categoria cN_Categoria = new CN_Categoria();
-        List<Categoria> LCat = new List<Categoria>();
-        CN_Altas cN_Altas = new CN_Altas();
+
         public frmCategorias()
         {
             InitializeComponent();
@@ -37,11 +35,13 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
             }
             else if (String.IsNullOrEmpty(txtNuevaCategoria.Text))
             {
-                MessageBox.Show("Ingrese un nombre válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Ingrese un nombre válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 cN_Altas.CN_AltaCategoria(txtNuevaCategoria.Text.ToUpper());
+                llenarGrilla();
+                txtNuevaCategoria.Text = string.Empty;
             }
 
         }
@@ -50,5 +50,9 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
         {
             dgvCategorias.DataSource = cN_Categoria.Listar("");
         }
+
+        CN_Categoria cN_Categoria = new CN_Categoria();
+        List<Categoria> LCat = new List<Categoria>();
+        CN_Altas cN_Altas = new CN_Altas();
     }
 }

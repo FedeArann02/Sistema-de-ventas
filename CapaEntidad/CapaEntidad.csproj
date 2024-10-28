@@ -158,24 +158,14 @@
   <ItemGroup>
     <Compile Include="Articulo.cs" />
     <Compile Include="Categoria.cs" />
-    <Compile Include="Cliente.cs" />
-    <Compile Include="Cliente_pago.cs" />
-    <Compile Include="CTA_CTE_Proveedor.cs" />
     <Compile Include="H_Presupuesto.cs" />
-    <Compile Include="H_Presupuesto_detalle.cs" />
-    <Compile Include="H_Remito.cs" />
-    <Compile Include="H_Remito_detalle.cs" />
     <Compile Include="Ingreso_egreso.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Rol.cs" />
-    <Compile Include="Stock.cs" />
     <Compile Include="Subcategoria.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="Vendedor.cs" />
-    <Compile Include="Vendedor_pago.cs" />
-    <Compile Include="Vendedor_venta.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

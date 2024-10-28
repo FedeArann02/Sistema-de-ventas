@@ -37,6 +37,8 @@
             this.cerrarSesión = new System.Windows.Forms.ToolStripMenuItem();
             this.administrar = new System.Windows.Forms.ToolStripMenuItem();
             this.UsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crearNuevoUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Cliente_alta_menu = new System.Windows.Forms.ToolStripMenuItem();
             this.Cliente_mod_menu = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,8 +59,8 @@
             this.lblInicio = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.panContenedor = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.panContenedor = new System.Windows.Forms.Panel();
             this.pbxMinimizar = new System.Windows.Forms.PictureBox();
             this.pbxMaximizar = new System.Windows.Forms.PictureBox();
             this.pbxPestaña = new System.Windows.Forms.PictureBox();
@@ -133,11 +135,31 @@
             // UsuariosToolStripMenuItem
             // 
             this.UsuariosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.UsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crearNuevoUsuarioToolStripMenuItem,
+            this.administrarUsuariosToolStripMenuItem});
             this.UsuariosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem";
             this.UsuariosToolStripMenuItem.Size = new System.Drawing.Size(237, 24);
             this.UsuariosToolStripMenuItem.Text = "Usuarios";
-            this.UsuariosToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
+            // 
+            // crearNuevoUsuarioToolStripMenuItem
+            // 
+            this.crearNuevoUsuarioToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.crearNuevoUsuarioToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.crearNuevoUsuarioToolStripMenuItem.Name = "crearNuevoUsuarioToolStripMenuItem";
+            this.crearNuevoUsuarioToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+            this.crearNuevoUsuarioToolStripMenuItem.Text = "Crear nuevo usuario";
+            this.crearNuevoUsuarioToolStripMenuItem.Click += new System.EventHandler(this.crearNuevoUsuarioToolStripMenuItem_Click);
+            // 
+            // administrarUsuariosToolStripMenuItem
+            // 
+            this.administrarUsuariosToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.administrarUsuariosToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.administrarUsuariosToolStripMenuItem.Name = "administrarUsuariosToolStripMenuItem";
+            this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(204, 24);
+            this.administrarUsuariosToolStripMenuItem.Text = "Administrar Usuarios";
+            this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -234,7 +256,6 @@
             this.panBarraLateral.Controls.Add(this.btnReportes);
             this.panBarraLateral.Controls.Add(this.btnRemitos);
             this.panBarraLateral.Controls.Add(this.btnListaCompras);
-            this.panBarraLateral.Controls.Add(this.lblUsuario);
             this.panBarraLateral.Controls.Add(this.btnClientes);
             this.panBarraLateral.Controls.Add(this.btnArticulos);
             this.panBarraLateral.Controls.Add(this.lblInicio);
@@ -313,9 +334,9 @@
             this.btnListaCompras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnListaCompras.Font = new System.Drawing.Font("Segoe UI Variable Text Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListaCompras.ForeColor = System.Drawing.Color.White;
-            this.btnListaCompras.Location = new System.Drawing.Point(-2, 381);
+            this.btnListaCompras.Location = new System.Drawing.Point(-1, 381);
             this.btnListaCompras.Name = "btnListaCompras";
-            this.btnListaCompras.Size = new System.Drawing.Size(150, 51);
+            this.btnListaCompras.Size = new System.Drawing.Size(149, 51);
             this.btnListaCompras.TabIndex = 8;
             this.btnListaCompras.Text = "LISTA DE\r\nCOMPRAS\r\n";
             this.btnListaCompras.UseVisualStyleBackColor = false;
@@ -356,12 +377,12 @@
             this.lblInicio.AutoSize = true;
             this.lblInicio.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblInicio.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInicio.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblInicio.ForeColor = System.Drawing.Color.White;
             this.lblInicio.Location = new System.Drawing.Point(50, 110);
             this.lblInicio.Name = "lblInicio";
-            this.lblInicio.Size = new System.Drawing.Size(53, 21);
+            this.lblInicio.Size = new System.Drawing.Size(60, 21);
             this.lblInicio.TabIndex = 1;
-            this.lblInicio.Text = "Inicio";
+            this.lblInicio.Text = "INICIO";
             this.lblInicio.Click += new System.EventHandler(this.lblInicio_Click);
             // 
             // pictureBox1
@@ -384,6 +405,20 @@
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
+            // lblUsuario
+            // 
+            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Variable Small", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(400, 3);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblUsuario.Size = new System.Drawing.Size(407, 21);
+            this.lblUsuario.TabIndex = 22;
+            this.lblUsuario.Text = "lblUsuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panContenedor
             // 
             this.panContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -391,21 +426,6 @@
             this.panContenedor.Name = "panContenedor";
             this.panContenedor.Size = new System.Drawing.Size(749, 523);
             this.panContenedor.TabIndex = 20;
-            // 
-            // lblUsuario
-            // 
-            this.lblUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblUsuario.AutoSize = true;
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Variable Small", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
-            this.lblUsuario.Location = new System.Drawing.Point(12, 473);
-            this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblUsuario.Size = new System.Drawing.Size(90, 21);
-            this.lblUsuario.TabIndex = 22;
-            this.lblUsuario.Text = "lblUsuario";
-            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pbxMinimizar
             // 
@@ -433,7 +453,7 @@
             this.pbxMaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxMaximizar.TabIndex = 24;
             this.pbxMaximizar.TabStop = false;
-            this.pbxMaximizar.Click += new System.EventHandler(this.pbxMaximizar_Click_1);
+            this.pbxMaximizar.Click += new System.EventHandler(this.pbxMaximizar_Click);
             // 
             // pbxPestaña
             // 
@@ -441,12 +461,13 @@
             this.pbxPestaña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
             this.pbxPestaña.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbxPestaña.Image = ((System.Drawing.Image)(resources.GetObject("pbxPestaña.Image")));
-            this.pbxPestaña.Location = new System.Drawing.Point(783, 5);
+            this.pbxPestaña.Location = new System.Drawing.Point(813, 5);
             this.pbxPestaña.Name = "pbxPestaña";
             this.pbxPestaña.Size = new System.Drawing.Size(24, 20);
             this.pbxPestaña.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbxPestaña.TabIndex = 25;
             this.pbxPestaña.TabStop = false;
+            this.pbxPestaña.Visible = false;
             this.pbxPestaña.Click += new System.EventHandler(this.pbxPestaña_Click_1);
             // 
             // pbxCerrar
@@ -474,6 +495,7 @@
             this.Controls.Add(this.pbxPestaña);
             this.Controls.Add(this.pbxMaximizar);
             this.Controls.Add(this.pbxMinimizar);
+            this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.panContenedor);
             this.Controls.Add(this.panBarraLateral);
             this.Controls.Add(this.mstripBarra);
@@ -534,6 +556,8 @@
         private System.Windows.Forms.PictureBox pbxMaximizar;
         private System.Windows.Forms.PictureBox pbxPestaña;
         private System.Windows.Forms.PictureBox pbxCerrar;
+        private System.Windows.Forms.ToolStripMenuItem crearNuevoUsuarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarUsuariosToolStripMenuItem;
     }
 }
 

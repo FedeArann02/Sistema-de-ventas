@@ -471,5 +471,107 @@ namespace CapaDatos
             return dt;
         }
 
+        public DataTable ConsultaUsuario(string DNI)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+
+                    if (DNI == "TODOS")
+                    {
+                        Query.AppendLine("select Nombre, Apellido, Comision, Estado, Contraseña, DNI, IdRol from USUARIO");
+                    }
+                    else if (DNI == "ADMIN")
+                    {
+                        Query.AppendLine("select Nombre, Apellido, Comision, Estado, Contraseña, DNI, IdRol from USUARIO where IdRol = 1");
+                        //obtengo los usuarios administradores
+                    }
+                    else if (DNI != "")
+                    {
+                        Query.AppendLine("select Nombre, Apellido, Comision, Estado, Contraseña, DNI, IdRol from USUARIO where DNI = @DNI");
+                    }
+                    else
+                    {
+                        return dt;
+                    }
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@DNI", DNI);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+        public DataTable ConsultaRemitoPorVendedor(string DNI)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select Hr.fecha_hora AS 'Fecha', Hr.Nro_remito, Hr.total from H_Remito Hr inner join USUARIO u on Hr.ID_usuario = u.ID_usuario where u.DNI = @DNI");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    cmd.Parameters.AddWithValue("@DNI", DNI);
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+        public DataTable ConsultaRemitoPorVendedorFiltrado(string DNI, DateTime desde, DateTime hasta)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection objConexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendLine("select Hr.fecha_hora AS 'Fecha', Hr.Nro_remito, Hr.total from H_Remito Hr");
+                    Query.AppendLine("inner join USUARIO u on Hr.ID_usuario = u.ID_usuario");
+                    Query.AppendLine("where u.DNI = @DNI and Hr.fecha_hora between @desde and @hasta;");
+
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+
+                    cmd.Parameters.AddWithValue("@DNI", DNI);
+                    cmd.Parameters.AddWithValue("@desde", desde);
+                    cmd.Parameters.AddWithValue("@hasta", hasta);
+
+                    cmd.CommandType = CommandType.Text;
+                    objConexion.Open();
+                    SqlDataReader dR = cmd.ExecuteReader();
+                    dt.Load(dR);
+                }
+                catch (Exception)
+                {
+                    dt = new DataTable();
+                }
+            }
+            return dt;
+        }
+
+
     }
 }

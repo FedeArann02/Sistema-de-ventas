@@ -16,10 +16,6 @@ namespace Ventas_Hardware
 {
     public partial class frmProveedores : Form
     {
-        CN_Consultas cN_Consultas = new CN_Consultas();
-        CN_Modificaciones CN_Modificaciones = new CN_Modificaciones();
-        DataTable dt = new DataTable();
-        
         public frmProveedores()
         {
             InitializeComponent();
@@ -180,5 +176,52 @@ namespace Ventas_Hardware
                 MessageBox.Show("Error de formato de entrada, solo puede ingresar valores enteros o decimales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txtTotalCompra_TextChanged(object sender, EventArgs e)
+        {
+            if (decimal.TryParse(txtTotalCompra.Text, out decimal val))
+            {
+                if (!String.IsNullOrEmpty(txtTotalCompra.Text) || val > 0)
+                {
+                    btnRegistrarCompra.Enabled = true;
+                }
+                else
+                {
+                    btnRegistrarCompra.Enabled = false;
+                }
+            }
+
+            else
+            {
+                txtTotalCompra.Text = "0";
+            }
+        }
+
+        private void txtTotalPago_TextChanged(object sender, EventArgs e)
+        {
+
+            if (decimal.TryParse(txtTotalPago.Text, out decimal val))
+            {
+                if (!String.IsNullOrEmpty(txtTotalPago.Text) || val > 0)
+                {
+                    btnRegistrarpago.Enabled = true;
+                }
+                else
+                {
+                    btnRegistrarpago.Enabled = false;
+                }
+            }
+
+            else
+            {
+                txtTotalPago.Text = "0";
+            }
+        }
+
+
+        CN_Consultas cN_Consultas = new CN_Consultas();
+        CN_Modificaciones CN_Modificaciones = new CN_Modificaciones();
+        DataTable dt = new DataTable();
+
     }
 }

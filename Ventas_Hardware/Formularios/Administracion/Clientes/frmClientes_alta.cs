@@ -59,5 +59,6 @@ namespace Ventas_Hardware
             txtNombre.Text = "";
             txtTelefono.Text = "";
         }
+
     }
 }

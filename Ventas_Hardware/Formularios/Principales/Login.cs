@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using Ventas_Hardware.Formularios.Principales;
 
 namespace Ventas_Hardware
 {
@@ -39,7 +40,7 @@ namespace Ventas_Hardware
             }
             else
             {
-                MessageBox.Show("No se encontró el usuario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se encontró el usuario, verifique que los datos ingresados sean correctos", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -63,5 +64,17 @@ namespace Ventas_Hardware
             pbxNoVer.Visible = true;
             txtContraseña.UseSystemPasswordChar = true;
         }
+
+        private void lblCrearCuenta_Click(object sender, EventArgs e)
+        {
+            // Ocultar el formulario principal
+            this.Hide();
+
+            // Crear y mostrar el nuevo formulario
+            Form otroFormulario = new CrearUsuario();
+            otroFormulario.FormClosed += (s, args) => this.Close(); // Cierra el formulario principal al cerrar el nuevo formulario
+            otroFormulario.Show();
+        }
+
     }
 }

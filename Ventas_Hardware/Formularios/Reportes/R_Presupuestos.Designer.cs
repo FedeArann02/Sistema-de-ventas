@@ -596,6 +596,7 @@
             this.txtCodigoPres.Size = new System.Drawing.Size(181, 29);
             this.txtCodigoPres.TabIndex = 84;
             this.txtCodigoPres.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigoPres.TextChanged += new System.EventHandler(this.txtCodigoPres_TextChanged);
             // 
             // lblCodigoPres
             // 

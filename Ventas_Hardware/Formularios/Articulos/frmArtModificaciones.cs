@@ -138,6 +138,7 @@ namespace Ventas_Hardware
                 txtStock.Enabled = true;
             }
         }
+
         private void disableButtons()
         {
             btnRecalcular.Enabled = false;
@@ -177,6 +178,7 @@ namespace Ventas_Hardware
             decimal Precio_Venta = costo + (costo * Ganancia / 100);
             return Decimal.Round(Precio_Venta, 2);
         }
+
         private void cmbCategoria_TextChanged(object sender, EventArgs e)
         {
             SubCategoriaFuncion();

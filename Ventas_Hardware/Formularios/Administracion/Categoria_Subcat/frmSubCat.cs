@@ -14,12 +14,6 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
 {
     public partial class frmSubCat : Form
     {
-        CN_Consultas cN_Consultas = new CN_Consultas();
-        CN_Altas cN_Altas = new CN_Altas();
-        CN_Subcategoria cN_Subcategoria = new CN_Subcategoria();
-        CN_Categoria cN_Categoria = new CN_Categoria();
-        List<Subcategoria> LSubCat = new List<Subcategoria>();
-
         public frmSubCat()
         {
             InitializeComponent();
@@ -39,10 +33,9 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
 
         private void llenarCombo()
         {
-
             cmbCategorias.DisplayMember = "Nombre";
             cmbCategorias.ValueMember = "Cod_categoria";
-            cmbCategorias.DataSource = cN_Categoria.Listar(cmbCategorias.Text);
+            cmbCategorias.DataSource = cN_Categoria.Listar();
             cmbCategorias.SelectedIndex = -1;
         }
 
@@ -62,9 +55,6 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
             }
         }
 
-        //TODO
-        //hecho en netboox 21/10/24
-
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             LSubCat = cN_Subcategoria.Listar().Where(s => s.Nombre == txtNuevaSubCategoria.Text.ToUpper()).ToList();
@@ -79,7 +69,17 @@ namespace Ventas_Hardware.Formularios.Administracion.Categoria_Subcat
             else
             {
                 cN_Altas.CN_AltaSubCategoria(txtNuevaSubCategoria.Text.ToUpper(), cmbCategorias.SelectedValue.ToString());
+                
+                llenarGrilla();
+                llenarCombo();
+
             }
         }
+
+        CN_Consultas cN_Consultas = new CN_Consultas();
+        CN_Altas cN_Altas = new CN_Altas();
+        CN_Subcategoria cN_Subcategoria = new CN_Subcategoria();
+        CN_Categoria cN_Categoria = new CN_Categoria();
+        List<Subcategoria> LSubCat = new List<Subcategoria>();
     }
 }

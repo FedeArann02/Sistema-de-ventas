@@ -23,13 +23,29 @@ namespace Ventas_Hardware.Formularios.Reportes
 {
     public partial class R_Presupuestos : Form
     {
-        public CN_Consultas cN_Consultas = new CN_Consultas();
-        public DataTable dt = new DataTable();
-        public CN_Modificaciones modificacion = new CN_Modificaciones();
-
         public R_Presupuestos()
         {
             InitializeComponent();
+            obtenerUltimoNroPres();
+        }
+
+        private void obtenerUltimoNroPres()
+        {
+            DataTable dtP = cN_Consultas.ConsultaUltimoCodigoPresupuesto();
+
+            if (dtP.Rows.Count > 0)
+            {
+                string LastCodePres = dtP.Rows[0]["Nro_Presupuesto"].ToString();
+                txtCodigoPres.Text = LastCodePres;
+                txtCodigoPres.Enabled = true;
+                btnBuscar.Enabled = true;
+            }
+            else
+            {
+                txtCodigoPres.Text = "SIN PRESUPUESTOS";
+                txtCodigoPres.Enabled = false;
+                btnBuscar.Enabled = false;
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -108,7 +124,7 @@ namespace Ventas_Hardware.Formularios.Reportes
         private void btnImprimir_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfDialog = new SaveFileDialog(); //creamos un objeto tipo SavefileDialog
-            sfDialog.FileName = "Presupuesto" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf"; //le asignamos un nombre predeterminado
+            sfDialog.FileName = "Presupuesto_" + txtCodigoPres.Text + "_" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf"; //le asignamos un nombre predeterminado
 
             string paginaHTML_texto = Properties.Resources.plantilla.ToString();
 
@@ -182,5 +198,22 @@ namespace Ventas_Hardware.Formularios.Reportes
                 btnImprimir.Enabled = true;
             }
         }
+
+        private void txtCodigoPres_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtCodigoPres.Text))
+            {
+                btnBuscar.Enabled = false;
+            }
+            else
+            {
+                btnBuscar.Enabled = true;
+            }
+        }
+
+        public CN_Consultas cN_Consultas = new CN_Consultas();
+        public DataTable dt = new DataTable();
+        public CN_Modificaciones modificacion = new CN_Modificaciones();
+
     }
 }

@@ -60,29 +60,51 @@ namespace CapaNegocio
         {
             return Querys.ConsultaRemito(Nro_Remito);
         }
+
         public DataTable ConsultaP_Detalle(string Nro_presupuesto)
         {
             return Querys.ConsultaPresupuestoDetalle(Nro_presupuesto);
         }
+
         public DataTable ConsultaR_Detalle(string Nro_presupuesto)
         {
             return Querys.ConsultaRemitoDetalle(Nro_presupuesto);
         }
+
         public DataTable ConsultaPresupuesto_Remito_Cliente(string Documentacion, string Opcion)
         {
             return Querys.ConsultaPresupuesto_Remito_Cliente(Documentacion, Opcion);
         }
+
         public DataTable ConsultaSubcategorias()
         {
             return Querys.ConsultaSubcategorias();
         }
+
         public DataTable ConsultaUltimoCodigoRemito()
         {
             return Querys.ConsultaUltimoCodigoRemito();
         }
+
         public DataTable ConsultaUltimoCodigoPresupuesto()
         {
             return Querys.ConsultaUltimoCodigoPresupuesto();
         }
+
+        public DataTable ConsultaUsuario(string DNI)
+        {
+            return Querys.ConsultaUsuario(DNI);
+        }
+
+        public DataTable ConsultaRemitoPorVendedor(string DNI)
+        {
+            return Querys.ConsultaRemitoPorVendedor(DNI);
+        }
+
+        public DataTable ConsultaRemitoPorVendedorFiltrado(string DNI, DateTime desde, DateTime hasta)
+        {
+            return Querys.ConsultaRemitoPorVendedorFiltrado(DNI, desde, hasta);
+        }
+
     }
 }

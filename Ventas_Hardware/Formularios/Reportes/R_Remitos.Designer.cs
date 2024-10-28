@@ -610,8 +610,7 @@
             // 
             // btnRemitosXVendedor
             // 
-            this.btnRemitosXVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemitosXVendedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRemitosXVendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(99)))), ((int)(((byte)(170)))));
             this.btnRemitosXVendedor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRemitosXVendedor.FlatAppearance.BorderSize = 0;
@@ -645,7 +644,6 @@
             // 
             // btnImprimir
             // 
-            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(126)))), ((int)(((byte)(99)))), ((int)(((byte)(170)))));
             this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnImprimir.FlatAppearance.BorderSize = 0;
@@ -658,6 +656,7 @@
             this.btnImprimir.TabIndex = 93;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // R_Remitos
             // 

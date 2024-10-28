@@ -16,5 +16,10 @@ namespace CapaNegocio
         {
             return objc_categoria.Listar(filtro);
         }
+
+        public List<Categoria> Listar()
+        {
+            return objc_categoria.Listar();
+        }
     }
 }

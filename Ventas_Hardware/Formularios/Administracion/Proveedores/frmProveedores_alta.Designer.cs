@@ -221,6 +221,7 @@
             this.Controls.Add(this.btnSalir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmProveedores_alta";
+            this.Opacity = 0.99D;
             this.Text = "frmProveedores_alta";
             this.panelDatosEncabezado.ResumeLayout(false);
             this.panelDatosEncabezado.PerformLayout();

@@ -353,6 +353,7 @@
             this.Controls.Add(this.lblModCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmClientes_modificacion";
+            this.Opacity = 0.99D;
             this.Text = "frmClientes_modificacion";
             this.panelDatosEncabezado.ResumeLayout(false);
             this.panelDatosEncabezado.PerformLayout();

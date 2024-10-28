@@ -31,6 +31,10 @@ namespace Ventas_Hardware
             if (!Validations.TextboxNullOrEmpty(textboxes))
             {
                 altas.CN_AltaProveedor(txtNombre.Text, txtApellido.Text, txtEmail.Text, txtTelefono.Text);
+                txtNombre.Text = string.Empty;
+                txtApellido.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtTelefono.Text = string.Empty;
             }
             else
             {
