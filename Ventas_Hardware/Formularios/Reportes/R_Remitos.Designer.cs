@@ -556,6 +556,7 @@
             this.txtCodigoRemito.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoRemito.ForeColor = System.Drawing.Color.Black;
             this.txtCodigoRemito.Location = new System.Drawing.Point(364, 32);
+            this.txtCodigoRemito.MaxLength = 40;
             this.txtCodigoRemito.Name = "txtCodigoRemito";
             this.txtCodigoRemito.Size = new System.Drawing.Size(181, 29);
             this.txtCodigoRemito.TabIndex = 88;

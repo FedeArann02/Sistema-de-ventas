@@ -73,13 +73,13 @@
             this.dgvRemXvendedor.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvRemXvendedor.EnableHeadersVisualStyles = false;
             this.dgvRemXvendedor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(39)))), ((int)(((byte)(100)))));
-            this.dgvRemXvendedor.Location = new System.Drawing.Point(350, 79);
+            this.dgvRemXvendedor.Location = new System.Drawing.Point(268, 79);
             this.dgvRemXvendedor.Name = "dgvRemXvendedor";
             this.dgvRemXvendedor.ReadOnly = true;
             this.dgvRemXvendedor.RowHeadersVisible = false;
             this.dgvRemXvendedor.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRemXvendedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRemXvendedor.Size = new System.Drawing.Size(384, 264);
+            this.dgvRemXvendedor.Size = new System.Drawing.Size(466, 264);
             this.dgvRemXvendedor.TabIndex = 67;
             // 
             // lblReporteRemito

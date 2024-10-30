@@ -27,7 +27,7 @@ namespace Ventas_Hardware
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            TextBox[] txts = {txtTelefono, txtNombre, txtApellido, txtDireccion, txtDoc, txtEmail, txtEntidad};
+            TextBox[] txts = {txtTelefono, txtNombre, txtApellido, txtDireccion, txtDoc, txtEntidad};
             if (!Validations.TextboxNullOrEmpty(txts))
             {
                 if (long.TryParse(txtTelefono.Text, out long tel) && long.TryParse(txtDoc.Text, out long Doc))

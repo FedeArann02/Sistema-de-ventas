@@ -592,6 +592,7 @@
             this.txtCodigoPres.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoPres.ForeColor = System.Drawing.Color.Black;
             this.txtCodigoPres.Location = new System.Drawing.Point(364, 26);
+            this.txtCodigoPres.MaxLength = 50;
             this.txtCodigoPres.Name = "txtCodigoPres";
             this.txtCodigoPres.Size = new System.Drawing.Size(181, 29);
             this.txtCodigoPres.TabIndex = 84;

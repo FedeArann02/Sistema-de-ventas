@@ -17,7 +17,7 @@ namespace Ventas_Hardware.MisMetodos
             return true;
         }
 
-        public bool Categoria (string Categoria, bool esAlta) //si la validacion se usa para una alta de una categoria esAlta debe ser true
+        public bool Categoria (string Categoria, bool esAlta) //si la validacion se usa para una alta de una categoria es Alta debe ser true
         {
             if (esAlta == true)
             {
@@ -105,5 +105,15 @@ namespace Ventas_Hardware.MisMetodos
 
             return Invalid;
         }
+
+        public bool EsCorreoValido(string correo)
+        {
+            if (string.IsNullOrEmpty(correo))
+                return false;
+
+            string patron = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(correo, patron);
+        }
+
     }
 }

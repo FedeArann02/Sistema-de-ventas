@@ -37,7 +37,7 @@
             this.lblPROX.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblPROX.Font = new System.Drawing.Font("Segoe UI Variable Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPROX.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(89)))), ((int)(((byte)(160)))));
-            this.lblPROX.Location = new System.Drawing.Point(249, 79);
+            this.lblPROX.Location = new System.Drawing.Point(276, 214);
             this.lblPROX.Name = "lblPROX";
             this.lblPROX.Size = new System.Drawing.Size(181, 32);
             this.lblPROX.TabIndex = 79;
