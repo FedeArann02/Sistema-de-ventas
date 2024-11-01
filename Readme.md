@@ -27,7 +27,7 @@
 ## 🛠️ Instalación y Configuración
 
 1. Clona el repositorio:  
-   `git clone https://github.com/FedericoAran/SistemaVentasVioleta.git`
+   `git clone https://github.com/FedeArann02/Sistema-de-ventas`
 2. Configura la base de datos en SQL Server ejecutando los scripts SQL ubicados en la carpeta `/Database`.
 3. Abre la solución en Visual Studio 2022.
 4. Configura la cadena de conexión en `appsettings.json` para apuntar a tu servidor SQL.
