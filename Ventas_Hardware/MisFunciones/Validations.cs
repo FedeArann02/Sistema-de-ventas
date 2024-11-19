@@ -50,7 +50,7 @@ namespace Ventas_Hardware.MisMetodos
 
         public bool Cod_articulo (string Codigo)
         {
-            string patron = @"^[A-Za-z]{1,5}\d{4,15}$";
+            
             List<Articulo> articulo = new CN_Articulo().Listar().Where(a => a.Cod_articulo == Codigo).ToList();
 
             if (Codigo == null || Codigo == "")
@@ -58,14 +58,9 @@ namespace Ventas_Hardware.MisMetodos
                 MessageBox.Show("El código no puede ser nulo o vacío", "Campo obligatorio");
                 return false;
             }
-            else if (Codigo.Length <4 || Codigo.Length >20)
+            else if (Codigo.Length <1 || Codigo.Length >20)
             {
-                MessageBox.Show("La longitud del código debe ser de 4 o más caracteres");
-                return false;
-            }
-            else if (!Regex.IsMatch(Codigo, patron))
-            {
-                MessageBox.Show("Formato incorrecto, solo se permiten entre 1 a 5 letras seguido de 4 a 15 núumeros\n\tPor ejemplo: ABCDE12345...15");
+                MessageBox.Show("La longitud del código debe ser de 1 o más caracteres");
                 return false;
             }
             else if (articulo.Count != 0)
@@ -78,6 +73,7 @@ namespace Ventas_Hardware.MisMetodos
                 return true;
             }
         }
+
         public static bool TextboxNullOrEmpty(TextBox[] textboxes)
         {
             bool Invalid = false;

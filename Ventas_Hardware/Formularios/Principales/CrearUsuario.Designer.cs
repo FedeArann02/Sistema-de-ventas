@@ -149,9 +149,9 @@
             this.lblComision.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblComision.Location = new System.Drawing.Point(38, 140);
             this.lblComision.Name = "lblComision";
-            this.lblComision.Size = new System.Drawing.Size(67, 19);
+            this.lblComision.Size = new System.Drawing.Size(81, 19);
             this.lblComision.TabIndex = 107;
-            this.lblComision.Text = "Comisión";
+            this.lblComision.Text = "Comisión %";
             // 
             // txtComision
             // 
@@ -159,7 +159,7 @@
             this.txtComision.Font = new System.Drawing.Font("Segoe UI Variable Display", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComision.Location = new System.Drawing.Point(42, 166);
             this.txtComision.Margin = new System.Windows.Forms.Padding(4);
-            this.txtComision.MaxLength = 27;
+            this.txtComision.MaxLength = 3;
             this.txtComision.Name = "txtComision";
             this.txtComision.Size = new System.Drawing.Size(116, 27);
             this.txtComision.TabIndex = 3;
@@ -184,7 +184,7 @@
             this.txtDocumentacion.Font = new System.Drawing.Font("Segoe UI Variable Display", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumentacion.Location = new System.Drawing.Point(186, 166);
             this.txtDocumentacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDocumentacion.MaxLength = 15;
+            this.txtDocumentacion.MaxLength = 11;
             this.txtDocumentacion.Name = "txtDocumentacion";
             this.txtDocumentacion.Size = new System.Drawing.Size(200, 27);
             this.txtDocumentacion.TabIndex = 4;

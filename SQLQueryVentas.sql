@@ -182,6 +182,10 @@ create table H_Presupuesto_Detalle(
 
 --INSERTS
 
+insert into ROL(Descripcion) values
+('ADMINISTRADOR'),
+('VENDEDOR');
+
 insert into PERMISO(IdRol, NombreMenu) values
 (1, 'Administrar'),
 (2, 'Ventas');

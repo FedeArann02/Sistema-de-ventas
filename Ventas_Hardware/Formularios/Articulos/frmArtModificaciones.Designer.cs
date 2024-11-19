@@ -312,7 +312,7 @@
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.ForeColor = System.Drawing.Color.Black;
             this.txtCodigo.Location = new System.Drawing.Point(9, 25);
-            this.txtCodigo.MaxLength = 50;
+            this.txtCodigo.MaxLength = 20;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(174, 22);
             this.txtCodigo.TabIndex = 6;
@@ -364,7 +364,7 @@
             this.txtCosto.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCosto.ForeColor = System.Drawing.Color.Black;
             this.txtCosto.Location = new System.Drawing.Point(11, 199);
-            this.txtCosto.MaxLength = 27;
+            this.txtCosto.MaxLength = 9;
             this.txtCosto.Name = "txtCosto";
             this.txtCosto.Size = new System.Drawing.Size(102, 22);
             this.txtCosto.TabIndex = 12;
@@ -392,7 +392,7 @@
             this.txtGanancia.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGanancia.ForeColor = System.Drawing.Color.Black;
             this.txtGanancia.Location = new System.Drawing.Point(133, 199);
-            this.txtGanancia.MaxLength = 27;
+            this.txtGanancia.MaxLength = 9;
             this.txtGanancia.Name = "txtGanancia";
             this.txtGanancia.Size = new System.Drawing.Size(105, 22);
             this.txtGanancia.TabIndex = 13;
@@ -507,7 +507,7 @@
             this.txtAumentoCosto.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAumentoCosto.ForeColor = System.Drawing.Color.Black;
             this.txtAumentoCosto.Location = new System.Drawing.Point(170, 418);
-            this.txtAumentoCosto.MaxLength = 27;
+            this.txtAumentoCosto.MaxLength = 9;
             this.txtAumentoCosto.Name = "txtAumentoCosto";
             this.txtAumentoCosto.Size = new System.Drawing.Size(186, 22);
             this.txtAumentoCosto.TabIndex = 44;
@@ -522,7 +522,7 @@
             this.txtAumentoGanancia.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAumentoGanancia.ForeColor = System.Drawing.Color.Black;
             this.txtAumentoGanancia.Location = new System.Drawing.Point(393, 418);
-            this.txtAumentoGanancia.MaxLength = 27;
+            this.txtAumentoGanancia.MaxLength = 9;
             this.txtAumentoGanancia.Name = "txtAumentoGanancia";
             this.txtAumentoGanancia.Size = new System.Drawing.Size(214, 22);
             this.txtAumentoGanancia.TabIndex = 45;

@@ -35,15 +35,19 @@ namespace CapaDatos
 
             using (SqlConnection objConexion = new SqlConnection(Conexion.cadena)) // using me permite cerrar automaticamente la conexion
             {
+                objConexion.Open();
+                SqlTransaction transaction = objConexion.BeginTransaction();
+                
                 try
                 {
+
                     StringBuilder Query = new StringBuilder();
                     Query.AppendLine("INSERT INTO ARTICULO(Cod_articulo, Cod_categoria, Cod_subcategoria, Descripcion, ID_Proveedor) VALUES");
                     Query.AppendLine("(@Cod_articulo, @Cod_Categoria, @Cod_subcategoria, @Descripcion, @ID_Proveedor);");
                     Query.AppendLine("INSERT INTO STOCK (Cod_articulo, Cantidad, Costo, Ganancia) VALUES");
                     Query.AppendLine("(@Cod_articulo, @Cantidad, @Costo, @Ganancia);");
 
-                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion);
+                    SqlCommand cmd = new SqlCommand(Query.ToString(), objConexion, transaction);
                     {
                         cmd.Parameters.AddWithValue("@Cod_articulo", Codigo);
                         cmd.Parameters.AddWithValue("@Cod_categoria", codCategoria);
@@ -54,15 +58,16 @@ namespace CapaDatos
                         cmd.Parameters.AddWithValue("@Costo", Costo);
                         cmd.Parameters.AddWithValue("@Ganancia", Ganancia);
                     }
-                    objConexion.Open();
+                    
                     cmd.ExecuteNonQuery();
-                    {
+                    transaction.Commit();
                         clearConfirm = true;
                         MessageBox.Show("Articulo registrado con éxito", "REGISTRO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    
                 }
                 catch (Exception)
                 {
+                    transaction.Rollback();
                     MessageBox.Show("Error en el procedimiento del registro", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

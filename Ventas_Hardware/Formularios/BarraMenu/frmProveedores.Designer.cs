@@ -210,7 +210,7 @@
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.Location = new System.Drawing.Point(576, 40);
-            this.txtTelefono.MaxLength = 15;
+            this.txtTelefono.MaxLength = 10;
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(116, 22);
@@ -585,7 +585,7 @@
             this.txtTotalCompra.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalCompra.ForeColor = System.Drawing.Color.Black;
             this.txtTotalCompra.Location = new System.Drawing.Point(18, 44);
-            this.txtTotalCompra.MaxLength = 27;
+            this.txtTotalCompra.MaxLength = 9;
             this.txtTotalCompra.Name = "txtTotalCompra";
             this.txtTotalCompra.Size = new System.Drawing.Size(139, 22);
             this.txtTotalCompra.TabIndex = 63;
@@ -768,7 +768,7 @@
             this.txtTotalPago.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalPago.ForeColor = System.Drawing.Color.Black;
             this.txtTotalPago.Location = new System.Drawing.Point(184, 44);
-            this.txtTotalPago.MaxLength = 27;
+            this.txtTotalPago.MaxLength = 9;
             this.txtTotalPago.Name = "txtTotalPago";
             this.txtTotalPago.Size = new System.Drawing.Size(127, 22);
             this.txtTotalPago.TabIndex = 64;

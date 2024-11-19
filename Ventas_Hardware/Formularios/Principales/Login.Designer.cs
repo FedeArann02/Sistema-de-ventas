@@ -68,7 +68,7 @@
             this.txtDocumento.Font = new System.Drawing.Font("Segoe UI Variable Display", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumento.Location = new System.Drawing.Point(273, 113);
             this.txtDocumento.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDocumento.MaxLength = 15;
+            this.txtDocumento.MaxLength = 11;
             this.txtDocumento.Name = "txtDocumento";
             this.txtDocumento.Size = new System.Drawing.Size(200, 27);
             this.txtDocumento.TabIndex = 1;
