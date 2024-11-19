@@ -41,7 +41,7 @@ namespace Ventas_Hardware
         {
             List<Permiso> ListaPermisos = new CN_Permiso().Listar(usuario_actual.ID_Usuario);
 
-            if (!ListaPermisos.Any(m => m.NombreMenu == "administrar"))
+            if (!ListaPermisos.Any(m => m.NombreMenu != "administrar"))
             {
                 btnProveedores.Visible = false;
                 btnListaCompras.Visible = false;

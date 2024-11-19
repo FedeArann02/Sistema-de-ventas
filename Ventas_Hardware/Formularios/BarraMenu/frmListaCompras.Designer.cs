@@ -106,6 +106,7 @@
             this.btnBuscar.TabIndex = 71;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dgvArticulos
             // 

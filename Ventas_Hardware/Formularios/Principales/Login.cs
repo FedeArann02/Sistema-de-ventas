@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
 using Ventas_Hardware.Formularios.Principales;
+using Ventas_Hardware.MisFunciones;
 
 namespace Ventas_Hardware
 {
@@ -18,7 +19,13 @@ namespace Ventas_Hardware
         public Login()
         {
             InitializeComponent();
+            panel1.BackColor = cols.loginSignUpBackColorLogo;
+            pictureBox1.BackColor = cols.loginSignUpBackColorLogo;
+            pictureBox2.BackColor = cols.loginSignUpBackColorLogo;
+            this.BackColor = cols.loginSignUpBackColor;
         }
+
+        Colores cols = new Colores();
 
         private void button1_Click(object sender, EventArgs e)
         {

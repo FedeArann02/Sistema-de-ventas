@@ -109,7 +109,7 @@ namespace Ventas_Hardware
             }
             else
             {
-                MessageBox.Show("El código que ingresó no se encuentra en la Base de datos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El código que ingresó no se encuentra en la Base de datos", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -516,13 +516,20 @@ namespace Ventas_Hardware
 
         private void txtTotal_TextChanged(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtTotal.Text) || decimal.Parse(txtTotal.Text) > 0)
+            if (!String.IsNullOrWhiteSpace(txtTotal.Text) || decimal.TryParse(txtTotal.Text, out decimal Total))
             {
-                btnAgregar.Enabled = true;
+                if (decimal.Parse(txtTotal.Text) > 0)
+                {
+                    btnGenerar.Enabled = true;
+                }
+                else
+                {
+                    btnGenerar.Enabled = false;
+                }
             }
             else
             {
-                btnAgregar.Enabled= false;
+                btnGenerar.Enabled = false;
             }
         }
 

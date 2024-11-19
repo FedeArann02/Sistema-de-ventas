@@ -69,7 +69,7 @@
             this.txtComision.Font = new System.Drawing.Font("Segoe UI Variable Display", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComision.Location = new System.Drawing.Point(535, 135);
             this.txtComision.Margin = new System.Windows.Forms.Padding(4);
-            this.txtComision.MaxLength = 27;
+            this.txtComision.MaxLength = 9;
             this.txtComision.Name = "txtComision";
             this.txtComision.Size = new System.Drawing.Size(116, 27);
             this.txtComision.TabIndex = 4;
@@ -94,7 +94,7 @@
             this.txtDocumentacion.Font = new System.Drawing.Font("Segoe UI Variable Display", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDocumentacion.Location = new System.Drawing.Point(473, 14);
             this.txtDocumentacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDocumentacion.MaxLength = 15;
+            this.txtDocumentacion.MaxLength = 11;
             this.txtDocumentacion.Name = "txtDocumentacion";
             this.txtDocumentacion.Size = new System.Drawing.Size(200, 27);
             this.txtDocumentacion.TabIndex = 1;

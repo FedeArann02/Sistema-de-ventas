@@ -351,7 +351,8 @@
     <Compile Include="Formularios\Reportes\R_Remitos.Designer.cs">
       <DependentUpon>R_Remitos.cs</DependentUpon>
     </Compile>
-    <Compile Include="MisMetodos\Funciones.cs" />
+    <Compile Include="MisFunciones\Colores.cs" />
+    <Compile Include="MisFunciones\Funciones.cs" />
     <Compile Include="Formularios\Principales\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,7 +365,7 @@
     <Compile Include="Formularios\Principales\PantallaPrincipal.Designer.cs">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="MisMetodos\Validations.cs" />
+    <Compile Include="MisFunciones\Validations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Administracion\Categoria_Subcat\frmCategorias.resx">

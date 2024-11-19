@@ -78,13 +78,25 @@ namespace Ventas_Hardware
             if (!Validations.TextboxNullOrEmpty(txts) && !Validations.ComboBoxNullOrEmpty(cmbs))
             {
                 CN_Altas cN_Altas = new CN_Altas();
-                if (validations.Cod_articulo(txtCodigo.Text))
+
+                if (int.TryParse(txtStock.Text, out int stock) || decimal.TryParse(txtCosto.Text, out decimal costo) || decimal.TryParse(txtGanancia.Text, out decimal ganancia))
                 {
-                    cN_Altas.CN_ArtAlta(txtCodigo.Text.ToUpper(), Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbSubcategoria.SelectedValue), txtDescripcion.Text, Convert.ToInt32(cmbProveedor.SelectedValue), int.Parse(txtStock.Text), decimal.Parse(txtCosto.Text), decimal.Parse(txtGanancia.Text));
-                    if (cN_Altas.clearConf)
+                    stock = int.Parse(txtStock.Text);
+                    costo = decimal.Parse(txtCosto.Text);
+                    ganancia = decimal.Parse(txtGanancia.Text);
+
+                    if (validations.Cod_articulo(txtCodigo.Text))
                     {
-                        clear();
+                        cN_Altas.CN_ArtAlta(txtCodigo.Text.ToUpper(), Convert.ToInt32(cmbCategoria.SelectedValue), Convert.ToInt32(cmbSubcategoria.SelectedValue), txtDescripcion.Text, Convert.ToInt32(cmbProveedor.SelectedValue), stock, costo, ganancia);
+                        if (cN_Altas.clearConf)
+                        {
+                            clear();
+                        }
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Error en los campos numéricos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
