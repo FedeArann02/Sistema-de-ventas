@@ -14,12 +14,12 @@
 
 ---
 
-## 💻 Tecnologías Utilizadas
+## 💻 Tecnologías utilizadas
 
-![C#](https://camo.githubusercontent.com/158219902be2f7f4a4e08983a16aa541f4daf4ddbdd979505799137c08fa058d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f432532332d3233393132303f7374796c653d666f722d7468652d6261646765266c6f676f3d632d7368617270266c6f676f436f6c6f723d7768697465)
-![SQL Server](https://camo.githubusercontent.com/c500fb4485a0838f5170b2fa63d1d2d57d42df03f306a1cc7d98bb2fcdbf7b8f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53514c2d3434373941313f7374796c653d666f722d7468652d6261646765266c6f676f3d73716c266c6f676f436f6c6f723d7768697465) 
-![Visual Studio](https://camo.githubusercontent.com/2e59da6d60bc50daa1cd488ee5d01d1629f8b318c4ba9043c26b601f5c49a725/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f56697375616c5f53747564696f2d3543324439313f7374796c653d666f722d7468652d6261646765266c6f676f3d76697375616c2d73747564696f266c6f676f436f6c6f723d7768697465)  
-![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
+![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
+![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91?style=flat&logo=visualstudio&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 
 
 ---
