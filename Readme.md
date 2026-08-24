@@ -44,5 +44,3 @@
   - C#
   - SQL Server
   - JavaScript
-  - Python
-  - HTML5 & CSS
