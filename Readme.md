@@ -32,15 +32,3 @@
 3. Abre la solución en Visual Studio 2022.
 4. Configura la cadena de conexión en `appsettings.json` para apuntar a tu servidor SQL.
 5. Ejecuta el proyecto y disfruta del control organizado de tu negocio.
-
----
-
-## 👨‍💻 Sobre el Desarrollador
-
-- **Nombre:** Federico Aran
-- **Edad:** 22 años
-- **Nacionalidad:** Argentina
-- **Habilidades:**
-  - C#
-  - SQL Server
-  - JavaScript
